@@ -1,6 +1,8 @@
 
 import { styled } from "@mui/system"
 import React from 'react'
+import Titlesubtitle from "../../../components/units/titlesubtitle/titlesubtitle"
+import AlertComponent from "../../../components/widgets/alert/alert"
 import Sizeheadercontent12 from "../../../components/widgets/cards/12sizeheadercontent/sizeheadercontent12"
 import Sizelandscape12 from "../../../components/widgets/cards/12sizelandscape/sizelandscape12"
 import Sizeheadercontent4 from "../../../components/widgets/cards/4sizeheadercontent/sizeheadercontent4"
@@ -29,6 +31,8 @@ const Widgets = () => {
 		<Sizeheadercontent8/>
 		<Sizeheadercontent12/>
 		<Sizesquare6/>
+		<Titlesubtitle/>
+		<AlertComponent/>
 	</WidgetStyles>
   )
 }
