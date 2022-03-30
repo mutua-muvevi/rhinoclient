@@ -8,6 +8,12 @@ import Services from "./pages/landing/services/services";
 import Track from "./pages/landing/track/track";
 import {theme} from "./theme/muitheme";
 import Widgets from "./pages/landing/widgets/widgets";
+import Dashhome from "./pages/dashboard/home/dashhome";
+import DashQuotation from "./pages/dashboard/quotation/quotation";
+import Dashshipment from "./pages/dashboard/shipment/shipment";
+import Dashstorage from "./pages/dashboard/storage/storage";
+import Dashusers from "./pages/dashboard/users/users";
+import Layout from "./components/layout/layout";
 
 function App() {
 	return (
@@ -22,6 +28,16 @@ function App() {
 						<Route path="/track" element={<Track/>}/>
 						<Route path="/contact" element={<Contact/>}/>
 						<Route path="/widgets" element={<Widgets/>}/>
+
+						<Route path="/dashboard" element={<Layout/>}>
+							<Route index element={<Dashhome/>}/>
+							<Route path="/dashboard/quotation" element={<DashQuotation/>}/>
+							<Route path="/dashboard/shipment" element={<Dashshipment/>}/>
+							<Route path="/dashboard/storage" element={<Dashstorage/>}/>
+							<Route path="/dashboard/users" element={<Dashusers/>}/>
+						</Route>
+						
+
 					</Routes>
 				</ThemeProvider>
 			</BrowserRouter>

@@ -52,8 +52,8 @@ export const theme = createTheme({
 			disabled: "rgba(0,0,0,0.38)",
 		},
 		background: {
-			default: "#fff",
-			paper: "#fff"
+			default: "#f0f0f6",
+			paper: "#f0f0f6"
 		}
 	},
 	shape: {
