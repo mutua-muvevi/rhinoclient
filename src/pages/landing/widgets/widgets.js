@@ -1,6 +1,7 @@
 
 import { styled } from "@mui/system"
 import React from 'react'
+import Layout from "../../../components/layout/layout"
 import Titlesubtitle from "../../../components/units/titlesubtitle/titlesubtitle"
 import AlertComponent from "../../../components/widgets/alert/alert"
 import Sizeheadercontent12 from "../../../components/widgets/cards/12sizeheadercontent/sizeheadercontent12"
@@ -21,19 +22,20 @@ const WidgetStyles = styled("div")({
 
 const Widgets = () => {
   return (
-	<WidgetStyles>
-		<Sizelandscape12/>
-		<SizeimgcontentfooterCard4/>
-		<Sizeheadercontent4/>
-		<Sizesquarecard4/>
-		<Sizeheaderlandscape4/>
-		<Sizeheadercontent6/>
-		<Sizeheadercontent8/>
-		<Sizeheadercontent12/>
-		<Sizesquare6/>
-		<Titlesubtitle/>
-		<AlertComponent/>
-	</WidgetStyles>
+	// <WidgetStyles>
+	// 	<Sizelandscape12/>
+	// 	<SizeimgcontentfooterCard4/>
+	// 	<Sizeheadercontent4/>
+	// 	<Sizesquarecard4/>
+	// 	<Sizeheaderlandscape4/>
+	// 	<Sizeheadercontent6/>
+	// 	<Sizeheadercontent8/>
+	// 	<Sizeheadercontent12/>
+	// 	<Sizesquare6/>
+	// 	<Titlesubtitle/>
+	// 	<AlertComponent/>
+	// </WidgetStyles>
+	<Layout/>
   )
 }
 
