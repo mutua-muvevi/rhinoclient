@@ -23,8 +23,11 @@ const openedMixin = (theme) => ({
 });
 
 const LogoItem = styled("img")(({theme}) => ({
-	width: 180,
-	marginBottom: "20px"
+	width: "95%",
+	marginLeft: "auto",
+	marginRight: "auto",
+	marginBottom: "20px",
+	margin: "20px auto"
 }))
 
 // close drawer mixing
