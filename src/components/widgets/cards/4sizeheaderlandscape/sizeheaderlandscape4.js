@@ -1,11 +1,13 @@
-import { Box, Card, CardContent, Paper, Typography } from "@mui/material"
+import { Box, Button, Card, CardContent, Typography } from "@mui/material"
 import { styled } from "@mui/system"
 import React from 'react'
 
 const BoxWrapper = styled(Card)(({theme}) => ({
 	minWidth: "25vw",
 	minHeight: "20vh",
-	margin: "10px"
+	margin: "10px",
+	borderRadius: theme.shape.default,
+	backgroundColor: theme.palette.common.white
 
 }))
 
@@ -13,19 +15,42 @@ const HeaderSection = styled(Box)(({theme}) => ({
 	display: "flex",
 	justifyContent: "space-between",
 	padding: "10px",
-	borderBottom: `1px solid grey`,
 }))
 
-const Sizeheaderlandscape4 = () => {
+const FooterSection = styled(Box)(({theme}) => ({
+	fontSize: "15px",
+	marginLeft: "10px",
+}))
+
+const CardContentStyled = styled(CardContent)(({theme}) => ({
+	display: "flex",
+	justifyContent: "left",
+	alignItems: "center",
+	textAlign: "left"
+}))
+
+const Sizeheaderlandscape4 = ({item}) => {
 	return (
 		<BoxWrapper elevation={3}>
 			<HeaderSection>
-				<Typography variant="h6">left</Typography>
-				<Typography variant="h6">right</Typography>
+				<Typography variant="h6">
+					{item.title.left}
+				</Typography>
+				<Button variant="text">
+					View
+				</Button>
 			</HeaderSection>
-			<CardContent>
-				Body
-			</CardContent>
+			<CardContentStyled >
+				{item.body.left}
+				<Typography variant="h4" sx={{ml: "20px"}}>
+					{item.body.right}
+				</Typography>
+			</CardContentStyled>
+			<Box>
+				<FooterSection variant="body2">
+					{item.footer}
+				</FooterSection>
+			</Box>
 		</BoxWrapper>
 	)
 }

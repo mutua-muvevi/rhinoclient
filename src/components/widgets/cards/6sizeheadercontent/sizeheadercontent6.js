@@ -4,7 +4,9 @@ import React from 'react'
 
 const CardStyles = styled(Card)(({theme}) => ({
 	borderRadius: theme.shape.default,
-	minWidth: "39vw",
+	backgroundColor: theme.palette.common.white,
+	minWidth: "38vw",
+	minHeight: "50vh",
 	margin: "10px"
 }))
 
@@ -17,12 +19,12 @@ const BodySection = styled(Box)(({theme}) => ({
 	padding: "10px",
 }))
 
-const Sizeheadercontent6 = () => {
+const Sizeheadercontent6 = ({item}) => {
 	return (
 		<CardStyles>
 			<HeaderSection>
 				<Typography variant="h6">
-					Header Title
+					{item.title}
 				</Typography>
 			</HeaderSection>
 			<BodySection>

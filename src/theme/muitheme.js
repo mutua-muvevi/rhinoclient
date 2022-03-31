@@ -56,13 +56,12 @@ export const theme = createTheme({
 		},
 		background: {
 			default: "#f1f1f1",
-			paper: "#131313"
+			paper: "#1976d2"
 		}
 	},
 	shape: {
 		default: 10,
 		rounded: 15
-
 	},
 	typography: {
 		fontFamily: "'Roboto', sans-serif",

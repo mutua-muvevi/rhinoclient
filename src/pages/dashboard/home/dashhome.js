@@ -1,7 +1,11 @@
-import { Box, Breadcrumbs, Link, Typography } from "@mui/material"
+import { Box, Breadcrumbs, Link} from "@mui/material"
 import HomeIcon from '@mui/icons-material/Home';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { styled } from "@mui/system";
+import Dashcards3 from "./3dashcards/dashcards3";
+import Dashcards2 from "./2dashcards/dashcards2";
+import axios from "axios"
+import QuotationDatagrid from "./quotationDatagrid/quotationDatagrid";
 
 const StyledBreadCrumbs = styled(Breadcrumbs)(({theme}) => ({
 	marginBottom: "20px"
@@ -9,10 +13,24 @@ const StyledBreadCrumbs = styled(Breadcrumbs)(({theme}) => ({
 
 
 const HomeStyled = styled(Box)(({theme}) => ({
-	backgroundColor: "red"
+	
 }))
 
 const Dashhome = () => {
+
+	const [quotation, setQuotation] = useState([])
+	const [quotationError, setQuotationError] = useState(null)
+
+	useEffect(() => {
+		axios.get("https://rhinojohnbackend.herokuapp.com/api/quotation")
+			.then((res) =>{ 
+				setQuotation(res.data)
+			})
+			.catch(error => {
+				setQuotationError(error.response)
+			})
+	}, []);
+
 	return (
 		<HomeStyled component="section" id="dash-home">
 			<StyledBreadCrumbs>
@@ -27,9 +45,9 @@ const Dashhome = () => {
 				</Link>
 			</StyledBreadCrumbs>
 
-			<Typography variant="h3">3 cards [land][air][ocean]</Typography>
-			<Typography variant="h3">2 cards medium [transportatin][storage]</Typography>
-			<Typography variant="h3">1 full size general enquiries table</Typography>
+			<Dashcards3/>
+			<Dashcards2 />
+			<QuotationDatagrid quotation = {quotation} error = {quotationError}/>
 		</HomeStyled>
 	)
 }
