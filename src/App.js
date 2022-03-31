@@ -14,6 +14,7 @@ import Dashshipment from "./pages/dashboard/shipment/shipment";
 import Dashstorage from "./pages/dashboard/storage/storage";
 import Dashusers from "./pages/dashboard/users/users";
 import Layout from "./components/layout/layout";
+import Dashmap from "./pages/dashboard/map/map";
 
 function App() {
 	return (
@@ -35,6 +36,7 @@ function App() {
 							<Route path="/dashboard/shipment" element={<Dashshipment/>}/>
 							<Route path="/dashboard/storage" element={<Dashstorage/>}/>
 							<Route path="/dashboard/users" element={<Dashusers/>}/>
+							<Route path="/dashboard/map" element={<Dashmap/>}/>
 						</Route>
 						
 

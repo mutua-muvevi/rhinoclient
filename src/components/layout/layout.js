@@ -1,4 +1,5 @@
-import { Box, Drawer } from "@mui/material";
+import { Box } from "@mui/material";
+import { useTheme } from '@mui/material/styles';
 import { styled } from "@mui/system";
 import React, { useState } from 'react'
 import { Outlet } from 'react-router-dom';
@@ -10,29 +11,40 @@ const Main = styled(Box)(({theme}) => ({
 }))
 
 
+const DrawerHeader = styled('div')(({ theme }) => ({
+	display: 'flex',
+	alignItems: 'center',
+	justifyContent: 'flex-end',
+	padding: theme.spacing(0, 1),
+	// necessary for content to be below app bar
+	...theme.mixins.toolbar,
+}));
+
 
 const Layout = () => {
 	
-	const [isDrawerOpen, setIsDrawerOpen] = useState(false)
-	
-	const drawerHandler = () => {
-		setIsDrawerOpen(!isDrawerOpen)
-		
-	}
-
-	const closeDrawer = () => {
-		setIsDrawerOpen(false)
-	}
+	const theme = useTheme();
+	const [open, setOpen] = useState(true);
+  
+	const handleDrawerOpen = () => {
+	  setOpen(true);
+	};
+  
+	const handleDrawerClose = () => {
+	  setOpen(false);
+	};
 
 	return (
 		<>
 			{/* side drawer */}
-			<DrawerComponent isOpen={isDrawerOpen} closeDrawer={closeDrawer}/>
+			<DrawerComponent handleDrawerOpen={handleDrawerOpen} open={open} theme={theme} handleDrawerClose={handleDrawerClose}/>
 
 			{/* top bar */}
-			<PrimarySearchAppBar drawerHandler = {drawerHandler}/>
+			<PrimarySearchAppBar handleDrawerOpen={handleDrawerOpen} open={open}/>
 
-			<Main>
+			{/* main section */}
+			<Main component="main" sx={{ flexGrow: 1, p: 3 }}>
+				<DrawerHeader/>
 				<Outlet/>
 			</Main>
 		</>
