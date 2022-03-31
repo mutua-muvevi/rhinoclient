@@ -73,6 +73,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 		flexShrink: 0,
 		whiteSpace: 'nowrap',
 		boxSizing: 'border-box',
+		backgroundColor: "#131313 !important",
 		...(open && {
 			...openedMixin(theme),
 			'& .MuiDrawer-paper': openedMixin(theme),
@@ -90,6 +91,12 @@ const DrawerComponent = ({open, handleDrawerOpen, handleDrawerClose, theme}) => 
 			anchor="left"
 			open={open}
 			variant="permanent"
+			PaperProps={{
+				sx: {
+					backgroundColor: "#1c1c1c",
+					color: "white",
+				  }
+			}}
 		>
 			
 			<DrawerHeader>
