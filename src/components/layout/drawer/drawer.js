@@ -94,7 +94,7 @@ const DrawerComponent = ({open, handleDrawerOpen, handleDrawerClose, theme}) => 
 			
 			<DrawerHeader>
 				<IconButton onClick={handleDrawerClose}>
-					{theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+					{theme.direction === 'rtl' ? <ChevronRightIcon sx = {{color : "#fff"}}/> : <ChevronLeftIcon sx = {{color : "#fff"}}/>}
 				</IconButton>
 			</DrawerHeader>
 
