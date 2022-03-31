@@ -69,7 +69,7 @@ const DashQuotation = () => {
 	}, []);
 
 	return (
-		<Box>
+		<Box component="section" id="dash-quotation">
 			<StyledBreadCrumbs>
 				<Link
 					underline="hover"
