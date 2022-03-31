@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { styled, alpha } from '@mui/material/styles';
-import AppBar from '@mui/material/AppBar';
+import MuiAppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import Badge from '@mui/material/Badge';
 import MenuItem from '@mui/material/MenuItem';
@@ -16,12 +15,29 @@ import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 
+const drawerWidth = 240;
 
-const AppBarWrapper = styled(AppBar)(({theme}) => ({
+const AppBarWrapper = styled(MuiAppBar, {
+	shouldForwardProp: (prop) => prop !== 'open',
+  })(({ theme, open }) => ({
 	backgroundColor: theme.palette.common.white,
 	color: "grey",
-	padding: "10px"
-}))
+	padding: "10px",
+	zIndex: theme.zIndex.drawer + 1,
+	transition: theme.transitions.create(['width', 'margin'], {
+	  easing: theme.transitions.easing.sharp,
+	  duration: theme.transitions.duration.leavingScreen,
+	}),
+	...(open && {
+	  marginLeft: drawerWidth,
+	  width: `calc(100% - ${drawerWidth}px)`,
+	  transition: theme.transitions.create(['width', 'margin'], {
+		easing: theme.transitions.easing.sharp,
+		duration: theme.transitions.duration.enteringScreen,
+	  }),
+	}),
+  }));
+
 
 const Search = styled('div')(({ theme }) => ({
 	position: 'relative',
@@ -65,7 +81,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 	},
 }));
 
-export default function PrimarySearchAppBar({ drawerHandler }) {
+export default function PrimarySearchAppBar({ handleDrawerOpen, open }) {
 
 	const [anchorEl, setAnchorEl] = React.useState(null);
 	const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -166,7 +182,7 @@ export default function PrimarySearchAppBar({ drawerHandler }) {
 
 	return (
 		<Box sx={{ flexGrow: 1 }}>
-			<AppBarWrapper position="static">
+			<AppBarWrapper position="fixed" open={open}>
 				<Toolbar>
 					<IconButton
 						size="large"
@@ -174,7 +190,7 @@ export default function PrimarySearchAppBar({ drawerHandler }) {
 						color="inherit"
 						aria-label="open drawer"
 						sx={{ mr: 2 }}
-						onClick={drawerHandler}
+						onClick={handleDrawerOpen}
 					>
 						<MenuIcon/>
 					</IconButton>

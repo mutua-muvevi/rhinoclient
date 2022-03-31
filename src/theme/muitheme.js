@@ -3,6 +3,9 @@ import { createTheme } from "@mui/material/styles";
 export const theme = createTheme({
 	palette: {
 		mode:"light",
+		drawer: {
+			default: "#131313"
+		},
 		common: {
 			black: "#000",
 			white: "#fff"
@@ -52,8 +55,8 @@ export const theme = createTheme({
 			disabled: "rgba(0,0,0,0.38)",
 		},
 		background: {
-			default: "#f0f0f6",
-			paper: "#f0f0f6"
+			default: "#f1f1f1",
+			paper: "#131313"
 		}
 	},
 	shape: {

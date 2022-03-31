@@ -22,20 +22,20 @@ const WidgetStyles = styled("div")({
 
 const Widgets = () => {
   return (
-	// <WidgetStyles>
-	// 	<Sizelandscape12/>
-	// 	<SizeimgcontentfooterCard4/>
-	// 	<Sizeheadercontent4/>
-	// 	<Sizesquarecard4/>
-	// 	<Sizeheaderlandscape4/>
-	// 	<Sizeheadercontent6/>
-	// 	<Sizeheadercontent8/>
-	// 	<Sizeheadercontent12/>
-	// 	<Sizesquare6/>
-	// 	<Titlesubtitle/>
-	// 	<AlertComponent/>
-	// </WidgetStyles>
-	<Layout/>
+	<WidgetStyles>
+		<Sizelandscape12/>
+		<SizeimgcontentfooterCard4/>
+		<Sizeheadercontent4/>
+		<Sizesquarecard4/>
+		<Sizeheaderlandscape4/>
+		<Sizeheadercontent6/>
+		<Sizeheadercontent8/>
+		<Sizeheadercontent12/>
+		<Sizesquare6/>
+		<Titlesubtitle/>
+		<AlertComponent/>
+	</WidgetStyles>
+	// <Layout/>
   )
 }
 
