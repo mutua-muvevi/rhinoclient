@@ -21,7 +21,7 @@ const Dashshipment = () => {
 	useEffect(() => {
 		axios.get("http://localhost:7000/api/shipping/all")
 			.then((res) => {
-				console.log("The shipment is", res)
+				// console.log("The shipment is", res)
 				setShipment(res.data)
 			})
 			.catch(error => {
