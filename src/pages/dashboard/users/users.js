@@ -22,7 +22,7 @@ const Dashusers = () => {
 	useEffect(() => {
 		axios.get("http://localhost:7000/api/user/users")
 			.then((res) => {
-				console.log("The users are", res)
+				// console.log("The users are", res)
 				setUsers(res.data)
 			})
 			.catch(error => {
@@ -34,7 +34,7 @@ const Dashusers = () => {
 	useEffect(() => {
 		axios.get("http://localhost:7000/api/user/admin")
 			.then((res) => {
-				console.log("The admin are", res)
+				// console.log("The admin are", res)
 				setAdmin(res.data)
 			})
 			.catch(error => {
@@ -45,8 +45,8 @@ const Dashusers = () => {
 
 	return (
 		<Box>
-			{usersError ? console.log("The user error is", usersError) : console.log("The users fetched, ", users)}
-			{adminError ? console.log("The admin error is", adminError) : console.log("The admin fetched, ", admin)}
+			{/* {usersError ? console.log("The user error is", usersError) : console.log("The users fetched, ", users)}
+			{adminError ? console.log("The admin error is", adminError) : console.log("The admin fetched, ", admin)} */}
 			<StyledBreadCrumbs>
 				<Link
 					underline="hover"

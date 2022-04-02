@@ -1,4 +1,4 @@
-import { Button, Card, Grid, Typography } from "@mui/material";
+import { Button,  Grid, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 import React from 'react';
 import Sizeheaderlandscape4 from "../../../../components/widgets/cards/4sizeheaderlandscape/sizeheaderlandscape4";
@@ -11,7 +11,8 @@ const BoxWrapper = styled(Button)(({theme}) => ({
 	borderRadius: theme.shape.default,
 	backgroundColor: theme.palette.common.white,
 	textTransform: "capitalize",
-	color: "#131313"
+	color: "#131313",
+	textAlign: "left",
 
 }))
 
@@ -25,12 +26,15 @@ const Shipmentcards3 = () => {
 					</Grid>
 				))
 			}
+
+			<Grid item lg={4} sm={12} xs={12}>
+				<BoxWrapper elevation={3}>
+					<Typography variant="h3">
+						Add Shipment
+					</Typography>
+				</BoxWrapper>
+			</Grid>
 			
-			<BoxWrapper pulse elevation={3}>
-				<Typography variant="h3">
-					Add Shipment
-				</Typography>
-			</BoxWrapper>
 		</Grid>
 	)
 }
