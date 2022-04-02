@@ -1,7 +1,8 @@
 import { Button,  Grid, Typography } from "@mui/material";
 import { styled } from "@mui/system";
-import React from 'react';
+import React, { useState } from 'react';
 import Sizeheaderlandscape4 from "../../../../components/widgets/cards/4sizeheaderlandscape/sizeheaderlandscape4";
+import Addshipmentmodal from "../addshipmentmodal/addshipmentmodal";
 import { shipmentCards3Content } from "./contentshipmentcards3";
 
 const BoxWrapper = styled(Button)(({theme}) => ({
@@ -17,6 +18,13 @@ const BoxWrapper = styled(Button)(({theme}) => ({
 }))
 
 const Shipmentcards3 = () => {
+	
+	const [open, setOpen] = useState(false)
+
+	const handleShipmentModal = () => {
+		setOpen(true)
+	}
+
 	return (
 		<Grid container spacing={0.5} >
 			{
@@ -27,14 +35,13 @@ const Shipmentcards3 = () => {
 				))
 			}
 
-			<Grid item lg={4} sm={12} xs={12}>
-				<BoxWrapper elevation={3}>
+				<BoxWrapper onClick={handleShipmentModal} elevation={3}>
 					<Typography variant="h3">
 						Add Shipment
 					</Typography>
 				</BoxWrapper>
-			</Grid>
 			
+			<Addshipmentmodal open={open} setOpen={setOpen}/>
 		</Grid>
 	)
 }
