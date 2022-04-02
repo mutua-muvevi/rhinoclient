@@ -1,7 +1,8 @@
 import { Button,  Grid, Typography } from "@mui/material";
 import { styled } from "@mui/system";
-import React from 'react';
+import React, { useState } from 'react';
 import Sizeheaderlandscape4 from "../../../../components/widgets/cards/4sizeheaderlandscape/sizeheaderlandscape4";
+import Addstoragemodal from "../addstoragemodal/addstoragemodal";
 import { storageCards3Content } from "./contentstoragecards3";
 
 const BoxWrapper = styled(Button)(({theme}) => ({
@@ -17,6 +18,13 @@ const BoxWrapper = styled(Button)(({theme}) => ({
 }))
 
 const Storagecards3 = () => {
+
+	const [open, setOpen] = useState(false)
+
+	const handleStorageModal = () => {
+		setOpen(true)
+	}
+
 	return (
 		<Grid container spacing={0.5} >
 			{
@@ -27,13 +35,14 @@ const Storagecards3 = () => {
 				))
 			}
 
-			<Grid item lg={4} sm={12} xs={12}>
-				<BoxWrapper elevation={3}>
+				<BoxWrapper onClick={handleStorageModal} elevation={3}>
 					<Typography variant="h3">
 						Add Storage
 					</Typography>
+					{console.log("Modal status is", open)}
 				</BoxWrapper>
-			</Grid>
+
+				<Addstoragemodal open={open} setOpen={setOpen}/>
 			
 		</Grid>
 	)

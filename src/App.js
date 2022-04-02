@@ -15,6 +15,9 @@ import Dashstorage from "./pages/dashboard/storage/storage";
 import Dashusers from "./pages/dashboard/users/users";
 import Layout from "./components/layout/layout";
 import Dashmap from "./pages/dashboard/map/map";
+import Modal from "react-modal";
+
+Modal.setAppElement("#root")
 
 function App() {
 	return (
