@@ -11,7 +11,7 @@ const modalStyle = {
 	border: 'none',
 	boxShadow: 24,
 	p: 4,
-	borderRadius: 5
+	borderRadius: 4
 };
 
 const Addshipmentmodal = ({open, setOpen}) => {
@@ -23,7 +23,7 @@ const Addshipmentmodal = ({open, setOpen}) => {
 			aria-describedby="modal-modal-description"
 		>
 			<Box sx={modalStyle}>
-				<Typography id="modal-modal-title" variant="h4" component="h2">
+				<Typography id="modal-modal-title" variant="h4" gutterBottom component="h2">
 					Add Shipment Form
 				</Typography>
 			</Box>
