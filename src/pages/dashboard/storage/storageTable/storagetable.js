@@ -3,7 +3,7 @@ import { DataGrid} from '@mui/x-data-grid';
 import { styled } from "@mui/system";
 import { Card, CardHeader} from "@mui/material";
 
-const ShipmentTable = ({shipment, error}) => {
+const StorageTable = ({storage, error}) => {
 
 	const StyledDataGridContainer = styled(Card)(({theme}) => ({
 		backgroundColor: "inherit",
@@ -45,119 +45,91 @@ const ShipmentTable = ({shipment, error}) => {
 			align: "left",
 			headerAlign: "left",
 			headerName: "Track number",
-			width: 150
+			width: 200
 		},
 		{
-			field: "shippersfullname",
+			field: "fullnames",
 			align: "left",
 			headerAlign: "left",
 			headerName: "Fullname",
-			width: 150
+			width: 200
 		},
 		{
-			field: "shippersemail",
+			field: "email",
 			align: "left",
 			headerAlign: "left",
 			headerName: "Email",
-			width: 150
+			width: 200
 		},
 		{
-			field: "shipperscompany",
+			field: "company",
 			align: "left",
 			headerAlign: "left",
 			headerName: "Company",
 			width: 200
 		},
 		{
-			field: "itemsname",
+			field: "consignfullnames",
 			align: "left",
 			headerAlign: "left",
-			headerName: "Weight",
+			headerName: "Cosignee",
 			width: 200
 		},
 		{
-			field: "itemsweight",
+			field: "consignemail",
 			align: "left",
 			headerAlign: "left",
-			headerName: "Weight",
-			width: 70
+			headerName: "Cosignee Email",
+			width: 200
 		},
 		{
-			field: "itemsweightunit",
+			field: "storagecity",
 			align: "left",
 			headerAlign: "left",
-			headerName: "unit",
-			width: 70
+			headerName: "City of Storage",
+			width: 200
 		},
 		{
-			field: "itemspieces",
+			field: "storagecountry",
 			align: "left",
 			headerAlign: "left",
-			headerName: "Amount / Pieces",
-			width: 150
-		},
-		{
-			field: "departuredate",
-			align: "left",
-			headerAlign: "left",
-			headerName: "Date of departure",
+			headerName: "Country of storage",
 			width:200
 		},
 		{
-			field: "departuretime",
+			field: "datein",
 			align: "left",
 			headerAlign: "left",
-			headerName: "Time of departure",
-			width: 200
-		},
-		{
-			field: "departurecity",
-			align: "left",
-			headerAlign: "left",
-			headerName: "City of departure",
-			width: 200
-		},
-		{
-			field: "departurecountry",
-			align: "left",
-			headerAlign: "left",
-			headerName: "Country of departure",
-			width: 200
-		},
-		{
-			field: "arrivaldate",
-			align: "left",
-			headerAlign: "left",
-			headerName: "Estimated Arrival Date",
-			width: 200
-		},
-		{
-			field: "arrivaltime",
-			align: "left",
-			headerAlign: "left",
-			headerName: "Estimated Arrival Time",
-			width: 200
-		},
-		{
-			field: "arrivalcity",
-			align: "left",
-			headerAlign: "left",
-			headerName: "Destination City",
-			width: 200
-		},
-		{
-			field: "arrivalcountry",
-			align: "left",
-			headerAlign: "left",
-			headerName: "Destination Country",
-			width: 200
-		},
-		{
-			field: "itemsname",
-			align: "left",
-			headerAlign: "left",
-			headerName: "Item",
+			headerName: "Date In",
 			width: 150
+		},
+		{
+			field: "intime",
+			align: "left",
+			headerAlign: "left",
+			headerName: "Time In",
+			width: 150
+		},
+		{
+			field: "dateout",
+			align: "left",
+			headerAlign: "left",
+			headerName: "Date Out",
+			width: 150
+		},
+		{
+			field: "outtime",
+			align: "left",
+			headerAlign: "left",
+			headerName: "Out Time",
+			width: 150
+		},
+		{
+			field: "observation",
+			align: "left",
+			headerAlign: "left",
+			headerName: "Observation",
+			minWidth: 500
 		},
 		{
 			field: "date",
@@ -172,15 +144,15 @@ const ShipmentTable = ({shipment, error}) => {
 		<StyledDataGridContainer>
 			<StyledDataGridHeader title="Shipping Records" />
 			<StyledDataGrid
-				rows={shipment}
+				rows={storage}
 				columns={columns}
 				autoPageSize
 				autoHeight
-				getRowId={shipment => shipment._id}
+				getRowId={storage => storage._id}
 				pageSize={100}
 			/>
 		</StyledDataGridContainer>
 	)
 }
 
-export default ShipmentTable
+export default StorageTable
