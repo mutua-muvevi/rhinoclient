@@ -3,6 +3,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import React from 'react';
 import { styled } from "@mui/system";
+import Shipmentcards3 from "./3shipmentcards/shipmentcards3";
 
 const StyledBreadCrumbs = styled(Breadcrumbs)(({theme}) => ({
 	marginBottom: "20px"
@@ -30,7 +31,8 @@ const Dashshipment = () => {
 					Shipment
 				</Typography>
 			</StyledBreadCrumbs>
-			ssdfsdfsdfs
+			
+			<Shipmentcards3/>
 		</Box>
 	)
 }

@@ -4,7 +4,6 @@ import GroupIcon from '@mui/icons-material/Warehouse';
 import React, {useState, useEffect} from 'react';
 import { styled } from "@mui/system";
 import axios from "axios";
-import { LineAxisOutlined } from "@mui/icons-material";
 import AdminTable from "./adminTable/adminTable";
 import UsersTable from "./users/usersTable";
 
