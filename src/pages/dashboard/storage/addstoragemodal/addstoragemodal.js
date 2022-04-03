@@ -12,7 +12,7 @@ const modalStyle = {
 	border: 'none',
 	boxShadow: 24,
 	p: 4,
-	borderRadius: 5
+	borderRadius: 4
 };
 
 const Addstoragemodal = ({open, setOpen}) => {
@@ -24,7 +24,12 @@ const Addstoragemodal = ({open, setOpen}) => {
 			aria-describedby="modal-modal-description"
 		>
 			<Box sx={modalStyle}>
-				<Typography id="modal-modal-title" variant="h4" component="h2">
+				<Typography 
+					id="add-storagel-title" 
+					gutterBottom variant="h3" 
+					component="h2"
+					sx={{marginBottom: "30px"}}
+				>
 					Add Storage Form
 				</Typography>
 				<AddStorageForm/>
