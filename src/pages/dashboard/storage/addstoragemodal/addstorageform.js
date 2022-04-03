@@ -4,6 +4,7 @@ import { Formik, Form } from "formik";
 import React from 'react';
 import * as Yup from "yup";
 import TextField from "../../../../components/formsUI/textfield/textfield"
+import { contactInformation } from "./addStorageformcontent";
 // import { addStorageFormContent } from "./addStorageformcontent"
 
 
@@ -56,21 +57,12 @@ const AddStorageForm = () => {
 						</Grid>
 						
 						{
-							["firstname", "lastname"].map((el, i) => (			
-								<Grid key={i} item sm={6} xs={12}>
-									<TextField name={el} label={el}/>
+							contactInformation.map((el, i) => (
+								<Grid item sm={6} xs={el.xs}>
+									<TextField name={el.name} label={el.label}/>
 								</Grid>
 							))
 						}
-						<Grid item xs={12}>
-							<TextField name="email" label="Email"/>
-						</Grid>
-						<Grid item xs={12}>
-							<TextField name="telephone" label="Telephone"/>
-						</Grid>
-						<Grid item xs={12}>
-							<TextField name="company" label="Company"/>
-						</Grid>
 
 						<Grid item xs={12}>
 							<Typography variant="h5" color="blue" gutterBottom>
