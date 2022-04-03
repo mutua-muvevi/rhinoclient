@@ -58,7 +58,7 @@ const AddStorageForm = () => {
 						
 						{
 							contactInformation.map((el, i) => (
-								<Grid item sm={6} xs={el.xs}>
+								<Grid item sm={el.sm} xs={el.xs}>
 									<TextField name={el.name} label={el.label}/>
 								</Grid>
 							))
