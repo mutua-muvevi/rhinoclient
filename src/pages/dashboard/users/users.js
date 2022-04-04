@@ -6,6 +6,7 @@ import { styled } from "@mui/system";
 import axios from "axios";
 import AdminTable from "./adminTable/adminTable";
 import UsersTable from "./users/usersTable";
+import Usercards3 from "./3usercards/usercard3";
 
 const StyledBreadCrumbs = styled(Breadcrumbs)(({theme}) => ({
 	marginBottom: "20px"
@@ -66,6 +67,7 @@ const Dashusers = () => {
 				</Typography>
 			</StyledBreadCrumbs>
 			
+			<Usercards3/>
 			<AdminTable admin={admin.data} error={adminError}/>
 			<UsersTable users={users.data} error={usersError}/>
 		</Box>
