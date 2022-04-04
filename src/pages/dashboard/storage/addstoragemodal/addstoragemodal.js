@@ -1,29 +1,36 @@
 import { Box, Modal, Typography } from "@mui/material";
+import { styled } from "@mui/system";
 import React from 'react';
 import AddStorageForm from "./addstorageform";
 
-const modalStyle = {
-	position: 'absolute',
-	top: '50%',
-	left: '50%',
+const StyledModal = styled(Modal)(({theme}) => ({
 	width: "85vw",
-	transform: 'translate(-50%, -50%)',
-	bgcolor: 'background.default',
+	margin: "10vh auto",
+	overflow: "scroll",
+	border: 'none',
+	// boxShadow: 24,
+	// padding: 4,
+	// borderRadius: 4
+}))
+
+const formContainer = {
+	backgroundColor: "white",
 	border: 'none',
 	boxShadow: 24,
-	p: 4,
+	padding: 4,
 	borderRadius: 4
-};
+}
 
 const Addstoragemodal = ({open, setOpen}) => {
 	return (
-		<Modal
+		<StyledModal
 			open={open}
 			onClose={() => setOpen(false)}
 			aria-labelledby="modal-modal-title"
 			aria-describedby="modal-modal-description"
+			
 		>
-			<Box sx={modalStyle}>
+			<Box sx={formContainer}>
 				<Typography 
 					id="add-storagel-title" 
 					gutterBottom variant="h3" 
@@ -34,7 +41,7 @@ const Addstoragemodal = ({open, setOpen}) => {
 				</Typography>
 				<AddStorageForm/>
 			</Box>
-		</Modal>
+		</StyledModal>
 	)
 }
 

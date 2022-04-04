@@ -4,8 +4,9 @@ import { Formik, Form } from "formik";
 import React from 'react';
 import * as Yup from "yup";
 import TextField from "../../../../components/formsUI/textfield/textfield"
-import { contactInformation } from "./addStorageformcontent";
-// import { addStorageFormContent } from "./addStorageformcontent"
+import { contactInformation, productInformation, StorageArea, storageEvents, textareas } from "./addStorageformcontent";
+import DateField from "../../../../components/formsUI/datepicker/datepicker";
+import TimeField from "../../../../components/formsUI/timepicker/timepicker"
 
 
 const StyledWrapper = styled(Box)(({theme}) => ({
@@ -24,7 +25,22 @@ const INITIAL_FORM_STATE = {
 	lastname: "",
 	email: "",
 	telephone: "",
-	company: ""
+	company: "",
+	trackno: "",
+	product: "",
+	weight: "",
+	weightunit: "",
+	producttype: "",
+	pieces: "",
+	quality: "",
+	storagecity: "",
+	storagecountry: "",
+	datein: "",
+	dateout: "",
+	intime: "",
+	outtime: "",
+	observation: "",
+	notes: "",
 }
 
 const FORM_VALIDATION = Yup.object().shape({
@@ -33,6 +49,21 @@ const FORM_VALIDATION = Yup.object().shape({
 	email: Yup.string().email().required(),
 	telephone: Yup.string().required(),
 	company: Yup.string().required(),
+	trackno: Yup.string().required(),
+	product: Yup.string().required(),
+	weight: Yup.number().required(),
+	weightunit: Yup.string().required(),
+	producttype: Yup.string().required(),
+	pieces: Yup.string().required(),
+	quality: Yup.string().required(),
+	storagecity: Yup.string().required(),
+	storagecountry: Yup.string().required(),
+	datein: Yup.string().required(),
+	dateout: Yup.string(),
+	intime: Yup.string().required(),
+	outtime: Yup.string().required(),
+	observation: Yup.string().required(),
+	notes: Yup.string().required(),
 })
 
 const AddStorageForm = () => {
@@ -59,7 +90,7 @@ const AddStorageForm = () => {
 						{
 							contactInformation.map((el, i) => (
 								<Grid item sm={el.sm} xs={el.xs}>
-									<TextField name={el.name} label={el.label}/>
+									<TextField type={el.type} name={el.name} label={el.label}/>
 								</Grid>
 							))
 						}
@@ -70,11 +101,65 @@ const AddStorageForm = () => {
 							</Typography>
 						</Grid>
 
+						{
+							productInformation.map((el, i) => (
+								<Grid key={i} item sm={el.sm} xs={el.xs}>
+									<TextField type={el.type} name={el.name} label={el.label}/>
+								</Grid>
+							))
+						}
+
 						<Grid item xs={12}>
 							<Typography variant="h5" color="blue" gutterBottom>
-								Storage Information
+								Storage Geographical Area
 							</Typography>
 						</Grid>
+
+						{
+							StorageArea.map((el, i) => (
+								<Grid key={i} item sm={el.sm} xs={el.xs}>
+									<DateField type={el.type} name={el.name} label={el.label}/>
+								</Grid>
+							))
+						}
+
+
+						<Grid item xs={12}>
+							<Typography variant="h5" color="blue" gutterBottom>
+								Storage Events
+							</Typography>
+						</Grid>
+
+						{
+							storageEvents.dates.map((el, i) => (
+								<Grid key={i} item sm={el.sm} xs={el.xs}>
+									<DateField type={el.type} name={el.name} label={el.label}/>
+								</Grid>
+							))
+						}
+
+						{
+							storageEvents.time.map((el, i) => (
+								<Grid key={i} item sm={el.sm} xs={el.xs}>
+									<TimeField type={el.type} name={el.name} label={el.label}/>
+								</Grid>
+							))
+						}
+
+
+						<Grid item xs={12}>
+							<Typography variant="h5" color="blue" gutterBottom>
+								Storage Documentation
+							</Typography>
+						</Grid>
+
+						{
+							textareas.map((el, i) => (
+								<Grid key={i} item sm={el.sm} xs={el.xs}>
+									<TextField multiline rows={el.row} type={el.type} name={el.name} label={el.label}/>
+								</Grid>
+							))
+						}
 
 					</Grid>
 				</Form>
