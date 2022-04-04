@@ -191,22 +191,25 @@ export const itemInformation = [
 
 
 export const departureInformation = {
-	city : {
-		type: "text",
-		label: "Origin Service City",
-		required: true,
-		name:"departurecity",
-		xs:12,
-		sm:12
-	},
-	country: {
-		type: "text",
-		label: "Origin Service Country",
-		required: true,
-		name:"departurecountry",
-		xs:12,
-		sm:12
-	},
+	location: [
+		{
+			type: "text",
+			label: "Origin Service City",
+			required: true,
+			name:"departurecity",
+			xs:12,
+			sm:12
+		},
+		{
+			type: "text",
+			label: "Origin Service Country",
+			required: true,
+			name:"departurecountry",
+			xs:12,
+			sm:12
+		},
+	],
+
 	date : {
 		type: "text",
 		label: "Departure Date",
@@ -227,22 +230,24 @@ export const departureInformation = {
 
 
 export const destinationInformation = {
-	city : {
-		type: "text",
-		label: "Destination City",
-		required: true,
-		name:"arrivalcity",
-		xs:12,
-		sm:12
-	},
-	country: {
-		type: "text",
-		label: "Destination Country",
-		required: true,
-		name:"arrivalcountry",
-		xs:12,
-		sm:12
-	},
+	location : [
+		{
+			type: "text",
+			label: "Destination City",
+			required: true,
+			name:"arrivalcity",
+			xs:12,
+			sm:12
+		},
+		{
+			type: "text",
+			label: "Destination Country",
+			required: true,
+			name:"arrivalcountry",
+			xs:12,
+			sm:12
+		}
+	],
 	date : {
 		type: "text",
 		label: "Arrival Date",
