@@ -6,7 +6,7 @@ import * as Yup from "yup";
 import TextField from "../../../../components/formsUI/textfield/textfield"
 import DateField from "../../../../components/formsUI/datepicker/datepicker";
 import TimeField from "../../../../components/formsUI/timepicker/timepicker"
-import { collectorInformation, cosignInformation, itemInformation, shippersInformation } from "./addshipmentformcontent"
+import { collectorInformation, cosignInformation, departureInformation, destinationInformation, itemInformation, shippersInformation } from "./addshipmentformcontent"
 
 
 const StyledWrapper = styled(Box)(({theme}) => ({
@@ -176,8 +176,24 @@ const AddShipmentForm = () => {
 
 						<Grid item xs={12}>
 							<Typography variant="h5" color="blue" gutterBottom>
-								Origin Area
+								Origin Area Information
 							</Typography>
+						</Grid>
+
+						{
+							departureInformation.location.map((el, i) => (
+								<Grid item sm={el.sm} xs={el.xs}>
+									<TextField type={el.type} name={el.name} label={el.label}/>
+								</Grid>
+							))
+						}
+
+						<Grid item sm={departureInformation.date.sm} xs={departureInformation.date.xs}>
+							<DateField type={departureInformation.date.type} name={departureInformation.date.name} label={departureInformation.date.label}/>
+						</Grid>
+
+						<Grid item sm={departureInformation.time.sm} xs={departureInformation.time.xs}>
+							<TimeField type={departureInformation.time.type} name={departureInformation.time.name} label={departureInformation.time.label}/>
 						</Grid>
 
 						<Grid item xs={12}>
@@ -185,6 +201,25 @@ const AddShipmentForm = () => {
 								Destination
 							</Typography>
 						</Grid>
+
+						{
+							destinationInformation.location.map((el, i) => (
+								<Grid item sm={el.sm} xs={el.xs}>
+									<TextField type={el.type} name={el.name} label={el.label}/>
+								</Grid>
+							))
+						}
+
+						
+						<Grid item sm={destinationInformation.date.sm} xs={destinationInformation.date.xs}>
+							<DateField type={destinationInformation.date.type} name={destinationInformation.date.name} label={destinationInformation.date.label}/>
+						</Grid>
+
+						<Grid item sm={destinationInformation.time.sm} xs={destinationInformation.time.xs}>
+							<TimeField type={destinationInformation.time.type} name={destinationInformation.time.name} label={destinationInformation.time.label}/>
+						</Grid>
+
+
 					</Grid>
 				</Form>
 
