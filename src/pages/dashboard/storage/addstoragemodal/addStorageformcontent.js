@@ -24,7 +24,7 @@ export const contactInformation = [
 		sm:12
 	},
 	{
-		type: "text",
+		type: "tel",
 		label: "Telephone",
 		required: true,
 		name:"telephone",
@@ -41,68 +41,136 @@ export const contactInformation = [
 	},
 ]
 
-export const addStorageFormContent = [
+export const productInformation = [
 	{
+		name: "trackno",
+		label: "Track Number",
+		required: true,
 		type: "text",
-		label: "Fullname",
-		required: true,
-		name:"fullnames",
-		// placeholder: "Enter fullnames here"
+		xs: 12,
+		sm: 6
 	},
 	{
-		type: "email",
-		label: "Email",
+		name: "product",
+		label: "Product Name",
 		required: true,
-		name:"email",
-		// placeholder: "Enter email here"
-	},
-	{
 		type: "text",
-		label: "Company",
-		required: true,
-		name:"company"
+		xs: 12,
+		sm: 6
 	},
 	{
+		name: "weight",
+		label: "Weight",
+		required: true,
+		type: "number",
+		xs: 12,
+		sm: 6
+	},
+	{
+		name: "weightunit",
+		label: "Weight Unit",
+		required: true,
 		type: "text",
-		label: "Ship Address",
-		required: true,
-		name:"shipaddress"
+		xs: 12,
+		sm: 6
 	},
 	{
+		name: "producttype",
+		label: "Product Type",
+		required: true,
 		type: "text",
-		label: "Cosign Fullnames",
-		required: true,
-		name:"consignfullnames"
+		xs: 12,
+		sm: 6
 	},
 	{
-		type: "email",
-		label: "Cosign Email",
+		name: "pieces",
+		label: "Pieces",
 		required: true,
-		name:"consignemail"
+		type: "number",
+		xs: 12,
+		sm: 6
 	},
 	{
+		name: "quality",
+		label: "Quality",
+		required: true,
 		type: "text",
-		label: "Cosign Company",
-		required: false,
-		name:"consigncompany"
+		xs: 12,
+		sm: 6
+	},
+]
+
+export const StorageArea = [
+	{
+		name: "datein",
+		label: "Date In",
+		type: "text",
+		xs: 12,
+		sm: 6
 	},
 	{
+		name: "dateout",
+		label: "Date Out",
 		type: "text",
-		label: "City of storage",
-		required: true,
-		name:"storagecity"
+		xs: 12,
+		sm: 6
 	},
-	{
-		type: "text",
-		label: "Country of Storage",
-		required: true,
-		name:"storagecountry"
-	},
-	{
-		type: "text",
-		label: "Warehouse Type",
-		required: true,
-		name:"warehousetype"
-	},
+]
+
+export const storageEvents = {	
+	dates: [
+		{
+			name: "datein",
+			label: "Date In",
+			type: "text",
+			xs: 12,
+			sm: 6
+		},
+		{
+			name: "dateout",
+			label: "Date Out",
+			type: "text",
+			xs: 12,
+			sm: 6
+		},
+	],
+	time : [
+		{
+			name: "intime",
+			label: "Date In",
+			type: "text",
+			xs: 12,
+			sm: 6
+		},
 	
+		{
+			name: "timeout",
+			label: "Date In",
+			type: "text",
+			xs: 12,
+			sm: 6
+		},
+
+	]
+}
+
+export const textareas = [
+	{
+		name: "observation",
+		label: "Observations",
+		type: "text",
+		xs: 12,
+		required: true,
+		multiline : true,
+		row: 4
+	},
+	{
+		name: "notes",
+		label: "Notes",
+		type: "text",
+		xs: 12,
+		required: true,
+		multiline : true,
+		row: 4
+	},
 ]
