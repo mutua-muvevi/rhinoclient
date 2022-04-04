@@ -17,7 +17,8 @@ const StyledWrapper = styled(Box)(({theme}) => ({
 const StyledAddButton = styled(Button)(({theme}) => ({
 	borderRadius: 3,
 	textAlign: "left",
-	padding: "8px 25px"
+	padding: "8px 25px",
+	marginTop: "5vh"
 }))
 
 const INITIAL_FORM_STATE = {

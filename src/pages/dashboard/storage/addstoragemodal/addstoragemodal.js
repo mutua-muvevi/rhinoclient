@@ -8,9 +8,6 @@ const StyledModal = styled(Modal)(({theme}) => ({
 	margin: "10vh auto",
 	overflow: "scroll",
 	border: 'none',
-	// boxShadow: 24,
-	// padding: 4,
-	// borderRadius: 4
 }))
 
 const formContainer = {
