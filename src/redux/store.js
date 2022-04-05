@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import { persistStore } from 'redux-persist';
 import logger from 'redux-logger';
 
-import persistedReducer from './root-reducer';
+import persistedReducer from './rootreducer';
 
 const middlewares = [logger, thunk];
 
