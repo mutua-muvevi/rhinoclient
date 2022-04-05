@@ -1,17 +1,17 @@
-import authUserTypes from "./authtypes"
+import authTypes from "./authtypes"
 import axios from "axios"
 
 export const fetchAuthorizedUser = () => ({
-  type: authUserTypes.START_LOADING_USER,
+  type: authTypes.START_LOADING_USER,
 })
 
 export const fetchSuccessAuthUser = (token) => ({
-  type: authUserTypes.SUCCESS_CURRENT_USER,
+  type: authTypes.SUCCESS_CURRENT_USER,
   payload: token,
 })
 
 export const fetchFailAuthUser = (errMessage) => ({
-  type: authUserTypes.FAIL_CURRENT_USER,
+  type: authTypes.FAIL_CURRENT_USER,
   payload: errMessage,
 })
 

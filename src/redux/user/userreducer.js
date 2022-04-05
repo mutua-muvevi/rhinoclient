@@ -1,25 +1,25 @@
-import userCollectionTypes from './usertypes';
+import userTypes from './usertypes';
 
 const initialState = {
-  currentUser: null,
+  user: [],
   isLoading: true,
   errMessage: undefined,
 };
 
 const userReducer = (state = initialState, { type, payload }) => {
 	switch (type) {
-		case userCollectionTypes.START_USER:
+		case userTypes.START_USER:
 			return { 
 				...state,
 				isLoading: true 
 			};
-		case userCollectionTypes.SUCCESS_USER:
+		case userTypes.SUCCESS_USER:
 			return {
 				...state,
 				isLoading: false,
 				currentUser: payload,
 			};
-		case userCollectionTypes.FAIL_USER:
+		case userTypes.FAIL_USER:
 			return {
 				...state,
 				isLoading: false,

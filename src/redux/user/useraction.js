@@ -1,21 +1,21 @@
-import userCollectionTypes from "./usertypes";
+import userTypes from "./usertypes";
 import axios from "axios"
 
 export const fetchCollectionStart = () => ({
-	type: userCollectionTypes.START_USER,
+	type: userTypes.START_USER,
 })
 
-export const fetchCollectionSuccess = (tour) => ({
-	type: userCollectionTypes.SUCCESS_USER,
-	payload: tour,
+export const fetchCollectionSuccess = (user) => ({
+	type: userTypes.SUCCESS_USER,
+	payload: user,
 })
 
 export const fetchCollectionFail = (errMessage) => ({
-	type: userCollectionTypes.FAIL_USER,
+	type: userTypes.FAIL_USER,
 	payload: errMessage,
 })
 
-export const loadCurrentUser = (token) => {
+export const loadUser = (token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
