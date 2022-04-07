@@ -1,7 +1,6 @@
 import React from 'react'
 import { Card,  CardContent, CardMedia, Typography } from "@mui/material";
 import { styled } from "@mui/system";
-import Image from "../../../../assets/images/truck 2.jpg";
 
 
 const ImageContentCard = styled(Card)(({theme}) => ({
@@ -12,23 +11,21 @@ const ImageContentCard = styled(Card)(({theme}) => ({
 
 
 
-const Sizeheadercontent4 = () => {
+const Sizeheadercontent4 = ({title, text, image, alt}) => {
 	return (
 		<ImageContentCard>
 			<CardMedia
 				component="img"
 				height="300"
-				image={Image}
-				alt="alt information one"
+				image={image}
+				alt={alt}
 			/>
 			<CardContent>
 				<Typography variant="h4" gutterBottom>
-					Header
+					{title}
 				</Typography>
 				<Typography variant="body">
-					Anim reprehenderit laborum duis aliqua qui ad velit id nulla duis ullamco. 
-					Labore proident id consequat labore veniam cillum deserunt fugiat nisi occaecat esse elit. 
-					Velit sunt est et fugiat cillum adipisicing enim tempor et tempor.
+					{text}
 				</Typography>
 			</CardContent>
 		</ImageContentCard>
