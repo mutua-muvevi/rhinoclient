@@ -1,8 +1,10 @@
-import { AppBar, Button, Container, MenuItem, Toolbar, Typography } from "@mui/material"
+import { AppBar, Button, Container, IconButton, SwipeableDrawer, Toolbar } from "@mui/material"
 import { Box, styled } from "@mui/system";
-import React from 'react';
+import React, {useState} from 'react';
 import { navPages } from "./navcontent";
-import Logo from "../../../assets/images/logos/Rhino card logo - PNG.png"
+import Logo from "../../../assets/images/logos/Rhino card logo - PNG.png";
+import MenuIcon from '@mui/icons-material/Menu';
+import SwipeableSideDrawer from "./swipeabledrawer";
 
 const StyledContainer = styled(Container)(({theme}) => ({
 	display: "flex",
@@ -40,7 +42,21 @@ const navItemsSX = {
 	textAlign: "center !important"
 }
 
+const iconButtonSX = {
+	display: { 
+		xs: 'flex',
+		md: 'none',
+	},
+}
+
 const Navbar = () => {
+
+	const [mobileNav, setMobileNav] = useState(false)
+
+	const handleMobileNav = () => {
+		setMobileNav(!mobileNav)
+	}
+
 	return (
 		<AppBar 
 			position="static" 
@@ -48,11 +64,11 @@ const Navbar = () => {
 			sx={navbarSX}
 		>
 			<Toolbar disableGutters>
-				<StyledContainer maxWidth="xl" >
+				<StyledContainer maxWidth="xl">
 					<StyledLogoContainer>
 						<StyledLogo src={Logo} alt="Rhino John Prime Metal's Logo"/>
 					</StyledLogoContainer>
-
+					{console.log("And the state is", mobileNav)}
 					<StyledNavItems>
 						{
 							navPages.map((el, i) => (
@@ -62,8 +78,22 @@ const Navbar = () => {
 							))
 						}
 					</StyledNavItems>
+					<IconButton
+						size="large"
+						aria-label="account of current user"
+						aria-controls="menu-appbar"
+						aria-haspopup="true"
+						onClick={handleMobileNav}
+						color="inherit"
+						sx={iconButtonSX}
+					>
+						<MenuIcon/>
+					</IconButton>
 				</StyledContainer>
 			</Toolbar>
+
+			<SwipeableSideDrawer mobileNav={mobileNav} setMobileNav={setMobileNav} />
+
 		</AppBar>
 	)
 }
