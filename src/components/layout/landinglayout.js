@@ -1,6 +1,7 @@
 import { Box, CssBaseline } from "@mui/material";
 import React from 'react';
 import { Outlet } from 'react-router-dom';
+import Footer from "./footer/footer";
 import Navbar from "./navbar/navbar";
 
 const Landinglayout = () => {
@@ -9,6 +10,7 @@ const Landinglayout = () => {
 			<CssBaseline/>
 			<Navbar/>
 			<Outlet/>
+			<Footer/>
 		</Box>
 	)
 }
