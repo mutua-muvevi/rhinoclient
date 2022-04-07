@@ -7,17 +7,20 @@ import Image from "../../../../assets/images/truck 2.jpg";
 const ImageContentCard = styled(Card)(({theme}) => ({
 	width: "26vw",
 	margin: "10px !important",
-	borderRadius: theme.shape.default
+	borderRadius: theme.shape.default,
+	backgroundColor: "white"
 }))
 
 const CardContentInfo = styled(CardContent)(({theme}) => ({
 	marginBottom: "10px",
-	borderBottom: `1px solid grey`
+	borderBottom: `1px solid grey`,
+	backgroundColor: "white"
 }))
 
 const CardActionsInfo = styled(CardActions)(({theme}) => ({
 	display: "flex",
-	justifyContent: "space-between"
+	justifyContent: "space-between",
+	backgroundColor: "white"
 }))
 
 const SizeimgcontentfooterCard4 = () => {
@@ -40,7 +43,7 @@ const SizeimgcontentfooterCard4 = () => {
 				</Typography>
 			</CardContentInfo>
 			<CardActionsInfo>
-				<Button color="primary">
+				<Button variant="contained" color="primary">
 					<Typography variant="body2" style={{marginRight: "20px"}}>
 						Explore
 					</Typography>
