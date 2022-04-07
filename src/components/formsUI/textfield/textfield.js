@@ -19,7 +19,9 @@ const TextfieldWrapper = ({name, ...otherProps}) => {
 	}
 
 	return (
-		<TextField {...configTextField}/>
+		<TextField  
+			{...configTextField}
+		/>
 	)
 }
 
