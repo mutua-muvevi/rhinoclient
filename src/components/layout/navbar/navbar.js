@@ -1,10 +1,11 @@
-import { AppBar, Button, Container, IconButton, SwipeableDrawer, Toolbar } from "@mui/material"
+import { AppBar, Button, Container, IconButton, Toolbar } from "@mui/material"
 import { Box, styled } from "@mui/system";
 import React, {useState} from 'react';
 import { navPages } from "./navcontent";
 import Logo from "../../../assets/images/logos/Rhino card logo - PNG.png";
 import MenuIcon from '@mui/icons-material/Menu';
 import SwipeableSideDrawer from "./swipeabledrawer";
+import { NavLink } from "react-router-dom";
 
 const StyledContainer = styled(Container)(({theme}) => ({
 	display: "flex",
@@ -72,9 +73,11 @@ const Navbar = () => {
 					<StyledNavItems>
 						{
 							navPages.map((el, i) => (
-								<Button  sx={navItemsSX} key={i} variant="h6" disableGutters>
-									{el.label}
-								</Button>
+								<NavLink style={{textDecoration: "none", color: "white"}} to={el.path}>
+									<Button sx={navItemsSX} key={i} variant="h6" disableGutters>
+										{el.label}
+									</Button>
+								</NavLink>
 							))
 						}
 					</StyledNavItems>

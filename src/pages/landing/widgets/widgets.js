@@ -35,7 +35,6 @@ const item = {
 const Widgets = () => {
   return (
 	<WidgetStyles>
-		<Navbar/>
 		<Sizelandscape12 item={item}/>
 		<SizeimgcontentfooterCard4 item={item}/>
 		<Sizeheadercontent4 item={item}/>

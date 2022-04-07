@@ -1,42 +1,48 @@
 import { Box, Divider, List, ListItem, ListItemButton, ListItemText } from "@mui/material";
 import { styled } from "@mui/system";
-import React from 'react';
+import React, { useState } from 'react';
 import Logo from "../../../assets/images/logos/Rhino card logo - PNG.png";
 import { navPages, navItemBottom } from "./navcontent";
 import { NavLink } from "react-router-dom";
 
+const StyledLogoListItem = styled(List)(({theme}) => ({
+	backgroundColor: theme.palette.primary.dark
+}))
+
+const LogoParent = styled(ListItem)(({theme}) => ({
+	height: "18vh",
+}))
+
+const LogoItem = styled("img")(({theme}) => ({
+	width: "60vw",
+	height: "100%",
+	marginLeft: "auto",
+	marginRight: "auto",
+	marginBottom: "20px",
+	margin: "20px auto"
+}))
+
+const activeNavlink={
+	textDecoration: "none",
+	color: "#1976d2",
+	borderTopLeftRadius: "20px",
+	borderBottomLeftRadius: "20px",
+	background: "white !important"
+}
+
+const navlinkStyle = {
+	textDecoration: "none",
+	color: "white"
+}
+
 const SwipeableDrawerList = ({mobileNav, setMobileNav}) => {
 
+	const [selectedIndex, setSelectedIndex] = useState(0);
 
-	const StyledLogoListItem = styled(List)(({theme}) => ({
-		backgroundColor: theme.palette.primary.dark
-	}))
-
-	const LogoParent = styled(ListItem)(({theme}) => ({
-		height: "18vh",
-	}))
-
-	const LogoItem = styled("img")(({theme}) => ({
-		width: "60vw",
-		height: "100%",
-		marginLeft: "auto",
-		marginRight: "auto",
-		marginBottom: "20px",
-		margin: "20px auto"
-	}))
-
-	const activeNavlink={
-		textDecoration: "none",
-		color: "#1976d2",
-		borderTopLeftRadius: "20px",
-		borderBottomLeftRadius: "20px",
-		background: "white !important"
-	}
-	
-	const navlinkStyle = {
-		textDecoration: "none",
-		color: "white"
-	}
+	const handleListItemClick = (event, index) => {
+	  setSelectedIndex(index);
+	};
+  
 
 	return (
 		<Box
@@ -57,8 +63,11 @@ const SwipeableDrawerList = ({mobileNav, setMobileNav}) => {
 								isActive ? activeNavlink : navlinkStyle
 							}
 							to={el.path} 
-							key={index}>
+							key={index}
+						>
 							<ListItemButton
+								selected={selectedIndex === el.index}
+								onClick={(event) => handleListItemClick(event, 0)}
 								sx={{
 									minHeight: 48,
 									justifyContent: mobileNav ? 'initial' : 'center',

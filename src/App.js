@@ -16,6 +16,7 @@ import Dashusers from "./pages/dashboard/users/users";
 import Layout from "./components/layout/layout";
 import Dashmap from "./pages/dashboard/map/map";
 import Modal from "react-modal";
+import Landinglayout from "./components/layout/landinglayout";
 
 Modal.setAppElement("#root")
 
@@ -25,13 +26,15 @@ function App() {
 			<BrowserRouter>
 				<ThemeProvider theme={theme}>
 					<Routes>
-						<Route path="/" element={<Home/>} />
-						<Route path="/about" element={<About/>}/>
-						<Route path="/products" element={<Products/>}/>
-						<Route path="/services" element={<Services/>}/>
-						<Route path="/track" element={<Track/>}/>
-						<Route path="/contact" element={<Contact/>}/>
-						<Route path="/widgets" element={<Widgets/>}/>
+						<Route path="/landing" element={<Landinglayout/>}>
+							<Route path="/landing/home" element={<Home/>} />
+							<Route path="/landing/about" element={<About/>}/>
+							<Route path="/landing/products" element={<Products/>}/>
+							<Route path="/landing/services" element={<Services/>}/>
+							<Route path="/landing/track" element={<Track/>}/>
+							<Route path="/landing/contact" element={<Contact/>}/>
+							<Route path="/landing/widgets" element={<Widgets/>}/>
+						</Route>
 
 						<Route path="/dashboard" element={<Layout/>}>
 							<Route index element={<Dashhome/>}/>

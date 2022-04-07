@@ -9,40 +9,47 @@ import LockIcon from '@mui/icons-material/Lock';
 export const navPages = [
 	{
 		label: "Home",
-		path: "/",
-		icon: <HomeIcon/>
+		path: "/landing/home",
+		icon: <HomeIcon/>,
+		index: 0
 	},
 	{
 		label: "About",
-		path: "/about",
-		icon: <InfoIcon/>
+		path: "/landing/about",
+		icon: <InfoIcon/>,
+		index: 1
 	},
 	{
 		label: "Service",
-		path: "/service",
-		icon: <LocalShippingIcon/>
+		path: "/landing/services",
+		icon: <LocalShippingIcon/>,
+		index: 2
 	},
 	{
 		label: "Products",
-		path: "/products",
-		icon: <DiamondIcon/>
+		path: "/landing/products",
+		icon: <DiamondIcon/>,
+		index: 3
 	},
 	{
 		label: "Track",
-		path: "/track",
-		icon: <TravelExploreIcon/>
+		path: "/landing/track",
+		icon: <TravelExploreIcon/>,
+		index: 4
 	},
 	{
 		label: "Contact",
-		path: "/contact",
-		icon: <ContactSupportIcon/>
+		path: "/landing/contact",
+		icon: <ContactSupportIcon/>,
+		index: 5
 	},
 ]
 
 export const navItemBottom = [
 	{
 		label: "Login",
-		path: "/login",
-		icon: <LockIcon/>
+		path: "/landing/login",
+		icon: <LockIcon/>,
+		index: 6
 	},
 ]
