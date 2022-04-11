@@ -26,8 +26,9 @@ function App() {
 			<BrowserRouter>
 				<ThemeProvider theme={theme}>
 					<Routes>
+						<Route path="/" element={<Home/>} />
+
 						<Route path="/landing" element={<Landinglayout/>}>
-							<Route path="/landing/home" element={<Home/>} />
 							<Route path="/landing/about" element={<About/>}/>
 							<Route path="/landing/products" element={<Products/>}/>
 							<Route path="/landing/services" element={<Services/>}/>

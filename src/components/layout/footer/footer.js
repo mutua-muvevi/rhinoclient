@@ -40,6 +40,15 @@ const footerInputSX = {
 	minWidth: "180px"
 }
 
+const WhiteBorderTextField = styled(TextField)`
+  & .MuiOutlinedInput-root {
+    &.Mui-focused fieldset {
+		border-color: white;
+		color: white
+    }
+  }
+`;
+
 const SocialIconsStyle = styled(Box)(({theme}) => ({
 	maxWidth: "300px",
 	marginTop: "20px",
@@ -118,17 +127,18 @@ const Footer = () => {
 								Sign Up To Our Newsletter And Get The Latest Offers.
 							</Typography>
 
-							<TextField 
+							<WhiteBorderTextField 
 								type="email"
 								style={{padding: "5px"}} 
 								placeholder="Enter your email "
-								sx={{minWidth: "350px"}}
+								sx={{minWidth: "300px"}}
 								inputProps={{
 									style: {
 										paddingTop : 7,
 										paddingBottom : 7,
 										paddingLeft : 10,
-										color: "white"
+										color: "white !important",
+										borderColor: "white"
 									}
 								}}
 								/>

@@ -6,7 +6,7 @@ import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import ContactSupportIcon from '@mui/icons-material/ContactSupport';
 import LockIcon from '@mui/icons-material/Lock';
 
-export const navPages = [
+export const homeNavLink = [
 	{
 		label: "Home",
 		path: "/",
