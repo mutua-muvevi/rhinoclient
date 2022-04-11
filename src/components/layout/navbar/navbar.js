@@ -64,7 +64,7 @@ const Navbar = () => {
 			component="nav"
 			sx={navbarSX}
 		>
-			<Toolbar disableGutters>
+			<Toolbar >
 				<StyledContainer maxWidth="xl">
 					<StyledLogoContainer>
 						<StyledLogo src={Logo} alt="Rhino John Prime Metal's Logo"/>
@@ -73,7 +73,7 @@ const Navbar = () => {
 						{
 							navPages.map((el, i) => (
 								<NavLink key={i} style={{textDecoration: "none", color: "white"}} to={el.path}>
-									<Button sx={navItemsSX} key={i} variant="h6" disableGutters>
+									<Button sx={navItemsSX} key={i} variant="h6">
 										{el.label}
 									</Button>
 								</NavLink>

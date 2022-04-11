@@ -19,6 +19,7 @@ const Contact = () => {
 				subtitle={contactInfo.subTitle}
 				image={contactInfo.image.src}
 				imageAlt={contactInfo.image.alt}
+				paragraph={contactInfo.paragraph}
 			/>
 			<StyledFormMapContainer maxWidth="xl">
 				<Grid container spacing={4}>

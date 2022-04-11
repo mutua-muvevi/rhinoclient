@@ -3,7 +3,7 @@ import { styled } from "@mui/system";
 import React from 'react';
 
 const StyledContainer = styled(Container)(({theme}) => ({
-	height: "100%",
+	minHeight: "50vh",
 	display: "flex",
 	flexDirection: "column",
 	justifyContent: "flex-end",
@@ -11,7 +11,7 @@ const StyledContainer = styled(Container)(({theme}) => ({
 	paddingBottom: "30px",
 }))
 
-const Banner = ({title, subtitle, image, imageAlt}) => {
+const Banner = ({title, subtitle, image, imageAlt, paragraph}) => {
 
 	const BannerWrapper = styled(Box)(({theme}) => ({
 		backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.955), rgba(0, 0, 0, 0.784)), url(${image})`,
@@ -20,19 +20,28 @@ const Banner = ({title, subtitle, image, imageAlt}) => {
 		backgroundSize: "cover",
 		backgroundRepeat: "no-repeat",
 		transition: "0.5s", 
-		height: "50vh",
+		minHeight: "50vh",
 		color: "#fff"
 	}))
 
 	return (
 		<BannerWrapper>
 			<StyledContainer maxWidth="xl">
-				<Typography variant="h2" component="h3">
+				<Typography sx={{marginTop: 10}} variant="h2" component="h3" gutterBottom>
 					{title}
 				</Typography>
 				<Typography variant="h4" component="h4">
 					{subtitle}
 				</Typography>
+				{
+					paragraph.map((p, i) => (
+						<Box key={i} sx={{marginBottom: "15px"}}>
+							<Typography key={i} variant="body">
+								{p}
+							</Typography>
+						</Box>
+					))
+				}
 			</StyledContainer>
 		</BannerWrapper>
 	)
