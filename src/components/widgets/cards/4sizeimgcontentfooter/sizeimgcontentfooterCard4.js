@@ -2,19 +2,19 @@ import { Button, Card, CardActions, CardContent, CardMedia, Typography } from "@
 import { styled } from "@mui/system";
 import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
 import React from 'react';
-import Image from "../../../../assets/images/truck 2.jpg";
 
 const ImageContentCard = styled(Card)(({theme}) => ({
-	width: "26vw",
+	width: "100%",
 	margin: "10px !important",
 	borderRadius: theme.shape.default,
-	backgroundColor: "white"
+	backgroundColor: "white",
 }))
 
 const CardContentInfo = styled(CardContent)(({theme}) => ({
 	marginBottom: "10px",
 	borderBottom: `1px solid grey`,
-	backgroundColor: "white"
+	backgroundColor: "white",
+	minHeight: "30vh"
 }))
 
 const CardActionsInfo = styled(CardActions)(({theme}) => ({
@@ -23,29 +23,31 @@ const CardActionsInfo = styled(CardActions)(({theme}) => ({
 	backgroundColor: "white"
 }))
 
-const SizeimgcontentfooterCard4 = () => {
+const SizeimgcontentfooterCard4 = ({title, alt, image, paragraph}) => {
 	return (
 		<ImageContentCard>
 			<CardMedia 
 				component="img"
 				height="300"
-				image={Image}
-				alt="alt information one"
+				image={image}
+				alt={alt}
 			/>
 			<CardContentInfo>
 				<Typography variant="h4" gutterBottom>
-					Header
+					{title}
 				</Typography>
-				<Typography variant="body">
-					Anim reprehenderit laborum duis aliqua qui ad velit id nulla duis ullamco. 
-					Labore proident id consequat labore veniam cillum deserunt fugiat nisi occaecat esse elit. 
-					Velit sunt est et fugiat cillum adipisicing enim tempor et tempor.
-				</Typography>
+				{
+					paragraph.map((p, i) => (
+						<Typography key={i} variant="body">
+							{p}
+						</Typography>
+					))
+				}
 			</CardContentInfo>
 			<CardActionsInfo>
 				<Button variant="contained" color="primary">
 					<Typography variant="body2" style={{marginRight: "20px"}}>
-						Explore
+						View Product
 					</Typography>
 					<AddCircleRoundedIcon/>
 				</Button>

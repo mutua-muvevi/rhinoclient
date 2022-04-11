@@ -6,6 +6,9 @@ export const contactInfo = {
 		src: "https://res.cloudinary.com/dqweh6zte/image/upload/v1649676177/Rhino%20John%20Background%20Video/Rhinojon%20Product%20images/call-center-rhino-transformed_vca5no.jpg",
 		alt: "Rhino John Prime Metals receptionist waiting for your phone call"
 	},
+	paragraph: [
+		" "
+	],
 	footer: {
 		src: "https://res.cloudinary.com/dqweh6zte/image/upload/v1649662392/Rhino%20John%20Background%20Video/Rhinojon%20Product%20images/register_gy9vgp.jpg",
 		alt: "Client filling a Rhino John Prime Metals Form"

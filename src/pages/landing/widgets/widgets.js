@@ -13,7 +13,6 @@ import Sizeheadercontent6 from "../../../components/widgets/cards/6sizeheadercon
 import Sizesquare6 from "../../../components/widgets/cards/6sizesquare/sizesquare6"
 import Sizeheadercontent8 from "../../../components/widgets/cards/8sizeheadercontent/sizeheadercontent8"
 import Image from "../../../assets/images/miningtools.jpg"
-import Navbar from "../../../components/layout/navbar/navbar"
 
 const WidgetStyles = styled("div")({
 	display: "flex",
@@ -39,7 +38,7 @@ const Widgets = () => {
 		<SizeimgcontentfooterCard4 item={item}/>
 		<Sizeheadercontent4 item={item}/>
 		{/* <Sizesquarecard4/> */}
-		{/* <Sizeheaderlandscape4 item={item}/> */}
+		<Sizeheaderlandscape4 item={item}/>
 		<Sizeheadercontent6 item={item}/>
 		<Sizeheadercontent8  item={item}/>
 		<Sizeheadercontent12 item={item}/>
