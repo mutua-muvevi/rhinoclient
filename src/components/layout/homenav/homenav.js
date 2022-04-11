@@ -1,22 +1,28 @@
-import { AppBar, Button, Container, IconButton, Toolbar } from "@mui/material"
-import { Box, styled } from "@mui/system";
-import React, {useState} from 'react';
-import { navPages } from "./navcontent";
-import Logo from "../../../assets/images/logos/Rhino card logo - PNG.png";
+import React, { useState } from 'react';
+import { AppBar, Box, Button, Container, IconButton, Toolbar} from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
-import SwipeableSideDrawer from "./swipeabledrawer";
 import { NavLink } from "react-router-dom";
+import { styled } from "@mui/styles";
+import Logo from "../../../assets/images/logos/Rhino card logo - PNG.png"
+import { homeNavLink } from "./homenavcontent"
+
+const homenavStyle = {
+	backgroundColor: "transparent",
+	color: "#fff",
+	fontSize: "20px",
+	position: "absolute",
+	zIndex: 10,
+	top: 0,
+	width: "100%",
+	borderBottom: "1px #fff solid"
+}
+
 
 const StyledContainer = styled(Container)(({theme}) => ({
 	display: "flex",
 	alignItems: "center",
 	justifyContent: "space-between",
 }))
-
-const navbarSX = {
-	backgroundColor: "#131212",
-	color: "white",
-}
 
 const StyledLogoContainer = styled(Box)(({theme}) => ({
 	minWidth: "30%",
@@ -50,19 +56,21 @@ const iconButtonSX = {
 	},
 }
 
-const Navbar = () => {
+const Homenav = () => {
 
-	const [mobileNav, setMobileNav] = useState(false)
+	const [mobileNav, setMobileNav] = useState(false);
 
+	
 	const handleMobileNav = () => {
 		setMobileNav(!mobileNav)
 	}
 
+
 	return (
-		<AppBar 
+		<AppBar
 			position="static" 
 			component="nav"
-			sx={navbarSX}
+			sx={homenavStyle}
 		>
 			<Toolbar disableGutters>
 				<StyledContainer maxWidth="xl">
@@ -71,8 +79,8 @@ const Navbar = () => {
 					</StyledLogoContainer>
 					<StyledNavItems>
 						{
-							navPages.map((el, i) => (
-								<NavLink style={{textDecoration: "none", color: "white"}} to={el.path}>
+							homeNavLink.map((el, i) => (
+								<NavLink key={i} style={{textDecoration: "none", color: "white"}} to={el.path}>
 									<Button sx={navItemsSX} key={i} variant="h6" disableGutters>
 										{el.label}
 									</Button>
@@ -94,10 +102,8 @@ const Navbar = () => {
 				</StyledContainer>
 			</Toolbar>
 
-			<SwipeableSideDrawer mobileNav={mobileNav} setMobileNav={setMobileNav} />
-
 		</AppBar>
 	)
 }
 
-export default Navbar
+export default Homenav

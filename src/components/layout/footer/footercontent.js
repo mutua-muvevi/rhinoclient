@@ -9,7 +9,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 
 export const footerLeft = {
-	title: "About",
+	title: "Rhino John Prime Metals",
 	paragraph: [
 		`
 			Rhinojohn Prime Metal Internatonal Limited is a global company that 
