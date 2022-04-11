@@ -41,12 +41,12 @@ const footerInputSX = {
 }
 
 const WhiteBorderTextField = styled(TextField)`
-  & .MuiOutlinedInput-root {
-    &.Mui-focused fieldset {
-		border-color: white;
-		color: white
-    }
-  }
+	& .MuiOutlinedInput-root {
+		&.Mui-focused fieldset {
+			border-color: white;
+			color: white
+		}
+	}
 `;
 
 const SocialIconsStyle = styled(Box)(({theme}) => ({
@@ -74,7 +74,7 @@ const Footer = () => {
 		<>
 			<FooterWrapper id="footer" component="footer">
 				<StyledContainer maxWidth="xl">
-					<Grid container spacing ={3}>
+					<Grid container spacing ={3} sx={{marginTop: 5, marginBottom: 5}}>
 
 						<Grid item lg={4} xs={12}>
 							<FooterTitle variant="h4" gutterBottom>
