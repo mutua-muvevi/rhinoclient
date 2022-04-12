@@ -9,6 +9,7 @@ const StyledContainer = styled(Container)(({theme}) => ({
 	justifyContent: "flex-end",
 	alignItems: "flex-start",
 	paddingBottom: "30px",
+	transition: "1s"
 }))
 
 const Banner = ({title, subtitle, image, imageAlt, paragraph}) => {
@@ -21,7 +22,7 @@ const Banner = ({title, subtitle, image, imageAlt, paragraph}) => {
 		backgroundRepeat: "no-repeat",
 		transition: "0.5s", 
 		minHeight: "50vh",
-		color: "#fff"
+		color: "#fff",
 	}))
 
 	return (

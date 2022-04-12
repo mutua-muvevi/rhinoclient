@@ -1,18 +1,25 @@
-import React from 'react'
-// import Landingnav from "../../../components/navbar/landing/landingnav"
-import { aboutStyles } from "./aboutStyles"
+import React from 'react';
+import { Box } from "@mui/material";
+import Aboutcarousel from "./aboutcarousel";
+import Aboutcontentimage from "../../../components/units/aboutcontentimage/aboutcontentimage";
+import Values from "../../../components/units/values/values";
+import Counter from "../../../components/units/counter/counter";
+import { aboutIntroContent } from "./aboutInfo"
 
 const About = () => {
 
-	const classes = aboutStyles()
 
 	return (
-		<div className={classes.wrapper}>
-			{/* <Landingnav/> */}
-			<div className={classes.main}>
-				some info here
-			</div>
-		</div>
+		<Box>
+			<Aboutcarousel/>
+			<Aboutcontentimage
+				title={aboutIntroContent.title}
+				paragraph={aboutIntroContent.paragraph}
+				link={aboutIntroContent.link}
+			/>
+			<Counter/>
+			<Values/>
+		</Box>
 	)
 }
 

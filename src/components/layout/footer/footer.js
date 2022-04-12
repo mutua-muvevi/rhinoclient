@@ -82,9 +82,11 @@ const Footer = () => {
 							</FooterTitle>
 							{
 								footerLeft.paragraph.map((el, i) => (
-									<Typography key={i} variant="body">
-										{el}
-									</Typography>
+									<Box sx={{marginTop: "5px"}} key={i}>
+										<Typography variant="body">
+											{el}
+										</Typography>
+									</Box>
 								))
 							}
 						</Grid>
