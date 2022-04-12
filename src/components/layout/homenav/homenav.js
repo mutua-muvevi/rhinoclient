@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import { styled } from "@mui/styles";
 import Logo from "../../../assets/images/logos/Rhino card logo - PNG.png"
 import { homeNavLink } from "./homenavcontent"
+import SwipeableSideDrawer from "../navbar/swipeabledrawer";
 
 const homenavStyle = {
 	backgroundColor: "transparent",
@@ -101,7 +102,7 @@ const Homenav = () => {
 					</IconButton>
 				</StyledContainer>
 			</Toolbar>
-
+			<SwipeableSideDrawer mobileNav={mobileNav} setMobileNav={setMobileNav} />
 		</AppBar>
 	)
 }
