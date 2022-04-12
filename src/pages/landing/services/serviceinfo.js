@@ -26,7 +26,8 @@ export const serviceItemInformation = [
 			`We have succeeded in establishing, over the years, a system of partnership with the various actors and stakeholders in the mining sector in Africa, mainly those operating in countries with significant mining reserves and operating mines.`,
 			`Among these actors, we find artisanal miners, small and medium scale production mines and mining cooperatives. The other players are traders and commission agents.`,
 		],
-		id: "service-trading"
+		id: "service-trading",
+		
 	},
 	{
 		title: "Air Transport",
@@ -67,7 +68,7 @@ export const serviceItemInformation = [
 	{
 		title: "Custom Clearance",
 		image: {
-			src: "https://res.cloudinary.com/dqweh6zte/image/upload/v1649662362/Rhino%20John%20Background%20Video/Rhinojon%20Product%20images/customclearance2_j1ohid.jpg",
+			src: "https://res.cloudinary.com/dqweh6zte/image/upload/v1649750889/Rhino%20John%20Background%20Video/Rhinojon%20Product%20images/clearance-person-transformed_cklloq.jpg",
 			alt: "Custom clearance,produced by Rhino John Prime Metals"
 		},
 		paragraph: [
