@@ -34,7 +34,7 @@ const TrackCard = ({ title, subtitle, link, image, alt }) => {
 
 	return (
 		<StyledCard>
-			<StyledCardActionArea>
+			<StyledCardActionArea href={link}>
 				<CardMedia
 					component="img"
 					height="300"
