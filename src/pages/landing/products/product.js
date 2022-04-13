@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Box, Container, Grid } from "@mui/material";
 import Banner from "../../../components/layout/banner/banner";
 import { productBannerInfo, productItemInformation } from "./productsInfo";
@@ -15,6 +15,13 @@ const gridStyle = {
 
 
 const Products = () => {
+
+	const [openModal, setOpenModal] = useState(false)
+
+	const handleModal = () => {
+		setOpenModal(!openModal)
+	}
+
 	return (
 		<Box>
 			<Banner
@@ -34,6 +41,8 @@ const Products = () => {
 									image={el.image.src}
 									alt={el.image.alt}
 									paragraph={el.paragraph}
+									handleModal = {handleModal}
+									openModal = {openModal}
 									/>
 							</Grid>
 						))

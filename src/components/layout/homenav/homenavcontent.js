@@ -33,7 +33,7 @@ export const homeNavLink = [
 	},
 	{
 		label: "Track",
-		path: "/landing/track",
+		path: "/track/main",
 		icon: <TravelExploreIcon/>,
 		index: 4
 	},

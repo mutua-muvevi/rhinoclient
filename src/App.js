@@ -17,6 +17,9 @@ import Layout from "./components/layout/layout";
 import Dashmap from "./pages/dashboard/map/map";
 import Modal from "react-modal";
 import Landinglayout from "./components/layout/landinglayout";
+import Tracklayout from "./components/layout/tracklayout";
+import TrackShipment from "./pages/landing/track/trackshipment";
+import TrackStorage from "./pages/landing/track/trackstorage";
 
 Modal.setAppElement("#root")
 
@@ -32,9 +35,14 @@ function App() {
 							<Route path="/landing/about" element={<About/>}/>
 							<Route path="/landing/products" element={<Products/>}/>
 							<Route path="/landing/services" element={<Services/>}/>
-							<Route path="/landing/track" element={<Track/>}/>
 							<Route path="/landing/contact" element={<Contact/>}/>
 							<Route path="/landing/widgets" element={<Widgets/>}/>
+						</Route>
+						
+						<Route path="/track" element={<Tracklayout/>}>
+							<Route path="/track/main" element={<Track/>}/>
+							<Route path="/track/shipment" element={<TrackShipment/>}/>
+							<Route path="/track/storage" element={<TrackStorage/>}/>
 						</Route>
 
 						<Route path="/dashboard" element={<Layout/>}>
