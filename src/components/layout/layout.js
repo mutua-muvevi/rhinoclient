@@ -16,7 +16,6 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 	alignItems: 'center',
 	justifyContent: 'flex-end',
 	padding: theme.spacing(0, 1),
-	// necessary for content to be below app bar
 	...theme.mixins.toolbar,
 	marginBottom: "20px"
 }));
@@ -38,13 +37,10 @@ const Layout = () => {
 	return (
 		<Box sx={{ display: 'flex' }}>
 			<CssBaseline />
-			{/* side drawer */}
 			<DrawerComponent handleDrawerOpen={handleDrawerOpen} open={open} theme={theme} handleDrawerClose={handleDrawerClose}/>
 
-			{/* top bar */}
 			<PrimarySearchAppBar handleDrawerOpen={handleDrawerOpen} open={open}/>
 
-			{/* main section */}
 			<Main component="main" sx={{ flexGrow: 1, p: 3 , width: "100%"}}>
 				<DrawerHeader/>
 				<Outlet/>
