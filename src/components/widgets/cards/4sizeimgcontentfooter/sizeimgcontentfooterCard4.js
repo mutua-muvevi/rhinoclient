@@ -23,7 +23,7 @@ const CardActionsInfo = styled(CardActions)(({theme}) => ({
 	backgroundColor: "white"
 }))
 
-const SizeimgcontentfooterCard4 = ({title, alt, image, paragraph}) => {
+const SizeimgcontentfooterCard4 = ({title, alt, image, paragraph, openModal, handleModal, id, modal}) => {
 	return (
 		<ImageContentCard>
 			<CardMedia 
@@ -45,13 +45,14 @@ const SizeimgcontentfooterCard4 = ({title, alt, image, paragraph}) => {
 				}
 			</CardContentInfo>
 			<CardActionsInfo>
-				<Button variant="contained" color="primary">
+				<Button onClick={handleModal} variant="contained" color="primary">
 					<Typography variant="body2" style={{marginRight: "20px"}}>
 						View Product
 					</Typography>
 					<AddCircleRoundedIcon/>
 				</Button>
 			</CardActionsInfo>
+			
 		</ImageContentCard>
 	)
 }

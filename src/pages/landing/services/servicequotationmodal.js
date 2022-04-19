@@ -1,7 +1,7 @@
-import { Box, Modal, Typography } from "@mui/material";
 import React from 'react';
 import { styled } from "@mui/system";
-import AddShipmentForm from "./addshipmentform";
+import { Box, Modal, Typography} from "@mui/material";
+import QuotationForm from "../quotationform/quotationForm";
 
 
 const StyledModal = styled(Modal)(({theme}) => ({
@@ -9,17 +9,19 @@ const StyledModal = styled(Modal)(({theme}) => ({
 	margin: "10vh auto",
 	overflowY: "scroll",
 	border: 'none',
+	
 }))
 
-const formContainer = {
+const detailsContainer = {
+	borderRadius: 4,
 	backgroundColor: "white",
 	border: 'none',
-	boxShadow: 24,
-	padding: 4,
-	borderRadius: 4
+	padding: 2,
+	// position: "relative",
+	margin: 0,
 }
 
-const Addshipmentmodal = ({open, setOpen}) => {
+const ServiceQuotationModal = ({title, open, setOpen}) => {
 	return (
 		<StyledModal
 			open={open}
@@ -27,14 +29,16 @@ const Addshipmentmodal = ({open, setOpen}) => {
 			aria-labelledby="modal-modal-title"
 			aria-describedby="modal-modal-description"
 		>
-			<Box sx={formContainer}>
-				<Typography id="modal-modal-title" variant="h4" gutterBottom component="h2">
-					Add Shipment Form
+			<Box container sx={detailsContainer}>
+				<Typography variant="h3">
+					{title}
 				</Typography>
-				<AddShipmentForm/>
+				<Box>
+					<QuotationForm/>
+				</Box>
 			</Box>
 		</StyledModal>
 	)
 }
 
-export default Addshipmentmodal
+export default ServiceQuotationModal

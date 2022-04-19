@@ -126,7 +126,7 @@ const AddShipmentForm = () => {
 						
 						{
 							shippersInformation.map((el, i) => (
-								<Grid item sm={el.sm} xs={el.xs}>
+								<Grid item key={i} sm={el.sm} xs={el.xs}>
 									<TextField type={el.type} name={el.name} label={el.label}/>
 								</Grid>
 							))
@@ -140,7 +140,7 @@ const AddShipmentForm = () => {
 
 						{
 							cosignInformation.map((el, i) => (
-								<Grid item sm={el.sm} xs={el.xs}>
+								<Grid key={i} item sm={el.sm} xs={el.xs}>
 									<TextField type={el.type} name={el.name} label={el.label}/>
 								</Grid>
 							))
@@ -154,7 +154,7 @@ const AddShipmentForm = () => {
 
 						{
 							collectorInformation.map((el, i) => (
-								<Grid item sm={el.sm} xs={el.xs}>
+								<Grid key={i} item sm={el.sm} xs={el.xs}>
 									<TextField type={el.type} name={el.name} label={el.label}/>
 								</Grid>
 							))
@@ -168,7 +168,7 @@ const AddShipmentForm = () => {
 
 						{
 							itemInformation.map((el, i) => (
-								<Grid item sm={el.sm} xs={el.xs}>
+								<Grid key={i} item sm={el.sm} xs={el.xs}>
 									<TextField type={el.type} name={el.name} label={el.label}/>
 								</Grid>
 							))
@@ -182,7 +182,7 @@ const AddShipmentForm = () => {
 
 						{
 							departureInformation.location.map((el, i) => (
-								<Grid item sm={el.sm} xs={el.xs}>
+								<Grid key={i} item sm={el.sm} xs={el.xs}>
 									<TextField type={el.type} name={el.name} label={el.label}/>
 								</Grid>
 							))
@@ -204,7 +204,7 @@ const AddShipmentForm = () => {
 
 						{
 							destinationInformation.location.map((el, i) => (
-								<Grid item sm={el.sm} xs={el.xs}>
+								<Grid key={i} item sm={el.sm} xs={el.xs}>
 									<TextField type={el.type} name={el.name} label={el.label}/>
 								</Grid>
 							))

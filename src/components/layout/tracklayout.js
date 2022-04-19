@@ -20,6 +20,7 @@ const styledVideo = {
 	height: "100vh",
 	objectFit: "cover",
 	width: "100vw",
+	backgroundAttachment: "fixed"
 }
 
 const StyledOutletWrapper = styled(Container)(({theme}) => ({
