@@ -6,7 +6,7 @@ import AddStorageForm from "./addstorageform";
 const StyledModal = styled(Modal)(({theme}) => ({
 	width: "85vw",
 	margin: "10vh auto",
-	overflow: "scroll",
+	overflowY: "scroll",
 	border: 'none',
 }))
 

@@ -21,8 +21,8 @@ const Banner = ({title, subtitle, image, imageAlt, paragraph}) => {
 		backgroundSize: "cover",
 		backgroundRepeat: "no-repeat",
 		transition: "0.5s", 
-		minHeight: "50vh",
 		color: "#fff",
+		minHeight: "50vh",
 	}))
 
 	return (
