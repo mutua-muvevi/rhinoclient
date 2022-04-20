@@ -65,7 +65,7 @@ export const quotationFormInputs = [
 	},
 	{
 		type: "text",
-		label: "Product Name",
+		label: "Product/Service Detail",
 		required: true,
 		name:"product",
 		xs:12,

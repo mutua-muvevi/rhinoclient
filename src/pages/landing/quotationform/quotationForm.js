@@ -1,4 +1,4 @@
-import { Box, Button, Grid } from "@mui/material"
+import { Box, Button, ButtonGroup, Grid } from "@mui/material"
 import { styled } from "@mui/system";
 import { Formik, Form } from "formik";
 import React, { useState } from 'react';
@@ -6,6 +6,7 @@ import * as Yup from "yup";
 import TextField from "../../../components/formsUI/textfield/textfield";
 import { quotationFormInputs, messageTextArea } from "./quotationformdata";
 import SendIcon from '@mui/icons-material/Send';
+import ClearIcon from '@mui/icons-material/Clear';
 import Confirmation from "../../../components/units/modal/confirmation";
 
 
@@ -42,7 +43,7 @@ const FORM_VALIDATION = Yup.object().shape({
 	message: Yup.string().min(20).max(1000).required(),
 })
 
-const QuotationForm = () => {
+const QuotationForm = ({onClose}) => {
 
 	const [modal, setModal] = useState(false);
 	const [ formValues, setFormValues ] = useState({})
@@ -91,12 +92,16 @@ const QuotationForm = () => {
 								label={messageTextArea.label}
 								/>
 						</Grid>
-						{console.log("The form value is", formValues)}
 					</Grid>
 
-					<Button variant="contained" type="submit" sx={{marginTop: "30px"}} endIcon={<SendIcon/>}>
-						Submit Quotation
-					</Button>
+					<ButtonGroup variant="contained" type="submit" sx={{marginTop: "30px"}}>
+						<Button type="submit" color="primary"  endIcon={<SendIcon/>}>
+							Submit Quotation
+						</Button>
+						<Button onClick={onClose} type="submit" color="error" endIcon={<ClearIcon/>}>
+							Cancel Quotation
+						</Button>
+					</ButtonGroup>
 				</Form>
 			</Formik>
 			<Confirmation

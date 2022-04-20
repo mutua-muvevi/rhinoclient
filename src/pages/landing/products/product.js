@@ -16,14 +16,10 @@ const gridStyle = {
 
 const Products = () => {
 
-	const [openModal, setOpenModal] = useState(false)
-
-	const handleModal = () => {
-		setOpenModal(!openModal)
-	}
+	const [modal, setModal] = useState(false)
 
 	return (
-		<Box>
+		<Box id="products">
 			<Banner
 				title={productBannerInfo.title} 
 				subtitle={productBannerInfo.subTitle}
@@ -34,16 +30,19 @@ const Products = () => {
 			<Container sx={containerWrapper} maxWidth="xl">
 				<Grid container spacing={2}>
 					{
-						productItemInformation.map((el, i) => (
+						productItemInformation.map((item, i) => (
 							<Grid sx={gridStyle} key={i} item lg={4} sm={12} >
 								<SizeimgcontentfooterCard4
-									title={el.title}
-									image={el.image.src}
-									alt={el.image.alt}
-									paragraph={el.paragraph}
-									handleModal = {handleModal}
-									openModal = {openModal}
-									/>
+									setModal = {setModal}
+									modal = {modal}
+
+									title={item.title}
+									image={item.image.src}
+									alt={item.image.alt}
+									paragraph={item.paragraph}
+
+									modalData={item.modal}
+								/>
 							</Grid>
 						))
 					}

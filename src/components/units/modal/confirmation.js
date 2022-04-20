@@ -10,13 +10,13 @@ const StyledModal = styled(Modal)(({theme}) => ({
 	margin: "9vh auto",
 	border: 'none',
 	backgroundColor: "transparent",
-	borderRadius: theme.shape.default
+	borderRadius: 4,
 	
 }))
 
 const StyledModalItems = styled(Grid)(({theme}) => ({
 	padding: 0,
-	borderRadius: 4,
+	borderRadius: theme.shape.default,
 	backgroundColor: "white",
 	border: 'none',
 	position: "relative",
@@ -28,7 +28,7 @@ const StyledEntry = styled(Box)(({theme}) => ({
 	backgroundColor: theme.palette.drawer.default,
 	color: "white",
 	padding: "5px 10px",
-	borderRadius: theme.shape.default
+	borderRadius: 4
 }))
 
 const StyledTextAreaEntry = styled(Box)(({theme}) => ({
@@ -144,12 +144,12 @@ const Confirmation = ({modal, onClose, values}) => {
 						<Divider sx={{color: "#fff"}}/>
 
 						<ButtonGroup variant="contained" sx={{margin: "30px 0px"}}>
-							<Button endIcon={<SendIcon/>} color="primary">
-								Send
+							<Button endIcon={<SendIcon/>} color="success">
+								Accept Confirmation
 							</Button>
 
 							<Button onClick={onClose} endIcon={<ClearIcon/>} color="error">
-								Cancel
+								Cancel Confirmation
 							</Button>
 						</ButtonGroup>
 					</StyledContentContainer>
