@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { styled } from "@mui/system";
-import { Box, Container, Grid, Modal} from "@mui/material";
+import { Box, Container, Grid} from "@mui/material";
 import Banner from "../../../components/layout/banner/banner";
 import { serviceBannerInfo, serviceItemInformation } from "./serviceinfo";
 import SizeimgcontentfooterCard4 from "../../../components/widgets/cards/4sizeimgcontentfooter/sizeimgcontentfooterCard4";
-import ServicesModal from "./servicesmodal";
 
+const ServiceWrapper = styled(Box)(({theme}) => ({
+
+}))
 
 const containerWrapper = {
 	margin: "auto"
@@ -17,15 +19,10 @@ const gridStyle = {
 
 
 const Services = () => {
-
-	const [modal, setModal] = useState(false)
-
-	const handleModal = () => {
-		setModal(!modal)
-	}
+	const [modal, openModal] = useState(false);
 
 	return (
-		<Box>
+		<ServiceWrapper id="services">
 			<Banner
 				title={serviceBannerInfo.title} 
 				subtitle={serviceBannerInfo.subTitle}
@@ -36,28 +33,26 @@ const Services = () => {
 			<Container sx={containerWrapper} maxWidth="xl">
 				<Grid container spacing={2}>
 					{
-						serviceItemInformation &&
-						serviceItemInformation.map((el, i) => (
-							<>
-								<Grid sx={gridStyle} key={i} item lg={4} sm={12} >
-									<SizeimgcontentfooterCard4
-										title={el.title}
-										image={el.image.src}
-										alt={el.image.alt}
-										paragraph={el.paragraph}
-										id={el.id}
-										modalData={el.modal}
-										handleModal={handleModal}
-										modal={modal}
-										/>
-									<ServicesModal open={modal} setOpen={setModal} modal={el.modal}/>
-								</Grid>
-							</>
+						serviceItemInformation.map((item, i) => (
+							<Grid sx={gridStyle} key={i} item lg={4} sm={12} >
+								<SizeimgcontentfooterCard4
+									modal={modal}
+									openModal={openModal}
+
+									title={item.title}
+									image={item.image.src}
+									alt={item.image.alt}
+									paragraph={item.paragraph}
+									id={item.id}
+									
+									modalData={item.modal}
+								/>
+							</Grid>
 						))
 					}
 				</Grid>
 			</Container>
-		</Box>
+		</ServiceWrapper>
 	)
 }
 

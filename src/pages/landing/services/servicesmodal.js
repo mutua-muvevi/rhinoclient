@@ -3,7 +3,7 @@ import { styled } from "@mui/system";
 import { Box, Button, Grid, Modal, Typography} from "@mui/material";
 import TextsmsIcon from '@mui/icons-material/Textsms';
 import ServiceQuotationModal from "./servicequotationmodal";
-
+import Dot from "../../../assets/images/dot.png"
 
 const StyledModal = styled(Modal)(({theme}) => ({
 	width: "85vw",
@@ -12,7 +12,6 @@ const StyledModal = styled(Modal)(({theme}) => ({
 	backgroundColor: "transparent",
 	
 }))
-
 
 const detailsContainer = {
 	borderRadius: 4,
@@ -29,13 +28,16 @@ const StyledModalItems = styled(Grid)(({theme}) => ({
 }))
 
 const BoxOverlay = styled(Box)(({theme}) => ({
-	background: "url(http://s14.directupload.net/images/111129/44ga9qid.png)",
+	backgroundImage: "url(http://s14.directupload.net/images/111129/44ga9qid.png)",
+	// backgroundColor: "red",
 	width: "100%",
 	height: "100%",
 	padding: 0,
 	display: "flex", 
 	justifyContent: "center", 
-	alignItems: "center"
+	alignItems: "center",
+	borderTopLeftRadius: 10,
+	borderBottomLeftRadius: 10
 }))
 
 const ServicesModal = ({open, setOpen, modal}) => {
