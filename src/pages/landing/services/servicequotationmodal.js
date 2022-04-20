@@ -25,7 +25,6 @@ const ServiceQuotationModal = ({title, open, setOpen}) => {
 	return (
 		<StyledModal
 			open={open}
-			onClose={() => setOpen(false)}
 			aria-labelledby="modal-modal-title"
 			aria-describedby="modal-modal-description"
 		>
@@ -34,7 +33,7 @@ const ServiceQuotationModal = ({title, open, setOpen}) => {
 					{title}
 				</Typography>
 				<Box>
-					<QuotationForm />
+					<QuotationForm onClose={() => setOpen(false)} />
 				</Box>
 			</Box>
 		</StyledModal>

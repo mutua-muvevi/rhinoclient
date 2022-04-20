@@ -10,7 +10,7 @@ const StyledModal = styled(Modal)(({theme}) => ({
 	margin: "9vh auto",
 	border: 'none',
 	backgroundColor: "transparent",
-	borderRadius: theme.shape.default
+	borderRadius: 4,
 	
 }))
 
@@ -144,12 +144,12 @@ const Confirmation = ({modal, onClose, values}) => {
 						<Divider sx={{color: "#fff"}}/>
 
 						<ButtonGroup variant="contained" sx={{margin: "30px 0px"}}>
-							<Button endIcon={<SendIcon/>} color="primary">
-								Send
+							<Button endIcon={<SendIcon/>} color="success">
+								Accept Confirmation
 							</Button>
 
 							<Button onClick={onClose} endIcon={<ClearIcon/>} color="error">
-								Cancel
+								Cancel Confirmation
 							</Button>
 						</ButtonGroup>
 					</StyledContentContainer>
