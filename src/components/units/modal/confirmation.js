@@ -16,7 +16,7 @@ const StyledModal = styled(Modal)(({theme}) => ({
 
 const StyledModalItems = styled(Grid)(({theme}) => ({
 	padding: 0,
-	borderRadius: 4,
+	borderRadius: theme.shape.default,
 	backgroundColor: "white",
 	border: 'none',
 	position: "relative",
@@ -28,7 +28,7 @@ const StyledEntry = styled(Box)(({theme}) => ({
 	backgroundColor: theme.palette.drawer.default,
 	color: "white",
 	padding: "5px 10px",
-	borderRadius: theme.shape.default
+	borderRadius: 4
 }))
 
 const StyledTextAreaEntry = styled(Box)(({theme}) => ({
