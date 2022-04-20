@@ -24,14 +24,19 @@ const CardActionsInfo = styled(CardActions)(({theme}) => ({
 	backgroundColor: "white"
 }))
 
-const SizeimgcontentfooterCard4 = ({ title, alt, image, paragraph, openModal, modal, modalData }) => {
+const SizeimgcontentfooterCard4 = ({ title, alt, image, paragraph, setModal, modal, modalData }) => {
 
 	const [singleModalContent, setSingleModalContent] = useState(null)
 
 	
 	const handleModal = () => {
-		openModal(!modal)
+		setModal(!modal)
 		setSingleModalContent(modalData)
+	}
+
+	const handleClose = () => {
+		setModal(false)
+		setSingleModalContent(null)
 	}
 
 	return (
@@ -54,6 +59,7 @@ const SizeimgcontentfooterCard4 = ({ title, alt, image, paragraph, openModal, mo
 					))
 				}
 			</CardContentInfo>
+			
 			<CardActionsInfo>
 				<Button onClick={handleModal} variant="contained" color="primary">
 					<Typography variant="body2" style={{marginRight: "20px"}}>
@@ -65,9 +71,9 @@ const SizeimgcontentfooterCard4 = ({ title, alt, image, paragraph, openModal, mo
 			{
 				singleModalContent ? (
 					<ServicesModal
-						open={modal} 
-						setOpen={openModal} 
+						open={modal}
 						modal={singleModalContent}
+						handleClose={handleClose}
 					/>
 				) : null
 			}
