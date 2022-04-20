@@ -3,7 +3,6 @@ import { styled } from "@mui/system";
 import { Box, Button, Grid, Modal, Typography} from "@mui/material";
 import TextsmsIcon from '@mui/icons-material/Textsms';
 import ServiceQuotationModal from "./servicequotationmodal";
-import Dot from "../../../assets/images/dot.png"
 
 const StyledModal = styled(Modal)(({theme}) => ({
 	width: "85vw",
@@ -28,19 +27,20 @@ const StyledModalItems = styled(Grid)(({theme}) => ({
 }))
 
 const BoxOverlay = styled(Box)(({theme}) => ({
-	backgroundImage: "url(http://s14.directupload.net/images/111129/44ga9qid.png)",
-	// backgroundColor: "red",
+	background: "url(https://res.cloudinary.com/dqweh6zte/image/upload/v1650445891/Rhino%20John%20Background%20Video/Rhinojon%20Product%20images/dot_opkspq.png) repeat",
 	width: "100%",
 	height: "100%",
 	padding: 0,
 	display: "flex", 
+	flexDirection: "column",
 	justifyContent: "center", 
 	alignItems: "center",
 	borderTopLeftRadius: 10,
-	borderBottomLeftRadius: 10
+	borderBottomLeftRadius: 10,
+	textAlign: "center"
 }))
 
-const ServicesModal = ({open, setOpen, modal}) => {
+const ServicesModal = ({open, handleClose, modal}) => {
 
 	const [openItemFormModal, setOpenItemFormModal] = useState(false);
 
@@ -69,25 +69,31 @@ const ServicesModal = ({open, setOpen, modal}) => {
 	const StyledModalContentArea = styled(Grid)(({theme}) => ({
 		overflowY: "scroll",
 		padding: "30px 10px",
-		height: "80vh !important"
+		height: "80vh !important",
+		display: "flex",
+		flexDirection: "column",
+		justifyContent: "flex-start"
 	}))
 
 	return (
 		<StyledModal
 			open={open}
-			onClose={() => setOpen(false)}
+			onClose={handleClose}
 			aria-labelledby="modal-modal-title"
 			aria-describedby="modal-modal-description"
 			id={modal.id}
 		>
 				<StyledModalItems container sx={detailsContainer}>
 					<StyledModalImageArea item lg={5} sm={12}>
-						<BoxOverlay sx={{}} >
+						<BoxOverlay>
 							{modal.icon}
+							<Typography variant="h3" sx={{fontWeight: 800}}>
+								{modal.title}
+							</Typography>
 						</BoxOverlay>
 					</StyledModalImageArea>
 
-					<StyledModalContentArea sx={{overFlowY: "scroll !important"}} item lg={7} sm={12}>
+					<StyledModalContentArea item lg={7} sm={12}>
 						<Typography id="modal-modal-title" sx={{marginBottom: "30px"}} variant="h3" gutterBottom component="h2">
 							{ modal.title }
 						</Typography>
@@ -146,7 +152,11 @@ const ServicesModal = ({open, setOpen, modal}) => {
 							Request Quotation
 						</Button>
 
-						<ServiceQuotationModal title="Request Service Quotation" open={openItemFormModal} setOpen={setOpenItemFormModal}/>
+						<ServiceQuotationModal 
+							title={`Request Quotation For ${modal.title}`}
+							open={openItemFormModal} 
+							setOpen={setOpenItemFormModal}
+						/>
 
 					</StyledModalContentArea>
 				</StyledModalItems>

@@ -19,7 +19,7 @@ const gridStyle = {
 
 
 const Services = () => {
-	const [modal, openModal] = useState(false);
+	const [modal, setModal] = useState(false);
 
 	return (
 		<ServiceWrapper id="services">
@@ -37,14 +37,14 @@ const Services = () => {
 							<Grid sx={gridStyle} key={i} item lg={4} sm={12} >
 								<SizeimgcontentfooterCard4
 									modal={modal}
-									openModal={openModal}
+									setModal={setModal}
 
 									title={item.title}
 									image={item.image.src}
 									alt={item.image.alt}
 									paragraph={item.paragraph}
 									id={item.id}
-									
+
 									modalData={item.modal}
 								/>
 							</Grid>

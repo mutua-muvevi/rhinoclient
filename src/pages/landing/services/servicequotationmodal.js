@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { styled } from "@mui/system";
 import { Box, Modal, Typography} from "@mui/material";
 import QuotationForm from "../quotationform/quotationForm";
@@ -17,11 +17,11 @@ const detailsContainer = {
 	backgroundColor: "white",
 	border: 'none',
 	padding: 2,
-	// position: "relative",
 	margin: 0,
 }
 
 const ServiceQuotationModal = ({title, open, setOpen}) => {
+
 	return (
 		<StyledModal
 			open={open}
@@ -30,11 +30,11 @@ const ServiceQuotationModal = ({title, open, setOpen}) => {
 			aria-describedby="modal-modal-description"
 		>
 			<Box container sx={detailsContainer}>
-				<Typography variant="h3">
+				<Typography variant="h3" sx={{marginTop: "10px"}}>
 					{title}
 				</Typography>
 				<Box>
-					<QuotationForm/>
+					<QuotationForm />
 				</Box>
 			</Box>
 		</StyledModal>
