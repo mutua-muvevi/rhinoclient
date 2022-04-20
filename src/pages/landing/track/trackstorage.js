@@ -4,7 +4,7 @@ import { styled } from "@mui/system";
 import HomeIcon from '@mui/icons-material/Home';
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import WarehouseIcon from '@mui/icons-material/Warehouse';
-import ManageSearchIcon from '@mui/icons-material/ManageSearch';
+import SearchIcon from '@mui/icons-material/Search';
 
 const StyledBreadCrumbs = styled(Breadcrumbs)(({theme}) => ({
 	marginTop: "20px",
@@ -20,7 +20,7 @@ const StyledInputBase = styled(InputBase)(({theme}) => ({
 	color: "white",
 	border: "#fff solid 1px",
 	borderColor: theme.palette.common.white,
-	minWidth: "40vw",
+	minWidth: "50vw",
 	padding: "10px"
 }))
 
@@ -29,9 +29,16 @@ const StyledTrackButton = styled(Button)(({theme}) => ({
 	minWidth: "20vw"
 }))
 
+const formgroupStyle = {
+	display: {
+		md: "flex",
+		xs: "block"
+	}
+}
+
 const TrackStorage = () => {
 	return (
-		<Box id="track-shipment">
+		<Box id="track-storage">
 			<StyledBreadCrumbs>
 				<Link
 					underline="hover"
@@ -64,13 +71,13 @@ const TrackStorage = () => {
 				<Typography variant="h1" color="white" sx={trackTitle} gutterBottom>
 					Track Your Storage
 				</Typography>
-				<FormGroup row>
+				<FormGroup row sx={formgroupStyle}>
 					<StyledInputBase
 						color="white"
 						placeholder="Enter Storage Track Number..."
 						variant="standard"
 					/>
-					<StyledTrackButton endIcon={<ManageSearchIcon/>} variant="contained" color="primary">
+					<StyledTrackButton endIcon={<SearchIcon/>} variant="contained" color="primary">
 						Search
 					</StyledTrackButton>
 				</FormGroup>

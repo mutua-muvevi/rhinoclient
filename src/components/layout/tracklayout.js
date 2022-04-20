@@ -6,32 +6,29 @@ import { Outlet } from "react-router-dom";
 const backgroundVideoUrl = "https://res.cloudinary.com/dqweh6zte/video/upload/v1649848082/Rhino%20John%20Background%20Video/Rotation_of_The_Planet_Earth_anwoz4.mp4"
 
 const StyledTrackWrapper = styled(Box)(({theme}) => ({
-	backgroundImage: `url(../../assets/images/dot.png)`,
-	backgroundRepeat: "repeat",
+	background: "url(https://res.cloudinary.com/dqweh6zte/image/upload/v1650445891/Rhino%20John%20Background%20Video/Rhinojon%20Product%20images/dot_opkspq.png) repeat",
 	width: "100%",
-	height: "100%"
+	height: "100%",
+	padding: 0,
 }))
 
 
 const styledVideo = {
-	position: "absolute",
+	position: "fixed",
 	top: 0,
 	left: 0,
 	height: "100vh",
 	objectFit: "cover",
 	width: "100vw",
-	backgroundAttachment: "fixed"
 }
+
 
 const StyledOutletWrapper = styled(Container)(({theme}) => ({
 	position: "relative",
 	top: 0,
 	left: 0,
 	zIndex: 2,
-	backgroundImage: `url(../../assets/images/dot.png)`,
-	backgroundRepeat: "repeat",
-	width: "100%",
-	height: "100%"
+	
 }))
 
 const Tracklayout = () => {

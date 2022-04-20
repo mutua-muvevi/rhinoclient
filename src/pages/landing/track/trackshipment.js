@@ -20,7 +20,7 @@ const StyledInputBase = styled(InputBase)(({theme}) => ({
 	color: "white",
 	border: "#fff solid 1px",
 	borderColor: theme.palette.common.white,
-	minWidth: "40vw",
+	minWidth: "50vw",
 	padding: "10px"
 }))
 
