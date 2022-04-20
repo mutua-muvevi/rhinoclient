@@ -1,7 +1,8 @@
 import { Button, Card, CardActions, CardContent, CardMedia, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
-import React from 'react';
+import React, { useState } from 'react';
+import ServicesModal from "../../../../pages/landing/services/servicesmodal";
 
 const ImageContentCard = styled(Card)(({theme}) => ({
 	width: "100%",
@@ -23,7 +24,16 @@ const CardActionsInfo = styled(CardActions)(({theme}) => ({
 	backgroundColor: "white"
 }))
 
-const SizeimgcontentfooterCard4 = ({title, alt, image, paragraph, openModal, handleModal, id, modal}) => {
+const SizeimgcontentfooterCard4 = ({ title, alt, image, paragraph, openModal, modal, modalData }) => {
+
+	const [singleModalContent, setSingleModalContent] = useState(null)
+
+	
+	const handleModal = () => {
+		openModal(!modal)
+		setSingleModalContent(modalData)
+	}
+
 	return (
 		<ImageContentCard>
 			<CardMedia 
@@ -52,7 +62,15 @@ const SizeimgcontentfooterCard4 = ({title, alt, image, paragraph, openModal, han
 					<AddCircleRoundedIcon/>
 				</Button>
 			</CardActionsInfo>
-			
+			{
+				singleModalContent ? (
+					<ServicesModal
+						open={modal} 
+						setOpen={openModal} 
+						modal={singleModalContent}
+					/>
+				) : null
+			}
 		</ImageContentCard>
 	)
 }

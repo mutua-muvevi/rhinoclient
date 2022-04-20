@@ -235,7 +235,7 @@ export const serviceItemInformation = [
 		},
 		paragraph: [
 			`Rhinojohn Prime Metal also offers warehousing and storage services for minerals through available customs bonded warehouses and vaults at our facilities.`,
-			`  The safety of mining products stored in our custody is guaranteed with the support of both government and private security services.`,
+			` The safety of mining products stored in our custody is guaranteed with the support of both government and private security services.`,
 		],
 		id: "service-storage",
 		modal: {
@@ -264,52 +264,5 @@ export const serviceItemInformation = [
 				},
 			]
 		}
-	},
-	{
-		title: "Air Transport",
-		image: {
-			src: "https://res.cloudinary.com/dqweh6zte/image/upload/v1649688490/Rhino%20John%20Background%20Video/Rhinojon%20Product%20images/air_transport_u3fywr.jpg",
-			alt: "Air Transport services offered by Rhino John Prime Metals"
-		},
-		paragraph: [
-			`We provide air transport services for international deliveries by cargo freight and chartered aircraft with major destinations around the world.`,
-			`Very often, in order to ensure secure deliveries by avoiding countless transshipments for deliveries to distant destinations, we offer charter flights for direct transport.`,
-		],
-		id: "service-air-transport",
-		modal: {
-			title: "Air Transport",
-			id: "service-air-transport-modal",
-			icon: <FlightTakeoffIcon color="#fff" sx={{fontSize: "180px"}}/>,
-			listIcon: <FlightTakeoffIcon color="primary"/>,
-			image: {
-				src: "https://res.cloudinary.com/dqweh6zte/image/upload/v1649688490/Rhino%20John%20Background%20Video/Rhinojon%20Product%20images/air_transport_u3fywr.jpg",
-				alt: "Air Transport services offered by Rhino John Prime Metals"
-			}, 
-			paragraph: [
-				`We provide air transport services for international deliveries by cargo freight and chartered aircraft with major destinations around the world. Very often, in order to ensure secure deliveries by avoiding countless transshipments for deliveries to distant destinations, we offer charter flights for direct transport.`,
-				`Thanks to the development of our network we can offer you a full range of services to and from anywhere in the world. By referring to blue chip airlines, we are able to control transit times, space allocation and offer greater flexibility allowing us to provide premium service to you and your customers. Our international network and our extensive international agency will always find the right solution to get your product where it needs to be.`,
-			],
-			list: [
-				{
-					title: `Air Transport and Logistics Services`,
-					paragraph: [
-						`To make the air cargo transport operations easy, we work with providers who have air cargo facilities conveniently located near airports, thereby streamlining the movement of urgent air cargo shipments. With their support, we are ensuring a smooth transition on the ground for all last mile delivery requirements. As a chain service for picking up cargo from the place of departure to the final destination, we offer:`,
-					],
-					listItems: [
-						`Airport to airport services`,
-						`Door to airport services`,
-						`Airport to door services`,
-						`Tailored solutions taking into account the particularity of the cargo and the wishes of the customer.`,
-					]
-				},
-				{
-					title: `Shipment Tracking`,
-					paragraph: [
-						`We understand that air freight is a service that must meet deadlines. We therefore ensure through our online portal the visibility of the movement of our shipments with real-time data anywhere in the world.`,
-					],
-					listItems: [""]
-				},
-			]
-		}
-	},
+	}
 ]
