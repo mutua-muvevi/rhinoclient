@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
+import * as Yup from "yup";
 import { Box, Breadcrumbs, Button, FormGroup, InputBase, Link, Typography } from "@mui/material"
 import { styled } from "@mui/system";
 import HomeIcon from '@mui/icons-material/Home';
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import ManageSearchIcon from '@mui/icons-material/ManageSearch';
+
+// disposable import
+import { shipping } from "./disposabledummy"
+import TrackItem from "./trackItem";
+
 
 const StyledBreadCrumbs = styled(Breadcrumbs)(({theme}) => ({
 	marginTop: "20px",
@@ -29,7 +35,32 @@ const StyledTrackButton = styled(Button)(({theme}) => ({
 	minWidth: "20vw"
 }))
 
+
 const TrackShipment = () => {
+	
+	const [searchValue, setSearchValue] = useState("");
+	const [trackItem, setTrackItem] = useState(null);
+	
+	const [trackItemModal, setTrackItemModal] = useState(false)
+	
+	const closeModal = () => {
+		setTrackItemModal(false)
+	}
+	
+	const submitHandler = e => {
+		e.preventDefault()
+		
+		const searchItem = shipping.find(track => track.trackno === searchValue )
+		
+		if(searchItem){
+			setTrackItem(searchItem)
+			setTrackItemModal(true)
+		} else {
+			setTrackItem(null)
+		}
+	}
+
+
 	return (
 		<Box id="track-shipment">
 			<StyledBreadCrumbs>
@@ -64,17 +95,34 @@ const TrackShipment = () => {
 				<Typography variant="h1" color="white" sx={trackTitle} gutterBottom>
 					Track Your Shipment
 				</Typography>
-				<FormGroup row>
-					<StyledInputBase
-						color="white"
-						placeholder="Enter Shipping Track Number..."
-						variant="standard"
-					/>
-					<StyledTrackButton endIcon={<ManageSearchIcon/>} variant="contained" color="primary">
-						Search
-					</StyledTrackButton>
-				</FormGroup>
+
+				
+				<form onSubmit={submitHandler}>
+
+					<FormGroup row>
+						<StyledInputBase
+							color="white"
+							placeholder="Enter Shipping Track Number..."
+							variant="standard"
+							onChange = {(e) => setSearchValue(e.target.value)}
+							value={searchValue}
+						/>
+						<StyledTrackButton type="submit" endIcon={<ManageSearchIcon/>} variant="contained" color="primary">
+							Search
+						</StyledTrackButton>
+					</FormGroup>
+				</form>
+
 			</Box>
+			{
+				trackItem ? (
+					<TrackItem
+						item = {trackItem}
+						modal={trackItemModal}
+						onClose={closeModal}
+					/>
+				) : <Typography variant="h3" color="white">Shipping detail not found</Typography>
+			}
 		</Box>
 	)
 }

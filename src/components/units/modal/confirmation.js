@@ -1,7 +1,7 @@
 import React from 'react';
 import { styled } from "@mui/system";
 import { Box, Button, ButtonGroup, Divider, Grid, Modal, Typography} from "@mui/material";
-import SendIcon from '@mui/icons-material/Send';
+import DoneAllIcon from '@mui/icons-material/DoneAll';
 import ClearIcon from '@mui/icons-material/Clear';
 
 
@@ -144,7 +144,7 @@ const Confirmation = ({modal, onClose, values}) => {
 						<Divider sx={{color: "#fff"}}/>
 
 						<ButtonGroup variant="contained" sx={{margin: "30px 0px"}}>
-							<Button endIcon={<SendIcon/>} color="success">
+							<Button endIcon={<DoneAllIcon/>} color="success">
 								Accept Confirmation
 							</Button>
 
