@@ -78,13 +78,14 @@ const QuotationForm = ({onClose}) => {
 						{
 							quotationFormInputs.map((el, i) => (
 								<Grid item key={i} lg={el.lg} sm={el.sm} xs={el.xs}>
-									<TextField  type={el.type} name={el.name} label={el.label}/>
+									<TextField size="small"  type={el.type} name={el.name} label={el.label}/>
 								</Grid>
 							))
 						}
 
 						<Grid item sm={messageTextArea.sm} xs={messageTextArea.xs} lg={messageTextArea.lg}>
 							<TextField 
+								size="small"
 								multiline 
 								rows={messageTextArea.row} 
 								type={messageTextArea.type} 
