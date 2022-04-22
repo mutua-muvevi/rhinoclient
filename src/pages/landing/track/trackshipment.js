@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import * as Yup from "yup";
-import { Box, Breadcrumbs, Button, FormGroup, InputBase, Link, Typography } from "@mui/material"
+import { Box, Breadcrumbs, Button, FormGroup, InputBase, Typography } from "@mui/material"
 import { styled } from "@mui/system";
 import HomeIcon from '@mui/icons-material/Home';
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import ManageSearchIcon from '@mui/icons-material/ManageSearch';
+import { Link } from "react-router-dom";
 
 // disposable import
 import { shipping } from "./disposabledummy"
@@ -68,7 +68,7 @@ const TrackShipment = () => {
 					underline="hover"
 					sx={{ display: 'flex', alignItems: 'center' }}
 					
-					href="/"
+					to="/"
 				>
 					 <HomeIcon color="#fff" sx={{ mr: 0.5 }} fontSize="inherit" />
 					 Home
@@ -77,7 +77,7 @@ const TrackShipment = () => {
 					underline="hover"
 					sx={{ display: 'flex', alignItems: 'center' }}
 					
-					href="/track/main"
+					to="/track/main"
 				>
 					<TravelExploreIcon sx={{ mr: 0.5 }} fontSize="inherit" />
 					Track
@@ -121,7 +121,7 @@ const TrackShipment = () => {
 						modal={trackItemModal}
 						onClose={closeModal}
 					/>
-				) : <Typography variant="h3" color="white">Shipping detail not found</Typography>
+				) : null
 			}
 		</Box>
 	)

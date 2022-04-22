@@ -75,8 +75,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 
 const TrackItem = ({ item, modal, onClose}) => {
 
-	
-	
+
 	const shipperHeaderItems = [
 		[
 			{
@@ -199,7 +198,11 @@ const TrackItem = ({ item, modal, onClose}) => {
 
 								<StyledTrackBodyDetails id="track-body">
 									{
-										item.formitems.map((el, i) => (
+										item.formitems
+										.sort((a, b) => {
+											return b.number - a.number
+										})
+										.map((el, i) => (
 											<StyledTableContainer >
 												<Table aria-label="shipment event table">
 													<TableHead>

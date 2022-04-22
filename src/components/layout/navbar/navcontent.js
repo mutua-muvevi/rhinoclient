@@ -48,7 +48,7 @@ export const navPages = [
 export const navItemBottom = [
 	{
 		label: "Login",
-		path: "/landing/login",
+		path: "/auth/login",
 		icon: <LockIcon/>,
 		index: 6
 	},

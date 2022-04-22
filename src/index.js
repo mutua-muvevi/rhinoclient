@@ -6,12 +6,15 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from './redux/store';
+import ErrorBoundary from "./Error/errorboundary";
 
 ReactDOM.render(
 	<React.StrictMode>
 		<Provider store={store}>
 			<PersistGate persistor={persistor}>
-				<App />
+				<ErrorBoundary>
+					<App />
+				</ErrorBoundary>
 			</PersistGate>
 		</Provider>
 	</React.StrictMode>,

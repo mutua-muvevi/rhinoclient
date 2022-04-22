@@ -20,6 +20,9 @@ import Landinglayout from "./components/layout/landinglayout";
 import Tracklayout from "./components/layout/tracklayout";
 import TrackShipment from "./pages/landing/track/trackshipment";
 import TrackStorage from "./pages/landing/track/trackstorage";
+import AuthLayout from "./components/layout/authlayout";
+import Login from "./pages/auth/login/login";
+import ForgotPassword from "./pages/auth/forgotpassword/forgotpassword";
 
 Modal.setAppElement("#root")
 
@@ -43,6 +46,11 @@ function App() {
 							<Route path="/track/main" element={<Track/>}/>
 							<Route path="/track/shipment" element={<TrackShipment/>}/>
 							<Route path="/track/storage" element={<TrackStorage/>}/>
+						</Route>
+
+						<Route path="/auth" element={<AuthLayout/>}>
+							<Route path="/auth/login" element={<Login/>}/>
+							<Route path="/auth/forgotpassword" element={<ForgotPassword/>}/>
 						</Route>
 
 						<Route path="/dashboard" element={<Layout/>}>
