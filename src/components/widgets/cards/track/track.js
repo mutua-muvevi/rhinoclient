@@ -2,6 +2,7 @@ import { Card, CardActionArea, CardContent, CardMedia, Typography } from "@mui/m
 import { styled } from "@mui/styles"
 import React from 'react'
 
+
 const TrackCard = ({ title, subtitle, link, image, alt }) => {
 
 	const StyledCard = styled(Card)(({theme}) => ({
@@ -34,7 +35,7 @@ const TrackCard = ({ title, subtitle, link, image, alt }) => {
 
 	return (
 		<StyledCard>
-			<StyledCardActionArea href={link}>
+			<StyledCardActionArea >
 				<CardMedia
 					component="img"
 					height="300"
