@@ -42,13 +42,11 @@ const loginFormContent = [
 ]
 
 const INITIAL_FORM_STATE = {
-	email: "",
-	password: ""
+	email: ""
 }
 
 const FORM_VALIDATION = Yup.object().shape({
-	email: Yup.string().email("Please add a valid email").required("Please add an email"),
-	password: Yup.string().min(8, 'Password is too short - should be 8 chars minimum.').required("Please add a password")
+	email: Yup.string().email("Please add a valid email").required("Please add an email")
 })
 
 const StyledAuthInputs = styled(Box)(({ theme }) => ({

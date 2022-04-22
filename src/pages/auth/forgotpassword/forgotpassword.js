@@ -109,7 +109,7 @@ const ForgotPassword = () => {
 								color="white"
 							>
 								<VpnKeyIcon sx={{ mr: 0.5, color:"white" }} fontSize="inherit" />
-								Login
+								Forgot Password
 							</Typography>
 						</StyledAuthBreadCrumbs>
 					</Container>
