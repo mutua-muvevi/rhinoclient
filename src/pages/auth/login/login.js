@@ -1,10 +1,12 @@
 import React from 'react';
-import { Box, Card, CardMedia, Container, Divider, Grid, Typography } from "@mui/material";
+import { Box,  Breadcrumbs, Card, CardMedia, Container, Divider, Grid, Typography } from "@mui/material";
 import { styled } from "@mui/system";
-import Logo from "../../../assets/images/logos/Rhino card logo - PNG.png"
+import Logo from "../../../assets/images/logos/Rhino card logo - PNG.png";
 import LoginForm from "./loginform";
-import { metaAuthContent } from "../metacontent.js"
-import { Link } from "react-router-dom"
+import { metaAuthContent } from "../metacontent.js";
+import { Link } from "react-router-dom";
+import HomeIcon from '@mui/icons-material/Home';
+import LockIcon from '@mui/icons-material/Lock';
 
 const StyledAuthCardWrapper = styled(Card)(({ theme }) => ({
 	position: "absolute",
@@ -14,6 +16,11 @@ const StyledAuthCardWrapper = styled(Card)(({ theme }) => ({
 	right: "10vw",
 	backgroundColor: "rgba(0, 0, 0, 0.86)",
 	color: theme.palette.common.white
+}))
+
+const StyledAuthBreadCrumbs = styled(Breadcrumbs)(({ theme }) => ({
+	marginTop: "20px",
+	color: "white"
 }))
 
 const StyledGridWrapper = styled(Grid)(({ theme }) => ({
@@ -56,14 +63,16 @@ const StyledLoginSection = styled(Box)(({ theme }) => ({
 const Login = () => {
 	return (
 		<StyledAuthCardWrapper id="login">
+
+
 			<StyledGridWrapper container>
 
-				<StyledImageGrid item lg={5} xs={1}>
+				<StyledImageGrid item lg={5} xs={12}>
 					<StyledCardMedia
 						component="img"
 						height="100%"
-						image="https://res.cloudinary.com/dqweh6zte/image/upload/v1649662357/Rhino%20John%20Background%20Video/Rhinojon%20Product%20images/containers_flevwd.jpg"
-						alt="Container Terminal, Rhinojon prime metals"
+						image="https://res.cloudinary.com/dqweh6zte/image/upload/v1649928582/Rhino%20John%20Background%20Video/Rhinojon%20Product%20images/air-transport-loading-transformed_ru22tk.jpg"
+						alt="Cargo Plane with door opened, Rhinojon prime metals"
 					/>
 
 					<StyledRightGridContainer>
@@ -98,9 +107,27 @@ const Login = () => {
 						<Typography variant="subtitle1" color="#fff">
 							{metaAuthContent.login.text}
 						</Typography>
-						<Link style={{textDecoration: "none", color: "white"}} to={metaAuthContent.login.link.path}>
+						<Link style={{textDecoration: "none", color: "blue"}} to={metaAuthContent.login.link.path}>
 							{metaAuthContent.login.link.text}
 						</Link>
+						<StyledAuthBreadCrumbs>
+							<Link
+								underline="hover"
+								sx={{ display: 'flex', alignItems: 'center', textDecoration: "none" }}
+								color="blue"
+								to="/"
+							>
+								<HomeIcon sx={{ mr: 0.5, color:"white" }} fontSize="inherit" />
+								Home
+							</Link>
+							<Typography
+								sx={{ display: 'flex', alignItems: 'center' }}
+								color="white"
+							>
+								<LockIcon sx={{ mr: 0.5, color:"white" }} fontSize="inherit" />
+								Login
+							</Typography>
+						</StyledAuthBreadCrumbs>
 					</Container>
 
 				</StyledFormGrid>

@@ -38,13 +38,7 @@ const loginFormContent = [
 		label: "Email",
 		name: "email",
 		required: true
-	},
-	{
-		type: "password",
-		label: "Password",
-		name:"password",
-		required: true
-	},
+	}
 ]
 
 const INITIAL_FORM_STATE = {
@@ -62,7 +56,7 @@ const StyledAuthInputs = styled(Box)(({ theme }) => ({
 	width: "40vw"
 }))
 
-const LoginForm = () => {
+const ForgotPasswordForm = () => {
 	return (
 		<Box>
 			<Formik
@@ -88,7 +82,7 @@ const LoginForm = () => {
 						))
 					}
 				<Button type="submit" variant="contained" color="secondary" endIcon={<SendIcon/>}>
-					Login
+					Reset Password
 				</Button>
 				</Form>
 			</Formik>
@@ -96,4 +90,4 @@ const LoginForm = () => {
 	)
 }
 
-export default LoginForm
+export default ForgotPasswordForm
