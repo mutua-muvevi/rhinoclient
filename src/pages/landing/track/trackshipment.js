@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import * as Yup from "yup";
 import { Box, Breadcrumbs, Button, FormGroup, InputBase, Link, Typography } from "@mui/material"
 import { styled } from "@mui/system";
 import HomeIcon from '@mui/icons-material/Home';
@@ -121,7 +120,7 @@ const TrackShipment = () => {
 						modal={trackItemModal}
 						onClose={closeModal}
 					/>
-				) : <Typography variant="h3" color="white">Shipping detail not found</Typography>
+				) : null
 			}
 		</Box>
 	)
