@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box } from "@mui/material";
+import { Box, Grow } from "@mui/material";
 import Aboutcarousel from "./aboutcarousel";
 import Aboutcontentimage from "../../../components/units/aboutcontentimage/aboutcontentimage";
 import Values from "../../../components/units/values/values";
@@ -10,16 +10,18 @@ const About = () => {
 
 
 	return (
-		<Box>
-			<Aboutcarousel/>
-			<Aboutcontentimage
-				title={aboutIntroContent.title}
-				paragraph={aboutIntroContent.paragraph}
-				link={aboutIntroContent.link}
-			/>
-			<Counter/>
-			<Values/>
-		</Box>
+		<Grow style={{ transformOrigin: '10 20 50' }} in timeout={2000}>
+			<Box>
+				<Aboutcarousel/>
+				<Aboutcontentimage
+					title={aboutIntroContent.title}
+					paragraph={aboutIntroContent.paragraph}
+					link={aboutIntroContent.link}
+				/>
+				<Counter/>
+				<Values/>
+			</Box>
+		</Grow>
 	)
 }
 

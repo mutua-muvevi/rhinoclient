@@ -1,8 +1,10 @@
-import { Box, CssBaseline} from "@mui/material";
+import React, { useState } from 'react';
+
+import { Box, CssBaseline, Fade} from "@mui/material";
 import { useTheme } from '@mui/material/styles';
 import { styled } from "@mui/system";
-import React, { useState } from 'react'
 import { Outlet } from 'react-router-dom';
+
 import DrawerComponent from "./drawer/drawer";
 import PrimarySearchAppBar from "./topbar/topbar";
 
@@ -34,18 +36,21 @@ const Layout = () => {
 	  setOpen(false);
 	};
 
+
 	return (
-		<Box sx={{ display: 'flex' }}>
-			<CssBaseline />
-			<DrawerComponent handleDrawerOpen={handleDrawerOpen} open={open} theme={theme} handleDrawerClose={handleDrawerClose}/>
+		<Fade  in timeout={1000}>
+			<Box sx={{ display: 'flex' }}>
+				<CssBaseline />
+				<DrawerComponent handleDrawerOpen={handleDrawerOpen} open={open} theme={theme} handleDrawerClose={handleDrawerClose}/>
 
-			<PrimarySearchAppBar handleDrawerOpen={handleDrawerOpen} open={open}/>
+				<PrimarySearchAppBar handleDrawerOpen={handleDrawerOpen} open={open}/>
 
-			<Main component="main" sx={{ flexGrow: 1, p: 3 , width: "100%"}}>
-				<DrawerHeader/>
-				<Outlet/>
-			</Main>
-		</Box>
+				<Main component="main" sx={{ flexGrow: 1, p: 3 , width: "100%"}}>
+					<DrawerHeader/>
+					<Outlet/>
+				</Main>
+			</Box>
+		</Fade>
 	)
 }
 

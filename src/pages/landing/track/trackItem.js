@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Container, Divider, Grid, Modal, Paper, Table, TableBody, TableContainer, TableHead, TableRow, Typography } from "@mui/material";
+import { Box, Container, Divider, Grid, Modal, Grow, Table, TableBody, TableContainer, TableHead, TableRow, Typography } from "@mui/material";
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import { styled } from "@mui/system";
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
@@ -142,116 +142,118 @@ const TrackItem = ({ item, modal, onClose}) => {
 
 
 	return (
+		
 		<StyledTrackItem 
-			open={modal}
-			onClose={onClose}
-			aria-labelledby="modal-modal-title"
-			aria-describedby="modal-modal-description"
-			id="track-item"
-		>
-			{
-				item ? (
+				open={modal}
+				onClose={onClose}
+				aria-labelledby="modal-modal-title"
+				aria-describedby="modal-modal-description"
+				id="track-item"
+			>
+				{
+					item ? (
 					<>
-						<Box>
-							<StyledHeaderTitle>
-								<Typography variant="h3" sx={{marginTop: "20px"}} gutterBottom>
-									Shipment Details For :
-								</Typography>
-								<StyledHeaderDetail>
+						<Grow style={{ transformOrigin: '10 20 50' }} in timeout={2000}>
+							<Box>
+								<StyledHeaderTitle>
 									<Typography variant="h3" sx={{marginTop: "20px"}} gutterBottom>
-										{item.trackno}
+										Shipment Details For :
 									</Typography>
-								</StyledHeaderDetail>
-							</StyledHeaderTitle>
+									<StyledHeaderDetail>
+										<Typography variant="h3" sx={{marginTop: "20px"}} gutterBottom>
+											{item.trackno}
+										</Typography>
+									</StyledHeaderDetail>
+								</StyledHeaderTitle>
 
-							<Divider/>
+								<Divider/>
 
-							<StyledItemContainer maxWidth="xl">
+								<StyledItemContainer maxWidth="xl">
 
-								<StyledTrackHeaderDetails id="treack-title">
-									<Grid container spacing={2}>
-										{
-											shipperHeaderItems &&
-											shipperHeaderItems.map((box, i) => (
-												<Grid key={i} item lg={4} sm={12} xs={12}>
-													{
-														box &&
-														box.map((el, i) => (
-															<StyledHeaderItemTextContainer key={i}>
-																<Typography variant="h5">
-																	{el.name}
-																</Typography>
-																<Box sx={{display: "flex", alignItems: "center", justifyContent: "left"}}>
-																	<KeyboardDoubleArrowRightIcon/>
-																	<Typography variant="body1" sx={{marginLeft: "10px"}}>
-																		{el.value}
+									<StyledTrackHeaderDetails id="treack-title">
+										<Grid container spacing={2}>
+											{
+												shipperHeaderItems &&
+												shipperHeaderItems.map((box, i) => (
+													<Grid key={i} item lg={4} sm={12} xs={12}>
+														{
+															box &&
+															box.map((el, i) => (
+																<StyledHeaderItemTextContainer key={i}>
+																	<Typography variant="h5">
+																		{el.name}
 																	</Typography>
-																</Box>
-															</StyledHeaderItemTextContainer>
-														))
-													}
-												</Grid>
+																	<Box sx={{display: "flex", alignItems: "center", justifyContent: "left"}}>
+																		<KeyboardDoubleArrowRightIcon/>
+																		<Typography variant="body1" sx={{marginLeft: "10px"}}>
+																			{el.value}
+																		</Typography>
+																	</Box>
+																</StyledHeaderItemTextContainer>
+															))
+														}
+													</Grid>
+												))
+											}
+										</Grid>
+									</StyledTrackHeaderDetails>
+
+									<StyledTrackBodyDetails id="track-body">
+										{
+											item.formitems
+											.sort((a, b) => {
+												return b.number - a.number
+											})
+											.map((el, i) => (
+												<StyledTableContainer >
+													<Table aria-label="shipment event table">
+														<TableHead>
+															<TableRow>
+																{
+																	[
+																		"No", 
+																		"Time",
+																		"Date",
+																		"Location",
+																		"Status",
+																		"Observation"
+																	].map((cell, i) => (
+																		<StyledTableCell align="left">{cell}</StyledTableCell>
+																	))
+																}
+															</TableRow>
+														</TableHead>
+
+														<TableBody>
+															<TableRow>
+																{
+																	[
+																		el.number, 
+																		el.timeevents, 
+																		el.dateevents, 
+																		el.currentlocation, 
+																		el.shippingstatus, 
+																		el.notes
+																	].map((cell, i) => (
+																		<StyledTableCell key={i}>
+																			{ cell }
+																		</StyledTableCell>
+																	))
+																}
+															</TableRow>
+														</TableBody>
+													</Table>
+												</StyledTableContainer>
 											))
 										}
-									</Grid>
-								</StyledTrackHeaderDetails>
+									</StyledTrackBodyDetails>
 
-								<StyledTrackBodyDetails id="track-body">
-									{
-										item.formitems
-										.sort((a, b) => {
-											return b.number - a.number
-										})
-										.map((el, i) => (
-											<StyledTableContainer >
-												<Table aria-label="shipment event table">
-													<TableHead>
-														<TableRow>
-															{
-																[
-																	"No", 
-																	"Time",
-																	"Date",
-																	"Location",
-																	"Status",
-																	"Observation"
-																].map((cell, i) => (
-																	<StyledTableCell align="left">{cell}</StyledTableCell>
-																))
-															}
-														</TableRow>
-													</TableHead>
-
-													<TableBody>
-														<TableRow>
-															{
-																[
-																	el.number,
-																	el.timeevents,
-																	el.dateevents,
-																	el.currentlocation,
-																	el.shippingstatus,
-																	el.notes
-																].map((cell, i) => (
-																	<StyledTableCell key={i}>
-																		{ cell }
-																	</StyledTableCell>
-																))
-															}
-														</TableRow>
-													</TableBody>
-												</Table>
-											</StyledTableContainer>
-										))
-									}
-								</StyledTrackBodyDetails>
-
-							</StyledItemContainer>
-							
+								</StyledItemContainer>
+								
 
 
-						</Box>
-
+							</Box>
+						</Grow>
 					</>
 				) : null
 			}

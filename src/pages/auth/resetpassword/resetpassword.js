@@ -1,12 +1,12 @@
 import React from 'react';
-import { Box, Breadcrumbs, Card, CardMedia, Container, Divider, Grid, Grow, Typography } from "@mui/material";
+import { Box,  Breadcrumbs, Card, CardMedia, Container, Divider, Grid, Grow, Typography } from "@mui/material";
 import { styled } from "@mui/system";
-import Logo from "../../../assets/images/logos/Rhino card logo - PNG.png"
-import ForgotPasswordForm from "./forgotpasswordform";
-import { metaAuthContent } from "../metacontent.js"
+import Logo from "../../../assets/images/logos/Rhino card logo - PNG.png";
+import ResetPasswordForm from "./resetpasswordform";
+import { metaAuthContent } from "../metacontent.js";
 import { Link } from "react-router-dom";
 import HomeIcon from '@mui/icons-material/Home';
-import VpnKeyIcon from '@mui/icons-material/VpnKey';
+import LockResetIcon from '@mui/icons-material/LockReset';
 
 const StyledAuthCardWrapper = styled(Card)(({ theme }) => ({
 	position: "absolute",
@@ -60,12 +60,28 @@ const StyledLoginSection = styled(Box)(({ theme }) => ({
 	marginTop: "30px"
 }))
 
-const ForgotPassword = () => {
+const ResetPassword = () => {
 	return (
 		<Grow style={{ transformOrigin: '10 20 50' }} in timeout={2000}>
 
-			<StyledAuthCardWrapper id="forgot-password">
+			<StyledAuthCardWrapper id="reset-password">
+
+
 				<StyledGridWrapper container>
+
+					<StyledImageGrid item lg={5} xs={12}>
+						<StyledCardMedia
+							component="img"
+							height="100%"
+							image="https://res.cloudinary.com/dqweh6zte/image/upload/v1649928582/Rhino%20John%20Background%20Video/Rhinojon%20Product%20images/air-transport-loading-transformed_ru22tk.jpg"
+							alt="Cargo Plane with door opened, Rhinojon prime metals"
+						/>
+
+						<StyledRightGridContainer>
+						
+						</StyledRightGridContainer>
+
+					</StyledImageGrid>
 
 					<StyledFormGrid item lg={7} xs={12}>
 						
@@ -75,15 +91,15 @@ const ForgotPassword = () => {
 									src={Logo}
 									alt="Rhino John Prime Metals Logo"
 									style={{width: "120px"}}/>
-								<Typography sx={{marginLeft: "30px", marginTop: "20px"}} variant="h2">ForgotPassword</Typography>
+								<Typography sx={{marginLeft: "30px", marginTop: "20px"}} variant="h2">Password Reset</Typography>
 							</StyledLogoTitle>
 
 							<Typography variant="h4">
-								Enter your email below to reset password
+								Reset Your Login Password
 							</Typography>
 
 							<StyledLoginSection>
-								<ForgotPasswordForm/>
+								<ResetPasswordForm/>
 							</StyledLoginSection>
 						</Container>
 
@@ -110,28 +126,13 @@ const ForgotPassword = () => {
 									sx={{ display: 'flex', alignItems: 'center' }}
 									color="white"
 								>
-									<VpnKeyIcon sx={{ mr: 0.5, color:"white" }} fontSize="inherit" />
-									Forgot Password
+									<LockResetIcon sx={{ mr: 0.5, color:"white" }} fontSize="inherit" />
+									Reset Password
 								</Typography>
 							</StyledAuthBreadCrumbs>
 						</Container>
 
 					</StyledFormGrid>
-
-					
-					<StyledImageGrid item lg={5} xs={12}>
-						<StyledCardMedia
-							component="img"
-							height="100%"
-							image="https://res.cloudinary.com/dqweh6zte/image/upload/v1649662366/Rhino%20John%20Background%20Video/Rhinojon%20Product%20images/diamond_1_slzqey.jpg"
-							alt="Diamond mineral, Rhinojon prime metals"
-						/>
-
-						<StyledRightGridContainer>
-						
-						</StyledRightGridContainer>
-
-					</StyledImageGrid>
 
 				</StyledGridWrapper>
 			</StyledAuthCardWrapper>
@@ -139,4 +140,4 @@ const ForgotPassword = () => {
 	)
 }
 
-export default ForgotPassword
+export default ResetPassword

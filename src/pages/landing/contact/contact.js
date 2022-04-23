@@ -1,4 +1,4 @@
-import { Box, Container, Grid } from "@mui/material";
+import { Box, Container, Grid, Grow } from "@mui/material";
 import React from 'react';
 import Banner from "../../../components/layout/banner/banner";
 import ContactForm from "./contactform";
@@ -13,25 +13,27 @@ const StyledFormMapContainer = styled(Container)(({ theme }) => ({
 
 const Contact = () => {
 	return (
-		<Box>
-			<Banner 
-				title={contactInfo.title} 
-				subtitle={contactInfo.subTitle}
-				image={contactInfo.image.src}
-				imageAlt={contactInfo.image.alt}
-				paragraph={contactInfo.paragraph}
-			/>
-			<StyledFormMapContainer maxWidth="xl">
-				<Grid container spacing={4}>
-					<Grid item lg={5} sm={12}>
-						<ContactMap/>
+		<Grow style={{ transformOrigin: '10 20 50' }} in timeout={2000}>
+			<Box>
+				<Banner 
+					title={contactInfo.title} 
+					subtitle={contactInfo.subTitle}
+					image={contactInfo.image.src}
+					imageAlt={contactInfo.image.alt}
+					paragraph={contactInfo.paragraph}
+				/>
+				<StyledFormMapContainer maxWidth="xl">
+					<Grid container spacing={4}>
+						<Grid item lg={5} sm={12}>
+							<ContactMap/>
+						</Grid>
+						<Grid item lg={7} sm={12}>
+							<ContactForm/>
+						</Grid>
 					</Grid>
-					<Grid item lg={7} sm={12}>
-						<ContactForm/>
-					</Grid>
-				</Grid>
-			</StyledFormMapContainer>
-		</Box>
+				</StyledFormMapContainer>
+			</Box>
+		</Grow>
 	)
 }
 
