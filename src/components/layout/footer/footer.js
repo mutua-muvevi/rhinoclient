@@ -1,9 +1,9 @@
-import { Box, Button, Container, Grid, List, ListItem, TextField, Typography } from "@mui/material"
-import React from 'react';
+import { Box, Button, Container, FormGroup, Grid, TextField, Typography } from "@mui/material"
+import React, { useState } from 'react';
 import { footerLeft, footerMiddle } from "./footercontent";
 import SendIcon from '@mui/icons-material/Send';
 import { styled } from "@mui/system";
-import FooterImage from "../../../assets/images/miningtools.jpg"
+import FooterImage from "../../../assets/images/miningtools.jpg";
 
 const FooterWrapper = styled(Box)(({theme}) => ({
 	background: `linear-gradient(to bottom, rgba(0, 0, 0, 0.58), rgba(0, 0, 0, 0.78)), url(${FooterImage})`,
@@ -35,20 +35,6 @@ const FooterTitle = styled(Typography)(({theme}) => ({
 	marginBottom : "20px"
 }))
 
-const footerInputSX = {
-	padding: "5px 10px",
-	minWidth: "180px"
-}
-
-const WhiteBorderTextField = styled(TextField)`
-	& .MuiOutlinedInput-root {
-		&.Mui-focused fieldset {
-			border-color: white;
-			color: white
-		}
-	}
-`;
-
 const SocialIconsStyle = styled(Box)(({theme}) => ({
 	maxWidth: "300px",
 	marginTop: "20px",
@@ -69,7 +55,42 @@ const StyledCopyright = styled(Box)(({theme}) => ({
 	paddingBottom: "10px !important"
 }))
 
+
+const styledAuthTextField = {
+	'& label': {
+		color: "white"
+	},
+	'& label.Mui-focused': {
+		color: 'grey',
+	},
+	'& .MuiInput-underline:after': {
+		borderBottomColor: 'white',
+	},
+	'& .MuiOutlinedInput-root': {
+		color: "white",
+		'& fieldset': {
+			borderColor: 'grey !important',
+		},
+		'&:hover fieldset': {
+			borderColor: 'white',
+		},
+		'&.Mui-focused fieldset': {
+			borderColor: 'white',
+		},
+	},
+	color: "white !important"
+}
+
 const Footer = () => {
+
+	const [email, setEmail] = useState("")
+
+	const submitHandler = (e) => {
+		e.preventDefault()
+		console.log(email)
+		setEmail("")
+	}
+
 	return (
 		<>
 			<FooterWrapper id="footer" component="footer">
@@ -129,24 +150,22 @@ const Footer = () => {
 								Sign Up To Our Newsletter And Get The Latest Offers.
 							</Typography>
 
-							<WhiteBorderTextField 
-								type="email"
-								style={{padding: "5px"}} 
-								placeholder="Enter your email "
-								sx={{minWidth: "300px"}}
-								inputProps={{
-									style: {
-										paddingTop : 7,
-										paddingBottom : 7,
-										paddingLeft : 10,
-										color: "white !important",
-										borderColor: "white"
-									}
-								}}
-								/>
-							<Button type="submit" variant="contained" sx={footerInputSX} endIcon={<SendIcon/>}>
-								Submit
-							</Button>
+							<form onSubmit={submitHandler}>
+								<FormGroup row>
+									<TextField 
+										sx={styledAuthTextField}
+										type="email"
+										onChange={e => setEmail(e.target.value)}
+										placeholder="Subscribe to our mailing list"
+										variant="outlined"
+										size="small"
+										required
+									/>
+									<Button type="submit" variant="contained" color="secondary" endIcon={<SendIcon/>}>
+										Submit Email
+									</Button>
+								</FormGroup>
+							</form>
 						</Grid>
 					</Grid>
 				</StyledContainer>

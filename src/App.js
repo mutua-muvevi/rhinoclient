@@ -23,6 +23,7 @@ import TrackStorage from "./pages/landing/track/trackstorage";
 import AuthLayout from "./components/layout/authlayout";
 import Login from "./pages/auth/login/login";
 import ForgotPassword from "./pages/auth/forgotpassword/forgotpassword";
+import ResetPassword from "./pages/auth/resetpassword/resetpassword";
 
 Modal.setAppElement("#root")
 
@@ -51,6 +52,7 @@ function App() {
 						<Route path="/auth" element={<AuthLayout/>}>
 							<Route path="/auth/login" element={<Login/>}/>
 							<Route path="/auth/forgotpassword" element={<ForgotPassword/>}/>
+							<Route path="/auth/resetpassword" element={<ResetPassword/>}/>
 						</Route>
 
 						<Route path="/dashboard" element={<Layout/>}>

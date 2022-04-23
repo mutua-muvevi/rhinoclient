@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Breadcrumbs, Button, FormGroup, InputBase, Typography } from "@mui/material"
+import { Box, Breadcrumbs, Button, FormGroup, Grow, InputBase, Typography } from "@mui/material"
 import { styled } from "@mui/system";
 import HomeIcon from '@mui/icons-material/Home';
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
@@ -39,51 +39,53 @@ const formgroupStyle = {
 
 const TrackStorage = () => {
 	return (
-		<Box id="track-storage">
-			<StyledBreadCrumbs>
-				<Link
-					underline="hover"
-					sx={{ display: 'flex', alignItems: 'center' }}
-					
-					to="/"
-				>
-					<HomeIcon color="#fff" sx={{ mr: 0.5 }} fontSize="inherit" />
-					Home
-				</Link>
-				<Link
-					underline="hover"
-					sx={{ display: 'flex', alignItems: 'center' }}
-					
-					to="/track/main"
-				>
-					<TravelExploreIcon sx={{ mr: 0.5 }} fontSize="inherit" />
-					Track
-				</Link>
-				<Typography
-					sx={{ display: 'flex', alignItems: 'center' }}
-					color="#fff"
-				>
-					<WarehouseIcon sx={{ mr: 0.5 }} fontSize="inherit" />
-					Track Storage
-				</Typography>
-			</StyledBreadCrumbs>
+		<Grow style={{ transformOrigin: '10 20 50' }} in timeout={2000}>
+			<Box id="track-storage">
+				<StyledBreadCrumbs>
+					<Link
+						underline="hover"
+						sx={{ display: 'flex', alignItems: 'center' }}
+						
+						to="/"
+					>
+						<HomeIcon color="#fff" sx={{ mr: 0.5 }} fontSize="inherit" />
+						Home
+					</Link>
+					<Link
+						underline="hover"
+						sx={{ display: 'flex', alignItems: 'center' }}
+						
+						to="/track/main"
+					>
+						<TravelExploreIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+						Track
+					</Link>
+					<Typography
+						sx={{ display: 'flex', alignItems: 'center' }}
+						color="#fff"
+					>
+						<WarehouseIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+						Track Storage
+					</Typography>
+				</StyledBreadCrumbs>
 
-			<Box>
-				<Typography variant="h1" color="white" sx={trackTitle} gutterBottom>
-					Track Your Storage
-				</Typography>
-				<FormGroup row sx={formgroupStyle}>
-					<StyledInputBase
-						color="white"
-						placeholder="Enter Storage Track Number..."
-						variant="standard"
-					/>
-					<StyledTrackButton endIcon={<SearchIcon/>} variant="contained" color="primary">
-						Search
-					</StyledTrackButton>
-				</FormGroup>
+				<Box>
+					<Typography variant="h1" color="white" sx={trackTitle} gutterBottom>
+						Track Your Storage
+					</Typography>
+					<FormGroup row sx={formgroupStyle}>
+						<StyledInputBase
+							color="white"
+							placeholder="Enter Storage Track Number..."
+							variant="standard"
+						/>
+						<StyledTrackButton endIcon={<SearchIcon/>} variant="contained" color="primary">
+							Search
+						</StyledTrackButton>
+					</FormGroup>
+				</Box>
 			</Box>
-		</Box>
+		</Grow>
 	)
 }
 

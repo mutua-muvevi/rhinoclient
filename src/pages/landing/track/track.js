@@ -1,4 +1,4 @@
-import { Box, Breadcrumbs, Grid, Typography } from "@mui/material"
+import { Box, Breadcrumbs, Grid, Typography, Grow } from "@mui/material"
 import { styled } from "@mui/system";
 import React from 'react';
 import HomeIcon from '@mui/icons-material/Home';
@@ -36,27 +36,29 @@ const Track = () => {
 				</Typography>
 			</StyledBreadCrumbs>
 
-			<Box>
-				<Typography variant="h1" color="white" gutterBottom>
-					Tracking
-				</Typography>
-				<Grid container spacing={2}>
-					{
-						trackCardInfo.map((el, i) => (
-							<Grid item key={el} lg={6} sm={12} xs={12}>
-								<Link to={el.link} style={{textDecoration: "none"}}>
-									<TrackCard
-										image={el.image.src}
-										alt={el.image.alt}
-										title={el.title}
-										subtitle={el.subtitle}
-									/>
-								</Link>
-							</Grid>
-						))
-					}
-				</Grid>
-			</Box>
+			<Grow style={{ transformOrigin: '10 20 50' }} in timeout={2000}>
+				<Box>
+					<Typography variant="h1" color="white" gutterBottom>
+						Tracking
+					</Typography>
+					<Grid container spacing={2}>
+						{
+							trackCardInfo.map((el, i) => (
+								<Grid item key={el} lg={6} sm={12} xs={12}>
+									<Link to={el.link} style={{textDecoration: "none"}}>
+										<TrackCard
+											image={el.image.src}
+											alt={el.image.alt}
+											title={el.title}
+											subtitle={el.subtitle}
+										/>
+									</Link>
+								</Grid>
+							))
+						}
+					</Grid>
+				</Box>
+			</Grow>
 		</Box>
 	)
 }

@@ -5,6 +5,7 @@ import { Button, Grid,  Typography } from "@mui/material";
 import { styled } from "@mui/system"
 import { contactFormInputs, contactFormTextArea } from "./contactInfo";
 import TextField from "../../../components/formsUI/textfield/textfield"
+import SendIcon from '@mui/icons-material/Send';
 
 const StyledAddButton = styled(Button)(({theme}) => ({
 	borderRadius: 3,
@@ -64,13 +65,13 @@ const ContactForm = () => {
 							))
 						}
 					</Grid>
+					<StyledAddButton type="submit" color="secondary" endIcon={<SendIcon/>} variant="contained">
+						Submit
+					</StyledAddButton>
 				</Form>
 
 			</Formik>
 			
-			<StyledAddButton variant="contained">
-				Submit
-			</StyledAddButton>
 		</>
 	)
 }

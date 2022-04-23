@@ -1,4 +1,4 @@
-import { Box, CssBaseline } from "@mui/material";
+import { Box, CssBaseline, Fade } from "@mui/material";
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Footer from "./footer/footer";
@@ -28,14 +28,16 @@ function ElevationScroll(props) {
 
 const Landinglayout = (props) => {
 	return (
-		<Box>
-			<CssBaseline/>
-			<ElevationScroll {...props}>
-				<Navbar/>
-			</ElevationScroll>
-			<Outlet/>
-			<Footer/>
-		</Box>
+		<Fade style={{ transformOrigin: '10 20 50' }} in timeout={2000}>
+			<Box>
+				<CssBaseline/>
+				<ElevationScroll {...props}>
+					<Navbar/>
+				</ElevationScroll>
+				<Outlet/>
+				<Footer/>
+			</Box>
+		</Fade>
 	)
 }
 
