@@ -2,25 +2,31 @@ import authTypes from "./authtypes"
 import axios from "axios"
 
 export const fetchAuthorizedUser = () => ({
-  type: authTypes.START_LOADING_USER,
+	type: authTypes.START_LOADING_USER,
+	isLoading: true,
+	isAuthenticated: false,
 })
 
 export const fetchSuccessAuthUser = (token) => ({
   type: authTypes.SUCCESS_CURRENT_USER,
+  isLoading: false,
+  isAuthenticated: true,
   payload: token,
 })
 
 export const fetchFailAuthUser = (errMessage) => ({
   type: authTypes.FAIL_CURRENT_USER,
+  isLoading: false,
+  isAuthenticated: false,
   payload: errMessage,
 })
 
-export const loadAuthUser = (formData) => {
+export const postAuthUser = (formData) => {
 	return async (dispatch) => {
 		try {
-			if (!formData.fullName) {
+			if (formData.firstname) {
 				const res = await axios.post(
-				`https://rhinojonapi.herokuapp.com/api/user/register`,
+				`http://localhost:7000/api/user/register`,
 				formData,
 				{
 					headers: {
@@ -32,7 +38,7 @@ export const loadAuthUser = (formData) => {
 				dispatch(fetchSuccessAuthUser(res.data.data.user))
 			} else {
 				const res = await axios.post(
-				`https://rhinojonapi.herokuapp.com/api/user/login`,
+				`http://localhost:7000/api/user/login`,
 				formData,
 				{
 					headers: {
@@ -41,10 +47,11 @@ export const loadAuthUser = (formData) => {
 				}
 				)
 				fetchAuthorizedUser()
-				dispatch(fetchSuccessAuthUser(res.data.data.user))
+				dispatch(fetchSuccessAuthUser(res.data.token))
 			}
+
 		} catch (error) {
-			dispatch(fetchFailAuthUser(error.message))
+			dispatch(fetchFailAuthUser(error.response.data.error))
 		}
 	}
 }

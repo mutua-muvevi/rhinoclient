@@ -19,7 +19,7 @@ const formContainer = {
 	borderRadius: 4
 }
 
-const AddUsermodal = ({open, setOpen}) => {
+const AddUsermodal = ({open, setOpen, onClose}) => {
 	return (
 		<StyledModal
 			open={open}
@@ -29,9 +29,9 @@ const AddUsermodal = ({open, setOpen}) => {
 		>
 			<Box sx={formContainer}>
 				<Typography id="modal-modal-title" variant="h4" gutterBottom component="h2">
-					Add Shipment Form
+					Add a User
 				</Typography>
-				<AddUserForm/>
+				<AddUserForm onClose={onClose}/>
 			</Box>
 		</StyledModal>
 	)

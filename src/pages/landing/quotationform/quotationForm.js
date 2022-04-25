@@ -71,7 +71,7 @@ const QuotationForm = ({onClose}) => {
 					...INITIAL_FORM_STATE
 				}}
 				validationSchema={ FORM_VALIDATION }
-				onSubmit = {submitHandler}
+				onSubmit = { submitHandler }
 			>
 				<Form>
 					<Grid sx={styledGridFormWrapper} container spacing={2}>

@@ -1,9 +1,10 @@
 import authTypes from './authtypes';
 
 const initialState = {
-  token: null,
-  isLoading: true,
-  errMessage: undefined,
+	token: null,
+	isLoading: true,
+	errMessage: undefined,
+	isAuthenticated: false,
 };
 
 const authReducer = (state = initialState, { type, payload }) => {
@@ -11,19 +12,22 @@ const authReducer = (state = initialState, { type, payload }) => {
 		case authTypes.START_LOADING_USER:
 			return { 
 				...state, 
-				isLoading: true 
+				isLoading: true,
+				isAuthenticated: false,
 			};
 		case authTypes.SUCCESS_CURRENT_USER:
 			return {
 				...state,
 				isLoading: false,
 				token: payload,
+				isAuthenticated: true
 			};
 		case authTypes.FAIL_CURRENT_USER:
 			return {
 				...state,
 				isLoading: false,
 				errMessage: payload,
+				isAuthenticated: false
 			};
 		default:
 			return state;
