@@ -1,11 +1,17 @@
 import React from 'react';
-import { Box, Button } from "@mui/material";
-import { Formik, Form } from "formik";
-import * as Yup from "yup";
-import TextField from "../../../components/formsUI/textfield/textfield";
+import { useNavigate, Navigate } from 'react-router-dom';
+
+import {Alert, AlertTitle, Box, Button, Grow } from "@mui/material";
 import { styled } from "@mui/system";
 import SendIcon from '@mui/icons-material/Send';
 
+import { Formik, Form } from "formik";
+import * as Yup from "yup";
+
+import TextField from "../../../components/formsUI/textfield/textfield";
+
+import { connect } from "react-redux"
+import { forgotPassword } from "../../../redux/auth/authactions";
 
 const styledAuthTextField = {
 	'& label': {
@@ -32,7 +38,7 @@ const styledAuthTextField = {
 	color: "white !important"
 }
 
-const loginFormContent = [
+const forgotPasswordFormContent = [
 	{
 		type: "email",
 		label: "Email",
@@ -54,21 +60,41 @@ const StyledAuthInputs = styled(Box)(({ theme }) => ({
 	width: "40vw"
 }))
 
-const ForgotPasswordForm = () => {
+const ForgotPasswordForm = ({ forgotPassword,isAuthenticated, errMessage }) => {
+
+	// const navRoute = useNavigate()
+
+	const submitForgotPassword = values => {
+		forgotPassword(values)
+
+		// if(!errMessage || isAuthenticated === false){
+		// 	return navRoute("/auth/login")
+		// }
+	}
+
 	return (
 		<Box>
+			{
+				errMessage ? (
+					<Grow  style={{ transformOrigin: '10 20 50' }} in timeout={1000}>
+						<Alert severity="error" variant="filled">
+							<AlertTitle>Login Error!</AlertTitle>
+							{ errMessage }
+						</Alert>
+					</Grow>
+				) : null
+			}
+
 			<Formik
 				initialValues={{
 					...INITIAL_FORM_STATE
 				}}
 				validationSchema={ FORM_VALIDATION }
-				onSubmit = {values => {
-					console.log(values)
-				}}
+				onSubmit = { submitForgotPassword }
 			>
 				<Form>
 					{
-						loginFormContent.map((el, i) => (
+						forgotPasswordFormContent.map((el, i) => (
 							<StyledAuthInputs key={i}>
 								<TextField sx={styledAuthTextField} 
 									type={el.type} 
@@ -88,4 +114,15 @@ const ForgotPasswordForm = () => {
 	)
 }
 
-export default ForgotPasswordForm
+
+const mapStateToProps = ({ auth }) => ({
+	isAuthenticated: auth.isAuthenticated,
+	errMessage: auth.errMessage
+})
+
+const mapDispatchToProps = (dispatch) => ({
+	forgotPassword: (values) => dispatch(forgotPassword(values))
+})
+
+console.log("The error nit", forgotPassword)
+export default connect(mapStateToProps, mapDispatchToProps)(ForgotPasswordForm)

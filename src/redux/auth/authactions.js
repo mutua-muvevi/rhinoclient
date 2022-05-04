@@ -21,30 +21,51 @@ export const fetchFailAuthUser = (errMessage) => ({
   payload: errMessage,
 })
 
+
+export const loadForgotPassword = () => ({
+	type: authTypes.START_FORGOT_PASSWORD,
+	isLoading: true,
+	isAuthenticated: false,
+})
+
+export const postForgotPasswordSuccess = (data) => ({
+	type: authTypes.SUCCESS_FORGOT_PASSWORD,
+	isLoading: false,
+	payload: data,
+	isAuthenticated: false,
+})
+
+export const postForgotPasswordFail = (errMessage) => ({
+  type: authTypes.FAIL_FORGOT_PASSWORD,
+  isLoading: false,
+  payload: errMessage,
+  isAuthenticated: false,
+})
+
 export const postAuthUser = (formData) => {
 	return async (dispatch) => {
 		try {
 			if (formData.firstname) {
 				const res = await axios.post(
-				`http://localhost:7000/api/user/register`,
-				formData,
-				{
-					headers: {
-					"Content-Type": "application/json",
-					},
-				}
+					`http://localhost:7000/api/user/register`,
+					formData,
+					{
+						headers: {
+						"Content-Type": "application/json",
+						},
+					}
 				)
 				fetchAuthorizedUser()
 				dispatch(fetchSuccessAuthUser(res.data.data.user))
 			} else {
 				const res = await axios.post(
-				`http://localhost:7000/api/user/login`,
-				formData,
-				{
-					headers: {
-					"Content-Type": "application/json",
-					},
-				}
+					`http://localhost:7000/api/user/login`,
+					formData,
+					{
+						headers: {
+						"Content-Type": "application/json",
+						},
+					}
 				)
 				fetchAuthorizedUser()
 				dispatch(fetchSuccessAuthUser(res.data.token))
@@ -52,6 +73,28 @@ export const postAuthUser = (formData) => {
 
 		} catch (error) {
 			dispatch(fetchFailAuthUser(error.response.data.error))
+		}
+	}
+}
+
+export const forgotPassword = (formData) => {
+	return async (dispatch) => {
+		try {
+			const res = axios.post(
+				`http://localhost:7000/api/user/forgotpassword`,
+				formData,
+				{
+					headers: {
+					"Content-Type": "application/json",
+					},
+				}
+			)
+			loadForgotPassword()
+			postForgotPasswordSuccess(res.data)
+			console.log(res.data)
+		} catch (error) {
+			dispatch(postForgotPasswordFail(error.response.data.error))
+			console.log("THE FORGOT ERROR", error.response.data.error)
 		}
 	}
 }

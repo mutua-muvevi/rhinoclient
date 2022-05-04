@@ -1,7 +1,6 @@
 import { Box, Breadcrumbs, Link, Typography } from "@mui/material"
 import HomeIcon from '@mui/icons-material/Home';
 import GroupIcon from '@mui/icons-material/Warehouse';
-import React, {useState, useEffect} from 'react';
 import { styled } from "@mui/system";
 import AdminTable from "./adminTable/adminTable";
 import UsersTable from "./users/usersTable";

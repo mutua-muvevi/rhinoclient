@@ -27,7 +27,7 @@ const INITIAL_FORM_STATE = {
 	city: "",
 	country: "",
 	password: "",
-	isadmin: "",
+	authorization: "",
 }
 
 const FORM_VALIDATION = Yup.object().shape({
@@ -37,8 +37,8 @@ const FORM_VALIDATION = Yup.object().shape({
 	telephone: Yup.string().required(),
 	city: Yup.string().required(),
 	country: Yup.string().required(),
-	password: Yup.string().required(),
-	isadmin: Yup.boolean()
+	password: Yup.string().min(8).required(),
+	authorization: Yup.string().required()
     
 })
 
@@ -48,6 +48,7 @@ const AddUserForm = ({ onClose,  postAuthUser, isAuthenticated, errMessage }) =>
 	const [ showSuccess, setShowSuccess ] = useState(null)
 
 	const submitHandler = (values, { resetForm }) => {
+		console.log("SUBMITED USER", values)
 		setUser(values)
 		postAuthUser(values)
 		resetForm()
@@ -104,7 +105,7 @@ const AddUserForm = ({ onClose,  postAuthUser, isAuthenticated, errMessage }) =>
 						}
 
 						<Grid item>
-							<CheckBoxField name="isadmin" label="isadmin?" legend="Is Admin?"/>
+							<CheckBoxField name="authorization" label="authorization" legend="Authorization"/>
 						</Grid>
 
 					</Grid>

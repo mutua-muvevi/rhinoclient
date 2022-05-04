@@ -29,6 +29,30 @@ const authReducer = (state = initialState, { type, payload }) => {
 				errMessage: payload,
 				isAuthenticated: false
 			};
+		
+			
+		// case authTypes.START_FORGOT_PASSWORD:
+		// 	return {
+		// 		...state,
+		// 		isLoading: true,
+		// 		isAuthenticated: false
+		// 	};
+		// case authTypes.SUCCESS_FORGOT_PASSWORD:
+		// 	return {
+		// 		...state,
+		// 		isLoading: false,
+		// 		data: payload,
+		// 		isAuthenticated: false
+		// 	};
+		// case authTypes.FAIL_FORGOT_PASSWORD:
+		// 	return {
+		// 		...state,
+		// 		isLoading: false,
+		// 		errMessage: payload,
+		// 		isAuthenticated: false
+		// 	};
+		
+
 		default:
 			return state;
 	}

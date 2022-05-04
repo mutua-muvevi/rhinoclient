@@ -29,7 +29,7 @@ const AddUsermodal = ({open, setOpen, onClose}) => {
 		>
 			<Box sx={formContainer}>
 				<Typography id="modal-modal-title" variant="h4" gutterBottom component="h2">
-					Add a User
+					Register a User
 				</Typography>
 				<AddUserForm onClose={onClose}/>
 			</Box>

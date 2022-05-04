@@ -1,14 +1,17 @@
 import React from 'react';
-import { connect } from "react-redux";
-import { Alert, AlertTitle, Box, Button, Grow } from "@mui/material";
-import { Formik, Form } from "formik";
-import * as Yup from "yup";
-import TextField from "../../../components/formsUI/textfield/textfield";
-import { styled } from "@mui/system";
-import SendIcon from '@mui/icons-material/Send';
-import { postAuthUser } from "../../../redux/auth/authactions";
 import { useNavigate, Navigate } from 'react-router-dom';
 
+import { Alert, AlertTitle, Box, Button, Grow } from "@mui/material";
+import { styled } from "@mui/system";
+import SendIcon from '@mui/icons-material/Send';
+
+import { Formik, Form } from "formik";
+import * as Yup from "yup";
+
+import TextField from "../../../components/formsUI/textfield/textfield";
+
+import { connect } from "react-redux";
+import { postAuthUser } from "../../../redux/auth/authactions";
 
 const styledAuthTextField = {
 	'& label': {
