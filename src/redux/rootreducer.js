@@ -15,7 +15,17 @@ import enquiriesReducer from "./enquiries/enquiriesreducers";
 const config = {
 	key: 'root',
 	storage,
-	// whitelist: [],
+	whitelist: [
+		"auth", 
+		"user", 
+		"contact", 
+		"shipment", 
+		"singleshipment", 
+		"storage", 
+		"singleStorage", 
+		"productQuotation", 
+		"enquiries"
+	],
 };
 
 const rootReducer = combineReducers({

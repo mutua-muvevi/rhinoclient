@@ -10,12 +10,12 @@ const CheckBoxField = ({
 }) => {
 	const [field, meta] = useField(name);
 
+	const configFormControl = {}
 
 	const configCheckbox = {
-		...field,
+		...field
 	};
 
-	const configFormControl = {}
 
 	if(meta && meta.touched && meta.error) {
 		configFormControl.error = true;

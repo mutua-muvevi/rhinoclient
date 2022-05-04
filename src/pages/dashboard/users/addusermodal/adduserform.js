@@ -31,40 +31,45 @@ const INITIAL_FORM_STATE = {
 }
 
 const FORM_VALIDATION = Yup.object().shape({
-	firstname: Yup.string().required(),
-	lastname: Yup.string().required(),
-	email: Yup.string().email().required(),
-	telephone: Yup.string().required(),
-	city: Yup.string().required(),
-	country: Yup.string().required(),
-	password: Yup.string().min(8).required(),
-	authorization: Yup.string().required()
+	firstname: Yup.string().min(2).required("Please add your firstname"),
+	lastname: Yup.string().required("Please add your lastname"),
+	email: Yup.string().email("Please add a valid email").required("Please add an email"),
+	telephone: Yup.string().required("Please add your telephone number"),
+	city: Yup.string().required("Please add your city"),
+	country: Yup.string().required("Please add your country"),
+	password: Yup.string().min(8).required("Please add your password"),
+	authorization: Yup.string().required("Please add your authentication level")
     
 })
 
 const AddUserForm = ({ onClose,  postAuthUser, isAuthenticated, errMessage }) => {
 
 	const [ user, setUser ] = useState({});
-	const [ showSuccess, setShowSuccess ] = useState(null)
+
+	const [ showSuccess, setShowSuccess ] = useState(null);
+	const [ alertSuccess, setAlertSuccess ] = useState(true);
+	const [ alertSuccessDisplay, setAlertSuccessDisplay ] = useState("");
 
 	const submitHandler = (values, { resetForm }) => {
 		console.log("SUBMITED USER", values)
+
 		setUser(values)
 		postAuthUser(values)
 		resetForm()
 		setShowSuccess(true)
-
+		
 		setTimeout(() => {
-			onClose()
-		}, 4000)
+			setAlertSuccess(false)
+			setAlertSuccessDisplay("none")
+		}, [2000])
 	}
 
 	return (
 		<StyledWrapper container spacing={2}>
 			{ 
 				showSuccess === true && !errMessage ? (
-					<Grow  style={{ transformOrigin: '10 20 50' }} sx={{marginBottom: "10px"}} in timeout={1500}>
-						<Alert severity="success" variant="filled">
+					<Grow  style={{ transformOrigin: '10 20 50' }} sx={{marginBottom: "10px"}} in={alertSuccess} >
+						<Alert style={{display: `${alertSuccessDisplay}`}} severity="success" variant="filled">
 							<AlertTitle>Registration Success!!</AlertTitle>
 							User of username <strong>{user.firstname}</strong> has been created successfuly!
 						</Alert>
