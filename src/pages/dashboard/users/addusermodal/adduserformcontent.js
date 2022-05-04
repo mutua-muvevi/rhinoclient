@@ -49,10 +49,10 @@ export const userFormContent = [
 		sm:6
 	},
 	{
-		type: "text",
-		label: "Is Admin",
+		type: "password",
+		label: "Password",
 		required: true,
-		name:"isadmin",
+		name:"password",
 		xs:12,
 		sm:6
 	},

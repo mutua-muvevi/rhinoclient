@@ -1,3 +1,4 @@
+import React, { useEffect } from "react"
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import { ThemeProvider } from "@mui/material/styles";
 import About from "./pages/landing/about/about";
@@ -24,10 +25,21 @@ import AuthLayout from "./components/layout/authlayout";
 import Login from "./pages/auth/login/login";
 import ForgotPassword from "./pages/auth/forgotpassword/forgotpassword";
 import ResetPassword from "./pages/auth/resetpassword/resetpassword";
+import { connect } from "react-redux";
+import { loadUser } from "./redux/user/useraction"
 
 Modal.setAppElement("#root")
 
-function App() {
+function App({ token }) {
+
+	useEffect(() => {
+		// token
+		loadUser(token)
+
+		// quotation
+		
+	},[ token ])
+
 	return (
 		<div className="App">
 			<BrowserRouter>
@@ -64,7 +76,6 @@ function App() {
 							<Route path="/dashboard/map" element={<Dashmap/>}/>
 						</Route>
 						
-
 					</Routes>
 				</ThemeProvider>
 			</BrowserRouter>
@@ -72,4 +83,12 @@ function App() {
 	);
 }
 
-export default App;
+const mapStateToProps = ({ auth }) => ({
+	token: auth.token
+})
+
+const mapDispatchToProps = (dispatch) => ({
+	loadUser: (token) => dispatch(loadUser(token))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)

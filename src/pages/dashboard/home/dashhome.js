@@ -6,6 +6,8 @@ import Dashcards3 from "./3dashcards/dashcards3";
 import Dashcards2 from "./2dashcards/dashcards2";
 import axios from "axios"
 import QuotationDatagrid from "./quotationDatagrid/quotationDatagrid";
+import { connect } from "react-redux";
+import { useNavigate, Navigate } from 'react-router-dom';
 
 const StyledBreadCrumbs = styled(Breadcrumbs)(({theme}) => ({
 	marginBottom: "20px"
@@ -16,10 +18,11 @@ const HomeStyled = styled(Box)(({theme}) => ({
 	
 }))
 
-const Dashhome = () => {
+const Dashhome = ({ isAuthenticated }) => {
 
 	const [quotation, setQuotation] = useState([])
 	const [quotationError, setQuotationError] = useState(null)
+
 
 	useEffect(() => {
 		axios.get("https://rhinojohnbackend.herokuapp.com/api/quotation")
@@ -30,6 +33,10 @@ const Dashhome = () => {
 				setQuotationError(error.response)
 			})
 	}, []);
+
+	if(!isAuthenticated){
+		return <Navigate to={"/auth/login"}/>
+	}
 
 	return (
 		<HomeStyled component="section" id="dash-home">
@@ -52,4 +59,8 @@ const Dashhome = () => {
 	)
 }
 
-export default Dashhome
+const mapStateTProps = ({ auth }) => ({
+	isAuthenticated: auth.isAuthenticated
+})
+
+export default connect(mapStateTProps)(Dashhome)

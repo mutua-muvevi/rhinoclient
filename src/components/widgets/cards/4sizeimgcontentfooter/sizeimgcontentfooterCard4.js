@@ -68,7 +68,6 @@ const SizeimgcontentfooterCard4 = ({ title, alt, image, paragraph, setModal, mod
 					<AddCircleRoundedIcon/>
 				</Button>
 			</CardActionsInfo>
-			{console.log(singleModalContent)}
 			{
 				singleModalContent ? (
 					<ServicesModal

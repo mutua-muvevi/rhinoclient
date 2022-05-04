@@ -25,6 +25,10 @@ const Usercards3 = () => {
 		setOpen(true)
 	}
 
+	const closeShipmentModal = () => {
+		setOpen(false)
+	}
+
 	return (
 		<Grid container spacing={0.5} >
 			{
@@ -41,7 +45,7 @@ const Usercards3 = () => {
 					</Typography>
 				</BoxWrapper>
 			
-			<AddUsermodal open={open} setOpen={setOpen}/>
+			<AddUsermodal open={open} setOpen={setOpen} onClose={closeShipmentModal} />
 		</Grid>
 	)
 }

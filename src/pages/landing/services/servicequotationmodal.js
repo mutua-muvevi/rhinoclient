@@ -1,6 +1,6 @@
 import React from 'react';
 import { styled } from "@mui/system";
-import { Box, Modal, Typography} from "@mui/material";
+import { Box, Divider, Grow, Modal, Typography} from "@mui/material";
 import QuotationForm from "../quotationform/quotationForm";
 
 
@@ -9,6 +9,7 @@ const StyledModal = styled(Modal)(({theme}) => ({
 	margin: "10vh auto",
 	overflowY: "scroll",
 	border: 'none',
+	borderRadius: 4
 	
 }))
 
@@ -16,7 +17,7 @@ const detailsContainer = {
 	borderRadius: 4,
 	backgroundColor: "white",
 	border: 'none',
-	padding: 2,
+	// padding: 2,
 	margin: 0,
 }
 
@@ -28,14 +29,18 @@ const ServiceQuotationModal = ({title, open, setOpen}) => {
 			aria-labelledby="modal-modal-title"
 			aria-describedby="modal-modal-description"
 		>
-			<Box container sx={detailsContainer}>
-				<Typography variant="h3" sx={{marginTop: "10px"}}>
-					{title}
-				</Typography>
-				<Box>
-					<QuotationForm onClose={() => setOpen(false)} />
+			<Grow style={{ transformOrigin: '10 20 50' }} in timeout={1800}>
+
+				<Box container sx={detailsContainer}>
+					<Typography variant="h3" sx={{ padding: 2}} gutterBttom>
+						{title}
+					</Typography>
+					<Divider/>
+					<Box sx={{padding: 2}}>
+						<QuotationForm onClose={() => setOpen(false)} />
+					</Box>
 				</Box>
-			</Box>
+			</Grow>
 		</StyledModal>
 	)
 }

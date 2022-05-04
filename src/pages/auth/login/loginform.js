@@ -1,11 +1,17 @@
 import React from 'react';
-import { Box, Button } from "@mui/material";
-import { Formik, Form } from "formik";
-import * as Yup from "yup";
-import TextField from "../../../components/formsUI/textfield/textfield";
+import { useNavigate, Navigate } from 'react-router-dom';
+
+import { Alert, AlertTitle, Box, Button, Grow } from "@mui/material";
 import { styled } from "@mui/system";
 import SendIcon from '@mui/icons-material/Send';
 
+import { Formik, Form } from "formik";
+import * as Yup from "yup";
+
+import TextField from "../../../components/formsUI/textfield/textfield";
+
+import { connect } from "react-redux";
+import { postAuthUser } from "../../../redux/auth/authactions";
 
 const styledAuthTextField = {
 	'& label': {
@@ -59,20 +65,53 @@ const FORM_VALIDATION = Yup.object().shape({
 
 const StyledAuthInputs = styled(Box)(({ theme }) => ({
 	margin: "30px 0px",
-	width: "40vw"
 }))
 
-const LoginForm = () => {
+const LoginForm = ({ postAuthUser, isAuthenticated, errMessage }) => {
+
+	const navRoute = useNavigate()
+
+	const submitLogin = (values) => {
+		postAuthUser(values)
+
+		if (!isAuthenticated){
+			return navRoute("/auth/login")
+		}
+
+	}
+
 	return (
 		<Box>
+			{
+				errMessage ? (
+					<Grow  style={{ transformOrigin: '10 20 50' }} in timeout={1000}>
+						<Alert severity="error" variant="filled">
+							<AlertTitle>Login Error!</AlertTitle>
+							{ errMessage }
+						</Alert>
+					</Grow>
+				) : null
+			}
+
+			{
+				isAuthenticated === true ? (
+					<>
+						<Grow  style={{ transformOrigin: '10 20 50' }} in timeout={1000}>
+							<Alert severity="success" variant="filled">
+								<AlertTitle>Login Success!</AlertTitle>
+								Your login was successfull, Redirecting...
+							</Alert>
+						</Grow>
+						<Navigate to="/dashboard"/>
+					</>
+				) : null
+			}
 			<Formik
 				initialValues={{
 					...INITIAL_FORM_STATE
 				}}
 				validationSchema={ FORM_VALIDATION }
-				onSubmit = {values => {
-					console.log(values)
-				}}
+				onSubmit = { submitLogin }
 			>
 				<Form>
 					{
@@ -96,4 +135,13 @@ const LoginForm = () => {
 	)
 }
 
-export default LoginForm
+const mapStateToProps = ({ auth }) => ({
+	isAuthenticated: auth.isAuthenticated,
+	errMessage: auth.errMessage
+})
+
+const mapDispatchToProps = (dispatch) => ({
+	postAuthUser: (values) => dispatch(postAuthUser(values))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm)

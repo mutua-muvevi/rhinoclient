@@ -60,8 +60,8 @@ export const theme = createTheme({
 		}
 	},
 	shape: {
-		default: 10,
-		rounded: 15
+		default: 4,
+		rounded: 10
 	},
 	typography: {
 		fontFamily: "'Roboto', sans-serif",
