@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box,  Breadcrumbs, Card, CardMedia, Container, Divider, Grid, Grow, Typography } from "@mui/material";
+import { Box,  Breadcrumbs, Card, Container, Divider, Grid, Grow, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 import Logo from "../../../assets/images/logos/Rhino card logo - PNG.png";
 import ResetPasswordForm from "./resetpasswordform";
@@ -38,15 +38,11 @@ const StyledImageGrid = styled(Grid)(({ theme }) => ({
 	opacity: 0.8
 }))
 
-const StyledCardMedia = styled(CardMedia)(({ theme }) => ({
+const styledCardMedia = {
 	height: "80vh",
-	wifth: "100%",
+	width: "100%",
 	opacity: 0.5
-}))
-
-const StyledRightGridContainer = styled(Grid)(({ theme }) => ({
-
-}))
+}
 
 const StyledLogoTitle = styled(Box)(({ theme }) => ({
 	display: "flex",
@@ -69,17 +65,14 @@ const ResetPassword = () => {
 
 				<StyledGridWrapper container>
 
-					<StyledImageGrid item lg={5} xs={12}>
-						<StyledCardMedia
-							component="img"
-							height="100%"
-							image="https://res.cloudinary.com/dqweh6zte/image/upload/v1649928582/Rhino%20John%20Background%20Video/Rhinojon%20Product%20images/air-transport-loading-transformed_ru22tk.jpg"
-							alt="Cargo Plane with door opened, Rhinojon prime metals"
-						/>
-
-						<StyledRightGridContainer>
-						
-						</StyledRightGridContainer>
+					<StyledImageGrid item lg={5} >
+						<Box sx={{height: "100%"}} display={{xs: "none", sm : "none", lg : "block"}}>
+							<img
+								src="https://res.cloudinary.com/dqweh6zte/image/upload/v1649928582/Rhino%20John%20Background%20Video/Rhinojon%20Product%20images/air-transport-loading-transformed_ru22tk.jpg"
+								alt="Cargo Plane with door opened, Rhinojon prime metals"
+								style={styledCardMedia}
+								/>
+						</Box>
 
 					</StyledImageGrid>
 

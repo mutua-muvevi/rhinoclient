@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { connect } from "react-redux";
+import { Navigate } from "react-router-dom";
 
 import { Box, CssBaseline, Fade} from "@mui/material";
 import { useTheme } from '@mui/material/styles';
@@ -23,7 +25,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 
-const Layout = () => {
+const Layout = ({ isAuthenticated }) => {
 	
 	const theme = useTheme();
 	const [open, setOpen] = useState(true);
@@ -36,6 +38,9 @@ const Layout = () => {
 	  setOpen(false);
 	};
 
+	if (!isAuthenticated){
+		return <Navigate to="/auth/login"/>
+	}
 
 	return (
 		<Fade  in timeout={1000}>
@@ -54,4 +59,8 @@ const Layout = () => {
 	)
 }
 
-export default Layout
+const mapStatetoProps = ({ auth }) => ({
+	isAuthenticated: auth.isAuthenticated
+})
+
+export default connect(mapStatetoProps)(Layout)

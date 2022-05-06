@@ -1,11 +1,17 @@
 import React from 'react';
-import { Box, Button } from "@mui/material";
+import { useParams } from "react-router-dom";
+
+import { connect } from "react-redux";
+
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import TextField from "../../../components/formsUI/textfield/textfield";
+
+import { Box, Button } from "@mui/material";
 import { styled } from "@mui/system";
 import LockResetIcon from '@mui/icons-material/LockReset';
 
+import TextField from "../../../components/formsUI/textfield/textfield";
+import { resetPassword } from "../../../redux/auth/authactions";
 
 const styledAuthTextField = {
 	'& label': {
@@ -58,6 +64,15 @@ const StyledAuthInputs = styled(Box)(({ theme }) => ({
 }))
 
 const ResetPasswordForm = () => {
+
+	const params = useParams()
+
+	const submitResetPassword = values => {
+		console.log(values)
+		console.log(params)
+		resetPassword(values, params)
+	}
+
 	return (
 		<Box>
 			<Formik
@@ -65,9 +80,7 @@ const ResetPasswordForm = () => {
 					...INITIAL_FORM_STATE
 				}}
 				validationSchema={ FORM_VALIDATION }
-				onSubmit = {values => {
-					console.log(values)
-				}}
+				onSubmit = { submitResetPassword }
 			>
 				<Form>
 					{
@@ -91,4 +104,8 @@ const ResetPasswordForm = () => {
 	)
 }
 
-export default ResetPasswordForm
+const mapDispatchToProps = (dispatch) => ({
+	resetPassword: (values, params) => dispatch(resetPassword(values, params))
+})
+
+export default connect(null, mapDispatchToProps)(ResetPasswordForm)

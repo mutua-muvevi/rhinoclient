@@ -2,21 +2,21 @@ import userTypes from "./usertypes";
 import axios from "axios"
 
 export const fetchCollectionStart = (creds) => ({
-	type: userTypes.START_USER,
+	type: userTypes.START_ME,
 	isFetching: true,
 	isAuthenticated: false,
 	creds
 })
 
 export const fetchCollectionSuccess = (user) => ({
-	type: userTypes.SUCCESS_USER,
+	type: userTypes.SUCCESS_ME,
 	isFetching: false,
 	isAuthenticated: true,
 	payload: user,
 })
 
 export const fetchCollectionFail = (errMessage) => ({
-	type: userTypes.FAIL_USER,
+	type: userTypes.FAIL_ME,
 	isFetching: false,
 	isAuthenticated: false,
 	payload: errMessage,

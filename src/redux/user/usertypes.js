@@ -1,7 +1,7 @@
 const userTypes = {
-    START_USER: 'START_LOADING_USER',
-    SUCCESS_USER: 'SUCCESS_LOADING_USER',
-    FAIL_USER: 'FAIL_LOADING_USER',
-  };
-  
-  export default userTypes;
+	START_ME: 'START_LOADING_ME',
+	SUCCESS_ME: 'SUCCESS_LOADING_ME',
+	FAIL_ME: 'FAIL_LOADING_ME',
+};
+
+export default userTypes;

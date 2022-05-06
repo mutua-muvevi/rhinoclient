@@ -60,16 +60,13 @@ const StyledAuthInputs = styled(Box)(({ theme }) => ({
 	width: "40vw"
 }))
 
-const ForgotPasswordForm = ({ forgotPassword,isAuthenticated, errMessage }) => {
+const ForgotPasswordForm = ({ forgotPassword, isAuthenticated, errMessage }) => {
 
 	// const navRoute = useNavigate()
 
 	const submitForgotPassword = values => {
 		forgotPassword(values)
-
-		// if(!errMessage || isAuthenticated === false){
-		// 	return navRoute("/auth/login")
-		// }
+		// navRoute("/auth/login")
 	}
 
 	return (
@@ -105,6 +102,8 @@ const ForgotPasswordForm = ({ forgotPassword,isAuthenticated, errMessage }) => {
 							</StyledAuthInputs>
 						))
 					}
+					
+				{console.log("ERR MESSAGE FROM COMPONENT", errMessage)}
 				<Button type="submit" variant="contained" color="secondary" endIcon={<SendIcon/>}>
 					Reset Password
 				</Button>
@@ -124,5 +123,5 @@ const mapDispatchToProps = (dispatch) => ({
 	forgotPassword: (values) => dispatch(forgotPassword(values))
 })
 
-console.log("The error nit", forgotPassword)
+
 export default connect(mapStateToProps, mapDispatchToProps)(ForgotPasswordForm)

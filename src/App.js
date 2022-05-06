@@ -64,7 +64,7 @@ function App({ token }) {
 						<Route path="/auth" element={<AuthLayout/>}>
 							<Route path="/auth/login" element={<Login/>}/>
 							<Route path="/auth/forgotpassword" element={<ForgotPassword/>}/>
-							<Route path="/auth/resetpassword" element={<ResetPassword/>}/>
+							<Route path="/auth/resetpassword/:resetToken" element={<ResetPassword/>}/>
 						</Route>
 
 						<Route path="/dashboard" element={<Layout/>}>

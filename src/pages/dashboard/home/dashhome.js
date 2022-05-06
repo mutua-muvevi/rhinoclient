@@ -7,7 +7,7 @@ import Dashcards2 from "./2dashcards/dashcards2";
 import axios from "axios"
 import QuotationDatagrid from "./quotationDatagrid/quotationDatagrid";
 import { connect } from "react-redux";
-import { useNavigate, Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 const StyledBreadCrumbs = styled(Breadcrumbs)(({theme}) => ({
 	marginBottom: "20px"
