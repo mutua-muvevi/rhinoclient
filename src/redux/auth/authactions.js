@@ -102,7 +102,7 @@ export const postAuthUser = (formData) => {
 export const forgotPassword = (formData) => {
 	return async (dispatch) => {
 		try {
-			const res = axios.post(
+			const res = await axios.post(
 				`http://localhost:7000/api/user/forgotpassword`,
 				formData,
 				{
@@ -111,12 +111,12 @@ export const forgotPassword = (formData) => {
 					},
 				}
 			)
-			loadForgotPassword()
+			dispatch(loadForgotPassword())
 			postForgotPasswordSuccess(res)
 			console.log("THE RES", res.data.data)
 		} catch (error) {
-			dispatch(postForgotPasswordFail(error.response))
-			console.log("THE RESET ERROR!!!!", error.response)
+			dispatch(postForgotPasswordFail(error.response.error))
+			console.log("THE RESET ERROR!!!!", error.response.error)
 		}
 	}
 }
@@ -124,7 +124,7 @@ export const forgotPassword = (formData) => {
 export const resetPassword = (values, params) => {
 	return async (dispatch) => {
 		try {
-			const res = axios.post(
+			const res = await axios.post(
 				`http://localhost:7000/api/user/resetpasword/${params}`,
 				values,
 				{
@@ -133,7 +133,7 @@ export const resetPassword = (values, params) => {
 					},
 				}
 			)
-			loadForgotPassword()
+			dispatch(loadForgotPassword())
 			postForgotPasswordSuccess(res.data.data)
 		} catch (error) {
 			dispatch(postResetPasswordFail(error.response.data.error))
