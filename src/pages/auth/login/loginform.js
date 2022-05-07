@@ -80,6 +80,7 @@ const LoginForm = ({ postAuthUser, isAuthenticated, errMessage }) => {
 
 	}
 
+
 	return (
 		<Box>
 			{

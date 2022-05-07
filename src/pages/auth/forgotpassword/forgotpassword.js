@@ -1,10 +1,13 @@
 import React from 'react';
-import { Box, Breadcrumbs, Card, CardMedia, Container, Divider, Grid, Grow, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
+
+import { Box, Breadcrumbs, Card, Container, Divider, Grid, Grow, Typography } from "@mui/material";
 import { styled } from "@mui/system";
+
 import Logo from "../../../assets/images/logos/Rhino card logo - PNG.png"
 import ForgotPasswordForm from "./forgotpasswordform";
-import { metaAuthContent } from "../metacontent.js"
-import { Link } from "react-router-dom";
+import { metaAuthContent } from "../metacontent.js";
+
 import HomeIcon from '@mui/icons-material/Home';
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
 
@@ -38,15 +41,11 @@ const StyledImageGrid = styled(Grid)(({ theme }) => ({
 	opacity: 0.8
 }))
 
-const StyledCardMedia = styled(CardMedia)(({ theme }) => ({
+const styledCardMedia = {
 	height: "80vh",
-	wifth: "100%",
+	width: "100%",
 	opacity: 0.5
-}))
-
-const StyledRightGridContainer = styled(Grid)(({ theme }) => ({
-
-}))
+}
 
 const StyledLogoTitle = styled(Box)(({ theme }) => ({
 	display: "flex",
@@ -119,18 +118,14 @@ const ForgotPassword = () => {
 					</StyledFormGrid>
 
 					
-					<StyledImageGrid item lg={5} xs={12}>
-						<StyledCardMedia
-							component="img"
-							height="100%"
-							image="https://res.cloudinary.com/dqweh6zte/image/upload/v1649662366/Rhino%20John%20Background%20Video/Rhinojon%20Product%20images/diamond_1_slzqey.jpg"
-							alt="Diamond mineral, Rhinojon prime metals"
-						/>
-
-						<StyledRightGridContainer>
-						
-						</StyledRightGridContainer>
-
+					<StyledImageGrid item lg={5} >
+						<Box sx={{height: "100%"}} display={{xs: "none", sm : "none", lg : "block"}}>
+							<img
+								src="https://res.cloudinary.com/dqweh6zte/image/upload/v1649662366/Rhino%20John%20Background%20Video/Rhinojon%20Product%20images/diamond_1_slzqey.jpg"
+								alt="Cargo Plane with door opened, Rhinojon prime metals"
+								style={styledCardMedia}
+								/>
+						</Box>
 					</StyledImageGrid>
 
 				</StyledGridWrapper>

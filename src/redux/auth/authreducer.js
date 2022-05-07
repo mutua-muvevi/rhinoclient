@@ -2,12 +2,14 @@ import authTypes from './authtypes';
 
 const initialState = {
 	token: null,
-	isLoading: true,
-	errMessage: undefined,
+	data: null,
+	isLoading: false,
 	isAuthenticated: false,
+	errMessage: undefined,
 };
 
 const authReducer = (state = initialState, { type, payload }) => {
+	console.log("THE PAYLOAD IS", payload)
 	switch (type) {
 		case authTypes.START_LOADING_USER:
 			return { 
@@ -30,32 +32,34 @@ const authReducer = (state = initialState, { type, payload }) => {
 				isAuthenticated: false
 			};
 		
-			
-		// case authTypes.START_FORGOT_PASSWORD:
-		// 	return {
-		// 		...state,
-		// 		isLoading: true,
-		// 		isAuthenticated: false
-		// 	};
-		// case authTypes.SUCCESS_FORGOT_PASSWORD:
-		// 	return {
-		// 		...state,
-		// 		isLoading: false,
-		// 		data: payload,
-		// 		isAuthenticated: false
-		// 	};
-		// case authTypes.FAIL_FORGOT_PASSWORD:
-		// 	return {
-		// 		...state,
-		// 		isLoading: false,
-		// 		errMessage: payload,
-		// 		isAuthenticated: false
-		// 	};
-		
+		case authTypes.START_FORGOT_PASSWORD:
+			return {
+				...state,
+				isLoading: true,
+				isAuthenticated: false,
+			}
+
+		case authTypes.SUCCESS_FORGOT_PASSWORD: 
+			console.log("FORGOT PASSWORD REDUCER", payload)
+			return {
+				...state,
+				isLoading: false,
+				isAuthenticated: true,
+				data: payload,
+			}
+
+		case authTypes.FAIL_FORGOT_PASSWORD: 
+			return {
+				...state,
+				isLoading: false,
+				isAuthenticated: false,
+				errMessage: payload,
+			}
 
 		default:
 			return state;
 	}
 };
+console.log("THE REDUCER IS", initialState)
 
 export default authReducer;

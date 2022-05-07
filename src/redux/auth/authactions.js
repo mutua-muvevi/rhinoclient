@@ -1,5 +1,6 @@
-import authTypes from "./authtypes"
-import axios from "axios"
+import authTypes from "./authtypes";
+import axios from "axios";
+
 
 export const fetchAuthorizedUser = () => ({
 	type: authTypes.START_LOADING_USER,
@@ -8,17 +9,17 @@ export const fetchAuthorizedUser = () => ({
 })
 
 export const fetchSuccessAuthUser = (token) => ({
-  type: authTypes.SUCCESS_CURRENT_USER,
-  isLoading: false,
-  isAuthenticated: true,
-  payload: token,
+	type: authTypes.SUCCESS_CURRENT_USER,
+	isLoading: false,
+	isAuthenticated: true,
+	payload: token,
 })
 
 export const fetchFailAuthUser = (errMessage) => ({
-  type: authTypes.FAIL_CURRENT_USER,
-  isLoading: false,
-  isAuthenticated: false,
-  payload: errMessage,
+	type: authTypes.FAIL_CURRENT_USER,
+	isLoading: false,
+	isAuthenticated: false,
+	payload: errMessage,
 })
 
 
@@ -41,6 +42,27 @@ export const postForgotPasswordFail = (errMessage) => ({
   payload: errMessage,
   isAuthenticated: false,
 })
+
+export const loadResetPassword = () => ({
+	type: authTypes.START_RESET_PASSWORD,
+	isLoading: true,
+	isAuthenticated: false,
+})
+
+export const postResetPasswordSuccess = (data) => ({
+	type: authTypes.SUCCESS_RESET_PASSWORD,
+	isLoading: false,
+	payload: data,
+	isAuthenticated: false,
+})
+
+export const postResetPasswordFail = (errMessage) => ({
+	type: authTypes.FAIL_RESET_PASSWORD,
+	isLoading: false,
+	payload: errMessage,
+	isAuthenticated: false,
+})
+
 
 export const postAuthUser = (formData) => {
 	return async (dispatch) => {
@@ -80,7 +102,7 @@ export const postAuthUser = (formData) => {
 export const forgotPassword = (formData) => {
 	return async (dispatch) => {
 		try {
-			const res = axios.post(
+			const res = await axios.post(
 				`http://localhost:7000/api/user/forgotpassword`,
 				formData,
 				{
@@ -89,12 +111,33 @@ export const forgotPassword = (formData) => {
 					},
 				}
 			)
-			loadForgotPassword()
-			postForgotPasswordSuccess(res.data)
-			console.log(res.data)
+			dispatch(loadForgotPassword())
+			postForgotPasswordSuccess(res)
+			console.log("THE RES", res.data.data)
 		} catch (error) {
-			dispatch(postForgotPasswordFail(error.response.data.error))
-			console.log("THE FORGOT ERROR", error.response.data.error)
+			dispatch(postForgotPasswordFail(error.response.error))
+			console.log("THE RESET ERROR!!!!", error.response.error)
+		}
+	}
+}
+
+export const resetPassword = (values, params) => {
+	return async (dispatch) => {
+		try {
+			const res = await axios.post(
+				`http://localhost:7000/api/user/resetpasword/${params}`,
+				values,
+				{
+					headers: {
+					"Content-Type": "application/json",
+					},
+				}
+			)
+			dispatch(loadForgotPassword())
+			postForgotPasswordSuccess(res.data.data)
+		} catch (error) {
+			dispatch(postResetPasswordFail(error.response.data.error))
+			console.log("THE RESET ERROR", error.response.data.error)
 		}
 	}
 }

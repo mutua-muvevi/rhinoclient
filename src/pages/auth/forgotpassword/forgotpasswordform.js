@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate, Navigate } from 'react-router-dom';
 
 import {Alert, AlertTitle, Box, Button, Grow } from "@mui/material";
@@ -60,16 +60,22 @@ const StyledAuthInputs = styled(Box)(({ theme }) => ({
 	width: "40vw"
 }))
 
-const ForgotPasswordForm = ({ forgotPassword,isAuthenticated, errMessage }) => {
+const ForgotPasswordForm = ({ forgotPassword, isAuthenticated, errMessage }) => {
 
-	// const navRoute = useNavigate()
+	const [ showSuccess, setShowSuccess ] = useState(false)
+
+	const navRoute = useNavigate()
 
 	const submitForgotPassword = values => {
 		forgotPassword(values)
 
-		// if(!errMessage || isAuthenticated === false){
-		// 	return navRoute("/auth/login")
-		// }
+		if(errMessage.status === 200){
+			navRoute("/auth/login")
+		}
+
+		setTimeout(() => {
+			setShowSuccess(true)
+		}, 3000)
 	}
 
 	return (
@@ -79,7 +85,8 @@ const ForgotPasswordForm = ({ forgotPassword,isAuthenticated, errMessage }) => {
 					<Grow  style={{ transformOrigin: '10 20 50' }} in timeout={1000}>
 						<Alert severity="error" variant="filled">
 							<AlertTitle>Login Error!</AlertTitle>
-							{ errMessage }
+							{ errMessage.data.error }
+							{console.log("THE ERROR MESSAGE", errMessage)}
 						</Alert>
 					</Grow>
 				) : null
@@ -105,6 +112,7 @@ const ForgotPasswordForm = ({ forgotPassword,isAuthenticated, errMessage }) => {
 							</StyledAuthInputs>
 						))
 					}
+					
 				<Button type="submit" variant="contained" color="secondary" endIcon={<SendIcon/>}>
 					Reset Password
 				</Button>
@@ -124,5 +132,5 @@ const mapDispatchToProps = (dispatch) => ({
 	forgotPassword: (values) => dispatch(forgotPassword(values))
 })
 
-console.log("The error nit", forgotPassword)
+
 export default connect(mapStateToProps, mapDispatchToProps)(ForgotPasswordForm)
