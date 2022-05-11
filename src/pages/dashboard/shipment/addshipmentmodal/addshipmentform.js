@@ -1,8 +1,11 @@
+import React from 'react';
+
 import { Box, Button, ButtonGroup, Grid, Typography } from "@mui/material"
 import { styled } from "@mui/system";
+
 import { Formik, Form } from "formik";
-import React from 'react';
 import * as Yup from "yup";
+
 import TextField from "../../../../components/formsUI/textfield/textfield"
 import DateField from "../../../../components/formsUI/datepicker/datepicker";
 import TimeField from "../../../../components/formsUI/timepicker/timepicker"
@@ -11,6 +14,9 @@ import { collectorInformation, cosignInformation, departureInformation, destinat
 import SendIcon from '@mui/icons-material/Send';
 import ClearIcon from '@mui/icons-material/Clear';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
+
+import { connect } from "react-redux";
+import { postAShipment } from "../../../../redux/shipment/shipmentactions";
 
 const StyledWrapper = styled(Box)(({theme}) => ({
 	padding: 10
@@ -93,7 +99,7 @@ const AddShipmentForm = () => {
 
 	const submitHandler = values => {
 		console.log(values)
-		alert(values)
+		postAShipment(values)
 	}
 
 	return (
@@ -216,9 +222,6 @@ const AddShipmentForm = () => {
 						<Button type="submit" color="primary"  endIcon={<SendIcon/>}>
 							Submit Quotation
 						</Button>
-						<Button type="button" color="success"  endIcon={<AccessTimeIcon/>}>
-							Add an Event
-						</Button>
 						<Button  type="button" color="error" endIcon={<ClearIcon/>}>
 							Cancel Quotation
 						</Button>
@@ -231,4 +234,12 @@ const AddShipmentForm = () => {
 	)
 }
 
-export default AddShipmentForm
+const mapStateToProps = ({ shipment }) => ({
+	errMessage: shipment.errMessage
+})
+
+const mapDispatchToProps = (dispatch) => ({
+	postAShipment: (values) => dispatch(postAShipment(values))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddShipmentForm)

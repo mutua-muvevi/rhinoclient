@@ -112,11 +112,9 @@ export const forgotPassword = (formData) => {
 				}
 			)
 			dispatch(loadForgotPassword())
-			postForgotPasswordSuccess(res)
-			console.log("THE RES", res.data.data)
+			postForgotPasswordSuccess(res.data.data)
 		} catch (error) {
-			dispatch(postForgotPasswordFail(error.response.error))
-			console.log("THE RESET ERROR!!!!", error.response.error)
+			dispatch(postForgotPasswordFail(error.response.data.error))
 		}
 	}
 }
@@ -137,7 +135,6 @@ export const resetPassword = (values, params) => {
 			postForgotPasswordSuccess(res.data.data)
 		} catch (error) {
 			dispatch(postResetPasswordFail(error.response.data.error))
-			console.log("THE RESET ERROR", error.response.data.error)
 		}
 	}
 }

@@ -72,7 +72,55 @@ export const getShipment = () => {
 			getAllShipment()
 			dispatch(getAllShipmentSuccess(res.data.data))
 		} catch (error) {
-			dispatch(getAllShipmentFail(error.message))
+			dispatch(getAllShipmentFail(error.response.data.error))
+		}
+	}
+}
+
+export const getSingleShipment = (id) => {
+	return async (dispatch) => {
+		try {
+			const res = await axios.get(
+				`https://rhinojonapi.herokuapp.com/api/shipping/item/${id}`
+			)
+			getOneShipment()
+			dispatch(getOneShipmentSuccess(res.data.data))
+		} catch (error) {
+			dispatch(getOneShipmentFail(error.response.data.error))
+		}
+	}
+}
+
+export const postAShipment = (values) => {
+	return async (dispatch) => {
+		try {
+			const res = await axios.post(
+				`https://rhinojonapi.herokuapp.com/api/shipping/post`,
+				values,
+				{
+					headers: {
+					"Content-Type": "application/json",
+					},
+				}
+			)
+			postShipment()
+			dispatch(postShipmentSuccess(res.data.data))
+		} catch (error) {
+			dispatch(postShipmentFail(error.response.data.error))
+		}
+	}
+}
+
+export const postEvent = (formData) => {
+	return async (dispatch) => {
+		try {
+			const res = await axios.get(
+				`https://rhinojonapi.herokuapp.com/api/shipping/post`
+			)
+			addEvent()
+			dispatch(addEventSuccess(res.data.data))
+		} catch (error) {
+			dispatch(addEventFail(error.response.data.error))
 		}
 	}
 }
