@@ -16,7 +16,7 @@ const formContainer = {
 	border: 'none',
 	boxShadow: 24,
 	padding: 4,
-	borderRadius: 4
+	borderRadius: "10px"
 }
 
 const Addshipmentmodal = ({open, setOpen}) => {

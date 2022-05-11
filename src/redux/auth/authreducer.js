@@ -9,7 +9,6 @@ const initialState = {
 };
 
 const authReducer = (state = initialState, { type, payload }) => {
-	console.log("THE PAYLOAD IS", payload)
 	switch (type) {
 		case authTypes.START_LOADING_USER:
 			return { 
@@ -60,6 +59,5 @@ const authReducer = (state = initialState, { type, payload }) => {
 			return state;
 	}
 };
-console.log("THE REDUCER IS", initialState)
 
 export default authReducer;
