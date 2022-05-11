@@ -6,7 +6,7 @@ export const shippersInformation = [
 		required: true,
 		name:"shippersfullname",
 		xs:12,
-		sm:6
+		sm:4
 	},
 	{
 		type: "email",
@@ -14,15 +14,15 @@ export const shippersInformation = [
 		required: true,
 		name:"shippersemail",
 		xs:12,
-		sm:6
+		sm:4
 	},
 	{
 		type: "text",
-		label: "Shipper's ID/Passport",
+		label: "Shipper Company",
 		required: true,
-		name:"shippersidno",
+		name:"shipperscompany",
 		xs:12,
-		sm:12
+		sm:4
 	},
 	{
 		type: "tel",
@@ -33,15 +33,7 @@ export const shippersInformation = [
 		sm:12
 	},
 	{
-		type: "tel",
-		label: "Shipper's Company",
-		required: true,
-		name:"shipperscompany",
-		xs:12,
-		sm:12
-	},
-	{
-		type: "tel",
+		type: "text",
 		label: "Shipper's Address",
 		required: true,
 		name:"shippersaddress",
@@ -53,19 +45,27 @@ export const shippersInformation = [
 export const cosignInformation = [
 	{
 		type: "text",
-		label: "Cosign Fullname",
+		label: "Cosignee Fullname",
 		required: true,
 		name:"consignfullname",
 		xs:12,
-		sm:6
+		sm:4
 	},
 	{
 		type: "email",
-		label: "Cosign Email",
+		label: "Cosignee Email",
 		required: true,
-		name:"consignaddress",
+		name:"consignemail",
 		xs:12,
-		sm:6
+		sm:4
+	},
+	{
+		type: "text",
+		label: "Cosignee Company",
+		required: true,
+		name:"consigncompany",
+		xs:12,
+		sm:4
 	},
 	{
 		type: "tel",
@@ -77,9 +77,9 @@ export const cosignInformation = [
 	},
 	{
 		type: "text",
-		label: "Cosign Company",
+		label: "Cosignee Address",
 		required: true,
-		name:"consigncompany",
+		name:"consignaddress",
 		xs:12,
 		sm:12
 	},
@@ -93,15 +93,15 @@ export const collectorInformation = [
 		required: true,
 		name:"collectorfullname",
 		xs:12,
-		sm:6
+		sm:4
 	},
 	{
 		type: "email",
 		label: "Collector's Email",
 		required: true,
-		name:"collectoraddress",
+		name:"collectoremail",
 		xs:12,
-		sm:6
+		sm:4
 	},
 	{
 		type: "tel",
@@ -112,7 +112,7 @@ export const collectorInformation = [
 		sm:12
 	},
 	{
-		type: "tel",
+		type: "text",
 		label: "Collector's Address",
 		required: true,
 		name:"collectoraddress",
@@ -125,33 +125,33 @@ export const collectorInformation = [
 export const itemInformation = [
 	{
 		type: "text",
-		label: "Track Number",
-		required: true,
-		name:"trackno",
-		xs:12,
-		sm:12
-	},
-	{
-		type: "text",
-		label: "Item Name",
+		label: "Item's Name",
 		required: true,
 		name:"itemsname",
 		xs:12,
-		sm:12
+		sm:4
 	},
 	{
 		type: "number",
-		label: "Item Weight",
+		label: "Item's Weight",
 		required: true,
 		name:"itemsweight",
 		xs:12,
-		sm:12
+		sm:4
 	},
 	{
 		type: "text",
-		label: "Weight unit",
+		label: "Unit",
 		required: true,
 		name:"itemsweightunit",
+		xs:12,
+		sm:4
+	},
+	{
+		type: "text",
+		label: "Track Number",
+		required: true,
+		name:"trackno",
 		xs:12,
 		sm:12
 	},
@@ -163,30 +163,6 @@ export const itemInformation = [
 		xs:12,
 		sm:12
 	},
-	{
-		type: "text",
-		label: "Quality",
-		required: true,
-		name:"itemsquality",
-		xs:12,
-		sm:12
-	},
-	{
-		type: "text",
-		label: "Packaging Unit Name",
-		required: true,
-		name:"quantifiableunit",
-		xs:12,
-		sm:12
-	},
-	{
-		type: "text",
-		label: "Item State",
-		required: true,
-		name:"itemsproducttype",
-		xs:12,
-		sm:12
-	},
 ]
 
 
@@ -194,34 +170,34 @@ export const departureInformation = {
 	location: [
 		{
 			type: "text",
-			label: "Origin Service City",
+			label: "Origin Service Area",
 			required: true,
-			name:"departurecity",
+			name:"departureaddress",
 			xs:12,
-			sm:12
+			sm:6
 		},
 		{
 			type: "text",
-			label: "Origin Service Country",
+			label: "Departure Airport Code",
 			required: true,
-			name:"departurecountry",
+			name:"departureairportcode",
 			xs:12,
-			sm:12
+			sm:6
 		},
 	],
 
 	date : {
 		type: "text",
-		label: "Departure Date",
-		required: true,
+		label: "Date of Departure",
+		required: false,
 		name:"departuredate",
 		xs:12,
 		sm:12
 	},
 	time: {
 		type: "text",
-		label: "Departure Time",
-		required: true,
+		label: "Time of Departure",
+		required: false,
 		name:"departuretime",
 		xs:12,
 		sm:12
@@ -233,24 +209,24 @@ export const destinationInformation = {
 	location : [
 		{
 			type: "text",
-			label: "Destination City",
+			label: "Destination Address",
 			required: true,
-			name:"arrivalcity",
+			name:"arrivaladdress",
 			xs:12,
-			sm:12
+			sm:6
 		},
 		{
 			type: "text",
-			label: "Destination Country",
+			label: "Arrival Airport Code",
 			required: true,
-			name:"arrivalcountry",
+			name:"arrivalairportcode",
 			xs:12,
-			sm:12
-		}
+			sm:6
+		},
 	],
 	date : {
 		type: "text",
-		label: "Arrival Date",
+		label: "Estimated Arrival Date",
 		required: true,
 		name:"arrivaldate",
 		xs:12,
@@ -258,7 +234,7 @@ export const destinationInformation = {
 	},
 	time: {
 		type: "text",
-		label: "Arrival Time",
+		label: "Estimated Arrival Time",
 		required: true,
 		name:"arrivaltime",
 		xs:12,
@@ -266,14 +242,4 @@ export const destinationInformation = {
 	},
 }
 
-export const logisticsInformation = [
-	{
-		type: "text",
-		label: "Mode of transport",
-		required: true,
-		name:"logisticstype",
-		xs:12,
-		sm:12
-	},
-]
 

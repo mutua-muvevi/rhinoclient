@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Typography } from "@mui/material"
+import { Box, Button, ButtonGroup, Grid, Typography } from "@mui/material"
 import { styled } from "@mui/system";
 import { Formik, Form } from "formik";
 import React from 'react';
@@ -8,34 +8,29 @@ import DateField from "../../../../components/formsUI/datepicker/datepicker";
 import TimeField from "../../../../components/formsUI/timepicker/timepicker"
 import { collectorInformation, cosignInformation, departureInformation, destinationInformation, itemInformation, shippersInformation } from "./addshipmentformcontent"
 
+import SendIcon from '@mui/icons-material/Send';
+import ClearIcon from '@mui/icons-material/Clear';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
 
 const StyledWrapper = styled(Box)(({theme}) => ({
 	padding: 10
 }))
 
-
-const StyledAddButton = styled(Button)(({theme}) => ({
-	borderRadius: 3,
-	textAlign: "left",
-	padding: "8px 25px",
-	marginTop: "5vh"
-}))
-
 const INITIAL_FORM_STATE = {
 	shippersfullname: "",
 	shippersemail:"",
-	shippersidno:"",
-	shipperstelephone:"",
 	shipperscompany:"",
+	shipperstelephone:"",
 	shippersaddress:"",
 
-	consignfullnames:"",
+	consignfullname:"",
 	consignemail:"",
-	consigntelephone:"",
 	consigncompany:"",
+	consigntelephone:"",
+	consignaddress:"",
 
 	collectorfullname:"",
-	collectorEmail:"",
+	collectoremail:"",
 	collectortel:"",
 	collectoraddress:"",
 
@@ -44,66 +39,63 @@ const INITIAL_FORM_STATE = {
 	itemsweight:"",
 	itemsweightunit:"",
 	itemspieces:"",
-	itemsquality:"",
-	quantifiableunit:"",
-	itemsproducttype:"",
 	
-	departurecity:"",
-	departurecountry:"",
+	departureaddress:"",
+	departureairportcode:"",
 	departuredate:"",
 	departuretime:"",
 	
-	arrivalcity:"",
-	arrivalcountry:"",
+	arrivaladdress: "",
+	arrivalairportcode:"",
 	arrivaldate:"",
 	arrivaltime:"",
-
-	logisticstype:""
-
 }
 
 const FORM_VALIDATION = Yup.object().shape({
 	shippersfullname: Yup.string().required(),
 	shippersemail: Yup.string().email().required(),
-	shippersidno: Yup.string().required(),
-	shipperstelephone: Yup.string().required(),
 	shipperscompany: Yup.string().required(),
+	shipperstelephone: Yup.string().required(),
 	shippersaddress: Yup.string().required(),
 	
 	
-	consignfullnames: Yup.string().required(),
+	consignfullname: Yup.string().required(),
 	consignemail: Yup.string().email().required(),
-	consigntelephone: Yup.string().required(),
 	consigncompany: Yup.string().required(),
+	consigntelephone: Yup.string().required(),
+	consignaddress: Yup.string().required(),
 	
 	collectorfullname: Yup.string().required(),
 	collectoremail: Yup.string().email().required(),
-	collectoraddress: Yup.string().required(),
 	collectortel: Yup.string().required(),
+	collectoraddress: Yup.string().required(),
 	
-	trackno: Yup.string().required(),
 	itemsname: Yup.string().required(),
 	itemsweight: Yup.number().required(),
 	itemsweightunit: Yup.string().required(),
+	trackno: Yup.string().required(),
 	itemspieces: Yup.number().required(),
-	itemsquality: Yup.string().required(),
-	quantifiableunit: Yup.string().required(),
-	itemsproducttype: Yup.string().required(),
 	
-	arrivalcity: Yup.string().required(),
-	arrivalcountry: Yup.string().required(),
-	arrivaltime: Yup.string().required(),
-	arrivaldate: Yup.string().required(),
-	
-	departurecity: Yup.string().required(),
-	departurecountry: Yup.string().required(),
+	departureaddress: Yup.string().required(),
+	departureairportcode: Yup.string().required(),
 	departuredate: Yup.string().required(),
 	departuretime: Yup.string().required(),
 	
-	logisticstype: Yup.string().required(),
+	arrivaladdress: Yup.string().required(),
+	arrivalairportcode: Yup.string().required(),
+	arrivaltime: Yup.string().required(),
+	arrivaldate: Yup.string().required(),
+
 })
 
 const AddShipmentForm = () => {
+
+
+	const submitHandler = values => {
+		console.log(values)
+		alert(values)
+	}
+
 	return (
 		<StyledWrapper container spacing={2}>
 
@@ -112,9 +104,7 @@ const AddShipmentForm = () => {
 					...INITIAL_FORM_STATE
 				}}
 				validationSchema={ FORM_VALIDATION }
-				onSubmit = {values => {
-					console.log(values)
-				}}
+				onSubmit = {submitHandler}
 			>
 				<Form>
 					<Grid container spacing={2}>
@@ -134,7 +124,7 @@ const AddShipmentForm = () => {
 						
 						<Grid item xs={12}>
 							<Typography variant="h5" color="blue" gutterBottom>
-								Cosign Information
+								Cosignee Information
 							</Typography>
 						</Grid>
 
@@ -176,7 +166,7 @@ const AddShipmentForm = () => {
 
 						<Grid item xs={12}>
 							<Typography variant="h5" color="blue" gutterBottom>
-								Origin Area Information
+								Origin Service Area
 							</Typography>
 						</Grid>
 
@@ -198,7 +188,7 @@ const AddShipmentForm = () => {
 
 						<Grid item xs={12}>
 							<Typography variant="h5" color="blue" gutterBottom>
-								Destination
+								Final Destination
 							</Typography>
 						</Grid>
 
@@ -221,13 +211,22 @@ const AddShipmentForm = () => {
 
 
 					</Grid>
+
+					<ButtonGroup variant="contained" type="submit" sx={{marginTop: "30px"}}>
+						<Button type="submit" color="primary"  endIcon={<SendIcon/>}>
+							Submit Quotation
+						</Button>
+						<Button type="button" color="success"  endIcon={<AccessTimeIcon/>}>
+							Add an Event
+						</Button>
+						<Button  type="button" color="error" endIcon={<ClearIcon/>}>
+							Cancel Quotation
+						</Button>
+					</ButtonGroup>
 				</Form>
 
 			</Formik>
-			
-			<StyledAddButton variant="contained">
-				Submit
-			</StyledAddButton>
+
 		</StyledWrapper>
 	)
 }
