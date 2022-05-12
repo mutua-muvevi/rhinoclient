@@ -138,7 +138,7 @@ const LoginForm = ({ postAuthUser, isAuthenticated, errMessage }) => {
 
 const mapStateToProps = ({ auth }) => ({
 	isAuthenticated: auth.isAuthenticated,
-	errMessage: auth.errMessage
+	errMessage: auth.errMessage,
 })
 
 const mapDispatchToProps = (dispatch) => ({

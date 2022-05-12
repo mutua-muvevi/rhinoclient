@@ -1,12 +1,12 @@
-import React from 'react';
-import { useParams } from "react-router-dom";
+import React, { useState } from 'react';
+import { useParams, useNavigate } from "react-router-dom";
 
 import { connect } from "react-redux";
 
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 
-import { Box, Button } from "@mui/material";
+import {Alert, AlertTitle, Box, Button, Grow } from "@mui/material";
 import { styled } from "@mui/system";
 import LockResetIcon from '@mui/icons-material/LockReset';
 
@@ -63,18 +63,47 @@ const StyledAuthInputs = styled(Box)(({ theme }) => ({
 	width: "40vw"
 }))
 
-const ResetPasswordForm = () => {
+const ResetPasswordForm = ({ resetPassword, errMessage }) => {
 
+	const [ showSuccess, setShowSuccess ] = useState(false)
+
+	const navRoute = useNavigate()
 	const params = useParams()
 
 	const submitResetPassword = values => {
-		console.log(values)
-		console.log(params)
 		resetPassword(values, params)
+
+		setShowSuccess(true)
+
+		setTimeout(() => {
+			if(errMessage.status === 200){
+				navRoute("/auth/login")
+			}
+		}, 6000)
 	}
 
 	return (
 		<Box>
+			{
+				errMessage ? (
+					<Grow  style={{ transformOrigin: '10 20 50' }} in timeout={1000}>
+						<Alert severity="error" variant="filled">
+							<AlertTitle>Success!</AlertTitle>
+							{ errMessage }
+						</Alert>
+					</Grow>
+				) : null
+			}
+			{
+				showSuccess ? (
+					<Grow  style={{ transformOrigin: '10 20 50' }} in timeout={1000}>
+						<Alert severity="success" variant="filled">
+							<AlertTitle>Success!</AlertTitle>
+							Password Reset successfully
+						</Alert>
+					</Grow>
+				) : null
+			}
 			<Formik
 				initialValues={{
 					...INITIAL_FORM_STATE
@@ -104,8 +133,12 @@ const ResetPasswordForm = () => {
 	)
 }
 
+const mapStateToProps = ({ auth }) => ({
+	errMessage: auth.errMessage
+})
+
 const mapDispatchToProps = (dispatch) => ({
 	resetPassword: (values, params) => dispatch(resetPassword(values, params))
 })
 
-export default connect(null, mapDispatchToProps)(ResetPasswordForm)
+export default connect(mapStateToProps, mapDispatchToProps)(ResetPasswordForm)

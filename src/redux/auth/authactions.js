@@ -85,9 +85,10 @@ export const postAuthUser = (formData) => {
 					formData,
 					{
 						headers: {
-						"Content-Type": "application/json",
+							"Content-Type": "application/json",
 						},
 					}
+			
 				)
 				fetchAuthorizedUser()
 				dispatch(fetchSuccessAuthUser(res.data.token))
@@ -95,6 +96,7 @@ export const postAuthUser = (formData) => {
 
 		} catch (error) {
 			dispatch(fetchFailAuthUser(error.response.data.error))
+			console.log("THE ACTION ERROR", error.response.data.error)
 		}
 	}
 }
@@ -111,8 +113,8 @@ export const forgotPassword = (formData) => {
 					},
 				}
 			)
-			dispatch(loadForgotPassword())
-			postForgotPasswordSuccess(res.data.data)
+			loadForgotPassword()
+			dispatch(postForgotPasswordSuccess(res.data.data))
 		} catch (error) {
 			dispatch(postForgotPasswordFail(error.response.data.error))
 		}

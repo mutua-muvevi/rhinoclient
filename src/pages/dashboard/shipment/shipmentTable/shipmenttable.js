@@ -1,39 +1,54 @@
-import React from 'react';
-import { DataGrid} from '@mui/x-data-grid';
+import React, { useState } from 'react';
+
+import { Button, Card, CardHeader} from "@mui/material";
 import { styled } from "@mui/system";
-import { Card, CardHeader} from "@mui/material";
+import { DataGrid} from '@mui/x-data-grid';
 
-const ShipmentTable = ({shipment, error}) => {
+import { connect } from "react-redux";
+import ShipmentViewModal from "./shipmentviewmodal";
 
-	const StyledDataGridContainer = styled(Card)(({theme}) => ({
-		backgroundColor: "inherit",
-		borderRadius: theme.shape.default,
-		marginTop: "30px",
-		marginBottom: "30px"
-	}))
+const StyledDataGridContainer = styled(Card)(({theme}) => ({
+	backgroundColor: "inherit",
+	borderRadius: theme.shape.default,
+	marginTop: "30px",
+	marginBottom: "30px"
+}))
 
-	const StyledDataGridHeader = styled(CardHeader)(({theme}) => ({
-		backgroundColor: "#131313",
-		color: theme.palette.common.white
-	}))
+const StyledDataGridHeader = styled(CardHeader)(({theme}) => ({
+	backgroundColor: "#131313",
+	color: theme.palette.common.white
+}))
 
-	const StyledDataGrid = styled(DataGrid)(({theme}) =>({
-		backgroundColor: theme.palette.common.white,
-		width: "100%",
-		borderRadius: theme.shape.default,
-		"& .MuiDataGrid-columnHeaders": {
-			backgroundColor: "#333333",
-			color: "whitesmoke",
-			fontSize: 18,
-			paddingTop: 2,
-			paddingBottom: 2,
-		},
-		"& .MuiDataGrid-virtualScrollerRenderZone": {
-			"& .MuiDataGrid-row": {
-				"&:nth-of-type(2n)": { backgroundColor: "#f1f1f1" }
-			}
+const StyledDataGrid = styled(DataGrid)(({theme}) =>({
+	backgroundColor: theme.palette.common.white,
+	width: "100%",
+	borderRadius: theme.shape.default,
+	"& .MuiDataGrid-columnHeaders": {
+		backgroundColor: "#333333",
+		color: "whitesmoke",
+		fontSize: 18,
+		paddingTop: 2,
+		paddingBottom: 2,
+	},
+	"& .MuiDataGrid-virtualScrollerRenderZone": {
+		"& .MuiDataGrid-row": {
+			"&:nth-of-type(2n)": { backgroundColor: "#f1f1f1" }
 		}
-	}))
+	}
+}))
+
+
+const ShipmentTable = ({ data }) => {
+
+	const [modal, setModal] = useState(false);
+	const [singleShipment, setSingleShipment] = useState({});
+
+	const handleClick = (e, values) => {
+		setSingleShipment(values.row)
+		setModal(true)
+		console.log("The cell values are",values)
+		console.log("THeshipment row value is", singleShipment)
+	}
 
 	const columns = [
 		{
@@ -72,7 +87,7 @@ const ShipmentTable = ({shipment, error}) => {
 			field: "itemsname",
 			align: "left",
 			headerAlign: "left",
-			headerName: "Weight",
+			headerName: "Product",
 			width: 200
 		},
 		{
@@ -83,18 +98,25 @@ const ShipmentTable = ({shipment, error}) => {
 			width: 70
 		},
 		{
-			field: "itemsweightunit",
-			align: "left",
-			headerAlign: "left",
-			headerName: "unit",
-			width: 70
-		},
-		{
 			field: "itemspieces",
 			align: "left",
 			headerAlign: "left",
 			headerName: "Amount / Pieces",
 			width: 150
+		},
+		{
+			field: "departureairportcode",
+			align: "left",
+			headerAlign: "left",
+			headerName: "City of departure",
+			width: 200
+		},
+		{
+			field: "departureaddress",
+			align: "left",
+			headerAlign: "left",
+			headerName: "Origin Service Area",
+			width: 200
 		},
 		{
 			field: "departuredate",
@@ -111,17 +133,17 @@ const ShipmentTable = ({shipment, error}) => {
 			width: 200
 		},
 		{
-			field: "departurecity",
+			field: "arrivalairportcode",
 			align: "left",
 			headerAlign: "left",
-			headerName: "City of departure",
+			headerName: "Destination Airport Cde",
 			width: 200
 		},
 		{
-			field: "departurecountry",
+			field: "arrivaladdress",
 			align: "left",
 			headerAlign: "left",
-			headerName: "Country of departure",
+			headerName: "Destination Address",
 			width: 200
 		},
 		{
@@ -139,20 +161,6 @@ const ShipmentTable = ({shipment, error}) => {
 			width: 200
 		},
 		{
-			field: "arrivalcity",
-			align: "left",
-			headerAlign: "left",
-			headerName: "Destination City",
-			width: 200
-		},
-		{
-			field: "arrivalcountry",
-			align: "left",
-			headerAlign: "left",
-			headerName: "Destination Country",
-			width: 200
-		},
-		{
 			field: "itemsname",
 			align: "left",
 			headerAlign: "left",
@@ -164,23 +172,54 @@ const ShipmentTable = ({shipment, error}) => {
 			align: "left",
 			headerAlign: "left",
 			headerName: "Date",
-			width: 100
+			width: 200
+		},
+		{
+			field: "View",
+			align: "left",
+			headerAlign: "left",
+			headerName: "View Shipment",
+			width: 200,
+			renderCell: (cellValues) => {
+				return (
+					<Button
+						variant="contained"
+						color="primary"
+						onClick= {
+							e => {
+								handleClick(e, cellValues)
+							}
+						}
+						>
+							View Shipment
+						</Button>
+				)
+			}
 		},
 	]
 
+
 	return (
-		<StyledDataGridContainer>
-			<StyledDataGridHeader title="Shipping Records" />
-			<StyledDataGrid
-				rows={shipment}
-				columns={columns}
-				autoPageSize
-				autoHeight
-				getRowId={shipment => shipment._id}
-				pageSize={100}
-			/>
-		</StyledDataGridContainer>
+		<>
+			<StyledDataGridContainer>
+				<StyledDataGridHeader title="RhinoJohn Shipping Records" />
+				<StyledDataGrid
+					rows={data}
+					columns={columns}
+					autoPageSize
+					autoHeight
+					getRowId={shipment => shipment._id}
+					pageSize={50}
+				/>
+			</StyledDataGridContainer>
+			<ShipmentViewModal values={singleShipment} open={modal} setOpen={setModal}/>
+		</>
 	)
 }
 
-export default ShipmentTable
+const mapStateToProps = ({ shipment }) => ({
+	data: shipment.data,
+	errMessage: shipment.errMessage
+});
+
+export default connect(mapStateToProps)(ShipmentTable)

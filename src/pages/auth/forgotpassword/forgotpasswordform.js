@@ -60,7 +60,7 @@ const StyledAuthInputs = styled(Box)(({ theme }) => ({
 	width: "40vw"
 }))
 
-const ForgotPasswordForm = ({ forgotPassword, isAuthenticated, errMessage }) => {
+const ForgotPasswordForm = ({ forgotPassword, errMessage, data }) => {
 
 	const [ showSuccess, setShowSuccess ] = useState(false)
 
@@ -69,13 +69,13 @@ const ForgotPasswordForm = ({ forgotPassword, isAuthenticated, errMessage }) => 
 	const submitForgotPassword = values => {
 		forgotPassword(values)
 
-		if(errMessage.status === 200){
-			navRoute("/auth/login")
-		}
-
+		setShowSuccess(true)
+		
 		setTimeout(() => {
-			setShowSuccess(true)
-		}, 3000)
+			if(errMessage.status === 200){
+				navRoute("/auth/login")
+			}
+		}, 5000)
 	}
 
 	return (
@@ -85,13 +85,22 @@ const ForgotPasswordForm = ({ forgotPassword, isAuthenticated, errMessage }) => 
 					<Grow  style={{ transformOrigin: '10 20 50' }} in timeout={1000}>
 						<Alert severity="error" variant="filled">
 							<AlertTitle>Login Error!</AlertTitle>
-							{ errMessage.data.error }
-							{console.log("THE ERROR MESSAGE", errMessage)}
+							{ errMessage }
 						</Alert>
 					</Grow>
 				) : null
 			}
 
+			{
+				showSuccess ? (
+					<Grow  style={{ transformOrigin: '10 20 50' }} in timeout={1000}>
+						<Alert severity="success" variant="filled">
+							<AlertTitle>Success!</AlertTitle>
+							{ data }
+						</Alert>
+					</Grow>
+				) : null
+			}
 			<Formik
 				initialValues={{
 					...INITIAL_FORM_STATE
@@ -125,7 +134,8 @@ const ForgotPasswordForm = ({ forgotPassword, isAuthenticated, errMessage }) => 
 
 const mapStateToProps = ({ auth }) => ({
 	isAuthenticated: auth.isAuthenticated,
-	errMessage: auth.errMessage
+	errMessage: auth.errMessage,
+	data: auth.data
 })
 
 const mapDispatchToProps = (dispatch) => ({

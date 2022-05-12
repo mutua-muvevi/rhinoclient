@@ -67,7 +67,7 @@ export const getShipment = () => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
-				"https://rhinojonapi.herokuapp.com/api/shipping/all"
+				"http://localhost:7000/api/shipping/all"
 			)
 			getAllShipment()
 			dispatch(getAllShipmentSuccess(res.data.data))
@@ -81,7 +81,7 @@ export const getSingleShipment = (id) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
-				`https://rhinojonapi.herokuapp.com/api/shipping/item/${id}`
+				`http://localhost:7000/api/shipping/item/${id}`
 			)
 			getOneShipment()
 			dispatch(getOneShipmentSuccess(res.data.data))
@@ -91,22 +91,27 @@ export const getSingleShipment = (id) => {
 	}
 }
 
-export const postAShipment = (values) => {
+export const postAShipment = (values, token) => {
+	console.log("TOKEN IN DISPATCH", token)
 	return async (dispatch) => {
 		try {
 			const res = await axios.post(
-				`https://rhinojonapi.herokuapp.com/api/shipping/post`,
+				`http://localhost:7000/api/shipping/post`,
 				values,
 				{
 					headers: {
-					"Content-Type": "application/json",
+						"Content-Type": "application/json",
+						Authorization: `Bearer ${token}`,
 					},
 				}
 			)
 			postShipment()
 			dispatch(postShipmentSuccess(res.data.data))
+			console.log("THE ACTION IS", res.data.data)
+			console.log("TOKEN IN DISPATCH", token)
 		} catch (error) {
 			dispatch(postShipmentFail(error.response.data.error))
+			console.log("TOKEN IN DISPATCH", token)
 		}
 	}
 }
@@ -115,7 +120,7 @@ export const postEvent = (formData) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
-				`https://rhinojonapi.herokuapp.com/api/shipping/post`
+				`http://localhost:7000/api/shipping/post`
 			)
 			addEvent()
 			dispatch(addEventSuccess(res.data.data))
