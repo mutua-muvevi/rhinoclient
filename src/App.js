@@ -1,14 +1,21 @@
-import React, { useEffect } from "react"
+import React, { useEffect } from "react";
+
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import { ThemeProvider } from "@mui/material/styles";
-import About from "./pages/landing/about/about";
-import Contact from "./pages/landing/contact/contact";
+import {theme} from "./theme/muitheme";
+
 import Home from "./pages/landing/home/home";
+import About from "./pages/landing/about/about";
 import Products from "./pages/landing/products/product";
 import Services from "./pages/landing/services/services";
+import Contact from "./pages/landing/contact/contact";
 import Track from "./pages/landing/track/track";
-import {theme} from "./theme/muitheme";
 import Widgets from "./pages/landing/widgets/widgets";
+
+import TrackStorage from "./pages/landing/track/trackstorage";
+import Tracklayout from "./components/layout/tracklayout";
+import TrackShipment from "./pages/landing/track/trackshipment";
+
 import Dashhome from "./pages/dashboard/home/dashhome";
 import DashQuotation from "./pages/dashboard/quotation/quotation";
 import Dashshipment from "./pages/dashboard/shipment/shipment";
@@ -16,27 +23,26 @@ import Dashstorage from "./pages/dashboard/storage/storage";
 import Dashusers from "./pages/dashboard/users/users";
 import Layout from "./components/layout/layout";
 import Dashmap from "./pages/dashboard/map/map";
-import Modal from "react-modal";
+
 import Landinglayout from "./components/layout/landinglayout";
-import Tracklayout from "./components/layout/tracklayout";
-import TrackShipment from "./pages/landing/track/trackshipment";
-import TrackStorage from "./pages/landing/track/trackstorage";
 import AuthLayout from "./components/layout/authlayout";
+
 import Login from "./pages/auth/login/login";
 import ForgotPassword from "./pages/auth/forgotpassword/forgotpassword";
 import ResetPassword from "./pages/auth/resetpassword/resetpassword";
+
 import { connect } from "react-redux";
 import { loadUser } from "./redux/user/useraction"
+import { getShipment } from "./redux/shipment/shipmentactions";
 
-Modal.setAppElement("#root")
 
-function App({ token, errMessage }) {
+function App({ token, getShipment }) {
 
 	useEffect(() => {
 
 		try {
 			loadUser(token);
-			
+			getShipment()
 		} catch (error) {
 			console.log("USER ERROR", error)
 		}
@@ -44,7 +50,7 @@ function App({ token, errMessage }) {
 
 		// quotation
 		
-	},[ token ])
+	},[ token, getShipment ])
 
 	return (
 		<div className="App">
@@ -95,7 +101,9 @@ const mapStateToProps = ({ auth }) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-	loadUser: (token) => dispatch(loadUser(token))
+	loadUser: (token) => dispatch(loadUser(token)),
+
+	getShipment: () => dispatch(getShipment())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
