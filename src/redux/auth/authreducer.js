@@ -31,6 +31,8 @@ const authReducer = (state = initialState, { type, payload }) => {
 				isAuthenticated: false
 			};
 		
+
+			
 		case authTypes.START_FORGOT_PASSWORD:
 			return {
 				...state,

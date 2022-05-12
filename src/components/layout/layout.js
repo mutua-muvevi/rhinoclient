@@ -25,7 +25,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 
-const Layout = ({ isAuthenticated }) => {
+const Layout = ({ isAuthenticated, token }) => {
 	
 	const theme = useTheme();
 	const [open, setOpen] = useState(true);
@@ -60,7 +60,8 @@ const Layout = ({ isAuthenticated }) => {
 }
 
 const mapStatetoProps = ({ auth }) => ({
-	isAuthenticated: auth.isAuthenticated
+	isAuthenticated: auth.isAuthenticated,
+	token: auth.token
 })
 
 export default connect(mapStatetoProps)(Layout)

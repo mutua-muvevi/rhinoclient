@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import { Box, Button, ButtonGroup, Grid, Typography } from "@mui/material"
+import { Alert, AlertTitle, Box, Button, ButtonGroup, Grid, Grow, Typography } from "@mui/material"
 import { styled } from "@mui/system";
 
 import { Formik, Form } from "formik";
@@ -13,7 +13,6 @@ import { collectorInformation, cosignInformation, departureInformation, destinat
 
 import SendIcon from '@mui/icons-material/Send';
 import ClearIcon from '@mui/icons-material/Clear';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
 
 import { connect } from "react-redux";
 import { postAShipment } from "../../../../redux/shipment/shipmentactions";
@@ -94,17 +93,44 @@ const FORM_VALIDATION = Yup.object().shape({
 
 })
 
-const AddShipmentForm = () => {
+const AddShipmentForm = ({ token, postAShipment, errMessage, data}) => {
 
+	const [ trackNo, setTrackNo ] = useState("")
+	const [ showSuccess, setShowSuccess ] = useState(false)
 
-	const submitHandler = values => {
+	const submitHandler = (values, token) => {
+		postAShipment(values, token)
+		setShowSuccess(true)
+		setTrackNo(data.trackno)
 		console.log(values)
-		postAShipment(values)
+		console.log("THE TOKEN WE GET IS", token)
+
 	}
 
 	return (
 		<StyledWrapper container spacing={2}>
 
+			{
+				errMessage ? (
+					<Grow  style={{ transformOrigin: '10 20 50' }} in timeout={1000}>
+						<Alert severity="error" variant="filled">
+							<AlertTitle>Post Shipment Error!</AlertTitle>
+							{ errMessage }
+						</Alert>
+					</Grow>
+				) : null
+			}
+
+			{
+				showSuccess ? (
+					<Grow  style={{ transformOrigin: '10 20 50' }} in timeout={1000}>
+						<Alert severity="success" variant="filled">
+							<AlertTitle>Post Shipment Success!</AlertTitle>
+							Shipment of track number <strong> {trackNo} </strong> has been posted successfully
+						</Alert>
+					</Grow>
+				) : null
+			}
 			<Formik
 				initialValues={{
 					...INITIAL_FORM_STATE
@@ -234,8 +260,10 @@ const AddShipmentForm = () => {
 	)
 }
 
-const mapStateToProps = ({ shipment }) => ({
-	errMessage: shipment.errMessage
+const mapStateToProps = ({ auth, shipment }) => ({
+	token: auth.token,
+	errMessage: shipment.errMessage,
+	data: shipment.data
 })
 
 const mapDispatchToProps = (dispatch) => ({

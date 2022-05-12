@@ -30,11 +30,17 @@ import { loadUser } from "./redux/user/useraction"
 
 Modal.setAppElement("#root")
 
-function App({ token }) {
+function App({ token, errMessage }) {
 
 	useEffect(() => {
-		// token
-		loadUser(token)
+
+		try {
+			loadUser(token);
+			
+		} catch (error) {
+			console.log("USER ERROR", error)
+		}
+
 
 		// quotation
 		
@@ -84,7 +90,8 @@ function App({ token }) {
 }
 
 const mapStateToProps = ({ auth }) => ({
-	token: auth.token
+	token: auth.token,
+	errMessage: auth.errMessage
 })
 
 const mapDispatchToProps = (dispatch) => ({
