@@ -1,42 +1,44 @@
 import userTypes from "./usertypes";
 import axios from "axios"
 
-export const fetchCollectionStart = (creds) => ({
-	type: userTypes.START_ME,
-	isFetching: true,
-	isAuthenticated: false,
-	creds
+export const fetchUserStart = () => ({
+	type: userTypes.START_FETCH_USER
 })
 
-export const fetchCollectionSuccess = (user) => ({
-	type: userTypes.SUCCESS_ME,
-	isFetching: false,
-	isAuthenticated: true,
+export const fetchUserSuccess = (user) => ({
+	type: userTypes.SUCCESS_FETCH_USER,
+	// loading: false,
+	// authenticated: true,
 	payload: user,
 })
 
-export const fetchCollectionFail = (errMessage) => ({
-	type: userTypes.FAIL_ME,
-	isFetching: false,
-	isAuthenticated: false,
+export const fetchUserFail = (errMessage) => ({
+	type: userTypes.FAIL_FETCH_USER,
+	// loading: false,
+	// authenticated: false,
 	payload: errMessage,
 })
 
-export const loadUser = (token) => {
+export const fetchUser = (token) => {
+	console.log("THE TOKEN WE GET IS", token)
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
-					`https://localhost:7000/api/user/me`,
-					{
-						headers: {
-							authorization: `Bearer ${token}`,
-						},
+				`https://localhost:7000/api/user/me`,
+				{
+					headers: {
+						Authorization:`Bearer ${token}`,
 					}
-				)
-				fetchCollectionStart()
-				dispatch(fetchCollectionSuccess(res.data.data))
+				}
+			)
+			// console.log("The user dispatch", token)
+			fetchUserStart()
+			dispatch(fetchUserSuccess(res.data.data))
+			console.log("THE RES UIS", res)
 		} catch (error) {
-			dispatch(fetchCollectionFail(error.response.message))
+			dispatch(fetchUserFail(error.response))
+			console.log("ERR Data from user", error.message)
+			debugger
 		}
 	}
 }

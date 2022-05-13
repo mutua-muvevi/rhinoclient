@@ -1,28 +1,30 @@
 import userTypes from './usertypes';
 
 const initialState = {
-  user: [],
-  isLoading: true,
-  errMessage: undefined,
+	loading: false,
+	user: null,
+	errMessage: undefined,
+	authenticated: false
 };
 
 const userReducer = (state = initialState, { type, payload }) => {
 	switch (type) {
-		case userTypes.START_ME:
+		case userTypes.START_FETCH_USER:
 			return { 
 				...state,
-				isLoading: true 
+				loading: true 
 			};
-		case userTypes.SUCCESS_ME:
+		case userTypes.SUCCESS_FETCH_USER:
 			return {
 				...state,
-				isLoading: false,
-				currentUser: payload,
+				loading: false,
+				authenticated: true,
+				user: payload,
 			};
-		case userTypes.FAIL_ME:
+		case userTypes.FAIL_FETCH_USER:
 			return {
 				...state,
-				isLoading: false,
+				loading: false,
 				errMessage: payload,
 			};
 		default:

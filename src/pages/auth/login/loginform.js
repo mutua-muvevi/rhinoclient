@@ -11,7 +11,7 @@ import * as Yup from "yup";
 import TextField from "../../../components/formsUI/textfield/textfield";
 
 import { connect } from "react-redux";
-import { postAuthUser } from "../../../redux/auth/authactions";
+import { loginUser } from "../../../redux/auth/authactions";
 
 const styledAuthTextField = {
 	'& label': {
@@ -67,12 +67,12 @@ const StyledAuthInputs = styled(Box)(({ theme }) => ({
 	margin: "30px 0px",
 }))
 
-const LoginForm = ({ postAuthUser, isAuthenticated, errMessage }) => {
+const LoginForm = ({ loginUser, isAuthenticated, errMessage }) => {
 
 	const navRoute = useNavigate()
 
 	const submitLogin = (values) => {
-		postAuthUser(values)
+		loginUser(values)
 
 		if (!isAuthenticated){
 			return navRoute("/auth/login")
@@ -142,7 +142,7 @@ const mapStateToProps = ({ auth }) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-	postAuthUser: (values) => dispatch(postAuthUser(values))
+	loginUser: (values) => dispatch(loginUser(values))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm)
