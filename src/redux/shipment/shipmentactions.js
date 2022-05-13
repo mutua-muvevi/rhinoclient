@@ -91,8 +91,7 @@ export const getSingleShipment = (id) => {
 	}
 }
 
-export const postAShipment = (values, token) => {
-	console.log("TOKEN IN DISPATCH", token)
+export const postAShipment = (values) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.post(
@@ -101,17 +100,14 @@ export const postAShipment = (values, token) => {
 				{
 					headers: {
 						"Content-Type": "application/json",
-						Authorization: `Bearer ${token}`,
 					},
 				}
 			)
 			postShipment()
 			dispatch(postShipmentSuccess(res.data.data))
 			console.log("THE ACTION IS", res.data.data)
-			console.log("TOKEN IN DISPATCH", token)
 		} catch (error) {
 			dispatch(postShipmentFail(error.response.data.error))
-			console.log("TOKEN IN DISPATCH", token)
 		}
 	}
 }

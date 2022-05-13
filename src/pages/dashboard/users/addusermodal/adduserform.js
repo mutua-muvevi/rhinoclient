@@ -10,7 +10,7 @@ import SendIcon from '@mui/icons-material/Send';
 import ClearIcon from '@mui/icons-material/Clear';
 
 import { connect } from "react-redux"
-import { postAuthUser } from "../../../../redux/auth/authactions";
+import { registerUser } from "../../../../redux/auth/authactions";
 
 
 const StyledWrapper = styled(Box)(({theme}) => ({
@@ -42,7 +42,7 @@ const FORM_VALIDATION = Yup.object().shape({
     
 })
 
-const AddUserForm = ({ onClose,  postAuthUser, isAuthenticated, errMessage }) => {
+const AddUserForm = ({ onClose,  registerUser, isAuthenticated, errMessage }) => {
 
 	const [ user, setUser ] = useState({});
 
@@ -54,7 +54,7 @@ const AddUserForm = ({ onClose,  postAuthUser, isAuthenticated, errMessage }) =>
 		console.log("SUBMITED USER", values)
 
 		setUser(values)
-		postAuthUser(values)
+		registerUser(values)
 		resetForm()
 		setShowSuccess(true)
 		
@@ -136,7 +136,7 @@ const mapStateToProps = ({ auth }) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-	postAuthUser: (values) => dispatch(postAuthUser(values))
+	registerUser: (values) => dispatch(registerUser(values))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddUserForm)

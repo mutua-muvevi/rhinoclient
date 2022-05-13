@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import { Box, Container, Divider, Grid, Modal, Typography } from "@mui/material";
+import { Box, Button, ButtonGroup, Container, Divider, Grid, Modal, Typography } from "@mui/material";
 import { styled } from "@mui/system";
+
+import EventRepeatIcon from '@mui/icons-material/EventRepeat';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EventModal from "./eventmodal";
 
 const StyledModal = styled(Modal)(({ theme }) => ({
 	width: "85vw",
 	margin: "10vh auto",
 	overflowY: "scroll",
 	border: 'none',
-	borderRadius: theme.shape.default,
 	height: "80vh"
 }))
 
@@ -21,8 +24,14 @@ const styledModalBox = {
 	borderRadius: "10px",
 }
 
+const StyledButtonGroup = styled(ButtonGroup)(({ theme }) => ({
+	marginTop: "20px",
+	marginBottom: "20px",
+}))
+
 const ShipmentViewModal = ({ values, open, setOpen }) => {
 
+	const [ eventModal, setEventModal ] = useState(false)
 
 	const shipperInformation = [
 		{
@@ -296,147 +305,168 @@ const ShipmentViewModal = ({ values, open, setOpen }) => {
 	}
 
 	return (
-		<StyledModal
-			open={open}
-			onClose={() => setOpen(false)}
-			aria-labelledby="modal-modal-title"
-			aria-describedby="modal-modal-description"
-		>
-			<Box sx={styledModalBox}>
-				<Typography variant="h4">Shipment Details</Typography>
-				<Container maxWidth="xl">
-					<Grid container spacing={2}>
+		<>
+			<StyledModal
+				open={open}
+				onClose={() => setOpen(false)}
+				aria-labelledby="modal-modal-title"
+				aria-describedby="modal-modal-description"
+			>
+				<Box sx={styledModalBox}>
+					<Container maxWidth="xl">
+						<Grid container spacing={2}>
 
-						<Divider/>
-						<Grid item xs={12}>
-							<Typography variant="h5" color="blue" gutterBottom>
-								Shipper's Information
-							</Typography>
+							<Grid item xs={12}>
+								<Typography variant="h5" color="blue" gutterBottom>
+									Shipper's Information
+								</Typography>
+							<Divider/>
+							</Grid>
+							{
+								shipperInformation && shipperInformation.map(el => (
+									<Grid item key={el.name} xl={el.xl} lg={el.lg} md={el.md} sm={el.sm} xs={el.xs}>
+										<Typography variant="h5">{el.name}</Typography>
+										<Box>
+											<Typography variant="body">{el.value}</Typography>
+										</Box>
+									</Grid>
+								))
+							}
+
+
+							<Grid item xs={12}>
+								<Typography variant="h5" color="blue" gutterBottom>
+									Consignee's Information
+								</Typography>
+							<Divider/>
+							</Grid>
+							{
+								cosigneeInformation && cosigneeInformation.map(el => (
+									<Grid item key={el.name} xl={el.xl} lg={el.lg} md={el.md} sm={el.sm} xs={el.xs}>
+										<Typography variant="h5">{el.name}</Typography>
+										<Box>
+											<Typography variant="body">{el.value}</Typography>
+										</Box>
+									</Grid>
+								))
+							}
+
+
+							<Grid item xs={12}>
+								<Typography variant="h5" color="blue" gutterBottom>
+									Collector's Information
+								</Typography>
+							<Divider/>
+							</Grid>
+							{
+								collectorsInformation && collectorsInformation.map(el => (
+									<Grid item key={el.name} xl={el.xl} lg={el.lg} md={el.md} sm={el.sm} xs={el.xs}>
+										<Typography variant="h5">{el.name}</Typography>
+										<Box>
+											<Typography variant="body">{el.value}</Typography>
+										</Box>
+									</Grid>
+								))
+							}
+
+
+							<Grid item xs={12}>
+								<Typography variant="h5" color="blue" gutterBottom>
+									Track Information
+								</Typography>
+							<Divider/>
+							</Grid>
+							{
+								truckAndDescription && truckAndDescription.map(el => (
+									<Grid item key={el.name} xl={el.xl} lg={el.lg} md={el.md} sm={el.sm} xs={el.xs}>
+										<Typography variant="h5">{el.name}</Typography>
+										<Box>
+											<Typography variant="body">{el.value}</Typography>
+										</Box>
+									</Grid>
+								))
+							}
+
+
+							<Grid item xs={12}>
+								<Typography variant="h5" color="blue" gutterBottom>
+									Item Information
+								</Typography>
+							<Divider/>
+							</Grid>
+							{
+								itemInformation && itemInformation.map(el => (
+									<Grid item key={el.name} xl={el.xl} lg={el.lg} md={el.md} sm={el.sm} xs={el.xs}>
+										<Typography variant="h5">{el.name}</Typography>
+										<Box>
+											<Typography variant="body">{el.value}</Typography>
+										</Box>
+									</Grid>
+								))
+							}
+
+
+							<Grid item xs={12}>
+								<Typography variant="h5" color="blue" gutterBottom>
+									Origin Service Area Information
+								</Typography>
+							<Divider/>
+							</Grid>
+							{
+								originServiceAreaInfo && originServiceAreaInfo.map(el => (
+									<Grid item key={el.name} xl={el.xl} lg={el.lg} md={el.md} sm={el.sm} xs={el.xs}>
+										<Typography variant="h5">{el.name}</Typography>
+										<Box>
+											<Typography variant="body">{el.value}</Typography>
+										</Box>
+									</Grid>
+								))
+							}
+
+
+							<Grid item xs={12}>
+								<Typography variant="h5" color="blue" gutterBottom>
+									Destination Information
+								</Typography>
+							<Divider/>
+							</Grid>
+							{
+								destinationInfo && destinationInfo.map(el => (
+									<Grid item key={el.name} xl={el.xl} lg={el.lg} md={el.md} sm={el.sm} xs={el.xs}>
+										<Typography variant="h5">{el.name}</Typography>
+										<Box>
+											<Typography variant="body">{el.value}</Typography>
+										</Box>
+									</Grid>
+								))
+							}
+
+
 						</Grid>
-						{
-							shipperInformation && shipperInformation.map(el => (
-								<Grid item key={el.name} xl={el.xl} lg={el.lg} md={el.md} sm={el.sm} xs={el.xs}>
-									<Typography variant="h5">{el.name}</Typography>
-									<Box>
-										<Typography variant="body">{el.value}</Typography>
-									</Box>
-								</Grid>
-							))
-						}
+						<StyledButtonGroup>
+							<Button 
+								endIcon={<EventRepeatIcon/>} 
+								type="button" variant="contained" 
+								color="primary"
+								onClick={() => setEventModal(true)}
+								>
+									Add events
+							</Button>
 
-
-						<Divider/>
-						<Grid item xs={12}>
-							<Typography variant="h5" color="blue" gutterBottom>
-								Consignee's Information
-							</Typography>
-						</Grid>
-						{
-							cosigneeInformation && cosigneeInformation.map(el => (
-								<Grid item key={el.name} xl={el.xl} lg={el.lg} md={el.md} sm={el.sm} xs={el.xs}>
-									<Typography variant="h5">{el.name}</Typography>
-									<Box>
-										<Typography variant="body">{el.value}</Typography>
-									</Box>
-								</Grid>
-							))
-						}
-
-
-						<Divider/>
-						<Grid item xs={12}>
-							<Typography variant="h5" color="blue" gutterBottom>
-								Collector's Information
-							</Typography>
-						</Grid>
-						{
-							collectorsInformation && collectorsInformation.map(el => (
-								<Grid item key={el.name} xl={el.xl} lg={el.lg} md={el.md} sm={el.sm} xs={el.xs}>
-									<Typography variant="h5">{el.name}</Typography>
-									<Box>
-										<Typography variant="body">{el.value}</Typography>
-									</Box>
-								</Grid>
-							))
-						}
-
-
-						<Divider/>
-						<Grid item xs={12}>
-							<Typography variant="h5" color="blue" gutterBottom>
-								Track Information
-							</Typography>
-						</Grid>
-						{
-							truckAndDescription && truckAndDescription.map(el => (
-								<Grid item key={el.name} xl={el.xl} lg={el.lg} md={el.md} sm={el.sm} xs={el.xs}>
-									<Typography variant="h5">{el.name}</Typography>
-									<Box>
-										<Typography variant="body">{el.value}</Typography>
-									</Box>
-								</Grid>
-							))
-						}
-
-
-						<Divider/>
-						<Grid item xs={12}>
-							<Typography variant="h5" color="blue" gutterBottom>
-								Item Information
-							</Typography>
-						</Grid>
-						{
-							itemInformation && itemInformation.map(el => (
-								<Grid item key={el.name} xl={el.xl} lg={el.lg} md={el.md} sm={el.sm} xs={el.xs}>
-									<Typography variant="h5">{el.name}</Typography>
-									<Box>
-										<Typography variant="body">{el.value}</Typography>
-									</Box>
-								</Grid>
-							))
-						}
-
-
-						<Divider/>
-						<Grid item xs={12}>
-							<Typography variant="h5" color="blue" gutterBottom>
-								Origin Service Area Information
-							</Typography>
-						</Grid>
-						{
-							originServiceAreaInfo && originServiceAreaInfo.map(el => (
-								<Grid item key={el.name} xl={el.xl} lg={el.lg} md={el.md} sm={el.sm} xs={el.xs}>
-									<Typography variant="h5">{el.name}</Typography>
-									<Box>
-										<Typography variant="body">{el.value}</Typography>
-									</Box>
-								</Grid>
-							))
-						}
-
-
-						<Divider/>
-						<Grid item xs={12}>
-							<Typography variant="h5" color="blue" gutterBottom>
-								Destination Information
-							</Typography>
-						</Grid>
-						{
-							destinationInfo && destinationInfo.map(el => (
-								<Grid item key={el.name} xl={el.xl} lg={el.lg} md={el.md} sm={el.sm} xs={el.xs}>
-									<Typography variant="h5">{el.name}</Typography>
-									<Box>
-										<Typography variant="body">{el.value}</Typography>
-									</Box>
-								</Grid>
-							))
-						}
-
-
-					</Grid>
-				</Container>
-			</Box>
-		</StyledModal>
+							<Button 
+								endIcon={<DeleteIcon/>} 
+								type="button" 
+								variant="contained" 
+								color="error"
+								>
+									Delete Shipment
+							</Button>
+						</StyledButtonGroup>
+					</Container>
+				</Box>
+			</StyledModal>
+			<EventModal open={eventModal} setOpen={setEventModal}/>
+		</>
 	)
 }
 

@@ -2,21 +2,42 @@ import authTypes from "./authtypes";
 import axios from "axios";
 
 
-export const fetchAuthorizedUser = () => ({
-	type: authTypes.START_LOADING_USER,
+export const startRegisterUser = () => ({
+	type: authTypes.START_REGISTER_USER,
 	isLoading: true,
 	isAuthenticated: false,
 })
 
-export const fetchSuccessAuthUser = (token) => ({
-	type: authTypes.SUCCESS_CURRENT_USER,
+export const registerUserSuccess = (token) => ({
+	type: authTypes.SUCCESS_REGISTER_USER,
 	isLoading: false,
 	isAuthenticated: true,
 	payload: token,
 })
 
-export const fetchFailAuthUser = (errMessage) => ({
-	type: authTypes.FAIL_CURRENT_USER,
+export const registerUserFail = (errMessage) => ({
+	type: authTypes.FAIL_REGISTER_USER,
+	isLoading: false,
+	isAuthenticated: false,
+	payload: errMessage,
+})
+
+
+export const startLoginUser = () => ({
+	type: authTypes.START_LOGIN_USER,
+	isLoading: true,
+	isAuthenticated: false,
+})
+
+export const loginUserSuccess = (token) => ({
+	type: authTypes.SUCCESS_LOGIN_USER,
+	isLoading: false,
+	isAuthenticated: true,
+	payload: token,
+})
+
+export const loginUserFail = (errMessage) => ({
+	type: authTypes.FAIL_LOGIN_USER,
 	isLoading: false,
 	isAuthenticated: false,
 	payload: errMessage,
@@ -64,42 +85,47 @@ export const postResetPasswordFail = (errMessage) => ({
 })
 
 
-export const postAuthUser = (formData) => {
+export const registerUser = (formData) => {
 	return async (dispatch) => {
 		try {
-			if (formData.firstname) {
-				const res = await axios.post(
-					`http://localhost:7000/api/user/register`,
-					formData,
-					{
-						headers: {
-						"Content-Type": "application/json",
-						},
-					}
-				)
-				fetchAuthorizedUser()
-				dispatch(fetchSuccessAuthUser(res.data.data.user))
-			} else {
-				const res = await axios.post(
-					`http://localhost:7000/api/user/login`,
-					formData,
-					{
-						headers: {
-							"Content-Type": "application/json",
-						},
-					}
-			
-				)
-				fetchAuthorizedUser()
-				dispatch(fetchSuccessAuthUser(res.data.token))
-			}
-
+			const res = await axios.post(
+				`http://localhost:7000/api/user/register`,
+				formData,
+				{
+					headers: {
+					"Content-Type": "application/json",
+					},
+				}
+			)
+			startRegisterUser()
+			dispatch(registerUserSuccess(res.data.data.user))
 		} catch (error) {
-			dispatch(fetchFailAuthUser(error.response.data.error))
-			console.log("THE ACTION ERROR", error.response.data.error)
+			dispatch(registerUserFail(error.response.data.error))
 		}
 	}
 }
+
+export const loginUser = (formData) => {
+	return async (dispatch) => {
+		try {
+			const res = await axios.post(
+				`http://localhost:7000/api/user/login`,
+				formData,
+				{
+					headers: {
+						"Content-Type": "application/json",
+					},
+				}
+				
+			)
+			startLoginUser()
+			dispatch(loginUserSuccess(res.data.token))
+		} catch (error) {
+			dispatch(loginUserFail(error.response.data.error))
+		}
+	}
+}
+
 
 export const forgotPassword = (formData) => {
 	return async (dispatch) => {

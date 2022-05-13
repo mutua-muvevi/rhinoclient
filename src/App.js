@@ -32,17 +32,18 @@ import ForgotPassword from "./pages/auth/forgotpassword/forgotpassword";
 import ResetPassword from "./pages/auth/resetpassword/resetpassword";
 
 import { connect } from "react-redux";
-import { loadUser } from "./redux/user/useraction"
+import { fetchUser } from "./redux/user/useraction"
 import { getShipment } from "./redux/shipment/shipmentactions";
 
 
-function App({ token, getShipment }) {
+function App({ token, getShipment, fetchUser }) {
 
 	useEffect(() => {
 
 		try {
-			loadUser(token);
+			fetchUser(token);
 			getShipment()
+			// console.log("the token we get is", token)
 		} catch (error) {
 			console.log("USER ERROR", error)
 		}
@@ -50,7 +51,7 @@ function App({ token, getShipment }) {
 
 		// quotation
 		
-	},[ token, getShipment ])
+	},[ token, getShipment, fetchUser ])
 
 	return (
 		<div className="App">
@@ -101,9 +102,8 @@ const mapStateToProps = ({ auth }) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-	loadUser: (token) => dispatch(loadUser(token)),
-
-	getShipment: () => dispatch(getShipment())
+	getShipment: () => dispatch(getShipment()),
+	fetchUser: (token) => dispatch(fetchUser(token)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

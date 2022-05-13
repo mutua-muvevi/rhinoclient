@@ -10,20 +10,42 @@ const initialState = {
 
 const authReducer = (state = initialState, { type, payload }) => {
 	switch (type) {
-		case authTypes.START_LOADING_USER:
+		case authTypes.START_REGISTER_USER:
 			return { 
 				...state, 
 				isLoading: true,
 				isAuthenticated: false,
 			};
-		case authTypes.SUCCESS_CURRENT_USER:
+		case authTypes.SUCCESS_REGISTER_USER:
 			return {
 				...state,
 				isLoading: false,
 				token: payload,
 				isAuthenticated: true
 			};
-		case authTypes.FAIL_CURRENT_USER:
+		case authTypes.FAIL_REGISTER_USER:
+			return {
+				...state,
+				isLoading: false,
+				errMessage: payload,
+				isAuthenticated: false
+			};
+		
+
+		case authTypes.START_LOGIN_USER:
+			return { 
+				...state, 
+				isLoading: true,
+				isAuthenticated: false,
+			};
+		case authTypes.SUCCESS_LOGIN_USER:
+			return {
+				...state,
+				isLoading: false,
+				token: payload,
+				isAuthenticated: true
+			};
+		case authTypes.FAIL_LOGIN_USER:
 			return {
 				...state,
 				isLoading: false,
@@ -41,7 +63,6 @@ const authReducer = (state = initialState, { type, payload }) => {
 			}
 
 		case authTypes.SUCCESS_FORGOT_PASSWORD: 
-			console.log("FORGOT PASSWORD REDUCER", payload)
 			return {
 				...state,
 				isLoading: false,
