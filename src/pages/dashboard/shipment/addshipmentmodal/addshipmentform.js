@@ -96,14 +96,21 @@ const FORM_VALIDATION = Yup.object().shape({
 const AddShipmentForm = ({ token, postAShipment, errMessage, data}) => {
 
 	const [ trackNo, setTrackNo ] = useState("")
-	const [ showSuccess, setShowSuccess ] = useState(false)
+	const [ showSuccess, setShowSuccess ] = useState(false);
 
-	const submitHandler = (values, token) => {
+	const submitHandler = ( values, {resetForm} ) => {
 		postAShipment(values, token)
-		setShowSuccess(true)
-		setTrackNo(data.trackno)
+
+		console.log("THE EROR MESSAGE REDUX", errMessage)
+		console.log("DATA FROM SHIPMENT IS", data)
+
+		if (!errMessage || errMessage === undefined){
+			setShowSuccess(true)
+			setTrackNo(data.trackno)
+			resetForm()
+		}
+
 		console.log(values)
-		console.log("THE TOKEN WE GET IS", token)
 
 	}
 
@@ -120,6 +127,7 @@ const AddShipmentForm = ({ token, postAShipment, errMessage, data}) => {
 					</Grow>
 				) : null
 			}
+			{console.log("The token inside JSX", token)}
 
 			{
 				showSuccess ? (
@@ -130,7 +138,7 @@ const AddShipmentForm = ({ token, postAShipment, errMessage, data}) => {
 						</Alert>
 					</Grow>
 				) : null
-			}
+			} 
 			<Formik
 				initialValues={{
 					...INITIAL_FORM_STATE
@@ -262,12 +270,13 @@ const AddShipmentForm = ({ token, postAShipment, errMessage, data}) => {
 
 const mapStateToProps = ({ auth, shipment }) => ({
 	token: auth.token,
+
 	errMessage: shipment.errMessage,
 	data: shipment.data
 })
 
 const mapDispatchToProps = (dispatch) => ({
-	postAShipment: (values) => dispatch(postAShipment(values))
+	postAShipment: (values, token) => dispatch(postAShipment(values, token))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddShipmentForm)

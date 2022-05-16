@@ -12,12 +12,15 @@ const shipmentReducer = ( state = initialState, { type, payload } ) => {
 			return { 
 				...state, 
 				loading: true,
+				data: null,
+				errMessage: undefined,
 			};
-		case shipmentTypes.GET_ALL_SUCCESS: 
+			case shipmentTypes.GET_ALL_SUCCESS: 
 			return { 
 				...state, 
 				loading: false,
 				data: payload,
+				errMessage: undefined,
 			};
 		case shipmentTypes.GET_ALL_FAIL: 
 			return { 
@@ -31,12 +34,14 @@ const shipmentReducer = ( state = initialState, { type, payload } ) => {
 			return { 
 				...state, 
 				loading: true,
+				errMessage: undefined,
 			};
 		case shipmentTypes.GET_ONE_SUCCESS: 
 			return { 
 				...state, 
 				loading: false,
 				data: payload,
+				errMessage: undefined,
 			};
 		case shipmentTypes.GET_ONE_FAIL: 
 			return { 
@@ -50,12 +55,14 @@ const shipmentReducer = ( state = initialState, { type, payload } ) => {
 			return { 
 				...state, 
 				loading: true,
+				errMessage: undefined,
 			};
 		case shipmentTypes.POST_SUCCESS: 
 			return { 
 				...state, 
 				loading: false,
 				data: payload,
+				errMessage: undefined,
 			};
 		case shipmentTypes.POST_FAIL: 
 			return { 
@@ -69,12 +76,14 @@ const shipmentReducer = ( state = initialState, { type, payload } ) => {
 			return { 
 				...state, 
 				loading: true,
+				errMessage: undefined,
 			};
 		case shipmentTypes.ADD_EVENT_SUCCESS: 
 			return { 
 				...state, 
 				loading: false,
 				data: payload,
+				errMessage: undefined,
 			};
 		case shipmentTypes.ADD_EVENT_FAIL: 
 			return { 

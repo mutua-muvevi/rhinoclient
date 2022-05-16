@@ -21,7 +21,8 @@ const authReducer = (state = initialState, { type, payload }) => {
 				...state,
 				isLoading: false,
 				token: payload,
-				isAuthenticated: true
+				isAuthenticated: true,
+				errMessage: undefined
 			};
 		case authTypes.FAIL_REGISTER_USER:
 			return {
@@ -43,7 +44,8 @@ const authReducer = (state = initialState, { type, payload }) => {
 				...state,
 				isLoading: false,
 				token: payload,
-				isAuthenticated: true
+				isAuthenticated: true,
+				errMessage: undefined
 			};
 		case authTypes.FAIL_LOGIN_USER:
 			return {
@@ -68,6 +70,7 @@ const authReducer = (state = initialState, { type, payload }) => {
 				isLoading: false,
 				isAuthenticated: true,
 				data: payload,
+				errMessage: undefined
 			}
 
 		case authTypes.FAIL_FORGOT_PASSWORD: 

@@ -43,7 +43,6 @@ function App({ token, getShipment, fetchUser }) {
 		try {
 			fetchUser(token);
 			getShipment()
-			// console.log("the token we get is", token)
 		} catch (error) {
 			console.log("USER ERROR", error)
 		}

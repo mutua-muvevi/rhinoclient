@@ -12,13 +12,17 @@ const userReducer = (state = initialState, { type, payload }) => {
 		case userTypes.START_FETCH_USER:
 			return { 
 				...state,
-				loading: true 
+				loading: true,
+				user: null,
+				errMessage: undefined,
+				authenticated: false
 			};
 		case userTypes.SUCCESS_FETCH_USER:
 			return {
 				...state,
 				loading: false,
 				authenticated: true,
+				errMessage: undefined,
 				user: payload,
 			};
 		case userTypes.FAIL_FETCH_USER:
@@ -26,6 +30,8 @@ const userReducer = (state = initialState, { type, payload }) => {
 				...state,
 				loading: false,
 				errMessage: payload,
+				authenticated: false,
+				user: null
 			};
 		default:
 			return state;
