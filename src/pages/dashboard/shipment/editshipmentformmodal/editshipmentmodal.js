@@ -3,7 +3,7 @@ import React from 'react';
 import { Box, Modal, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 
-import AddShipmentForm from "./addshipmentform";
+import EditShipmentForm from "./editshipmentform";
 
 
 const StyledModal = styled(Modal)(({theme}) => ({
@@ -21,7 +21,8 @@ const formContainer = {
 	borderRadius: "10px"
 }
 
-const Addshipmentmodal = ({open, setOpen}) => {
+
+const EditShipmentModal = ({open, setOpen}) => {
 	return (
 		<StyledModal
 			open={open}
@@ -31,12 +32,12 @@ const Addshipmentmodal = ({open, setOpen}) => {
 		>
 			<Box sx={formContainer}>
 				<Typography id="modal-modal-title" variant="h4" gutterBottom component="h2">
-					Add Shipment Form
+					Edit Shipment Form
 				</Typography>
-				<AddShipmentForm/>
+				<EditShipmentForm/>
 			</Box>
 		</StyledModal>
 	)
 }
 
-export default Addshipmentmodal
+export default EditShipmentModal

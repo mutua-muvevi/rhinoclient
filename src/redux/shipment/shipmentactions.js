@@ -47,6 +47,21 @@ export const postShipmentFail = (errMessage) => ({
 })
 
 
+export const editShipment = () => ({
+	type: shipmentTypes.POST_START,
+})
+
+export const editShipmentSuccess = (shipment) => ({
+	type: shipmentTypes.POST_SUCCESS,
+	payload: shipment,
+})
+
+export const editShipmentFail = (errMessage) => ({
+	type: shipmentTypes.POST_FAIL,
+	payload: errMessage,
+})
+
+
 
 export const addEvent = () => ({
 	type: shipmentTypes.ADD_EVENT_START,
@@ -108,8 +123,29 @@ export const postAShipment = (values, token) => {
 			postShipment()
 			dispatch(postShipmentSuccess(res.data.data))
 		} catch (error) {
-			console.log("the error is", error.response)
 			dispatch(postShipmentFail(error.response.data.error))
+		}
+	}
+}
+
+export const editAShipment = (values, token) => {
+	return async (dispatch) => {
+		try {
+			const res = await axios.put(
+				`http://localhost:7000/api/shipping/item/update`,
+				values,
+				{
+					headers: {
+						"Content-Type": "application/json",
+						Authorization:`Bearer ${token}`
+					},
+				}
+				)
+			
+				editShipment()
+			dispatch(editShipmentSuccess(res.data.data))
+		} catch (error) {
+			dispatch(editShipmentFail(error.response.data.error))
 		}
 	}
 }

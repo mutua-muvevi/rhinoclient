@@ -6,6 +6,7 @@ import { DataGrid} from '@mui/x-data-grid';
 
 import { connect } from "react-redux";
 import ShipmentViewModal from "./shipmentviewmodal";
+import EditShipmentModal from "../editshipmentformmodal/editshipmentmodal";
 
 const StyledDataGridContainer = styled(Card)(({theme}) => ({
 	backgroundColor: "inherit",
@@ -41,11 +42,17 @@ const StyledDataGrid = styled(DataGrid)(({theme}) =>({
 const ShipmentTable = ({ data }) => {
 
 	const [modal, setModal] = useState(false);
+	const [editModal, setEditModal] = useState(false);
 	const [singleShipment, setSingleShipment] = useState({});
 
 	const handleClick = (e, values) => {
 		setSingleShipment(values.row)
 		setModal(true)
+	}
+
+	const handleEditClick = (e, values) => {
+		setSingleShipment(values.row)
+		setEditModal(true)
 	}
 
 	const columns = [
@@ -194,6 +201,28 @@ const ShipmentTable = ({ data }) => {
 				)
 			}
 		},
+		{
+			field: "Edit",
+			align: "left",
+			headerAlign: "left",
+			headerName: "Edit Shipment",
+			width: 200,
+			renderCell: (cellValues) => {
+				return (
+					<Button
+						variant="contained"
+						color="primary"
+						onClick= {
+							e => {
+								handleEditClick(e, cellValues)
+							}
+						}
+						>
+							Edit Shipment
+						</Button>
+				)
+			}
+		},
 	]
 
 
@@ -211,6 +240,7 @@ const ShipmentTable = ({ data }) => {
 				/>
 			</StyledDataGridContainer>
 			<ShipmentViewModal values={singleShipment} open={modal} setOpen={setModal}/>
+			<EditShipmentModal item={singleShipment} open={editModal} setOpen={setEditModal}/>
 		</>
 	)
 }
