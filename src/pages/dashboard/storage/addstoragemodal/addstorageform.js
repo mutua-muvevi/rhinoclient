@@ -1,84 +1,115 @@
-import { Box, Button, Grid, Typography } from "@mui/material"
+import React, { useState } from 'react';
+
+import { Alert, AlertTitle, Box, Button, ButtonGroup, Grid, Grow, Typography } from "@mui/material"
 import { styled } from "@mui/system";
+
 import { Formik, Form } from "formik";
-import React from 'react';
 import * as Yup from "yup";
+
 import TextField from "../../../../components/formsUI/textfield/textfield"
 import { contactInformation, productInformation, StorageArea, storageEvents, textareas } from "./addStorageformcontent";
 import DateField from "../../../../components/formsUI/datepicker/datepicker";
 import TimeField from "../../../../components/formsUI/timepicker/timepicker"
+
+import SendIcon from '@mui/icons-material/Send';
+import ClearIcon from '@mui/icons-material/Clear';
+
+import { connect } from "react-redux";
+import { postAStorage } from "../../../../redux/storage/storageaction";
 
 
 const StyledWrapper = styled(Box)(({theme}) => ({
 	padding: 10
 }))
 
-
-const StyledAddButton = styled(Button)(({theme}) => ({
-	borderRadius: 3,
-	textAlign: "left",
-	padding: "8px 25px",
-	marginTop: "5vh"
-}))
-
 const INITIAL_FORM_STATE = {
-	firstname: "",
-	lastname: "",
+	fullname: "",
 	email: "",
 	telephone: "",
 	company: "",
+
 	trackno: "",
 	product: "",
 	weight: "",
-	weightunit: "",
-	producttype: "",
-	pieces: "",
-	quality: "",
-	storagecity: "",
-	storagecountry: "",
+	description: "",
+
+	storageaddress: "",
+
 	datein: "",
 	dateout: "",
-	intime: "",
-	outtime: "",
-	observation: "",
+	timein: "",
+	timeout: "",
+	
 	notes: "",
 }
 
 const FORM_VALIDATION = Yup.object().shape({
-	firstname: Yup.string().required(),
-	lastname: Yup.string().required(),
-	email: Yup.string().email().required(),
-	telephone: Yup.string().required(),
-	company: Yup.string().required(),
-	trackno: Yup.string().required(),
-	product: Yup.string().required(),
-	weight: Yup.number().required(),
-	weightunit: Yup.string().required(),
-	producttype: Yup.string().required(),
-	pieces: Yup.string().required(),
-	quality: Yup.string().required(),
-	storagecity: Yup.string().required(),
-	storagecountry: Yup.string().required(),
-	datein: Yup.string().required(),
+	fullname: Yup.string().required("Please add the client's Fullname"),
+	email: Yup.string().email().required("Please add the client's Email"),
+	telephone: Yup.string().required("Please add the client's Telephone number"),
+	company: Yup.string().required("Please add the name of the client's company, If not add NULL"),
+	
+	trackno: Yup.string().required("Please add the client's item tracking number"),
+	product: Yup.string().required("Please add the client's product"),
+	weight: Yup.number().required("Please add the client's product mass"),
+	description: Yup.string().required("Please add the client's little description ,eg One bag of maize 10 killograms "),
+	
+	storageaddress: Yup.string().required("Please add the product's storage area"),
+	
+	datein: Yup.string().required("Please add the date the goods were brought in for storage"),
 	dateout: Yup.string(),
-	intime: Yup.string().required(),
-	outtime: Yup.string().required(),
-	observation: Yup.string().required(),
-	notes: Yup.string().required(),
+	timein: Yup.string().required("Please add the time the goods were brought in for storage"),
+	timeout: Yup.string(),
+	notes: Yup.string().required("Please add the description of the goods"),
 })
 
-const AddStorageForm = () => {
+const AddStorageForm = ({ token, postAStorage, errMessage, data}) => {
+	
+	const [ trackNo, setTrackNo ] = useState("")
+	const [ showSuccess, setShowSuccess ] = useState(false);
+
+	const submitHandler = ( values, {resetForm} ) => {
+		postAStorage(values, token)
+
+		if (!errMessage || errMessage === undefined){
+			setShowSuccess(true)
+			setTrackNo(values.trackno)
+			resetForm()
+		}
+
+		console.log(values)
+
+	}
 	return (
 		<StyledWrapper container spacing={2}>
 
+			{
+				errMessage ? (
+					<Grow  style={{ transformOrigin: '10 20 50' }} in timeout={1000}>
+						<Alert severity="error" variant="filled">
+							<AlertTitle>Post Storage Error!</AlertTitle>
+							{ errMessage }
+						</Alert>
+					</Grow>
+				) : null
+			}
+
+			{
+				showSuccess ? (
+					<Grow  style={{ transformOrigin: '10 20 50' }} in timeout={1000}>
+						<Alert severity="success" variant="filled">
+							<AlertTitle>Post Storage Success!</AlertTitle>
+							Storage of track number <strong> {trackNo} </strong> has been posted successfully
+						</Alert>
+					</Grow>
+				) : null
+			} 
 			<Formik
 				initialValues={{
 					...INITIAL_FORM_STATE
 				}}
 				validationSchema={ FORM_VALIDATION }
-				onSubmit = {values => {
-					console.log(values)
-				}}
+				onSubmit = {submitHandler}
 			>
 				<Form>
 					<Grid container spacing={2}>
@@ -90,7 +121,7 @@ const AddStorageForm = () => {
 						
 						{
 							contactInformation.map((el, i) => (
-								<Grid item sm={el.sm} xs={el.xs}>
+								<Grid key={i} item sm={el.sm} xs={el.xs}>
 									<TextField type={el.type} name={el.name} label={el.label}/>
 								</Grid>
 							))
@@ -119,7 +150,7 @@ const AddStorageForm = () => {
 						{
 							StorageArea.map((el, i) => (
 								<Grid key={i} item sm={el.sm} xs={el.xs}>
-									<DateField type={el.type} name={el.name} label={el.label}/>
+									<TextField type={el.type} name={el.name} label={el.label}/>
 								</Grid>
 							))
 						}
@@ -163,15 +194,32 @@ const AddStorageForm = () => {
 						}
 
 					</Grid>
+
+					
+					<ButtonGroup variant="contained" type="submit" sx={{marginTop: "30px"}}>
+						<Button type="submit" color="primary"  endIcon={<SendIcon/>}>
+							Submit Storage
+						</Button>
+						<Button  type="button" color="error" endIcon={<ClearIcon/>}>
+							Cancel Storage
+						</Button>
+					</ButtonGroup>
 				</Form>
 
 			</Formik>
-			
-			<StyledAddButton variant="contained">
-				Submit
-			</StyledAddButton>
 		</StyledWrapper>
 	)
 }
 
-export default AddStorageForm
+const mapStateToProps = ({ auth, storage }) => ({
+	token: auth.token,
+
+	errMessage: storage.errMessage,
+	data: storage.data
+})
+
+const mapDispatchToProps = (dispatch) => ({
+	postAStorage: (values, token) => dispatch(postAStorage(values, token))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddStorageForm)

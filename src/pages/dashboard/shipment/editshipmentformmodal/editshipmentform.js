@@ -101,17 +101,13 @@ const EditShipmentForm = ({ token, editAShipment, errMessage, data, item}) => {
 	const [ showSuccess, setShowSuccess ] = useState(false);
 
 	const submitHandler = ( values, {resetForm} ) => {
-		console.log("THE DATA WE IS",item)
 		editAShipment(values, token)
 
 		if (!errMessage || errMessage === undefined){
 			setShowSuccess(true)
 			setTrackNo(data.trackno)
-			// resetForm()
+			resetForm()
 		}
-
-		console.log(values)
-
 	}
 
 	return (

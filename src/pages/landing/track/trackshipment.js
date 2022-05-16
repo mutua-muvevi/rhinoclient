@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
+import { Link } from "react-router-dom";
+
 import { Box, Breadcrumbs, Button, FormGroup, Grow, InputBase, Typography } from "@mui/material"
 import { styled } from "@mui/system";
+
 import HomeIcon from '@mui/icons-material/Home';
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import ManageSearchIcon from '@mui/icons-material/ManageSearch';
-import { Link } from "react-router-dom";
 
 // disposable import
-import { shipping } from "./disposabledummy"
+// import { shipping } from "./disposabledummy"
 import TrackItem from "./trackItem";
+
+import { connect } from "react-redux";
 
 
 const StyledBreadCrumbs = styled(Breadcrumbs)(({theme}) => ({
@@ -36,7 +40,7 @@ const StyledTrackButton = styled(Button)(({theme}) => ({
 }))
 
 
-const TrackShipment = () => {
+const TrackShipment = ({ shipment }) => {
 	
 	const [searchValue, setSearchValue] = useState("");
 	const [trackItem, setTrackItem] = useState(null);
@@ -50,7 +54,7 @@ const TrackShipment = () => {
 	const submitHandler = e => {
 		e.preventDefault()
 		
-		const searchItem = shipping.find(track => track.trackno === searchValue )
+		const searchItem = shipment.find(track => track.trackno === searchValue )
 		
 		if(searchItem){
 			setTrackItem(searchItem)
@@ -130,4 +134,8 @@ const TrackShipment = () => {
 	)
 }
 
-export default TrackShipment
+const mapStateToProps = ({ shipment }) => ({
+	shipment: shipment.data
+})
+
+export default connect(mapStateToProps)(TrackShipment)

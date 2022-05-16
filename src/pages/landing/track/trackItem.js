@@ -1,7 +1,8 @@
 import React from 'react';
 import { Box, Container, Divider, Grid, Modal, Grow, Table, TableBody, TableContainer, TableHead, TableRow, Typography } from "@mui/material";
-import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import { styled } from "@mui/system";
+
+import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 
 const StyledTrackItem = styled(Modal)(({ theme }) => ({
@@ -87,12 +88,7 @@ const TrackItem = ({ item, modal, onClose}) => {
 				name: "Address",
 				value: item.shippersaddress,
 				meta:""
-			},
-			{
-				name: "Observation",
-				value: item.formitems[0].notes,
-				meta:""
-			},
+			}
 		],
 		[
 			{
@@ -175,7 +171,7 @@ const TrackItem = ({ item, modal, onClose}) => {
 											{
 												shipperHeaderItems &&
 												shipperHeaderItems.map((box, i) => (
-													<Grid key={i} item lg={4} sm={12} xs={12}>
+													<Grid key={box.value} item lg={4} sm={12} xs={12}>
 														{
 															box &&
 															box.map((el, i) => (

@@ -1,7 +1,7 @@
-import { Card, CardActionArea, CardContent, CardMedia, Typography } from "@mui/material"
-import { styled } from "@mui/styles"
-import React from 'react'
+import React from 'react';
 
+import { Card, CardActionArea, CardContent, CardMedia, Typography } from "@mui/material";
+import { styled } from "@mui/styles";
 
 const TrackCard = ({ title, subtitle, link, image, alt }) => {
 

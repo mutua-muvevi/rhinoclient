@@ -44,7 +44,7 @@ const Track = () => {
 					<Grid container spacing={2}>
 						{
 							trackCardInfo.map((el, i) => (
-								<Grid item key={el} lg={6} sm={12} xs={12}>
+								<Grid item key={el.title} lg={6} sm={12} xs={12}>
 									<Link to={el.link} style={{textDecoration: "none"}}>
 										<TrackCard
 											image={el.image.src}

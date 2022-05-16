@@ -39,7 +39,6 @@ const Storagecards3 = () => {
 					<Typography variant="h3">
 						Add Storage
 					</Typography>
-					{console.log("Modal status is", open)}
 				</BoxWrapper>
 
 				<Addstoragemodal open={open} setOpen={setOpen}/>

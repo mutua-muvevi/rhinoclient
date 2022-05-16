@@ -7,10 +7,9 @@ import authReducer from './auth/authreducer';
 import userReducer from './user/userreducer';
 
 import shipmentReducer from './shipment/shipmentreducer';
-import contactReducer from "./contact/contactreducers";
+import storageReducer from "./storage/storagereducer";
 
-import storageReducer from "./storage/allstorage/allstoragereducers";
-import singleStorageReducer from "./storage/singlestorage/singlestoragereducers";
+import contactReducer from "./contact/contactreducers";
 import productQuotationReducer from "./productquotation/productquotationreducers";
 import enquiriesReducer from "./enquiries/enquiriesreducers";
 
@@ -20,11 +19,9 @@ const config = {
 	whitelist: [
 		"auth", 
 		"user", 
-		"contact", 
 		"shipment", 
-		"singleshipment", 
 		"storage", 
-		"singleStorage", 
+		"contact",
 		"productQuotation", 
 		"enquiries"
 	],
@@ -34,13 +31,10 @@ const rootReducer = combineReducers({
 	auth: authReducer,
 	user: userReducer,
 
-	contact: contactReducer,
-
+	storage: storageReducer,
 	shipment: shipmentReducer,
 
-	storage: storageReducer,
-	singleStorage: singleStorageReducer,
-
+	contact: contactReducer,
 	productQuotation: productQuotationReducer,
 
 	enquiries: enquiriesReducer
