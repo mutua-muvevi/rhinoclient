@@ -114,11 +114,18 @@ export const postAShipment = (values, token) => {
 	}
 }
 
-export const postEvent = (formData) => {
+export const postEvent = (values, token) => {
 	return async (dispatch) => {
 		try {
-			const res = await axios.get(
-				`http://localhost:7000/api/shipping/post`
+			const res = await axios.put(
+				`http://localhost:7000/api/shipping/event/update`,
+				values,
+				{
+					headers: {
+						"Content-Type": "application/json",
+						Authorization:`Bearer ${token}`
+					},
+				}
 			)
 			addEvent()
 			dispatch(addEventSuccess(res.data.data))

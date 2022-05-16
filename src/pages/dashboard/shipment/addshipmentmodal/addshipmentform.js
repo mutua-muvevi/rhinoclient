@@ -101,9 +101,6 @@ const AddShipmentForm = ({ token, postAShipment, errMessage, data}) => {
 	const submitHandler = ( values, {resetForm} ) => {
 		postAShipment(values, token)
 
-		console.log("THE EROR MESSAGE REDUX", errMessage)
-		console.log("DATA FROM SHIPMENT IS", data)
-
 		if (!errMessage || errMessage === undefined){
 			setShowSuccess(true)
 			setTrackNo(data.trackno)
@@ -127,7 +124,6 @@ const AddShipmentForm = ({ token, postAShipment, errMessage, data}) => {
 					</Grow>
 				) : null
 			}
-			{console.log("The token inside JSX", token)}
 
 			{
 				showSuccess ? (

@@ -168,7 +168,7 @@ const ShipmentViewModal = ({ values, open, setOpen }) => {
 		},
 	]
 
-	const truckAndDescription = [
+	const trackAndDescription = [
 		{
 			name: "Track number",
 			value: values.trackno,
@@ -377,7 +377,7 @@ const ShipmentViewModal = ({ values, open, setOpen }) => {
 							<Divider/>
 							</Grid>
 							{
-								truckAndDescription && truckAndDescription.map(el => (
+								trackAndDescription && trackAndDescription.map(el => (
 									<Grid item key={el.name} xl={el.xl} lg={el.lg} md={el.md} sm={el.sm} xs={el.xs}>
 										<Typography variant="h5">{el.name}</Typography>
 										<Box>
@@ -465,7 +465,7 @@ const ShipmentViewModal = ({ values, open, setOpen }) => {
 					</Container>
 				</Box>
 			</StyledModal>
-			<EventModal open={eventModal} setOpen={setEventModal}/>
+			<EventModal trackInfo={values.trackno} open={eventModal} setOpen={setEventModal}/>
 		</>
 	)
 }

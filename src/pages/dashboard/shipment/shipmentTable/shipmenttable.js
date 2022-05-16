@@ -46,8 +46,6 @@ const ShipmentTable = ({ data }) => {
 	const handleClick = (e, values) => {
 		setSingleShipment(values.row)
 		setModal(true)
-		console.log("The cell values are",values)
-		console.log("THeshipment row value is", singleShipment)
 	}
 
 	const columns = [
