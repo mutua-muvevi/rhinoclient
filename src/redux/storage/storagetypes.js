@@ -1,4 +1,4 @@
-const shipmentTypes = {
+const storageTypes = {
 	GET_ALL_START: 'GET_ALL_START',
 	GET_ALL_SUCCESS: 'GET_ALL_SUCCESS',
 	GET_ALL_FAIL: 'GET_ALL_FAIL',
@@ -14,10 +14,6 @@ const shipmentTypes = {
 	EDIT_START: "EDIT_START",
 	EDIT_SUCCESS: "EDIT_SUCCESS",
 	EDIT_FAIL: "EDIT_FAIL",
-
-	ADD_EVENT_START: "ADD_EVENT_START",
-	ADD_EVENT_SUCCESS: "ADD_EVENT_SUCCESS",
-	ADD_EVENT_FAIL: "ADD_EVENT_FAIL",
 };
 
-export default shipmentTypes;
+export default storageTypes;

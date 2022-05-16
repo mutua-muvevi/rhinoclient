@@ -1,4 +1,4 @@
-import shipmentTypes from "./shipmenttypes";
+import storageTypes from "./storagetypes";
 
 const initialState = {
 	loading: false,
@@ -8,21 +8,21 @@ const initialState = {
 
 const shipmentReducer = ( state = initialState, { type, payload } ) => {
 	switch(type){
-		case shipmentTypes.GET_ALL_START: 
+		case storageTypes.GET_ALL_START: 
 			return { 
 				...state, 
 				loading: true,
 				data: null,
 				errMessage: undefined,
 			};
-			case shipmentTypes.GET_ALL_SUCCESS: 
+			case storageTypes.GET_ALL_SUCCESS: 
 			return { 
 				...state, 
 				loading: false,
 				data: payload,
 				errMessage: undefined,
 			};
-		case shipmentTypes.GET_ALL_FAIL: 
+		case storageTypes.GET_ALL_FAIL: 
 			return { 
 				...state, 
 				loading: false,
@@ -30,20 +30,20 @@ const shipmentReducer = ( state = initialState, { type, payload } ) => {
 			};
 
 			
-		case shipmentTypes.GET_ONE_START: 
+		case storageTypes.GET_ONE_START: 
 			return { 
 				...state, 
 				loading: true,
 				errMessage: undefined,
 			};
-		case shipmentTypes.GET_ONE_SUCCESS: 
+		case storageTypes.GET_ONE_SUCCESS: 
 			return { 
 				...state, 
 				loading: false,
 				data: payload,
 				errMessage: undefined,
 			};
-		case shipmentTypes.GET_ONE_FAIL: 
+		case storageTypes.GET_ONE_FAIL: 
 			return { 
 				...state, 
 				loading: false,
@@ -52,20 +52,20 @@ const shipmentReducer = ( state = initialState, { type, payload } ) => {
 
 
 
-		case shipmentTypes.POST_START: 
+		case storageTypes.POST_START: 
 			return { 
 				...state, 
 				loading: true,
 				errMessage: undefined,
 			};
-		case shipmentTypes.POST_SUCCESS: 
+		case storageTypes.POST_SUCCESS: 
 			return { 
 				...state, 
 				loading: false,
 				data: payload,
 				errMessage: undefined,
 			};
-		case shipmentTypes.POST_FAIL: 
+		case storageTypes.POST_FAIL: 
 			return { 
 				...state, 
 				loading: false,
@@ -74,48 +74,25 @@ const shipmentReducer = ( state = initialState, { type, payload } ) => {
 
 
 
-		case shipmentTypes.EDIT_START: 
+		case storageTypes.EDIT_START: 
 			return { 
 				...state, 
 				loading: true,
 				errMessage: undefined,
 			};
-		case shipmentTypes.EDIT_SUCCESS: 
+		case storageTypes.EDIT_SUCCESS: 
 			return { 
 				...state, 
 				loading: false,
 				data: payload,
 				errMessage: undefined,
 			};
-		case shipmentTypes.EDIT_FAIL: 
+		case storageTypes.EDIT_FAIL: 
 			return { 
 				...state, 
 				loading: false,
 				errMessage: payload,
 			};
-
-			
-			
-		case shipmentTypes.ADD_EVENT_START: 
-			return { 
-				...state, 
-				loading: true,
-				errMessage: undefined,
-			};
-		case shipmentTypes.ADD_EVENT_SUCCESS: 
-			return { 
-				...state, 
-				loading: false,
-				data: payload,
-				errMessage: undefined,
-			};
-		case shipmentTypes.ADD_EVENT_FAIL: 
-			return { 
-				...state, 
-				loading: false,
-				errMessage: payload,
-			};
-
 
 		default: 
 			return state

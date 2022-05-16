@@ -9,13 +9,14 @@ import * as Yup from "yup";
 import TextField from "../../../../components/formsUI/textfield/textfield"
 import DateField from "../../../../components/formsUI/datepicker/datepicker";
 import TimeField from "../../../../components/formsUI/timepicker/timepicker"
-import { collectorInformation, cosignInformation, departureInformation, destinationInformation, itemInformation, shippersInformation } from "./addshipmentformcontent"
+import { collectorInformation, cosignInformation, departureInformation, destinationInformation, itemInformation, shippersInformation } from "./editshipmentformcontent"
 
 import SendIcon from '@mui/icons-material/Send';
 import ClearIcon from '@mui/icons-material/Clear';
 
+
 import { connect } from "react-redux";
-import { postAShipment } from "../../../../redux/shipment/shipmentactions";
+import { editAShipment } from "../../../../redux/shipment/shipmentactions";
 
 const StyledWrapper = styled(Box)(({theme}) => ({
 	padding: 10
@@ -93,22 +94,20 @@ const FORM_VALIDATION = Yup.object().shape({
 
 })
 
-const AddShipmentForm = ({ token, postAShipment, errMessage, data}) => {
 
+const EditShipmentForm = ({ token, editAShipment, errMessage, data, item}) => {
+	
 	const [ trackNo, setTrackNo ] = useState("")
 	const [ showSuccess, setShowSuccess ] = useState(false);
 
 	const submitHandler = ( values, {resetForm} ) => {
-		postAShipment(values, token)
+		editAShipment(values, token)
 
 		if (!errMessage || errMessage === undefined){
 			setShowSuccess(true)
 			setTrackNo(data.trackno)
 			resetForm()
 		}
-
-		console.log(values)
-
 	}
 
 	return (
@@ -272,7 +271,7 @@ const mapStateToProps = ({ auth, shipment }) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-	postAShipment: (values, token) => dispatch(postAShipment(values, token))
+	editAShipment: (values, token) => dispatch(editAShipment(values, token))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddShipmentForm)
+export default connect(mapStateToProps, mapDispatchToProps)(EditShipmentForm)

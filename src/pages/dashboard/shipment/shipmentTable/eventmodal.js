@@ -21,7 +21,7 @@ const styledModalBox = {
 	borderRadius: "5px",
 }
 
-const EventModal = ({ open, setOpen }) => {
+const EventModal = ({ trackInfo, open, setOpen }) => {
 	return (
 		<StyledModal
 			open={open}
@@ -31,7 +31,7 @@ const EventModal = ({ open, setOpen }) => {
 		>
 			<Box sx={styledModalBox}>
 				<Container maxWidth="xl">
-					<EventForm/>
+					<EventForm trackno={trackInfo}/>
 				</Container>
 			</Box>
 		</StyledModal>

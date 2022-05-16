@@ -47,6 +47,21 @@ export const postShipmentFail = (errMessage) => ({
 })
 
 
+export const editShipment = () => ({
+	type: shipmentTypes.POST_START,
+})
+
+export const editShipmentSuccess = (shipment) => ({
+	type: shipmentTypes.POST_SUCCESS,
+	payload: shipment,
+})
+
+export const editShipmentFail = (errMessage) => ({
+	type: shipmentTypes.POST_FAIL,
+	payload: errMessage,
+})
+
+
 
 export const addEvent = () => ({
 	type: shipmentTypes.ADD_EVENT_START,
@@ -91,7 +106,7 @@ export const getSingleShipment = (id) => {
 	}
 }
 
-export const postAShipment = (values) => {
+export const postAShipment = (values, token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.post(
@@ -100,23 +115,53 @@ export const postAShipment = (values) => {
 				{
 					headers: {
 						"Content-Type": "application/json",
+						Authorization:`Bearer ${token}`
 					},
 				}
-			)
+				)
+			
 			postShipment()
 			dispatch(postShipmentSuccess(res.data.data))
-			console.log("THE ACTION IS", res.data.data)
 		} catch (error) {
 			dispatch(postShipmentFail(error.response.data.error))
 		}
 	}
 }
 
-export const postEvent = (formData) => {
+export const editAShipment = (values, token) => {
 	return async (dispatch) => {
 		try {
-			const res = await axios.get(
-				`http://localhost:7000/api/shipping/post`
+			const res = await axios.put(
+				`http://localhost:7000/api/shipping/item/update`,
+				values,
+				{
+					headers: {
+						"Content-Type": "application/json",
+						Authorization:`Bearer ${token}`
+					},
+				}
+				)
+			
+				editShipment()
+			dispatch(editShipmentSuccess(res.data.data))
+		} catch (error) {
+			dispatch(editShipmentFail(error.response.data.error))
+		}
+	}
+}
+
+export const postEvent = (values, token) => {
+	return async (dispatch) => {
+		try {
+			const res = await axios.put(
+				`http://localhost:7000/api/shipping/event/update`,
+				values,
+				{
+					headers: {
+						"Content-Type": "application/json",
+						Authorization:`Bearer ${token}`
+					},
+				}
 			)
 			addEvent()
 			dispatch(addEventSuccess(res.data.data))

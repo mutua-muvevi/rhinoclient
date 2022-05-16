@@ -1,9 +1,12 @@
 import React from 'react';
+
 import { DataGrid} from '@mui/x-data-grid';
 import { styled } from "@mui/system";
 import { Card, CardHeader} from "@mui/material";
 
-const StorageTable = ({storage, error}) => {
+import { connect } from "react-redux"
+
+const StorageTable = ({storage}) => {
 
 	const StyledDataGridContainer = styled(Card)(({theme}) => ({
 		backgroundColor: "inherit",
@@ -48,7 +51,7 @@ const StorageTable = ({storage, error}) => {
 			width: 200
 		},
 		{
-			field: "fullnames",
+			field: "fullname",
 			align: "left",
 			headerAlign: "left",
 			headerName: "Fullname",
@@ -68,34 +71,16 @@ const StorageTable = ({storage, error}) => {
 			headerName: "Company",
 			width: 200
 		},
+		
+		
 		{
-			field: "consignfullnames",
+			field: "storageaddress",
 			align: "left",
 			headerAlign: "left",
-			headerName: "Cosignee",
+			headerName: "Storage Address",
 			width: 200
 		},
-		{
-			field: "consignemail",
-			align: "left",
-			headerAlign: "left",
-			headerName: "Cosignee Email",
-			width: 200
-		},
-		{
-			field: "storagecity",
-			align: "left",
-			headerAlign: "left",
-			headerName: "City of Storage",
-			width: 200
-		},
-		{
-			field: "storagecountry",
-			align: "left",
-			headerAlign: "left",
-			headerName: "Country of storage",
-			width:200
-		},
+
 		{
 			field: "datein",
 			align: "left",
@@ -104,7 +89,7 @@ const StorageTable = ({storage, error}) => {
 			width: 150
 		},
 		{
-			field: "intime",
+			field: "timein",
 			align: "left",
 			headerAlign: "left",
 			headerName: "Time In",
@@ -118,26 +103,20 @@ const StorageTable = ({storage, error}) => {
 			width: 150
 		},
 		{
-			field: "outtime",
+			field: "timeout",
 			align: "left",
 			headerAlign: "left",
 			headerName: "Out Time",
 			width: 150
 		},
+
 		{
-			field: "observation",
+			field: "notes",
 			align: "left",
 			headerAlign: "left",
 			headerName: "Observation",
 			minWidth: 500
-		},
-		{
-			field: "date",
-			align: "left",
-			headerAlign: "left",
-			headerName: "Date",
-			width: 100
-		},
+		}
 	]
 
 	return (
@@ -155,4 +134,10 @@ const StorageTable = ({storage, error}) => {
 	)
 }
 
-export default StorageTable
+
+const mapStateToProps = ({ storage }) => ({
+	storage: storage.data,
+	errMessage: storage.errMessage
+});
+
+export default connect(mapStateToProps)(StorageTable)

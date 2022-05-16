@@ -1,12 +1,24 @@
 
 export const eventModalFormContent = [
 	{
+		type: "string",
+		label: "Track number",
+		required: true,
+		name:"trackno",
+		xs:12,
+		sm:12,
+		md:4,
+		multiline: false,
+		rows: 1
+	},
+	{
 		type: "number",
 		label: "Event Number",
 		required: true,
 		name:"number",
 		xs:12,
-		sm:4,
+		sm:12,
+		md:4,
 		multiline: false,
 		rows: 1
 	},
@@ -16,7 +28,7 @@ export const eventModalFormContent = [
 		required: true,
 		name:"currentlocation",
 		xs:12,
-		sm:4,
+		md:4,
 		multiline: false,
 		rows: 1
 	},
@@ -27,7 +39,7 @@ export const eventModalFormContent = [
 		required: true,
 		name:"shippingstatus",
 		xs:12,
-		sm:4,
+		md:4,
 		multiline: false,
 		rows: 1
 	},
@@ -38,8 +50,8 @@ export const eventModalFormContent = [
 		name:"notes",
 		xs:12,
 		sm:12,
-		multiline: false,
-		rows: 5
+		multiline: true,
+		rows: 4
 	},
 ]
 
