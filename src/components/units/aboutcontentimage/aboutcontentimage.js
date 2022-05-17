@@ -7,35 +7,34 @@ import { Link } from "react-router-dom";
 const wrapper = {
 	paddingTop: "5vh",
 	paddingBottom: "5vh",
-	minHeight: "75vh"
+	minHeight: "60vh"
 }
 
+const gridItemContainer = {
+	minHeight: "60vh",
+	display: "flex",
+	flexDirection: "column",
+	justifyContent: "center",
+	alignItems: "flex-start"
+}
+
+const imageBackground = {
+	backgroundImage: `url(${Image})`,
+	backgroundPosition: "center",
+	backgroundSize: "cover",
+}
 const Aboutcontentimage = ({title, paragraph, link}) => {
 	
 	const leftRightContainer = {
 		
 	}
 
-	const gridItemContainer = {
-		minHeight: "75vh",
-		display: "flex",
-		flexDirection: "column",
-		justifyContent: "center",
-		alignItems: "flex-start"
-	}
-	
-	
-	const imageBackground = {
-		backgroundImage: `url(${Image})`,
-		backgroundPosition: "center",
-		backgroundSize: "cover"
-	}
 
 	return (
-		<Box sx={wrapper}>
-			<Grid container sx={leftRightContainer}>
+		<Container maxWidth="xl" sx={wrapper}>
+			<Grid container spacing={2} sx={leftRightContainer}>
 				<Grid item lg={6} sm={12}>
-					<Container sx={gridItemContainer} maxWidth="lg">
+					<Box sx={gridItemContainer}>
 						<Typography variant="h4" gutterBottom>
 							{title}
 						</Typography>
@@ -53,13 +52,13 @@ const Aboutcontentimage = ({title, paragraph, link}) => {
 								Explore
 							</Button>
 						</Link>
-					</Container>
+					</Box>
 				</Grid>
 				<Grid item lg={6} sm={12} sx={imageBackground}>
 
 				</Grid>
 			</Grid>
-		</Box>
+		</Container>
 	)
 }
 

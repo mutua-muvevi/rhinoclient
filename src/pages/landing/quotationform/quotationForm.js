@@ -96,7 +96,7 @@ const QuotationForm = ({onClose}) => {
 					</Grid>
 
 					<ButtonGroup variant="contained" type="submit" sx={{marginTop: "30px"}}>
-						<Button type="submit" color="primary"  endIcon={<SendIcon/>}>
+						<Button type="submit" color="secondary"  endIcon={<SendIcon/>}>
 							Submit Quotation
 						</Button>
 						<Button onClick={onClose} type="submit" color="error" endIcon={<ClearIcon/>}>

@@ -5,11 +5,11 @@ import { Box, Button, Container, Grid, Typography } from "@mui/material";
 const wrapper = {
 	paddingTop: "5vh",
 	paddingBottom: "5vh",
-	minHeight: "75vh"
+	minHeight: "60vh",
 }
 
 const gridItemContainer = {
-	minHeight: "75vh",
+	minHeight: "60vh",
 	display: "flex",
 	flexDirection: "column",
 	justifyContent: "center",
@@ -29,10 +29,13 @@ const leftRightContainer = {
 
 const Values = () => {
 	return (
-		<Box sx={wrapper}>
-			<Grid container sx={leftRightContainer}>
+		<Container maxWidth="xl" sx={wrapper}>
+			<Grid container spacing={2} sx={leftRightContainer}>
+				<Grid item lg={6} sm={12} sx={imageBackground}>
+
+				</Grid>
 				<Grid item lg={6} sm={12}>
-					<Container sx={gridItemContainer} maxWidth="lg">
+					<Box sx={gridItemContainer} maxWidth="lg">
 						<Typography variant="h4" gutterBottom>
 							{aboutCoreValuesContent.title}
 						</Typography>
@@ -55,13 +58,10 @@ const Values = () => {
 								))
 							}
 						</Grid>
-					</Container>
-				</Grid>
-				<Grid item lg={6} sm={12} sx={imageBackground}>
-
+					</Box>
 				</Grid>
 			</Grid>
-		</Box>
+		</Container>
 	)
 }
 

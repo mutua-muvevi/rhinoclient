@@ -45,7 +45,7 @@ const ContactForm = () => {
 				<Form>
 					<Grid container spacing={1}>
 						<Grid item xs={12}>
-							<Typography variant="h5" color="blue" gutterBottom>
+							<Typography variant="h4" gutterBottom>
 								Send Us Your Message
 							</Typography>
 						</Grid>

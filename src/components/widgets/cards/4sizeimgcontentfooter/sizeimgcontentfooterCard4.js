@@ -1,27 +1,26 @@
+import React, { useState } from 'react';
+
 import { Button, Card, CardActions, CardContent, CardMedia, Typography } from "@mui/material";
 import { styled } from "@mui/system";
+
 import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
-import React, { useState } from 'react';
 import ServicesModal from "../../../../pages/landing/services/servicesmodal";
 
 const ImageContentCard = styled(Card)(({theme}) => ({
 	width: "100%",
-	margin: "10px !important",
 	borderRadius: theme.shape.default,
-	backgroundColor: "white",
+	backgroundColor: theme.palette.background.paper
 }))
 
 const CardContentInfo = styled(CardContent)(({theme}) => ({
 	marginBottom: "10px",
 	borderBottom: `1px solid grey`,
-	backgroundColor: "white",
 	minHeight: "30vh"
 }))
 
 const CardActionsInfo = styled(CardActions)(({theme}) => ({
 	display: "flex",
 	justifyContent: "space-between",
-	backgroundColor: "white"
 }))
 
 const SizeimgcontentfooterCard4 = ({ title, alt, image, paragraph, setModal, modal, modalData }) => {
@@ -61,7 +60,7 @@ const SizeimgcontentfooterCard4 = ({ title, alt, image, paragraph, setModal, mod
 			</CardContentInfo>
 			
 			<CardActionsInfo>
-				<Button onClick={handleModal} variant="contained" color="primary">
+				<Button onClick={handleModal} variant="contained" color="secondary">
 					<Typography variant="body2" style={{marginRight: "20px"}}>
 						View Product
 					</Typography>

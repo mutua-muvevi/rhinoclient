@@ -6,12 +6,12 @@ import { styled } from "@mui/system";
 import FooterImage from "../../../assets/images/miningtools.jpg";
 
 const FooterWrapper = styled(Box)(({theme}) => ({
-	background: `linear-gradient(to bottom, rgba(0, 0, 0, 0.58), rgba(0, 0, 0, 0.78)), url(${FooterImage})`,
+	background: `linear-gradient(to bottom, rgba(0, 0, 0, 0.68), rgba(0, 0, 0, 0.88)), url(${FooterImage})`,
 	backgroundAttachment: "fixed",
 	backgroundPosition: "center",
 	backgroundSize: "cover",
 	color: "white",
-	minHeight: "70vh",
+	minHeight: "60vh",
 	display: "flex",
 	flexDirection: "column",
 	alignItems: "center"

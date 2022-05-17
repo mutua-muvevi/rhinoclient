@@ -13,8 +13,7 @@ const StyledModal = styled(Modal)(({theme}) => ({
 }))
 
 const detailsContainer = {
-	borderRadius: 4,
-	backgroundColor: "white",
+	borderRadius: 2,
 	border: 'none',
 	padding: 0,
 	position: "relative",
@@ -23,7 +22,8 @@ const detailsContainer = {
 }
 
 const StyledModalItems = styled(Grid)(({theme}) => ({
-	padding: 0
+	padding: 0,
+	backgroundColor: theme.palette.background.paper
 }))
 
 const BoxOverlay = styled(Box)(({theme}) => ({
@@ -35,9 +35,19 @@ const BoxOverlay = styled(Box)(({theme}) => ({
 	flexDirection: "column",
 	justifyContent: "center", 
 	alignItems: "center",
-	borderTopLeftRadius: 10,
-	borderBottomLeftRadius: 10,
+	borderTopLeftRadius: 4,
+	borderBottomLeftRadius: 4,
 	textAlign: "center"
+}))
+
+
+const StyledModalContentArea = styled(Grid)(({theme}) => ({
+	overflowY: "scroll",
+	padding: "30px 10px",
+	height: "80vh !important",
+	display: "flex",
+	flexDirection: "column",
+	justifyContent: "flex-start"
 }))
 
 const ServicesModal = ({open, handleClose, modal}) => {
@@ -66,14 +76,6 @@ const ServicesModal = ({open, handleClose, modal}) => {
 		borderBottomLeftRadius: 10
 	}))
 
-	const StyledModalContentArea = styled(Grid)(({theme}) => ({
-		overflowY: "scroll",
-		padding: "30px 10px",
-		height: "80vh !important",
-		display: "flex",
-		flexDirection: "column",
-		justifyContent: "flex-start"
-	}))
 
 	return (
 		<StyledModal
@@ -148,7 +150,13 @@ const ServicesModal = ({open, handleClose, modal}) => {
 							))
 						}
 
-						<Button onClick={handleModal} sx={{marginTop: "20px"}} endIcon={<TextsmsIcon/>} variant="contained">
+						<Button 
+							onClick={handleModal}
+							sx={{marginTop: "20px"}}
+							endIcon={<TextsmsIcon/>}
+							color="secondary"
+							variant="contained"
+						>
 							Request Quotation
 						</Button>
 
