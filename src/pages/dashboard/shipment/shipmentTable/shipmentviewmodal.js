@@ -12,16 +12,20 @@ const StyledModal = styled(Modal)(({ theme }) => ({
 	margin: "10vh auto",
 	overflowY: "scroll",
 	border: 'none',
-	height: "80vh"
+	height: "80vh",
+	borderRadius: theme.shape.default
 }))
 
-const styledModalBox = {
-	backgroundColor: "white",
+const StyledModalContainerBox = styled(Box)(({theme}) => ({
+	backgroundColor: theme.palette.background.paper,
 	border: 'none',
 	boxShadow: 24,
 	paddingTop: 2,
 	paddingBottom: 2,
-	borderRadius: "10px",
+	// borderRadius: "10px",
+}))
+
+const styledModalBox = {
 }
 
 const StyledButtonGroup = styled(ButtonGroup)(({ theme }) => ({
@@ -299,10 +303,10 @@ const ShipmentViewModal = ({ values, open, setOpen }) => {
 		},
 	]
 
-	const shipviewEvents = {
-		name: "Shipping Events",
-		value: values.events,
-	}
+	// const shipviewEvents = {
+	// 	name: "Shipping Events",
+	// 	value: values.events,
+	// }
 
 	return (
 		<>
@@ -312,12 +316,12 @@ const ShipmentViewModal = ({ values, open, setOpen }) => {
 				aria-labelledby="modal-modal-title"
 				aria-describedby="modal-modal-description"
 			>
-				<Box sx={styledModalBox}>
+				<StyledModalContainerBox sx={styledModalBox}>
 					<Container maxWidth="xl">
 						<Grid container spacing={2}>
 
-							<Grid item xs={12}>
-								<Typography variant="h5" color="blue" gutterBottom>
+							<Grid sx={{marginTop: "20px"}} item xs={12}>
+								<Typography variant="h4" color="secondary" gutterBottom>
 									Shipper's Information
 								</Typography>
 							<Divider/>
@@ -335,7 +339,7 @@ const ShipmentViewModal = ({ values, open, setOpen }) => {
 
 
 							<Grid item xs={12}>
-								<Typography variant="h5" color="blue" gutterBottom>
+								<Typography variant="h4" color="secondary" gutterBottom>
 									Consignee's Information
 								</Typography>
 							<Divider/>
@@ -353,7 +357,7 @@ const ShipmentViewModal = ({ values, open, setOpen }) => {
 
 
 							<Grid item xs={12}>
-								<Typography variant="h5" color="blue" gutterBottom>
+								<Typography variant="h4" color="secondary" gutterBottom>
 									Collector's Information
 								</Typography>
 							<Divider/>
@@ -371,7 +375,7 @@ const ShipmentViewModal = ({ values, open, setOpen }) => {
 
 
 							<Grid item xs={12}>
-								<Typography variant="h5" color="blue" gutterBottom>
+								<Typography variant="h4" color="secondary" gutterBottom>
 									Track Information
 								</Typography>
 							<Divider/>
@@ -389,7 +393,7 @@ const ShipmentViewModal = ({ values, open, setOpen }) => {
 
 
 							<Grid item xs={12}>
-								<Typography variant="h5" color="blue" gutterBottom>
+								<Typography variant="h4" color="secondary" gutterBottom>
 									Item Information
 								</Typography>
 							<Divider/>
@@ -407,7 +411,7 @@ const ShipmentViewModal = ({ values, open, setOpen }) => {
 
 
 							<Grid item xs={12}>
-								<Typography variant="h5" color="blue" gutterBottom>
+								<Typography variant="h4" color="secondary" gutterBottom>
 									Origin Service Area Information
 								</Typography>
 							<Divider/>
@@ -425,7 +429,7 @@ const ShipmentViewModal = ({ values, open, setOpen }) => {
 
 
 							<Grid item xs={12}>
-								<Typography variant="h5" color="blue" gutterBottom>
+								<Typography variant="h4" color="secondary" gutterBottom>
 									Destination Information
 								</Typography>
 							<Divider/>
@@ -447,7 +451,7 @@ const ShipmentViewModal = ({ values, open, setOpen }) => {
 							<Button 
 								endIcon={<EventRepeatIcon/>} 
 								type="button" variant="contained" 
-								color="primary"
+								color="secondary"
 								onClick={() => setEventModal(true)}
 								>
 									Add events
@@ -463,7 +467,7 @@ const ShipmentViewModal = ({ values, open, setOpen }) => {
 							</Button>
 						</StyledButtonGroup>
 					</Container>
-				</Box>
+				</StyledModalContainerBox>
 			</StyledModal>
 			<EventModal trackInfo={values.trackno} open={eventModal} setOpen={setEventModal}/>
 		</>

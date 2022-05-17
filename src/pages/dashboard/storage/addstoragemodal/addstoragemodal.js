@@ -1,22 +1,26 @@
-import { Box, Modal, Typography } from "@mui/material";
-import { styled } from "@mui/system";
 import React from 'react';
+
+import { Box, Container, Modal, Typography } from "@mui/material";
+import { styled } from "@mui/system";
+
 import AddStorageForm from "./addstorageform";
+
 
 const StyledModal = styled(Modal)(({theme}) => ({
 	width: "85vw",
 	margin: "10vh auto",
 	overflowY: "scroll",
 	border: 'none',
+	borderRadius: theme.shape.default
 }))
 
-const formContainer = {
-	backgroundColor: "white",
+const StyledFormContainerWrapper = styled(Box)(({ theme }) => ({
+	backgroundColor: theme.palette.background.paper,
 	border: 'none',
 	boxShadow: 24,
-	padding: 4,
-	borderRadius: 4
-}
+	paddingTop: 2,
+	paddingBottom: 2,
+}))
 
 const Addstoragemodal = ({open, setOpen}) => {
 	return (
@@ -27,17 +31,14 @@ const Addstoragemodal = ({open, setOpen}) => {
 			aria-describedby="modal-modal-description"
 			
 		>
-			<Box sx={formContainer}>
-				<Typography 
-					id="add-storagel-title" 
-					gutterBottom variant="h3" 
-					component="h2"
-					sx={{marginBottom: "30px"}}
-				>
-					Add Storage Form
-				</Typography>
-				<AddStorageForm/>
-			</Box>
+			<StyledFormContainerWrapper >
+				<Container maxWidth="xl">
+					<Typography style={{marginTop: "20px"}}  id="modal-modal-title" variant="h4" gutterBottom component="h2">
+						Add Storage Form
+					</Typography>
+					<AddStorageForm/>
+				</Container>
+			</StyledFormContainerWrapper>
 		</StyledModal>
 	)
 }

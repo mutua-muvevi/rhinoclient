@@ -145,7 +145,7 @@ const AddShipmentForm = ({ token, postAShipment, errMessage, data}) => {
 				<Form>
 					<Grid container spacing={2}>
 						<Grid item xs={12}>
-							<Typography variant="h5" color="blue" gutterBottom>
+							<Typography variant="h5" color="secondary" gutterBottom>
 								Shippers Information
 							</Typography>
 						</Grid>
@@ -159,7 +159,7 @@ const AddShipmentForm = ({ token, postAShipment, errMessage, data}) => {
 						}
 						
 						<Grid item xs={12}>
-							<Typography variant="h5" color="blue" gutterBottom>
+							<Typography variant="h5" color="secondary" gutterBottom>
 								Cosignee Information
 							</Typography>
 						</Grid>
@@ -173,7 +173,7 @@ const AddShipmentForm = ({ token, postAShipment, errMessage, data}) => {
 						}
 
 						<Grid item xs={12}>
-							<Typography variant="h5" color="blue" gutterBottom>
+							<Typography variant="h5" color="secondary" gutterBottom>
 								Collector Information
 							</Typography>
 						</Grid>
@@ -187,7 +187,7 @@ const AddShipmentForm = ({ token, postAShipment, errMessage, data}) => {
 						}
 
 						<Grid item xs={12}>
-							<Typography variant="h5" color="blue" gutterBottom>
+							<Typography variant="h5" color="secondary" gutterBottom>
 								Item Information
 							</Typography>
 						</Grid>
@@ -201,7 +201,7 @@ const AddShipmentForm = ({ token, postAShipment, errMessage, data}) => {
 						}
 
 						<Grid item xs={12}>
-							<Typography variant="h5" color="blue" gutterBottom>
+							<Typography variant="h5" color="secondary" gutterBottom>
 								Origin Service Area
 							</Typography>
 						</Grid>
@@ -223,7 +223,7 @@ const AddShipmentForm = ({ token, postAShipment, errMessage, data}) => {
 						</Grid>
 
 						<Grid item xs={12}>
-							<Typography variant="h5" color="blue" gutterBottom>
+							<Typography variant="h5" color="secondary" gutterBottom>
 								Final Destination
 							</Typography>
 						</Grid>
@@ -249,7 +249,7 @@ const AddShipmentForm = ({ token, postAShipment, errMessage, data}) => {
 					</Grid>
 
 					<ButtonGroup variant="contained" type="submit" sx={{marginTop: "30px"}}>
-						<Button type="submit" color="primary"  endIcon={<SendIcon/>}>
+						<Button type="submit" color="secondary"  endIcon={<SendIcon/>}>
 							Submit Quotation
 						</Button>
 						<Button  type="button" color="error" endIcon={<ClearIcon/>}>

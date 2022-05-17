@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import { styled, alpha } from '@mui/material/styles';
 import MuiAppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -8,9 +9,9 @@ import InputBase from '@mui/material/InputBase';
 import Badge from '@mui/material/Badge';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
+
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
@@ -18,23 +19,23 @@ import MoreIcon from '@mui/icons-material/MoreVert';
 const drawerWidth = 240;
 
 const AppBarWrapper = styled(MuiAppBar, {
-	shouldForwardProp: (prop) => prop !== 'open',
-  })(({ theme, open }) => ({
-	backgroundColor: theme.palette.common.white,
+		shouldForwardProp: (prop) => prop !== 'open',
+	})(({ theme, open }) => ({
+	backgroundColor: "#131212",
 	color: "grey",
 	padding: "10px",
 	zIndex: theme.zIndex.drawer + 1,
 	transition: theme.transitions.create(['width', 'margin'], {
-	  easing: theme.transitions.easing.sharp,
-	  duration: theme.transitions.duration.leavingScreen,
+		easing: theme.transitions.easing.sharp,
+		duration: theme.transitions.duration.leavingScreen,
 	}),
 	...(open && {
-	  marginLeft: drawerWidth,
-	  width: `calc(100% - ${drawerWidth}px)`,
-	  transition: theme.transitions.create(['width', 'margin'], {
-		easing: theme.transitions.easing.sharp,
-		duration: theme.transitions.duration.enteringScreen,
-	  }),
+		marginLeft: drawerWidth,
+		width: `calc(100% - ${drawerWidth}px)`,
+		transition: theme.transitions.create(['width', 'margin'], {
+			easing: theme.transitions.easing.sharp,
+			duration: theme.transitions.duration.enteringScreen,
+		}),
 	}),
   }));
 
@@ -88,10 +89,6 @@ export default function PrimarySearchAppBar({ handleDrawerOpen, open }) {
 
 	const isMenuOpen = Boolean(anchorEl);
 	const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
-	const handleProfileMenuOpen = (event) => {
-		setAnchorEl(event.currentTarget);
-	};
 
 	const handleMobileMenuClose = () => {
 		setMobileMoreAnchorEl(null);
@@ -165,18 +162,6 @@ export default function PrimarySearchAppBar({ handleDrawerOpen, open }) {
 				</IconButton>
 				<p>Notifications</p>
 			</MenuItem>
-			<MenuItem onClick={handleProfileMenuOpen}>
-				<IconButton
-					size="large"
-					aria-label="account of current user"
-					aria-controls="primary-search-account-menu"
-					aria-haspopup="true"
-					color="inherit"
-				>
-					<AccountCircle />
-				</IconButton>
-				<p>Profile</p>
-			</MenuItem>
 		</Menu>
 	);
 
@@ -218,17 +203,6 @@ export default function PrimarySearchAppBar({ handleDrawerOpen, open }) {
 							<Badge badgeContent={17} color="error">
 								<NotificationsIcon />
 							</Badge>
-						</IconButton>
-						<IconButton
-							size="large"
-							edge="end"
-							aria-label="account of current user"
-							aria-controls={menuId}
-							aria-haspopup="true"
-							onClick={handleProfileMenuOpen}
-							color="inherit"
-						>
-							<AccountCircle />
 						</IconButton>
 					</Box>
 					<Box sx={{ display: { xs: 'flex', md: 'none' } }}>

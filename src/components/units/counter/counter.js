@@ -24,7 +24,7 @@ const StyledCounterContainer = styled(Container)(({theme}) => ({
 const Counter = () => {
 	return (
 		<StyledCounterWrapper>
-			<StyledCounterContainer>
+			<StyledCounterContainer maxWidth="xl">
 				<Grid container spacing={2}>
 					{
 						aboutCounterInfo.map((el, i) => (

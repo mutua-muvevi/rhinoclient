@@ -5,7 +5,7 @@ import { productBannerInfo, productItemInformation } from "./productsInfo";
 import SizeimgcontentfooterCard4 from "../../../components/widgets/cards/4sizeimgcontentfooter/sizeimgcontentfooterCard4";
 
 const containerWrapper = {
-	margin: "auto"
+	margin: "20px auto"
 }
 
 const gridStyle = {

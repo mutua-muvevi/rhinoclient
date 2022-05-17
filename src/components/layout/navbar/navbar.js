@@ -1,12 +1,15 @@
+import React, {useState} from 'react';
+import { NavLink } from "react-router-dom";
+
 import { AppBar, Button, Container, IconButton, Toolbar } from "@mui/material"
 import { Box, styled } from "@mui/system";
-import React, {useState} from 'react';
-import { navPages, navItemBottom } from "./navcontent";
-import Logo from "../../../assets/images/logos/Rhino card logo - PNG.png";
-import MenuIcon from '@mui/icons-material/Menu';
-import SwipeableSideDrawer from "./swipeabledrawer";
-import { NavLink } from "react-router-dom";
+
 import LockIcon from '@mui/icons-material/Lock';
+import MenuIcon from '@mui/icons-material/Menu';
+
+import SwipeableSideDrawer from "./swipeabledrawer";
+import Logo from "../../../assets/images/logos/Rhino card logo - PNG.png";
+import { navPages, navItemBottom } from "./navcontent";
 
 const StyledContainer = styled(Container)(({theme}) => ({
 	display: "flex",

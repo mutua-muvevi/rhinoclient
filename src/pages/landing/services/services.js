@@ -10,7 +10,7 @@ const ServiceWrapper = styled(Box)(({theme}) => ({
 }))
 
 const containerWrapper = {
-	margin: "auto"
+	margin: "20px auto"
 }
 
 const gridStyle = {
@@ -36,7 +36,7 @@ const Services = () => {
 					<Grid container spacing={2}>
 						{
 							serviceItemInformation.map((item, i) => (
-								<Grid sx={gridStyle} key={i} item lg={4} sm={12} >
+								<Grid spacing={2} sx={gridStyle} key={i} item lg={4} sm={12} >
 									<SizeimgcontentfooterCard4
 										modal={modal}
 										setModal={setModal}

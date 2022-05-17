@@ -13,11 +13,13 @@ const StyledModal = styled(Modal)(({theme}) => ({
 	
 }))
 
+const StyledDetailedBox = styled(Box)(({theme}) => ({
+	backgroundColor: theme.palette.background.paper
+}))
+
 const detailsContainer = {
 	borderRadius: 4,
-	backgroundColor: "white",
 	border: 'none',
-	// padding: 2,
 	margin: 0,
 }
 
@@ -31,7 +33,7 @@ const ServiceQuotationModal = ({title, open, setOpen}) => {
 		>
 			<Grow style={{ transformOrigin: '10 20 50' }} in timeout={1800}>
 
-				<Box container sx={detailsContainer}>
+				<StyledDetailedBox container sx={detailsContainer}>
 					<Typography variant="h3" sx={{ padding: 2}} gutterBttom>
 						{title}
 					</Typography>
@@ -39,7 +41,7 @@ const ServiceQuotationModal = ({title, open, setOpen}) => {
 					<Box sx={{padding: 2}}>
 						<QuotationForm onClose={() => setOpen(false)} />
 					</Box>
-				</Box>
+				</StyledDetailedBox>
 			</Grow>
 		</StyledModal>
 	)

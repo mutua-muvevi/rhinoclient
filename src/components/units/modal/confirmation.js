@@ -17,9 +17,8 @@ const StyledModal = styled(Modal)(({theme}) => ({
 }))
 
 const StyledModalItems = styled(Grid)(({theme}) => ({
-	padding: 0,
 	borderRadius: 4,
-	backgroundColor: "white",
+	backgroundColor: theme.palette.background.paper,
 	border: 'none',
 	position: "relative",
 	margin: 0,
@@ -43,9 +42,19 @@ const StyledTextAreaEntry = styled(Box)(({theme}) => ({
 	marginBottom: "30px"
 }))
 
-const StyledHeader = styled(Typography)(({theme}) => ({paddingTop: "10px", paddingBottom: "10px", width: "95%", margin: "auto"}))
+const StyledHeader = styled(Typography)(({theme}) => ({
+	paddingTop: "10px", 
+	paddingBottom: "10px", 
+	width: "95%", 
+	margin: "auto"
+}))
 
-const StyledContentContainer = styled(Box)(({theme}) => ({paddingTop: "10px", paddingBottom: "10px", width: "95%", margin: "auto"}))
+const StyledContentContainer = styled(Box)(({theme}) => ({
+	paddingTop: "10px", 
+	paddingBottom: "10px", 
+	width: "95%", 
+	margin: "auto"
+}))
 
 const StyledGridContainer = styled(Grid)(({theme}) => ({
 	height: "60vh",
@@ -105,57 +114,55 @@ const Confirmation = ({modal, onClose, values}) => {
 			id="confirmation-modal"
 		>
 			<StyledModalItems>
-				<Box>
-					<StyledHeader variant="h3">
-						Please confirm
-					</StyledHeader>
+				<StyledHeader variant="h3">
+					Please confirm
+				</StyledHeader>
 
-					<Divider color="#fff"/>
+				<Divider color="#fff"/>
 
-					<StyledContentContainer>
-						<StyledGridContainer container spacing={2}>
+				<StyledContentContainer>
+					<StyledGridContainer container spacing={2}>
 
-							{
-								valuesArray.map(item => (
-									<Grid item key={item.name} lg={item.lg} xs={12} >
-										<Typography variant="h4">
-											{item.name}
-										</Typography>
-										<StyledEntry>
-											<Typography variant="h5">
-												{item.value}
-											</Typography>
-										</StyledEntry>
-									</Grid>
-								))
-							}
-
-							<Grid item lg={12} xs={12} >
-								<Typography variant="h4">
-									Quotation Message
-								</Typography>
-								<StyledTextAreaEntry>
-									<Typography variant="h5">
-										{values.message}
+						{
+							valuesArray.map(item => (
+								<Grid item key={item.name} lg={item.lg} xs={12} >
+									<Typography variant="h4">
+										{item.name}
 									</Typography>
-								</StyledTextAreaEntry>
-							</Grid>
+									<StyledEntry>
+										<Typography variant="h5">
+											{item.value}
+										</Typography>
+									</StyledEntry>
+								</Grid>
+							))
+						}
 
-						</StyledGridContainer>
+						<Grid item lg={12} xs={12} >
+							<Typography variant="h4">
+								Quotation Message
+							</Typography>
+							<StyledTextAreaEntry>
+								<Typography variant="h5">
+									{values.message}
+								</Typography>
+							</StyledTextAreaEntry>
+						</Grid>
 
-						<Divider sx={{color: "#fff"}}/>
+					</StyledGridContainer>
 
-						<ButtonGroup variant="contained" sx={{margin: "30px 0px"}}>
-							<Button endIcon={<DoneAllIcon/>} color="success">
-								Accept Confirmation
-							</Button>
+					<Divider sx={{color: "#fff"}}/>
 
-							<Button onClick={onClose} endIcon={<ClearIcon/>} color="error">
-								Cancel Confirmation
-							</Button>
-						</ButtonGroup>
-					</StyledContentContainer>
-				</Box>
+					<ButtonGroup variant="contained" sx={{margin: "30px 0px"}}>
+						<Button endIcon={<DoneAllIcon/>} color="success">
+							Accept Confirmation
+						</Button>
+
+						<Button onClick={onClose} endIcon={<ClearIcon/>} color="error">
+							Cancel Confirmation
+						</Button>
+					</ButtonGroup>
+				</StyledContentContainer>
 			</StyledModalItems>
 		</StyledModal>
 	)

@@ -1,7 +1,9 @@
 import React from 'react';
-import { DataGrid} from '@mui/x-data-grid';
-import { styled } from "@mui/system";
+
 import { Card, CardHeader} from "@mui/material";
+import { styled } from "@mui/system";
+
+import { DataGrid} from '@mui/x-data-grid';
 
 const ShippingQuotation = ({quotation, error}) => {
 
@@ -18,7 +20,8 @@ const ShippingQuotation = ({quotation, error}) => {
 	}))
 
 	const StyledDataGrid = styled(DataGrid)(({theme}) =>({
-		backgroundColor: theme.palette.common.white,
+		border: "none",
+		backgroundColor: theme.palette.background.default,
 		width: "100%",
 		borderRadius: theme.shape.default,
 		"& .MuiDataGrid-columnHeaders": {
@@ -30,7 +33,7 @@ const ShippingQuotation = ({quotation, error}) => {
 		},
 		"& .MuiDataGrid-virtualScrollerRenderZone": {
 			"& .MuiDataGrid-row": {
-				"&:nth-of-type(2n)": { backgroundColor: "#f1f1f1" }
+				"&:nth-of-type(2n)": { backgroundColor: theme.palette.background.paper }
 			}
 		}
 	}))

@@ -4,9 +4,13 @@ import { Button, Card, CardHeader} from "@mui/material";
 import { styled } from "@mui/system";
 import { DataGrid} from '@mui/x-data-grid';
 
-import { connect } from "react-redux";
+import PageviewIcon from '@mui/icons-material/Pageview';
+import EditIcon from '@mui/icons-material/Edit';
+
 import ShipmentViewModal from "./shipmentviewmodal";
 import EditShipmentModal from "../editshipmentformmodal/editshipmentmodal";
+
+import { connect } from "react-redux";
 
 const StyledDataGridContainer = styled(Card)(({theme}) => ({
 	backgroundColor: "inherit",
@@ -21,7 +25,8 @@ const StyledDataGridHeader = styled(CardHeader)(({theme}) => ({
 }))
 
 const StyledDataGrid = styled(DataGrid)(({theme}) =>({
-	backgroundColor: theme.palette.common.white,
+	border: "none",
+	backgroundColor: theme.palette.background.default,
 	width: "100%",
 	borderRadius: theme.shape.default,
 	"& .MuiDataGrid-columnHeaders": {
@@ -33,7 +38,7 @@ const StyledDataGrid = styled(DataGrid)(({theme}) =>({
 	},
 	"& .MuiDataGrid-virtualScrollerRenderZone": {
 		"& .MuiDataGrid-row": {
-			"&:nth-of-type(2n)": { backgroundColor: "#f1f1f1" }
+			"&:nth-of-type(2n)": { backgroundColor: theme.palette.background.paper }
 		}
 	}
 }))
@@ -184,19 +189,21 @@ const ShipmentTable = ({ data }) => {
 			align: "left",
 			headerAlign: "left",
 			headerName: "View Shipment",
-			width: 200,
+			width: 150,
 			renderCell: (cellValues) => {
 				return (
 					<Button
 						variant="contained"
-						color="primary"
+						color="secondary"
+						sx={{minWidth: "120px"}}
 						onClick= {
 							e => {
 								handleClick(e, cellValues)
 							}
 						}
+						endIcon={<PageviewIcon/>}
 						>
-							View Shipment
+							View
 						</Button>
 				)
 			}
@@ -206,19 +213,21 @@ const ShipmentTable = ({ data }) => {
 			align: "left",
 			headerAlign: "left",
 			headerName: "Edit Shipment",
-			width: 200,
+			width: 150,
 			renderCell: (cellValues) => {
 				return (
 					<Button
-						variant="contained"
-						color="primary"
-						onClick= {
-							e => {
-								handleEditClick(e, cellValues)
-							}
+					variant="contained"
+					color="secondary"
+					sx={{minWidth: "120px"}}
+					onClick= {
+						e => {
+							handleEditClick(e, cellValues)
 						}
+					}
+					endIcon={<EditIcon/>}
 						>
-							Edit Shipment
+							Edit
 						</Button>
 				)
 			}

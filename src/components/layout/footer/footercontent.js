@@ -20,9 +20,6 @@ export const footerLeft = {
 		`
 			Our team of globally exposed experts have a combined experience of more 
 			than 20 years in this trade and guarantee continous transactions. 
-			They will link you to the right actors and dealers in the trade; 
-			from Miners (Artisanal and Industrial), Buyers, Sellers, Intermediaries, 
-			Refiners and Gemologist.
 		`
 	]
 }

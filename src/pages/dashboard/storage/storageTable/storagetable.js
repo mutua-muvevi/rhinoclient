@@ -21,7 +21,8 @@ const StorageTable = ({storage}) => {
 	}))
 
 	const StyledDataGrid = styled(DataGrid)(({theme}) =>({
-		backgroundColor: theme.palette.common.white,
+		border: "none",
+		backgroundColor: theme.palette.background.default,
 		width: "100%",
 		borderRadius: theme.shape.default,
 		"& .MuiDataGrid-columnHeaders": {
@@ -33,7 +34,7 @@ const StorageTable = ({storage}) => {
 		},
 		"& .MuiDataGrid-virtualScrollerRenderZone": {
 			"& .MuiDataGrid-row": {
-				"&:nth-of-type(2n)": { backgroundColor: "#f1f1f1" }
+				"&:nth-of-type(2n)": { backgroundColor: theme.palette.background.paper }
 			}
 		}
 	}))
@@ -115,13 +116,13 @@ const StorageTable = ({storage}) => {
 			align: "left",
 			headerAlign: "left",
 			headerName: "Observation",
-			minWidth: 500
+			minWidth: 200
 		}
 	]
 
 	return (
 		<StyledDataGridContainer>
-			<StyledDataGridHeader title="Shipping Records" />
+			<StyledDataGridHeader title="Storage Records" />
 			<StyledDataGrid
 				rows={storage}
 				columns={columns}

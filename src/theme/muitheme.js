@@ -2,7 +2,6 @@ import { createTheme } from "@mui/material/styles";
 
 export const theme = createTheme({
 	palette: {
-		mode:"light",
 		drawer: {
 			default: "#131313"
 		},
@@ -19,7 +18,7 @@ export const theme = createTheme({
 		secondary: {
 			main: "#dea95f",
 			light: "#efc76c",
-			dark: "#826249",
+			dark: "#f48d3a",
 			contrastText: "#fff"
 		},
 		error: {
@@ -50,13 +49,13 @@ export const theme = createTheme({
 		
 		// },
 		text: {
-			primary: "rgba(0,0,0,0.87)",
-			secondary: "rgba(0,0,0,0.6)",
-			disabled: "rgba(0,0,0,0.38)",
+			primary: "rgba(220, 220, 220, 0.8)",
+			secondary: "rgba(220, 220, 220, 0.6)",
+			disabled: "rgba(220, 220, 220, 0.3)",
 		},
 		background: {
-			default: "#f1f1f1",
-			paper: "#1976d2"
+			default: "#202020",
+			paper: "#323332"
 		}
 	},
 	shape: {

@@ -1,41 +1,39 @@
 import React from 'react';
+
 import { Box, Button, Container, Grid, Typography } from "@mui/material";
+import { styled } from "@mui/system";
+
 import Image from "../../../assets/images/miningtools.jpg"
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import { Link } from "react-router-dom";
 
-const wrapper = {
+const StyledWrapper = styled(Container)(({theme}) => ({
 	paddingTop: "5vh",
 	paddingBottom: "5vh",
-	minHeight: "75vh"
+	minHeight: "60vh"
+}));
+
+const StyledGridItemContainer = styled(Container)(({theme}) => ({
+	minHeight: "60vh",
+	display: "flex",
+	flexDirection: "column",
+	justifyContent: "center",
+	alignItems: "flex-start"
+}))
+
+
+const imageBackground = {
+	backgroundImage: `url(${Image})`,
+	backgroundPosition: "center",
+	backgroundSize: "cover",
 }
-
 const Aboutcontentimage = ({title, paragraph, link}) => {
-	
-	const leftRightContainer = {
-		
-	}
-
-	const gridItemContainer = {
-		minHeight: "75vh",
-		display: "flex",
-		flexDirection: "column",
-		justifyContent: "center",
-		alignItems: "flex-start"
-	}
-	
-	
-	const imageBackground = {
-		backgroundImage: `url(${Image})`,
-		backgroundPosition: "center",
-		backgroundSize: "cover"
-	}
 
 	return (
-		<Box sx={wrapper}>
-			<Grid container sx={leftRightContainer}>
+		<StyledWrapper maxWidth="xl">
+			<Grid container spacing={2} >
 				<Grid item lg={6} sm={12}>
-					<Container sx={gridItemContainer} maxWidth="lg">
+					<StyledGridItemContainer>
 						<Typography variant="h4" gutterBottom>
 							{title}
 						</Typography>
@@ -49,17 +47,17 @@ const Aboutcontentimage = ({title, paragraph, link}) => {
 							))
 						}
 						<Link style={{textDecoration: "none"}} to={link}>
-							<Button endIcon={<AddCircleIcon/>} variant="contained">
+							<Button endIcon={<AddCircleIcon/>} color="secondary" sx={{minWidth: "150px"}} variant="contained">
 								Explore
 							</Button>
 						</Link>
-					</Container>
+					</StyledGridItemContainer>
 				</Grid>
 				<Grid item lg={6} sm={12} sx={imageBackground}>
 
 				</Grid>
 			</Grid>
-		</Box>
+		</StyledWrapper>
 	)
 }
 
