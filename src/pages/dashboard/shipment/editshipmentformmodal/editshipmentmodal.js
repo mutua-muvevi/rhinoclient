@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Modal, Typography } from "@mui/material";
+import { Box, Container, Modal, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 
 import EditShipmentForm from "./editshipmentform";
@@ -11,15 +11,17 @@ const StyledModal = styled(Modal)(({theme}) => ({
 	margin: "10vh auto",
 	overflowY: "scroll",
 	border: 'none',
+	borderRadius: theme.shape.default
 }))
 
-const formContainer = {
-	backgroundColor: "white",
+const StyledFormContainerWrapper = styled(Box)(({ theme }) => ({
+	backgroundColor: theme.palette.background.paper,
 	border: 'none',
 	boxShadow: 24,
-	padding: 4,
-	borderRadius: "10px"
-}
+	paddingTop: 2,
+	paddingBottom: 2,
+}))
+
 
 
 const EditShipmentModal = ({open, setOpen}) => {
@@ -30,12 +32,14 @@ const EditShipmentModal = ({open, setOpen}) => {
 			aria-labelledby="modal-modal-title"
 			aria-describedby="modal-modal-description"
 		>
-			<Box sx={formContainer}>
-				<Typography id="modal-modal-title" variant="h4" gutterBottom component="h2">
-					Edit Shipment Form
-				</Typography>
-				<EditShipmentForm/>
-			</Box>
+			<StyledFormContainerWrapper >
+				<Container maxWidth="xl">
+					<Typography style={{marginTop: "20px"}}  id="modal-modal-title" variant="h4" gutterBottom component="h2">
+						Edit Shipment Form
+					</Typography>
+					<EditShipmentForm/>
+				</Container>
+			</StyledFormContainerWrapper>
 		</StyledModal>
 	)
 }

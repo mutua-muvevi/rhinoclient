@@ -1,13 +1,14 @@
-import { Box, Button, Card, CardContent, Typography } from "@mui/material"
-import { styled } from "@mui/system"
-import React from 'react'
+import React from 'react';
+
+import { Box, Button, Card, CardContent, Typography } from "@mui/material";
+import { styled } from "@mui/system";
 
 const BoxWrapper = styled(Card)(({theme}) => ({
 	minWidth: "25vw",
 	minHeight: "20vh",
 	margin: "10px",
 	borderRadius: theme.shape.default,
-	backgroundColor: theme.palette.common.white
+	backgroundColor: theme.palette.background.paper
 
 }))
 
@@ -36,7 +37,7 @@ const Sizeheaderlandscape4 = ({item}) => {
 				<Typography variant="h6">
 					{item.title.left}
 				</Typography>
-				<Button variant="text">
+				<Button color="secondary" variant="text">
 					View
 				</Button>
 			</HeaderSection>

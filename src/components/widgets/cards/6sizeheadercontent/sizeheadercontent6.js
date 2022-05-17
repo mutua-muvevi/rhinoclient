@@ -4,8 +4,7 @@ import React from 'react'
 
 const CardStyles = styled(Card)(({theme}) => ({
 	borderRadius: theme.shape.default,
-	backgroundColor: theme.palette.common.white,
-	minWidth: "38vw",
+	backgroundColor: theme.palette.background.paper,
 	minHeight: "50vh",
 	margin: "10px"
 }))

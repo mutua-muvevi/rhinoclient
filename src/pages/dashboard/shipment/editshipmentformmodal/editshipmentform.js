@@ -144,7 +144,7 @@ const EditShipmentForm = ({ token, editAShipment, errMessage, data, item}) => {
 				<Form>
 					<Grid container spacing={2}>
 						<Grid item xs={12}>
-							<Typography variant="h5" color="blue" gutterBottom>
+							<Typography variant="h5" color="secondary" gutterBottom>
 								Shippers Information
 							</Typography>
 						</Grid>
@@ -158,7 +158,7 @@ const EditShipmentForm = ({ token, editAShipment, errMessage, data, item}) => {
 						}
 						
 						<Grid item xs={12}>
-							<Typography variant="h5" color="blue" gutterBottom>
+							<Typography variant="h5" color="secondary" gutterBottom>
 								Cosignee Information
 							</Typography>
 						</Grid>
@@ -172,7 +172,7 @@ const EditShipmentForm = ({ token, editAShipment, errMessage, data, item}) => {
 						}
 
 						<Grid item xs={12}>
-							<Typography variant="h5" color="blue" gutterBottom>
+							<Typography variant="h5" color="secondary" gutterBottom>
 								Collector Information
 							</Typography>
 						</Grid>
@@ -186,7 +186,7 @@ const EditShipmentForm = ({ token, editAShipment, errMessage, data, item}) => {
 						}
 
 						<Grid item xs={12}>
-							<Typography variant="h5" color="blue" gutterBottom>
+							<Typography variant="h5" color="secondary" gutterBottom>
 								Item Information
 							</Typography>
 						</Grid>
@@ -200,7 +200,7 @@ const EditShipmentForm = ({ token, editAShipment, errMessage, data, item}) => {
 						}
 
 						<Grid item xs={12}>
-							<Typography variant="h5" color="blue" gutterBottom>
+							<Typography variant="h5" color="secondary" gutterBottom>
 								Origin Service Area
 							</Typography>
 						</Grid>
@@ -222,7 +222,7 @@ const EditShipmentForm = ({ token, editAShipment, errMessage, data, item}) => {
 						</Grid>
 
 						<Grid item xs={12}>
-							<Typography variant="h5" color="blue" gutterBottom>
+							<Typography variant="h5" color="secondary" gutterBottom>
 								Final Destination
 							</Typography>
 						</Grid>

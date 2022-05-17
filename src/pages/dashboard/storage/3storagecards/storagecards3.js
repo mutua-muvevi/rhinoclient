@@ -6,13 +6,13 @@ import Addstoragemodal from "../addstoragemodal/addstoragemodal";
 import { storageCards3Content } from "./contentstoragecards3";
 
 const BoxWrapper = styled(Button)(({theme}) => ({
-	minWidth: "25vw",
 	minHeight: "20vh",
+	width: "98%",
 	margin: "10px",
 	borderRadius: theme.shape.default,
-	backgroundColor: theme.palette.common.white,
+	backgroundColor: theme.palette.background.paper,
 	textTransform: "capitalize",
-	color: "#131313",
+	color: "whitesmoke",
 	textAlign: "left",
 
 }))
@@ -35,13 +35,15 @@ const Storagecards3 = () => {
 				))
 			}
 
+			<Grid item  lg={4} sm={12} xs={12}>
 				<BoxWrapper onClick={handleStorageModal} elevation={3}>
 					<Typography variant="h3">
 						Add Storage
 					</Typography>
 				</BoxWrapper>
+			</Grid>
 
-				<Addstoragemodal open={open} setOpen={setOpen}/>
+			<Addstoragemodal open={open} setOpen={setOpen}/>
 			
 		</Grid>
 	)
