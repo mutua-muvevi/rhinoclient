@@ -248,7 +248,7 @@ const EditShipmentForm = ({ token, editAShipment, errMessage, data, item}) => {
 					</Grid>
 
 					<ButtonGroup variant="contained" type="submit" sx={{marginTop: "30px"}}>
-						<Button type="submit" color="primary"  endIcon={<SendIcon/>}>
+						<Button type="submit" color="secondary"  endIcon={<SendIcon/>}>
 							Submit Quotation
 						</Button>
 						<Button  type="button" color="error" endIcon={<ClearIcon/>}>

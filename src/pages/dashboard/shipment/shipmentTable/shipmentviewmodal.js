@@ -303,10 +303,10 @@ const ShipmentViewModal = ({ values, open, setOpen }) => {
 		},
 	]
 
-	const shipviewEvents = {
-		name: "Shipping Events",
-		value: values.events,
-	}
+	// const shipviewEvents = {
+	// 	name: "Shipping Events",
+	// 	value: values.events,
+	// }
 
 	return (
 		<>

@@ -1,22 +1,26 @@
 import React from 'react';
+
 import { Box, Button, Container, Grid, Typography } from "@mui/material";
+import { styled } from "@mui/system";
+
 import Image from "../../../assets/images/miningtools.jpg"
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import { Link } from "react-router-dom";
 
-const wrapper = {
+const StyledWrapper = styled(Container)(({theme}) => ({
 	paddingTop: "5vh",
 	paddingBottom: "5vh",
 	minHeight: "60vh"
-}
+}));
 
-const gridItemContainer = {
+const StyledGridItemContainer = styled(Container)(({theme}) => ({
 	minHeight: "60vh",
 	display: "flex",
 	flexDirection: "column",
 	justifyContent: "center",
 	alignItems: "flex-start"
-}
+}))
+
 
 const imageBackground = {
 	backgroundImage: `url(${Image})`,
@@ -24,17 +28,12 @@ const imageBackground = {
 	backgroundSize: "cover",
 }
 const Aboutcontentimage = ({title, paragraph, link}) => {
-	
-	const leftRightContainer = {
-		
-	}
-
 
 	return (
-		<Container maxWidth="xl" sx={wrapper}>
-			<Grid container spacing={2} sx={leftRightContainer}>
+		<StyledWrapper maxWidth="xl">
+			<Grid container spacing={2} >
 				<Grid item lg={6} sm={12}>
-					<Box sx={gridItemContainer}>
+					<StyledGridItemContainer>
 						<Typography variant="h4" gutterBottom>
 							{title}
 						</Typography>
@@ -48,17 +47,17 @@ const Aboutcontentimage = ({title, paragraph, link}) => {
 							))
 						}
 						<Link style={{textDecoration: "none"}} to={link}>
-							<Button endIcon={<AddCircleIcon/>} variant="contained">
+							<Button endIcon={<AddCircleIcon/>} color="secondary" sx={{minWidth: "150px"}} variant="contained">
 								Explore
 							</Button>
 						</Link>
-					</Box>
+					</StyledGridItemContainer>
 				</Grid>
 				<Grid item lg={6} sm={12} sx={imageBackground}>
 
 				</Grid>
 			</Grid>
-		</Container>
+		</StyledWrapper>
 	)
 }
 

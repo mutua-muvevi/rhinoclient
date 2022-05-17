@@ -96,7 +96,7 @@ const AddUserForm = ({ onClose,  registerUser, isAuthenticated, errMessage }) =>
 				<Form>
 					<Grid container spacing={2}>
 						<Grid item xs={12}>
-							<Typography variant="h5" color="blue" gutterBottom>
+							<Typography variant="h5" color="secondary" gutterBottom>
 								User Information
 							</Typography>
 						</Grid>

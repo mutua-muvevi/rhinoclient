@@ -18,7 +18,8 @@ const StorageQuotation = ({quotation, error}) => {
 	}))
 
 	const StyledDataGrid = styled(DataGrid)(({theme}) =>({
-		backgroundColor: theme.palette.common.white,
+		border: "none",
+		backgroundColor: theme.palette.background.default,
 		width: "100%",
 		borderRadius: theme.shape.default,
 		"& .MuiDataGrid-columnHeaders": {
@@ -30,7 +31,7 @@ const StorageQuotation = ({quotation, error}) => {
 		},
 		"& .MuiDataGrid-virtualScrollerRenderZone": {
 			"& .MuiDataGrid-row": {
-				"&:nth-of-type(2n)": { backgroundColor: "#f1f1f1" }
+				"&:nth-of-type(2n)": { backgroundColor: theme.palette.background.paper }
 			}
 		}
 	}))

@@ -114,7 +114,7 @@ const AddStorageForm = ({ token, postAStorage, errMessage, data}) => {
 				<Form>
 					<Grid container spacing={2}>
 						<Grid item xs={12}>
-							<Typography variant="h5" color="blue" gutterBottom>
+							<Typography variant="h5" color="secondary" gutterBottom>
 								Client Information
 							</Typography>
 						</Grid>
@@ -128,7 +128,7 @@ const AddStorageForm = ({ token, postAStorage, errMessage, data}) => {
 						}
 
 						<Grid item xs={12}>
-							<Typography variant="h5" color="blue" gutterBottom>
+							<Typography variant="h5" color="secondary" gutterBottom>
 								Product Information
 							</Typography>
 						</Grid>
@@ -142,7 +142,7 @@ const AddStorageForm = ({ token, postAStorage, errMessage, data}) => {
 						}
 
 						<Grid item xs={12}>
-							<Typography variant="h5" color="blue" gutterBottom>
+							<Typography variant="h5" color="secondary" gutterBottom>
 								Storage Geographical Area
 							</Typography>
 						</Grid>
@@ -157,7 +157,7 @@ const AddStorageForm = ({ token, postAStorage, errMessage, data}) => {
 
 
 						<Grid item xs={12}>
-							<Typography variant="h5" color="blue" gutterBottom>
+							<Typography variant="h5" color="secondary" gutterBottom>
 								Storage Events
 							</Typography>
 						</Grid>
@@ -180,7 +180,7 @@ const AddStorageForm = ({ token, postAStorage, errMessage, data}) => {
 
 
 						<Grid item xs={12}>
-							<Typography variant="h5" color="blue" gutterBottom>
+							<Typography variant="h5" color="secondary" gutterBottom>
 								Storage Documentation
 							</Typography>
 						</Grid>
@@ -197,7 +197,7 @@ const AddStorageForm = ({ token, postAStorage, errMessage, data}) => {
 
 					
 					<ButtonGroup variant="contained" type="submit" sx={{marginTop: "30px"}}>
-						<Button type="submit" color="primary"  endIcon={<SendIcon/>}>
+						<Button type="submit" color="secondary"  endIcon={<SendIcon/>}>
 							Submit Storage
 						</Button>
 						<Button  type="button" color="error" endIcon={<ClearIcon/>}>

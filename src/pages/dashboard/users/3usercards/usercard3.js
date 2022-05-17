@@ -6,13 +6,13 @@ import AddUsermodal from "../addusermodal/addusermodal";
 import { userCards3Content } from "./contentusercard3";
 
 const BoxWrapper = styled(Button)(({theme}) => ({
-	minWidth: "25vw",
 	minHeight: "20vh",
+	width: "98%",
 	margin: "10px",
 	borderRadius: theme.shape.default,
-	backgroundColor: theme.palette.common.white,
+	backgroundColor: theme.palette.background.paper,
 	textTransform: "capitalize",
-	color: "#131313",
+	color: "whitesmoke",
 	textAlign: "left",
 
 }))
@@ -39,11 +39,13 @@ const Usercards3 = () => {
 				))
 			}
 
+			<Grid item  lg={4} sm={12} xs={12}>
 				<BoxWrapper onClick={handleShipmentModal} elevation={3}>
 					<Typography variant="h3">
-						Add User
+						Add Users
 					</Typography>
 				</BoxWrapper>
+			</Grid>
 			
 			<AddUsermodal open={open} setOpen={setOpen} onClose={closeShipmentModal} />
 		</Grid>

@@ -1,12 +1,15 @@
 import React from 'react';
-import { aboutCoreValuesContent } from "../../../pages/landing/about/aboutInfo";
-import { Box, Button, Container, Grid, Typography } from "@mui/material";
 
-const wrapper = {
+import { Box, Button, Container, Grid, Typography } from "@mui/material";
+import { styled } from "@mui/system"
+
+import { aboutCoreValuesContent } from "../../../pages/landing/about/aboutInfo";
+
+const StyledWrapper = styled(Container)(({theme}) => ({
 	paddingTop: "5vh",
 	paddingBottom: "5vh",
-	minHeight: "60vh",
-}
+	minHeight: "60vh"
+}));
 
 const gridItemContainer = {
 	minHeight: "60vh",
@@ -29,7 +32,7 @@ const leftRightContainer = {
 
 const Values = () => {
 	return (
-		<Container maxWidth="xl" sx={wrapper}>
+		<StyledWrapper maxWidth="xl">
 			<Grid container spacing={2} sx={leftRightContainer}>
 				<Grid item lg={6} sm={12} sx={imageBackground}>
 
@@ -61,7 +64,7 @@ const Values = () => {
 					</Box>
 				</Grid>
 			</Grid>
-		</Container>
+		</StyledWrapper>
 	)
 }
 
