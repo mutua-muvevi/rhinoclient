@@ -94,8 +94,8 @@ const EventForm = ({token, postEvent, errMessage}) => {
 				<Form>
 					<Grid container spacing={2}>
 						<Grid item xs={12}>
-							<Typography variant="h5" color="blue" gutterBottom>
-								Add Events
+							<Typography variant="h5" color="secondary" gutterBottom>
+								Events Transaction
 							</Typography>
 						</Grid>
 												
@@ -118,7 +118,7 @@ const EventForm = ({token, postEvent, errMessage}) => {
 
 					</Grid>
 					
-					<ButtonGroup variant="contained" type="submit" sx={{marginTop: "30px"}}>
+					<ButtonGroup variant="contained" type="submit" sx={{margin: "30px auto"}}>
 						<Button type="submit" color="primary"  endIcon={<SendIcon/>}>
 							Add events
 						</Button>
