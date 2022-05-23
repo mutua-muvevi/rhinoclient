@@ -9,25 +9,32 @@ const StyledTrackItem = styled(Modal)(({ theme }) => ({
 	width: "85vw",
 	margin: "10vh auto",
 	border: 'none',
-	backgroundColor: "rgba(255, 255, 255, 0.87)",
-	color: "black",
-	borderRadius: 4
+	backgroundColor: "#333333",
+	borderRadius: 4,
+	color: "rgba(220, 220, 220, 0.8)"
 }));
 
 const StyledHeaderTitle = styled(Box)(({theme}) => ({
 	padding: "10px",
-	backgroundColor: "rgba(255, 255, 255, 0.8)",
-	color: "black",
+	backgroundColor: theme.palette.background.default,
 	borderTopLeftRadius: 4,
 	borderTopRightRadius: 4,
 	display: "flex",
 	justifyContent: "left",
-	alignItems: "center"
+	alignItems: "center",
+	fontFamily: "'Rubik', sans-serif",
 }))
+
+const styledHeaderText = {
+	marginTop: "20px",
+	fontFamily: "'Rubik', sans-serif",
+	fontWeight: 500,
+	color: "rgba(220, 220, 220, 0.8)"
+}
 
 const StyledHeaderDetail = styled(Box)(({ theme }) => ({
 	backgroundColor: "rgba(18, 18, 18, 0.78)",
-	color: "white",
+	color: "rgba(220, 220, 220, 0.8)",
 	paddingLeft: "20px",
 	paddingRight: "10px",
 	minWidth: "40vw"
@@ -66,13 +73,16 @@ const StyledTableContainer = styled(TableContainer)(({ theme }) => ({
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
 	[`&.${tableCellClasses.head}`]: {
 		backgroundColor: "rgba(18, 18, 18, 0.78)",
-	  	color: theme.palette.common.white,
+		border: "none",
+		color: "rgba(220, 220, 220, 0.8)",
 	},
 	[`&.${tableCellClasses.body}`]: {
-	 	fontSize: 14,
-		backgroundColor: "rgba(255, 255, 255, 0.78)",
+		fontSize: 14,
+		backgroundColor: theme.palette.background.paper,
+		color: "rgba(220, 220, 220, 0.8)",
+		border: "none",
 	},
-  }));
+}));
 
 const TrackItem = ({ item, modal, onClose}) => {
 
@@ -152,11 +162,11 @@ const TrackItem = ({ item, modal, onClose}) => {
 						<Grow style={{ transformOrigin: '10 20 50' }} in timeout={2000}>
 							<Box>
 								<StyledHeaderTitle>
-									<Typography variant="h3" sx={{marginTop: "20px"}} gutterBottom>
+									<Typography variant="h3" style={styledHeaderText} gutterBottom>
 										Shipment Details For :
 									</Typography>
 									<StyledHeaderDetail>
-										<Typography variant="h3" sx={{marginTop: "20px"}} gutterBottom>
+										<Typography variant="h3" style={styledHeaderText} gutterBottom>
 											{item.trackno}
 										</Typography>
 									</StyledHeaderDetail>
@@ -196,12 +206,12 @@ const TrackItem = ({ item, modal, onClose}) => {
 
 									<StyledTrackBodyDetails id="track-body">
 										{
-											item.formitems
-											.sort((a, b) => {
+											item.events &&
+											item.events.sort((a, b) => {
 												return b.number - a.number
 											})
 											.map((el, i) => (
-												<StyledTableContainer >
+												<StyledTableContainer key={i} >
 													<Table aria-label="shipment event table">
 														<TableHead>
 															<TableRow>
@@ -236,6 +246,7 @@ const TrackItem = ({ item, modal, onClose}) => {
 																		</StyledTableCell>
 																	))
 																}
+																{console.log("EL.NUMBER IS", el.number)}
 															</TableRow>
 														</TableBody>
 													</Table>

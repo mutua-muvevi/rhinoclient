@@ -47,7 +47,7 @@ const FORM_VALIDATION = Yup.object().shape({
 	telephone: Yup.string().min(3).max(100).required("Please add a telephone"),
 	company: Yup.string().min(3).max(100),
 	city: Yup.string().min(3).max(100).required("Please add your city"),
-	
+
 	country: Yup.string().min(3).max(100).required("Please add your country"),
 	product: Yup.string().min(3).max(100).required("Please add product/ service name/details"),
 	message: Yup.string().min(20).max(1000).required("Quotation message in required"),
@@ -104,7 +104,6 @@ const QuotationForm = ({ setOpen, postQuotation, errMessage }) => {
 				onSubmit = { submitHandler }
 			>
 				<Form>
-					{console.log("THE ERROR MESSAGE IS", errMessage)}
 					<Grid sx={styledGridFormWrapper} container spacing={2}>
 						{
 							quotationFormInputs.map((el, i) => (
