@@ -8,21 +8,21 @@ const initialState = {
 
 const shipmentReducer = ( state = initialState, { type, payload } ) => {
 	switch(type){
-		case storageTypes.GET_ALL_START: 
+		case storageTypes.GET_ALL_STORAGE_START: 
 			return { 
 				...state, 
 				loading: true,
 				data: null,
 				errMessage: undefined,
 			};
-			case storageTypes.GET_ALL_SUCCESS: 
+			case storageTypes.GET_ALL_STORAGE_SUCCESS: 
 			return { 
 				...state, 
 				loading: false,
 				data: payload,
 				errMessage: undefined,
 			};
-		case storageTypes.GET_ALL_FAIL: 
+		case storageTypes.GET_ALL_STORAGE_FAIL: 
 			return { 
 				...state, 
 				loading: false,
@@ -30,20 +30,20 @@ const shipmentReducer = ( state = initialState, { type, payload } ) => {
 			};
 
 			
-		case storageTypes.GET_ONE_START: 
+		case storageTypes.GET_ONE_STORAGE_START: 
 			return { 
 				...state, 
 				loading: true,
 				errMessage: undefined,
 			};
-		case storageTypes.GET_ONE_SUCCESS: 
+		case storageTypes.GET_ONE_STORAGE_SUCCESS: 
 			return { 
 				...state, 
 				loading: false,
 				data: payload,
 				errMessage: undefined,
 			};
-		case storageTypes.GET_ONE_FAIL: 
+		case storageTypes.GET_ONE_STORAGE_FAIL: 
 			return { 
 				...state, 
 				loading: false,
@@ -52,20 +52,20 @@ const shipmentReducer = ( state = initialState, { type, payload } ) => {
 
 
 
-		case storageTypes.POST_START: 
+		case storageTypes.POST_STORAGE_START: 
 			return { 
 				...state, 
 				loading: true,
 				errMessage: undefined,
 			};
-		case storageTypes.POST_SUCCESS: 
+		case storageTypes.POST_STORAGE_SUCCESS: 
 			return { 
 				...state, 
 				loading: false,
 				data: payload,
 				errMessage: undefined,
 			};
-		case storageTypes.POST_FAIL: 
+		case storageTypes.POST_STORAGE_FAIL: 
 			return { 
 				...state, 
 				loading: false,
@@ -74,20 +74,20 @@ const shipmentReducer = ( state = initialState, { type, payload } ) => {
 
 
 
-		case storageTypes.EDIT_START: 
+		case storageTypes.EDIT_STORAGE_START: 
 			return { 
 				...state, 
 				loading: true,
 				errMessage: undefined,
 			};
-		case storageTypes.EDIT_SUCCESS: 
+		case storageTypes.EDIT_STORAGE_SUCCESS: 
 			return { 
 				...state, 
 				loading: false,
 				data: payload,
 				errMessage: undefined,
 			};
-		case storageTypes.EDIT_FAIL: 
+		case storageTypes.EDIT_STORAGE_FAIL: 
 			return { 
 				...state, 
 				loading: false,

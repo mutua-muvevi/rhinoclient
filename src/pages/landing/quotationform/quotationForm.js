@@ -1,13 +1,19 @@
-import { Box, Button, ButtonGroup, Grid } from "@mui/material"
-import { styled } from "@mui/system";
-import { Formik, Form } from "formik";
 import React, { useState } from 'react';
-import * as Yup from "yup";
-import TextField from "../../../components/formsUI/textfield/textfield";
-import { quotationFormInputs, messageTextArea } from "./quotationformdata";
+
+import { Alert, AlertTitle, Box, Button, ButtonGroup, Grid, Grow } from "@mui/material"
+import { styled } from "@mui/system";
+
 import SendIcon from '@mui/icons-material/Send';
 import ClearIcon from '@mui/icons-material/Clear';
-import Confirmation from "../../../components/units/modal/confirmation";
+
+import { Formik, Form } from "formik";
+import * as Yup from "yup";
+
+import { quotationFormInputs, messageTextArea } from "./quotationformdata";
+import TextField from "../../../components/formsUI/textfield/textfield";
+
+import { connect } from "react-redux";
+import { postQuotation } from "../../../redux/quotation/quotationactions";
 
 
 const StyledWrapper = styled(Box)(({theme}) => ({
@@ -32,40 +38,60 @@ const INITIAL_FORM_STATE = {
 }
 
 const FORM_VALIDATION = Yup.object().shape({
-	firstname: Yup.string().min(3).max(100).required(),
-	lastname: Yup.string().min(3).max(100).required(),
-	email: Yup.string().email().min(3).max(100).required(),
-	telephone: Yup.string().min(3).max(100).required(),
-	company: Yup.string().min(3).max(100).required(),
-	city: Yup.string().min(3).max(100).required(),
-	country: Yup.string().min(3).max(100).required(),
-	product: Yup.string().min(3).max(100).required(),
-	message: Yup.string().min(20).max(1000).required(),
+	firstname: Yup.string().min(3).max(100).required("Please add your first name"),
+	lastname: Yup.string().min(3).max(100).required("Please add your lastname"),
+	email: Yup.string().email("Please add a valid email").min(5).max(100).required("Please add your email"),
+	telephone: Yup.string().min(3).max(100).required("Please add a telephone"),
+	company: Yup.string().min(3).max(100),
+	city: Yup.string().min(3).max(100).required("Please add your city"),
+	country: Yup.string().min(3).max(100).required("Please add your country"),
+	product: Yup.string().min(3).max(100).required("Please add product/ service name/details"),
+	message: Yup.string().min(20).max(1000).required("Quotation message in required"),
 })
 
-const QuotationForm = ({onClose}) => {
+const QuotationForm = ({ setOpen, postQuotation, errMessage }) => {
 
-	const [modal, setModal] = useState(false);
-	const [ formValues, setFormValues ] = useState({})
-
-	const openConfirmationModal = () => {
-		setModal(true)
-	}
-
-	const closeConfirmationModal = () => {
-		setModal(false)
-	}
+	const [ showSuccess, setShowSuccess ] = useState(false);
 
 	const submitHandler = (values, {resetForm}) => {
-		setFormValues(values)
-		setModal(true)
-		resetForm()
+		postQuotation(values)
+		console.log(values)
+		
+		
+		if (!errMessage || errMessage === undefined){
+			setShowSuccess(true)
+			resetForm()
+		}
 
+		setTimeout(() => {
+			setOpen(false)
+		}, 5000);
 	}
 
 	return (
 		<StyledWrapper>
 			
+			{
+				errMessage ? (
+					<Grow  style={{ transformOrigin: '10 20 50' }} in timeout={1000}>
+						<Alert severity="error" variant="filled">
+							<AlertTitle>Post Quotation Error!</AlertTitle>
+							{ errMessage }
+						</Alert>
+					</Grow>
+				) : null
+			}
+			
+			{
+				showSuccess ? (
+					<Grow  style={{ transformOrigin: '10 20 50' }} in timeout={1000}>
+						<Alert severity="success" variant="filled">
+							<AlertTitle>Post Quotation Success!</AlertTitle>
+							Your Quotation message has been send successfully
+						</Alert>
+					</Grow>
+				) : null
+			} 
 			<Formik
 				initialValues={{
 					...INITIAL_FORM_STATE
@@ -74,6 +100,7 @@ const QuotationForm = ({onClose}) => {
 				onSubmit = { submitHandler }
 			>
 				<Form>
+					{console.log("THE ERROR MESSAGE IS", errMessage)}
 					<Grid sx={styledGridFormWrapper} container spacing={2}>
 						{
 							quotationFormInputs.map((el, i) => (
@@ -99,20 +126,23 @@ const QuotationForm = ({onClose}) => {
 						<Button type="submit" color="secondary"  endIcon={<SendIcon/>}>
 							Submit Quotation
 						</Button>
-						<Button onClick={onClose} type="submit" color="error" endIcon={<ClearIcon/>}>
+						<Button onClick={() => setOpen(false)} type="submit" color="error" endIcon={<ClearIcon/>}>
 							Cancel Quotation
 						</Button>
 					</ButtonGroup>
 				</Form>
 			</Formik>
-			<Confirmation
-				modal={modal}
-				openConfirmation={openConfirmationModal}
-				onClose={closeConfirmationModal}
-				values={formValues}
-			/>
 		</StyledWrapper>
 	)
 }
 
-export default QuotationForm
+const mapStateToProps = ({ quotation }) => ({
+	errMessage: quotation.errMessage,
+	data: quotation.storageQuotation
+})
+
+const mapDispatchToProps = (dispatch) => ({
+	postQuotation: (values) => dispatch(postQuotation(values))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(QuotationForm)

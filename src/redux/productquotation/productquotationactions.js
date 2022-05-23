@@ -1,30 +1,68 @@
-import productQuotationTypes from "./productquotationtypes";
 import axios from "axios";
+import productQuotationTypes from "./productquotationtypes";
 
-export const fetchCollectionsStart = () => ({
-	type: productQuotationTypes.START,
+export const getProductQuotationStart = () => ({
+	type: productQuotationTypes.GET_PRODUCT_QUOTATION,
 })
 
-export const fetchCollectionsSuccess = (productQuotation) => ({
-	type: productQuotationTypes.SUCCESS,
+export const getProductQuotationSuccess = (productQuotation) => ({
+	type: productQuotationTypes.GET_PRODUCT_QUOTATION_SUCCESS,
 	payload: productQuotation,
 })
 
-export const fetchCollectionsFail = (errMessage) => ({
-	type: productQuotationTypes.FAIL,
+export const getProductQuotationFail = (errMessage) => ({
+	type: productQuotationTypes.GET_PRODUCT_QUOTATION_FAIL,
 	payload: errMessage,
 })
+
+
+export const postProductQuotationStart = () => ({
+	type: productQuotationTypes.GET_PRODUCT_QUOTATION,
+})
+
+export const postProductQuotationSuccess = (productQuotation) => ({
+	type: productQuotationTypes.GET_PRODUCT_QUOTATION_SUCCESS,
+	payload: productQuotation,
+})
+
+export const postProductQuotationFail = (errMessage) => ({
+	type: productQuotationTypes.GET_PRODUCT_QUOTATION_FAIL,
+	payload: errMessage,
+})
+
 
 export const getProductQuotations = () => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
-				"https://rhinojonapi.herokuapp.com/api/productquotation/all"
+				"http://localhost:7000/api/productquotation/all"
 			)
-			fetchCollectionsStart()
-			dispatch(fetchCollectionsSuccess(res.data.data))
+			getProductQuotationStart()
+			dispatch(getProductQuotationSuccess(res.data.data))
 		} catch (error) {
-			dispatch(fetchCollectionsFail(error.message))
+			dispatch(getProductQuotationFail(error.message))
+		}
+	}
+}
+
+
+export const  postProductQuotation = (values) => {
+	return async (dispatch) => {
+		try {
+			const res = await axios.post(
+				`http://localhost:7000/api/shipping/post`,
+				values,
+				{
+					headers: {
+						"Content-Type": "application/json",
+					},
+				}
+				)
+			
+			postProductQuotationStart()
+			dispatch(postProductQuotationSuccess(res.data.data))
+		} catch (error) {
+			dispatch(postProductQuotationFail(error.response.data.error))
 		}
 	}
 }

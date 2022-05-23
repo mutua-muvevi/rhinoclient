@@ -1,7 +1,10 @@
 import React from 'react';
-import { styled } from "@mui/system";
+
 import { Box, Divider, Grow, Modal, Typography} from "@mui/material";
-import QuotationForm from "../quotationform/quotationForm";
+import { styled } from "@mui/system";
+import QuotationForm from "../../../pages/landing/quotationform/quotationForm";
+
+
 
 
 const StyledModal = styled(Modal)(({theme}) => ({
@@ -23,7 +26,7 @@ const detailsContainer = {
 	margin: 0,
 }
 
-const ServiceQuotationModal = ({title, open, setOpen}) => {
+const QuotationModal = ({title, open, setOpen}) => {
 
 	return (
 		<StyledModal
@@ -39,7 +42,7 @@ const ServiceQuotationModal = ({title, open, setOpen}) => {
 					</Typography>
 					<Divider/>
 					<Box sx={{padding: 2}}>
-						<QuotationForm onClose={() => setOpen(false)} />
+						<QuotationForm setOpen={setOpen} />
 					</Box>
 				</StyledDetailedBox>
 			</Grow>
@@ -47,4 +50,4 @@ const ServiceQuotationModal = ({title, open, setOpen}) => {
 	)
 }
 
-export default ServiceQuotationModal
+export default QuotationModal

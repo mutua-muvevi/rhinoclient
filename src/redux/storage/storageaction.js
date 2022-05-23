@@ -2,62 +2,62 @@ import storageTypes from "./storagetypes";
 import axios from "axios";
 
 export const getAllStorage = () => ({
-	type: storageTypes.GET_ALL_START,
+	type: storageTypes.GET_ALL_STORAGE_START,
 })
 
 export const getAllStorageSuccess = (shipment) => ({
-	type: storageTypes.GET_ALL_SUCCESS,
+	type: storageTypes.GET_ALL_STORAGE_SUCCESS,
 	payload: shipment,
 })
 
 export const getAllStorageFail = (errMessage) => ({
-	type: storageTypes.GET_ALL_FAIL,
+	type: storageTypes.GET_ALL_STORAGE_FAIL,
 	payload: errMessage,
 })
 
 
 export const getOneStorage = () => ({
-	type: storageTypes.GET_ONE_START,
+	type: storageTypes.GET_ONE_STORAGE_START,
 })
 
 export const getOneStorageSuccess = (shipment) => ({
-	type: storageTypes.GET_ONE_SUCCESS,
+	type: storageTypes.GET_ONE_STORAGE_SUCCESS,
 	payload: shipment,
 })
 
 export const getOneStorageFail = (errMessage) => ({
-	type: storageTypes.GET_ONE_FAIL,
+	type: storageTypes.GET_ONE_STORAGE_FAIL,
 	payload: errMessage,
 })
 
 
 
 export const postStorage = () => ({
-	type: storageTypes.POST_START,
+	type: storageTypes.POST_STORAGE_START,
 })
 
 export const postStorageSuccess = (shipment) => ({
-	type: storageTypes.POST_SUCCESS,
+	type: storageTypes.POST_STORAGE_SUCCESS,
 	payload: shipment,
 })
 
 export const postStorageFail = (errMessage) => ({
-	type: storageTypes.POST_FAIL,
+	type: storageTypes.POST_STORAGE_FAIL,
 	payload: errMessage,
 })
 
 
 export const editStorage = () => ({
-	type: storageTypes.POST_START,
+	type: storageTypes.POST_STORAGE_START,
 })
 
 export const editStorageSuccess = (shipment) => ({
-	type: storageTypes.POST_SUCCESS,
+	type: storageTypes.POST_STORAGE_SUCCESS,
 	payload: shipment,
 })
 
 export const editStorageFail = (errMessage) => ({
-	type: storageTypes.POST_FAIL,
+	type: storageTypes.POST_STORAGE_FAIL,
 	payload: errMessage,
 })
 

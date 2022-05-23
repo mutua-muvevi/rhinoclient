@@ -32,12 +32,15 @@ import ForgotPassword from "./pages/auth/forgotpassword/forgotpassword";
 import ResetPassword from "./pages/auth/resetpassword/resetpassword";
 
 import { connect } from "react-redux";
+
 import { fetchUser } from "./redux/user/useraction"
 import { getShipment } from "./redux/shipment/shipmentactions";
-import { getStorage } from "./redux/storage/storageaction"
+import { getStorage } from "./redux/storage/storageaction";
+
+import { getQuotation } from "./redux/quotation/quotationactions";
 
 
-function App({ token, getShipment, getStorage, fetchUser }) {
+function App({ token, getShipment, getStorage, getQuotation, fetchUser }) {
 
 	useEffect(() => {
 
@@ -46,6 +49,7 @@ function App({ token, getShipment, getStorage, fetchUser }) {
 
 			getShipment(token);
 			getStorage(token);
+			getQuotation(token)
 		} catch (error) {
 			console.log("USER ERROR", error)
 		}
@@ -53,7 +57,7 @@ function App({ token, getShipment, getStorage, fetchUser }) {
 
 		// quotation
 		
-	},[ token, getShipment, getStorage, fetchUser ])
+	},[ token, getShipment, getStorage, fetchUser, getQuotation ])
 
 	return (
 		<div className="App">
@@ -107,7 +111,9 @@ const mapDispatchToProps = (dispatch) => ({
 	fetchUser: (token) => dispatch(fetchUser(token)),
 
 	getShipment: (token) => dispatch(getShipment(token)),
-	getStorage: (token) => dispatch(getStorage(token))
+	getStorage: (token) => dispatch(getStorage(token)),
+
+	getQuotation : (token) => dispatch(getQuotation(token))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

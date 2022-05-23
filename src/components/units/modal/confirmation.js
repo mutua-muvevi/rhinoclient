@@ -62,7 +62,7 @@ const StyledGridContainer = styled(Grid)(({theme}) => ({
 	marginTop: "10px",
 }))
 
-const Confirmation = ({modal, onClose, values}) => {
+const Confirmation = ({modal, onClose, values, submit}) => {
 	const valuesArray = [
 		{
 			name: "Firstname",
@@ -154,7 +154,7 @@ const Confirmation = ({modal, onClose, values}) => {
 					<Divider sx={{color: "#fff"}}/>
 
 					<ButtonGroup variant="contained" sx={{margin: "30px 0px"}}>
-						<Button endIcon={<DoneAllIcon/>} color="success">
+						<Button type="submit" onClick={() => submit()} endIcon={<DoneAllIcon/>} color="success">
 							Accept Confirmation
 						</Button>
 

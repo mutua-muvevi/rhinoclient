@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { styled } from "@mui/system";
+
 import { Box, Button, Grid, Modal, Typography} from "@mui/material";
+import { styled } from "@mui/system";
+
 import TextsmsIcon from '@mui/icons-material/Textsms';
-import ServiceQuotationModal from "./servicequotationmodal";
+import QuotationModal from "../../../components/widgets/modal/quotation";
 
 const StyledModal = styled(Modal)(({theme}) => ({
 	width: "85vw",
@@ -160,7 +162,7 @@ const ServicesModal = ({open, handleClose, modal}) => {
 							Request Quotation
 						</Button>
 
-						<ServiceQuotationModal 
+						<QuotationModal 
 							title={`Request Quotation For ${modal.title}`}
 							open={openItemFormModal} 
 							setOpen={setOpenItemFormModal}
