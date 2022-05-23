@@ -12,6 +12,7 @@ import storageReducer from "./storage/storagereducer";
 import contactReducer from "./contact/contactreducers";
 import productQuotationReducer from "./productquotation/productquotationreducers";
 import enquiriesReducer from "./enquiries/enquiriesreducers";
+import storageQuotationReducer from "./storagequotation/storagequotationreducers";
 
 const config = {
 	key: 'root',
@@ -33,6 +34,8 @@ const rootReducer = combineReducers({
 
 	storage: storageReducer,
 	shipment: shipmentReducer,
+
+	storagequotation: storageQuotationReducer,
 
 	contact: contactReducer,
 	productQuotation: productQuotationReducer,

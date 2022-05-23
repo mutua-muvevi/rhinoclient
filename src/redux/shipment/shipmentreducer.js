@@ -8,21 +8,21 @@ const initialState = {
 
 const shipmentReducer = ( state = initialState, { type, payload } ) => {
 	switch(type){
-		case shipmentTypes.GET_ALL_START: 
+		case shipmentTypes.GET_ALL_SHIPMENT_START: 
 			return { 
 				...state, 
 				loading: true,
 				data: null,
 				errMessage: undefined,
 			};
-			case shipmentTypes.GET_ALL_SUCCESS: 
+			case shipmentTypes.GET_ALL_SHIPMENT_SUCCESS: 
 			return { 
 				...state, 
 				loading: false,
 				data: payload,
 				errMessage: undefined,
 			};
-		case shipmentTypes.GET_ALL_FAIL: 
+		case shipmentTypes.GET_ALL_SHIPMENT_FAIL: 
 			return { 
 				...state, 
 				loading: false,
@@ -30,20 +30,20 @@ const shipmentReducer = ( state = initialState, { type, payload } ) => {
 			};
 
 			
-		case shipmentTypes.GET_ONE_START: 
+		case shipmentTypes.GET_ONE_SHIPMENT_START: 
 			return { 
 				...state, 
 				loading: true,
 				errMessage: undefined,
 			};
-		case shipmentTypes.GET_ONE_SUCCESS: 
+		case shipmentTypes.GET_ONE_SHIPMENT_SUCCESS: 
 			return { 
 				...state, 
 				loading: false,
 				data: payload,
 				errMessage: undefined,
 			};
-		case shipmentTypes.GET_ONE_FAIL: 
+		case shipmentTypes.GET_ONE_SHIPMENT_FAIL: 
 			return { 
 				...state, 
 				loading: false,
@@ -52,20 +52,20 @@ const shipmentReducer = ( state = initialState, { type, payload } ) => {
 
 
 
-		case shipmentTypes.POST_START: 
+		case shipmentTypes.POST_SHIPMENT_START: 
 			return { 
 				...state, 
 				loading: true,
 				errMessage: undefined,
 			};
-		case shipmentTypes.POST_SUCCESS: 
+		case shipmentTypes.POST_SHIPMENT_SUCCESS: 
 			return { 
 				...state, 
 				loading: false,
 				data: payload,
 				errMessage: undefined,
 			};
-		case shipmentTypes.POST_FAIL: 
+		case shipmentTypes.POST_SHIPMENT_FAIL: 
 			return { 
 				...state, 
 				loading: false,
@@ -74,20 +74,20 @@ const shipmentReducer = ( state = initialState, { type, payload } ) => {
 
 
 
-		case shipmentTypes.EDIT_START: 
+		case shipmentTypes.EDIT_SHIPMENT_START: 
 			return { 
 				...state, 
 				loading: true,
 				errMessage: undefined,
 			};
-		case shipmentTypes.EDIT_SUCCESS: 
+		case shipmentTypes.EDIT_SHIPMENT_SUCCESS: 
 			return { 
 				...state, 
 				loading: false,
 				data: payload,
 				errMessage: undefined,
 			};
-		case shipmentTypes.EDIT_FAIL: 
+		case shipmentTypes.EDIT_SHIPMENT_FAIL: 
 			return { 
 				...state, 
 				loading: false,
@@ -96,20 +96,20 @@ const shipmentReducer = ( state = initialState, { type, payload } ) => {
 
 			
 			
-		case shipmentTypes.ADD_EVENT_START: 
+		case shipmentTypes.ADD_SHIPMENT_EVENT_START: 
 			return { 
 				...state, 
 				loading: true,
 				errMessage: undefined,
 			};
-		case shipmentTypes.ADD_EVENT_SUCCESS: 
+		case shipmentTypes.ADD_SHIPMENT_EVENT_SUCCESS: 
 			return { 
 				...state, 
 				loading: false,
 				data: payload,
 				errMessage: undefined,
 			};
-		case shipmentTypes.ADD_EVENT_FAIL: 
+		case shipmentTypes.ADD_SHIPMENT_EVENT_FAIL: 
 			return { 
 				...state, 
 				loading: false,

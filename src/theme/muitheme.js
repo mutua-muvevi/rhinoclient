@@ -45,9 +45,6 @@ export const theme = createTheme({
 			dark: "#1b5e20",
 			contrastText: "#fff"
 		},
-		// grey: {
-		
-		// },
 		text: {
 			primary: "rgba(220, 220, 220, 0.8)",
 			secondary: "rgba(220, 220, 220, 0.6)",
@@ -65,43 +62,43 @@ export const theme = createTheme({
 	typography: {
 		fontFamily: "'Roboto', sans-serif",
 		h1: {
-			fontFamily: "'Source Sans Pro', sans-serif;",
+			fontFamily: "'Rubik', sans-serif",
 		},
 		h2: {
-			fontFamily: "'Source Sans Pro', sans-serif;",
+			fontFamily: "'Rubik', sans-serif",
 		},
 		h3: {
-			fontFamily: "'Source Sans Pro', sans-serif;",
+			fontFamily: "'Rubik', sans-serif",
 		},
 		h4: {
-			fontFamily: "'Source Sans Pro', sans-serif;",
+			fontFamily: "'Rubik', sans-serif",
 		},
 		h5: {
-			fontFamily: "'Source Sans Pro', sans-serif;",
+			fontFamily: "'Rubik', sans-serif",
 		},
 		h6: {
-			fontFamily: "'Source Sans Pro', sans-serif;",
+			fontFamily: "'Rubik', sans-serif",
 		},
 		subtitle1: {
-			fontFamily: "'Roboto', sans-serif",
+			fontFamily: "'Fira Sans', sans-serif",
 		},
 		subtitle2: {
-			fontFamily: "'Roboto', sans-serif",
+			fontFamily: "'Fira Sans', sans-serif",
 		},
 		body1: {
-			fontFamily: "'Roboto', sans-serif",
+			fontFamily: "'Fira Sans', sans-serif",
 		},
 		body2: {
-			fontFamily: "'Roboto', sans-serif",
+			fontFamily: "'Fira Sans', sans-serif",
 		},
 		button: {
-			fontFamily: "'Roboto', sans-serif",
+			fontFamily: "'Fira Sans', sans-serif",
 		},
 		caption: {
-			fontFamily: "'Roboto', sans-serif",
+			fontFamily: "'Fira Sans', sans-serif",
 		},
 		overline: {
-			fontFamily: "'Roboto', sans-serif",
+			fontFamily: "'Fira Sans', sans-serif",
 		},
 		
 	}

@@ -32,18 +32,18 @@ const INITIAL_FORM_STATE = {
 }
 
 const FORM_VALIDATION = Yup.object().shape({
-	firstname: Yup.string().min(3).max(100).required(),
-	lastname: Yup.string().min(3).max(100).required(),
-	email: Yup.string().email().min(3).max(100).required(),
-	telephone: Yup.string().min(3).max(100).required(),
-	company: Yup.string().min(3).max(100).required(),
-	city: Yup.string().min(3).max(100).required(),
-	country: Yup.string().min(3).max(100).required(),
-	product: Yup.string().min(3).max(100).required(),
-	message: Yup.string().min(20).max(1000).required(),
+	firstname: Yup.string().min(3).max(100).required("Please add your first name"),
+	lastname: Yup.string().min(3).max(100).required("Please add your lastname"),
+	email: Yup.string().email("Please add a valid email").min(5).max(100).required("Please add your email"),
+	telephone: Yup.string().min(3).max(100).required("Please add a telephone"),
+	company: Yup.string().min(3).max(100),
+	city: Yup.string().min(3).max(100).required("Please add your city"),
+	country: Yup.string().min(3).max(100).required("Please add your country"),
+	product: Yup.string().min(3).max(100).required("Please add product/ service name/details"),
+	message: Yup.string().min(20).max(1000).required("Quotation message in required"),
 })
 
-const QuotationForm = ({onClose}) => {
+const QuotationForm = ({setOpen}) => {
 
 	const [modal, setModal] = useState(false);
 	const [ formValues, setFormValues ] = useState({})
@@ -59,8 +59,8 @@ const QuotationForm = ({onClose}) => {
 	const submitHandler = (values, {resetForm}) => {
 		setFormValues(values)
 		setModal(true)
-		resetForm()
-
+		// resetForm()
+		console.log(values)
 	}
 
 	return (
@@ -99,7 +99,7 @@ const QuotationForm = ({onClose}) => {
 						<Button type="submit" color="secondary"  endIcon={<SendIcon/>}>
 							Submit Quotation
 						</Button>
-						<Button onClick={onClose} type="submit" color="error" endIcon={<ClearIcon/>}>
+						<Button onClick={() => setOpen(false)} type="submit" color="error" endIcon={<ClearIcon/>}>
 							Cancel Quotation
 						</Button>
 					</ButtonGroup>

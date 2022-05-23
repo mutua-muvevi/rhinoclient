@@ -2,78 +2,78 @@ import shipmentTypes from "./shipmenttypes";
 import axios from "axios";
 
 export const getAllShipment = () => ({
-	type: shipmentTypes.GET_ALL_START,
+	type: shipmentTypes.GET_ALL_SHIPMENT_START,
 })
 
 export const getAllShipmentSuccess = (shipment) => ({
-	type: shipmentTypes.GET_ALL_SUCCESS,
+	type: shipmentTypes.GET_ALL_SHIPMENT_SUCCESS,
 	payload: shipment,
 })
 
 export const getAllShipmentFail = (errMessage) => ({
-	type: shipmentTypes.GET_ALL_FAIL,
+	type: shipmentTypes.GET_ALL_SHIPMENT_FAIL,
 	payload: errMessage,
 })
 
 
 export const getOneShipment = () => ({
-	type: shipmentTypes.GET_ONE_START,
+	type: shipmentTypes.GET_ONE_SHIPMENT_START,
 })
 
 export const getOneShipmentSuccess = (shipment) => ({
-	type: shipmentTypes.GET_ONE_SUCCESS,
+	type: shipmentTypes.GET_ONE_SHIPMENT_SUCCESS,
 	payload: shipment,
 })
 
 export const getOneShipmentFail = (errMessage) => ({
-	type: shipmentTypes.GET_ONE_FAIL,
+	type: shipmentTypes.GET_ONE_SHIPMENT_FAIL,
 	payload: errMessage,
 })
 
 
 
 export const postShipment = () => ({
-	type: shipmentTypes.POST_START,
+	type: shipmentTypes.POST_SHIPMENT_START,
 })
 
 export const postShipmentSuccess = (shipment) => ({
-	type: shipmentTypes.POST_SUCCESS,
+	type: shipmentTypes.POST_SHIPMENT_SUCCESS,
 	payload: shipment,
 })
 
 export const postShipmentFail = (errMessage) => ({
-	type: shipmentTypes.POST_FAIL,
+	type: shipmentTypes.POST_SHIPMENT_FAIL,
 	payload: errMessage,
 })
 
 
 export const editShipment = () => ({
-	type: shipmentTypes.POST_START,
+	type: shipmentTypes.POST_SHIPMENT_START,
 })
 
 export const editShipmentSuccess = (shipment) => ({
-	type: shipmentTypes.POST_SUCCESS,
+	type: shipmentTypes.POST_SHIPMENT_SUCCESS,
 	payload: shipment,
 })
 
 export const editShipmentFail = (errMessage) => ({
-	type: shipmentTypes.POST_FAIL,
+	type: shipmentTypes.POST_SHIPMENT_FAIL,
 	payload: errMessage,
 })
 
 
 
 export const addEvent = () => ({
-	type: shipmentTypes.ADD_EVENT_START,
+	type: shipmentTypes.ADD_SHIPMENT_EVENT_START,
 })
 
 export const addEventSuccess = (shipment) => ({
-	type: shipmentTypes.ADD_EVENT_SUCCESS,
+	type: shipmentTypes.ADD_SHIPMENT_EVENT_SUCCESS,
 	payload: shipment,
 })
 
 export const addEventFail = (errMessage) => ({
-	type: shipmentTypes.ADD_EVENT_FAIL,
+	type: shipmentTypes.ADD_SHIPMENT_EVENT_FAIL,
 	payload: errMessage,
 })
 

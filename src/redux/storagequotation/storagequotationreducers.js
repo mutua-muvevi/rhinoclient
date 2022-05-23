@@ -8,23 +8,44 @@ const initialState = {
 
 const storageQuotationReducer = (state = initialState, { type, payload }) => {
 	switch (type) {
-		case storageQuotationTypes.START:
+		case storageQuotationTypes.GET_ALL_STORAGE_QUOTATION_START:
 			return { 
 				...state, 
 				isLoading: true 
 			};
-		case storageQuotationTypes.SUCCESS:
+		case storageQuotationTypes.GET_ALL_STORAGE_QUOTATION_SUCCESS:
 			return {
 				...state,
 				isLoading: false,
 				storageQuotation: payload,
 			};
-		case storageQuotationTypes.FAIL:
+		case storageQuotationTypes.GET_ALL_STORAGE_QUOTATION_FAIL:
 			return {
 				...state,
 				isLoading: false,
 				errMessage: payload,
 			};
+
+
+		case storageQuotationTypes.POST_STORAGE_QUOTATION_START:
+			return { 
+				...state, 
+				isLoading: true 
+			};
+		case storageQuotationTypes.POST_STORAGE_QUOTATION_SUCCESS:
+			return {
+				...state,
+				isLoading: false,
+				storageQuotation: payload,
+			};
+		case storageQuotationTypes.POST_STORAGE_QUOTATION_FAIL:
+			return {
+				...state,
+				isLoading: false,
+				errMessage: payload,
+			};
+			
+			
 		default:
 			return state;
 	}
