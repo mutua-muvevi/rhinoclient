@@ -1,11 +1,17 @@
-import React from 'react';
-import * as Yup from "yup";
+import React, { useState } from 'react';
+
 import { Formik, Form } from "formik";
-import { Button, Grid,  Typography } from "@mui/material";
-import { styled } from "@mui/system"
-import { contactFormInputs, contactFormTextArea } from "./contactInfo";
-import TextField from "../../../components/formsUI/textfield/textfield"
+import * as Yup from "yup";
+
+import { Alert, AlertTitle, Button, Grid, Grow, Typography } from "@mui/material";
+import { styled } from "@mui/system";
 import SendIcon from '@mui/icons-material/Send';
+
+import { contactFormInputs, contactFormTextArea } from "./contactInfo";
+import TextField from "../../../components/formsUI/textfield/textfield";
+
+import { connect } from "react-redux";
+import { sendContacts } from "../../../redux/contact/contactactions";
 
 const StyledAddButton = styled(Button)(({theme}) => ({
 	borderRadius: 3,
@@ -23,24 +29,56 @@ const INITIAL_FORM_STATE = {
 }
 
 const FORM_VALIDATION = Yup.object().shape({
-	fullname: Yup.string().required().min(3).max(100),
-	email: Yup.string().required().min(3).max(100).email(),
-	company: Yup.string().required().min(3).max(100),
-	telephone: Yup.string().required().min(3).max(100),
-	message: Yup.string().required().min(20).max(1500),
+	fullname: Yup.string().required("Please add your fullname").min(3).max(100),
+	email: Yup.string().required("Please add your email").min(3).max(100).email("Please add a valid email"),
+	company: Yup.string().min(3).max(100),
+	telephone: Yup.string().required("Please add your telephone number").min(3).max(100),
+	message: Yup.string().required("Plase add the message").min(20).max(1500),
 })
 
-const ContactForm = () => {
+const ContactForm = ({ sendContacts, errMessage }) => {
+
+	const [showSuccess, setShowSuccess] = useState(false)
+
+	const submitHandler =  ( values, { resetForm }) => {
+		sendContacts(values)
+		console.log("The values WE GET INCLUDE...",values)
+				
+		if (!errMessage || errMessage === undefined){
+			setShowSuccess(true)
+			resetForm()
+		}
+	}
+
 	return (
 		<>
+			{
+				errMessage ? (
+					<Grow  style={{ transformOrigin: '10 20 50' }} in timeout={1000}>
+						<Alert severity="error" variant="filled">
+							<AlertTitle>Post Error!</AlertTitle>
+							{ errMessage }
+						</Alert>
+					</Grow>
+				) : null
+			}
+			
+			{
+				showSuccess ? (
+					<Grow  style={{ transformOrigin: '10 20 50' }} in timeout={1000}>
+						<Alert severity="success" variant="filled">
+							<AlertTitle>Post Success!</AlertTitle>
+							Your message has been send successfully
+						</Alert>
+					</Grow>
+				) : null
+			} 
 			<Formik
 				initialValues={{
 					...INITIAL_FORM_STATE
 				}}
 				validationSchema={ FORM_VALIDATION }
-				onSubmit = {values => {
-					console.log(values)
-				}}
+				onSubmit = {submitHandler}
 			>
 				<Form>
 					<Grid container spacing={1}>
@@ -76,4 +114,13 @@ const ContactForm = () => {
 	)
 }
 
-export default ContactForm
+const mapStateToProps = ({ contact }) => ({
+	errMessage: contact.errMessage,
+	data: contact.contact
+})
+
+const mapDispatchToProps = (dispatch) => ({
+	sendContacts: (values) => dispatch(sendContacts(values))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContactForm)
