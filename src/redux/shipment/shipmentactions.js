@@ -78,11 +78,17 @@ export const addEventFail = (errMessage) => ({
 })
 
 
-export const getShipment = () => {
+export const getShipment = (token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
-				"http://localhost:7000/api/shipping/all"
+				"http://localhost:7000/api/shipping/all",
+				{
+					headers: {
+						"Content-Type": "application/json",
+						Authorization:`Bearer ${token}`
+					},
+				}
 			)
 			getAllShipment()
 			dispatch(getAllShipmentSuccess(res.data.data))

@@ -37,10 +37,10 @@ import { fetchUser } from "./redux/user/useraction"
 import { getShipment } from "./redux/shipment/shipmentactions";
 import { getStorage } from "./redux/storage/storageaction";
 
-import { getStorageQuotation } from "./redux/storagequotation/storagequotationactions";
+import { getQuotation } from "./redux/quotation/quotationactions";
 
 
-function App({ token, getShipment, getStorage, getStorageQuotation, fetchUser }) {
+function App({ token, getShipment, getStorage, getQuotation, fetchUser }) {
 
 	useEffect(() => {
 
@@ -49,7 +49,7 @@ function App({ token, getShipment, getStorage, getStorageQuotation, fetchUser })
 
 			getShipment(token);
 			getStorage(token);
-			getStorageQuotation(token)
+			getQuotation(token)
 		} catch (error) {
 			console.log("USER ERROR", error)
 		}
@@ -57,7 +57,7 @@ function App({ token, getShipment, getStorage, getStorageQuotation, fetchUser })
 
 		// quotation
 		
-	},[ token, getShipment, getStorage, fetchUser, getStorageQuotation ])
+	},[ token, getShipment, getStorage, fetchUser, getQuotation ])
 
 	return (
 		<div className="App">
@@ -113,7 +113,7 @@ const mapDispatchToProps = (dispatch) => ({
 	getShipment: (token) => dispatch(getShipment(token)),
 	getStorage: (token) => dispatch(getStorage(token)),
 
-	getStorageQuotation : (token) => dispatch(getStorageQuotation(token))
+	getQuotation : (token) => dispatch(getQuotation(token))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

@@ -1,25 +1,27 @@
-import storageQuotationTypes from './storagequotationtypes';
+import storageQuotationTypes from './quotationtypes';
 
 const initialState = {
-	storageQuotation: [],
 	isLoading: true,
+	storageQuotation: [],
 	errMessage: undefined,
 };
 
 const storageQuotationReducer = (state = initialState, { type, payload }) => {
 	switch (type) {
-		case storageQuotationTypes.GET_ALL_STORAGE_QUOTATION_START:
+		case storageQuotationTypes.GET_ALL_QUOTATION_START:
 			return { 
 				...state, 
-				isLoading: true 
+				isLoading: true,
+				errMessage: undefined,
 			};
-		case storageQuotationTypes.GET_ALL_STORAGE_QUOTATION_SUCCESS:
+		case storageQuotationTypes.GET_ALL_QUOTATION_SUCCESS:
 			return {
 				...state,
 				isLoading: false,
 				storageQuotation: payload,
+				errMessage: undefined,
 			};
-		case storageQuotationTypes.GET_ALL_STORAGE_QUOTATION_FAIL:
+		case storageQuotationTypes.GET_ALL_QUOTATION_FAIL:
 			return {
 				...state,
 				isLoading: false,
@@ -27,24 +29,26 @@ const storageQuotationReducer = (state = initialState, { type, payload }) => {
 			};
 
 
-		case storageQuotationTypes.POST_STORAGE_QUOTATION_START:
+		case storageQuotationTypes.POST_QUOTATION_START:
 			return { 
 				...state, 
-				isLoading: true 
+				isLoading: true,
+				errMessage: undefined,
 			};
-		case storageQuotationTypes.POST_STORAGE_QUOTATION_SUCCESS:
+		case storageQuotationTypes.POST_QUOTATION_SUCCESS:
 			return {
 				...state,
 				isLoading: false,
 				storageQuotation: payload,
+				errMessage: undefined,
 			};
-		case storageQuotationTypes.POST_STORAGE_QUOTATION_FAIL:
+		case storageQuotationTypes.POST_QUOTATION_FAIL:
 			return {
 				...state,
 				isLoading: false,
 				errMessage: payload,
 			};
-			
+
 			
 		default:
 			return state;

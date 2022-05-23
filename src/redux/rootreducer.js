@@ -11,8 +11,7 @@ import storageReducer from "./storage/storagereducer";
 
 import contactReducer from "./contact/contactreducers";
 import productQuotationReducer from "./productquotation/productquotationreducers";
-import enquiriesReducer from "./enquiries/enquiriesreducers";
-import storageQuotationReducer from "./storagequotation/storagequotationreducers";
+import storageQuotationReducer from "./quotation/quotationreducers";
 
 const config = {
 	key: 'root',
@@ -22,9 +21,9 @@ const config = {
 		"user", 
 		"shipment", 
 		"storage", 
+		"quotation",
 		"contact",
-		"productQuotation", 
-		"enquiries"
+		"productQuotation",
 	],
 };
 
@@ -35,12 +34,10 @@ const rootReducer = combineReducers({
 	storage: storageReducer,
 	shipment: shipmentReducer,
 
-	storagequotation: storageQuotationReducer,
+	quotation: storageQuotationReducer,
 
 	contact: contactReducer,
 	productQuotation: productQuotationReducer,
-
-	enquiries: enquiriesReducer
 
 });
 
