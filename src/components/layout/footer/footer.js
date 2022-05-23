@@ -1,9 +1,15 @@
-import { Box, Button, Container, FormGroup, Grid, TextField, Typography } from "@mui/material"
 import React, { useState } from 'react';
-import { footerLeft, footerMiddle } from "./footercontent";
-import SendIcon from '@mui/icons-material/Send';
+
+import { Box, Button, Container, FormGroup, Grid, TextField, Typography } from "@mui/material"
 import { styled } from "@mui/system";
+
+import SendIcon from '@mui/icons-material/Send';
+
+import { footerLeft, footerMiddle } from "./footercontent";
 import FooterImage from "../../../assets/images/miningtools.jpg";
+
+import { connect } from "react-redux";
+import { sendEmail } from "../../../redux/email/emailactions";
 
 const FooterWrapper = styled(Box)(({theme}) => ({
 	background: `linear-gradient(to bottom, rgba(0, 0, 0, 0.68), rgba(0, 0, 0, 0.88)), url(${FooterImage})`,
@@ -81,14 +87,14 @@ const styledAuthTextField = {
 	color: "white !important"
 }
 
-const Footer = () => {
+const Footer = ({ sendEmail }) => {
 
 	const [email, setEmail] = useState("")
 
 	const submitHandler = (e) => {
 		e.preventDefault()
-		console.log(email)
-		setEmail("")
+		setEmail(e.target.value)
+		sendEmail(email)
 	}
 
 	return (
@@ -177,4 +183,15 @@ const Footer = () => {
 	)
 }
 
-export default Footer
+
+const mapStateToProps = ({ contact }) => ({
+	errMessage: contact.errMessage,
+	data: contact.contact
+})
+
+const mapDispatchToProps = (dispatch) => ({
+	sendEmail: (values) => dispatch(sendEmail(values))
+})
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Footer)

@@ -100,7 +100,6 @@ const QuotationForm = ({ setOpen, postQuotation, errMessage }) => {
 				onSubmit = { submitHandler }
 			>
 				<Form>
-					{console.log("THE ERROR MESSAGE IS", errMessage)}
 					<Grid sx={styledGridFormWrapper} container spacing={2}>
 						{
 							quotationFormInputs.map((el, i) => (

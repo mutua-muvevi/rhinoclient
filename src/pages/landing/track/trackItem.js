@@ -196,12 +196,12 @@ const TrackItem = ({ item, modal, onClose}) => {
 
 									<StyledTrackBodyDetails id="track-body">
 										{
-											item.formitems
-											.sort((a, b) => {
+											item.events &&
+											item.events.sort((a, b) => {
 												return b.number - a.number
 											})
 											.map((el, i) => (
-												<StyledTableContainer >
+												<StyledTableContainer key={i} >
 													<Table aria-label="shipment event table">
 														<TableHead>
 															<TableRow>
@@ -236,6 +236,7 @@ const TrackItem = ({ item, modal, onClose}) => {
 																		</StyledTableCell>
 																	))
 																}
+																{console.log("EL.NUMBER IS", el.number)}
 															</TableRow>
 														</TableBody>
 													</Table>
