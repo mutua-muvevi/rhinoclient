@@ -1,30 +1,31 @@
 import contactTypes from "./contacttypes";
 import axios from "axios";
 
-export const fetchCollectionsStart = () => ({
-	type: contactTypes.START,
+export const startSending = () => ({
+	type: contactTypes.SENDING_START,
 })
 
-export const fetchCollectionsSuccess = (contact) => ({
-	type: contactTypes.SUCCESS,
+export const sendingSuccess = (contact) => ({
+	type: contactTypes.SENDING_SUCCESS,
 	payload: contact,
 })
 
-export const fetchCollectionsFail = (errMessage) => ({
-	type: contactTypes.FAIL,
+export const sendingFail = (errMessage) => ({
+	type: contactTypes.SENDING_FAIL,
 	payload: errMessage,
 })
 
-export const getProductQuotations = () => {
+export const sendContacts = (values) => {
 	return async (dispatch) => {
 		try {
-			const res = await axios.get(
-				"https://rhinojonapi.herokuapp.com/api/contact/all"
+			const res = await axios.post(
+				"http://localhost:7000/api/contact/post",
+				values
 			)
-			fetchCollectionsStart()
-			dispatch(fetchCollectionsSuccess(res.data.data))
+			startSending()
+			dispatch(sendingSuccess(res.data.data))
 		} catch (error) {
-			dispatch(fetchCollectionsFail(error.message))
+			dispatch(sendingFail(error.response.data.error))
 		}
 	}
 }

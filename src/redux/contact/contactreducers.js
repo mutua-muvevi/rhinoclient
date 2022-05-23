@@ -8,18 +8,20 @@ const initialState = {
 
 const contactReducer = (state = initialState, { type, payload }) => {
 	switch (type) {
-		case contactTypes.START:
+		case contactTypes.SENDING_START:
 			return { 
 				...state, 
-				isLoading: true 
+				isLoading: true,
+				errMessage: undefined,
 			};
-		case contactTypes.SUCCESS:
+		case contactTypes.SENDING_SUCCESS:
 			return {
 				...state,
 				isLoading: false,
 				products: payload,
+				errMessage: undefined,
 			};
-		case contactTypes.FAIL:
+		case contactTypes.SENDING_FAIL:
 			return {
 				...state,
 				isLoading: false,
