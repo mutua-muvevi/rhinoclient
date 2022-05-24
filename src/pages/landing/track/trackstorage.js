@@ -16,7 +16,7 @@ import { connect } from "react-redux";
 const StyledBreadCrumbs = styled(Breadcrumbs)(({theme}) => ({
 	marginTop: "20px",
 	marginBottom: "20px",
-	color: theme.palette.common.white
+	color: theme.palette.secondary.main
 }))
 
 const trackTitle = {
@@ -36,12 +36,6 @@ const StyledTrackButton = styled(Button)(({theme}) => ({
 	minWidth: "20vw"
 }))
 
-const formgroupStyle = {
-	display: {
-		md: "flex",
-		xs: "block"
-	}
-}
 
 const TrackStorage = ({ storage }) => {
 
@@ -74,8 +68,7 @@ const TrackStorage = ({ storage }) => {
 				<StyledBreadCrumbs>
 					<Link
 						underline="hover"
-						sx={{ display: 'flex', alignItems: 'center' }}
-						
+						style={{color: "inherit", textDecoration: "none"}}
 						to="/"
 					>
 						<HomeIcon color="#fff" sx={{ mr: 0.5 }} fontSize="inherit" />
@@ -83,8 +76,7 @@ const TrackStorage = ({ storage }) => {
 					</Link>
 					<Link
 						underline="hover"
-						sx={{ display: 'flex', alignItems: 'center' }}
-						
+						style={{color: "inherit", textDecoration: "none"}}
 						to="/track/main"
 					>
 						<TravelExploreIcon sx={{ mr: 0.5 }} fontSize="inherit" />

@@ -27,6 +27,13 @@ const imageBackground = {
 	backgroundPosition: "center",
 	backgroundSize: "cover",
 }
+
+
+const headerFont = {
+	color: "#dea95f",
+	fontFamily: "'Rubik', sans-serif",
+}
+
 const Aboutcontentimage = ({title, paragraph, link}) => {
 
 	return (
@@ -34,7 +41,7 @@ const Aboutcontentimage = ({title, paragraph, link}) => {
 			<Grid container spacing={2} >
 				<Grid item lg={6} sm={12}>
 					<StyledGridItemContainer>
-						<Typography variant="h4" gutterBottom>
+						<Typography style={headerFont} variant="h4" gutterBottom>
 							{title}
 						</Typography>
 						{

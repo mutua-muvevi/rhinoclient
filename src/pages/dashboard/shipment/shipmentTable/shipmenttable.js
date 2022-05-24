@@ -21,7 +21,7 @@ const StyledDataGridContainer = styled(Card)(({theme}) => ({
 
 const StyledDataGridHeader = styled(CardHeader)(({theme}) => ({
 	backgroundColor: "#131313",
-	color: theme.palette.common.white
+	color: theme.palette.secondary.main
 }))
 
 const StyledDataGrid = styled(DataGrid)(({theme}) =>({
@@ -31,7 +31,7 @@ const StyledDataGrid = styled(DataGrid)(({theme}) =>({
 	borderRadius: theme.shape.default,
 	"& .MuiDataGrid-columnHeaders": {
 		backgroundColor: "#333333",
-		color: "whitesmoke",
+		color: theme.palette.secondary.main,
 		fontSize: 18,
 		paddingTop: 2,
 		paddingBottom: 2,
@@ -238,7 +238,7 @@ const ShipmentTable = ({ data }) => {
 	return (
 		<>
 			<StyledDataGridContainer>
-				<StyledDataGridHeader title="RhinoJohn Shipping Records" />
+				<StyledDataGridHeader title="Shipping Records" />
 				<StyledDataGrid
 					rows={data}
 					columns={columns}

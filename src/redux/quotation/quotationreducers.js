@@ -2,7 +2,7 @@ import storageQuotationTypes from './quotationtypes';
 
 const initialState = {
 	isLoading: true,
-	storageQuotation: [],
+	quotation: [],
 	errMessage: undefined,
 };
 
@@ -18,7 +18,7 @@ const storageQuotationReducer = (state = initialState, { type, payload }) => {
 			return {
 				...state,
 				isLoading: false,
-				storageQuotation: payload,
+				quotation: payload,
 				errMessage: undefined,
 			};
 		case storageQuotationTypes.GET_ALL_QUOTATION_FAIL:
@@ -39,7 +39,7 @@ const storageQuotationReducer = (state = initialState, { type, payload }) => {
 			return {
 				...state,
 				isLoading: false,
-				storageQuotation: payload,
+				quotation: payload,
 				errMessage: undefined,
 			};
 		case storageQuotationTypes.POST_QUOTATION_FAIL:

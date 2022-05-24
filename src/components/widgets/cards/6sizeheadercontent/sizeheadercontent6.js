@@ -22,7 +22,7 @@ const Sizeheadercontent6 = ({item}) => {
 	return (
 		<CardStyles>
 			<HeaderSection>
-				<Typography variant="h6">
+				<Typography style={{fontFamily: "'Rubik', sans-serif"}} color="secondary" variant="h6">
 					{item.title}
 				</Typography>
 			</HeaderSection>

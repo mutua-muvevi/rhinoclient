@@ -9,14 +9,18 @@ const StyledBreadCrumbs = styled(Breadcrumbs)(({theme}) => ({
 }))
 
 
+const headerFont = {
+	color: "#dea95f",
+	fontFamily: "'Rubik', sans-serif",
+}
+
 const Dashmap = () => {
 	return (
 		<Box>
 			<StyledBreadCrumbs>
 				<Link
 					underline="hover"
-					sx={{ display: 'flex', alignItems: 'center' }}
-					color="inherit"
+					style={headerFont}
 					href="/dashboard"
 				>
 					 <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />

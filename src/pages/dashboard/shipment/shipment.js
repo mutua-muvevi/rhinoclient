@@ -10,9 +10,14 @@ import Shipmentcards3 from "./3shipmentcards/shipmentcards3";
 import ShipmentTable from "./shipmentTable/shipmenttable"
 
 const StyledBreadCrumbs = styled(Breadcrumbs)(({theme}) => ({
-	marginBottom: "20px"
+	marginBottom: "20px",
+	color: theme.palette.secondary.main
 }))
 
+const headerFont = {
+	color: "#dea95f",
+	fontFamily: "'Rubik', sans-serif",
+}
 
 const Dashshipment = () => {
 
@@ -22,8 +27,7 @@ const Dashshipment = () => {
 			<StyledBreadCrumbs>
 				<Link
 					underline="hover"
-					sx={{ display: 'flex', alignItems: 'center' }}
-					color="inherit"
+					style={headerFont}
 					href="/dashboard"
 				>
 					 <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
@@ -31,7 +35,7 @@ const Dashshipment = () => {
 				</Link>
 				<Typography
 					sx={{ display: 'flex', alignItems: 'center' }}
-					color="text.primary"
+					color="text.secondary"
 				>
 					<LocalShippingIcon sx={{ mr: 0.5 }} fontSize="inherit" />
 					Shipment

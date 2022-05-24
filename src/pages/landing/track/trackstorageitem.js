@@ -1,10 +1,8 @@
 import React from 'react';
 
-import { Box, Container, Divider, Grid, Modal, Grow, Table, TableBody, TableContainer, TableHead, TableRow, Typography } from "@mui/material";
+import { Box, Container, Divider, Grid, Modal, Grow, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 
-
-import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 
 

@@ -17,7 +17,7 @@ import { connect } from "react-redux";
 const StyledBreadCrumbs = styled(Breadcrumbs)(({theme}) => ({
 	marginTop: "20px",
 	marginBottom: "20px",
-	color: theme.palette.common.white
+	color: theme.palette.secondary.main
 }))
 
 const trackTitle = {
@@ -69,7 +69,7 @@ const TrackShipment = ({ shipment }) => {
 				<StyledBreadCrumbs>
 					<Link
 						underline="hover"
-						sx={{ display: 'flex', alignItems: 'center' }}
+						style={{color: "inherit", textDecoration: "none"}}
 						
 						to="/"
 					>
@@ -79,7 +79,7 @@ const TrackShipment = ({ shipment }) => {
 					<Link
 						underline="hover"
 						sx={{ display: 'flex', alignItems: 'center' }}
-						
+						style={{color: "inherit", textDecoration: "none"}}
 						to="/track/main"
 					>
 						<TravelExploreIcon sx={{ mr: 0.5 }} fontSize="inherit" />

@@ -12,6 +12,11 @@ const StyledContainer = styled(Container)(({theme}) => ({
 	transition: "1s"
 }))
 
+const headerTypography = {
+	fontFamily: "'Rubik', sans-serif",
+	fontWeight: 500
+}
+
 const Banner = ({title, subtitle, image, imageAlt, paragraph}) => {
 
 	const BannerWrapper = styled(Box)(({theme}) => ({
@@ -28,7 +33,7 @@ const Banner = ({title, subtitle, image, imageAlt, paragraph}) => {
 	return (
 		<BannerWrapper>
 			<StyledContainer maxWidth="xl">
-				<Typography sx={{marginTop: 10}} variant="h2" component="h3" gutterBottom>
+				<Typography style={headerTypography} color="secondary" variant="h2" component="h3" gutterBottom>
 					{title}
 				</Typography>
 				<Typography variant="h4" component="h4">

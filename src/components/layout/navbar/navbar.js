@@ -83,7 +83,7 @@ const Navbar = () => {
 					<StyledNavItems>
 						{
 							navPages.map((el, i) => (
-								<NavLink key={i} style={{textDecoration: "none", color: "white"}} to={el.path}>
+								<NavLink key={i} style={{textDecoration: "none", color: "#dea95f"}} to={el.path}>
 									<Button sx={navItemsSX} key={i} variant="h6">
 										{el.label}
 									</Button>

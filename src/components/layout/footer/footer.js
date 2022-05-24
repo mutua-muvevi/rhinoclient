@@ -38,7 +38,10 @@ const FooterMiddle = styled(Box)(({theme}) => ({
 }))
 
 const FooterTitle = styled(Typography)(({theme}) => ({
-	marginBottom : "20px"
+	marginBottom : "20px",
+	color: theme.palette.secondary.main,
+	fontWeight: 500,
+	fontFamily: "'Rubik', sans-serif",
 }))
 
 const SocialIconsStyle = styled(Box)(({theme}) => ({
@@ -137,7 +140,7 @@ const Footer = ({ sendEmail }) => {
 								<SocialIconsStyle>
 									{
 										footerMiddle.footer.map((el, i) => (
-											<Box key={i}>
+											<Box key={i} color="secondary">
 												{el.icon}
 											</Box>
 										))

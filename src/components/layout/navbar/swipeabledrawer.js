@@ -23,7 +23,7 @@ const SwipeableSideDrawer = ({mobileNav, setMobileNav}) => {
 			PaperProps={{
 				sx: {
 					backgroundColor: "#131212",
-					color: "white",
+					color: "#dea95f",
 				  }
 			}}
 		>

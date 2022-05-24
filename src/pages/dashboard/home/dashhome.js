@@ -21,6 +21,12 @@ const HomeStyled = styled(Box)(({theme}) => ({
 	
 }))
 
+
+const headerFont = {
+	color: "#dea95f",
+	fontFamily: "'Rubik', sans-serif",
+}
+
 const Dashhome = ({ isAuthenticated }) => {
 
 	const [quotation, setQuotation] = useState([])
@@ -46,7 +52,7 @@ const Dashhome = ({ isAuthenticated }) => {
 			<StyledBreadCrumbs>
 				<Link
 					underline="hover"
-					sx={{ display: 'flex', alignItems: 'center' }}
+					style={headerFont}
 					color="inherit"
 					href="/dashboard"
 				>
