@@ -18,10 +18,23 @@ const CardContentInfo = styled(CardContent)(({theme}) => ({
 	minHeight: "30vh"
 }))
 
+const titleFont = {
+	fontFamily: "'Rubik', sans-serif",
+	fontWeight: 500,
+	color: "#dea95f"
+}
+
 const CardActionsInfo = styled(CardActions)(({theme}) => ({
 	display: "flex",
 	justifyContent: "space-between",
 }))
+
+const buttonFont = {
+	fontFamily: "'Rubik', sans-serif",
+	fontWeight: 500,
+	color: "#fff"
+}
+
 
 const SizeimgcontentfooterCard4 = ({ title, alt, image, paragraph, setModal, modal, modalData }) => {
 
@@ -47,7 +60,7 @@ const SizeimgcontentfooterCard4 = ({ title, alt, image, paragraph, setModal, mod
 				alt={alt}
 			/>
 			<CardContentInfo>
-				<Typography variant="h4" gutterBottom>
+				<Typography variant="h4" style={titleFont} gutterBottom>
 					{title}
 				</Typography>
 				{
@@ -61,10 +74,10 @@ const SizeimgcontentfooterCard4 = ({ title, alt, image, paragraph, setModal, mod
 			
 			<CardActionsInfo>
 				<Button onClick={handleModal} variant="contained" color="secondary">
-					<Typography variant="body2" style={{marginRight: "20px"}}>
-						View Product
+					<Typography variant="body2" style={buttonFont}>
+						Explore
 					</Typography>
-					<AddCircleRoundedIcon/>
+					<AddCircleRoundedIcon sx={{ marginLeft: "10px" }}/>
 				</Button>
 			</CardActionsInfo>
 			{

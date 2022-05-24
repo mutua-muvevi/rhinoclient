@@ -38,7 +38,7 @@ export const serviceItemInformation = [
 			title: "Trading Services",
 			id: "service-trading-modal",
 			icon: <CurrencyExchangeIcon color="#fff" sx={{fontSize: "180px"}}/>,
-			listIcon: <CurrencyExchangeIcon color="primary"/>,
+			listIcon: <CurrencyExchangeIcon color="secondary"/>,
 			image: {
 				src: "https://res.cloudinary.com/dqweh6zte/image/upload/v1649662367/Rhino%20John%20Background%20Video/Rhinojon%20Product%20images/goldtrading_vzutpy.jpg",
 				alt: "Trading services offered by Rhino John Prime Metals"
@@ -78,7 +78,7 @@ export const serviceItemInformation = [
 			title: "Air Transport",
 			id: "service-air-transport-modal",
 			icon: <FlightTakeoffIcon color="#fff" sx={{fontSize: "180px"}}/>,
-			listIcon: <FlightTakeoffIcon color="primary"/>,
+			listIcon: <FlightTakeoffIcon color="secondary"/>,
 			image: {
 				src: "https://res.cloudinary.com/dqweh6zte/image/upload/v1649688490/Rhino%20John%20Background%20Video/Rhinojon%20Product%20images/air_transport_u3fywr.jpg",
 				alt: "Air Transport services offered by Rhino John Prime Metals"
@@ -126,7 +126,7 @@ export const serviceItemInformation = [
 			title: "Sea Transport",
 			id: "service-sea-transport-modal",
 			icon: <DirectionsBoatFilledIcon color="#fff" sx={{fontSize: "180px"}}/>,
-			listIcon: <DirectionsBoatFilledIcon color="primary"/>,
+			listIcon: <DirectionsBoatFilledIcon color="secondary"/>,
 			image: {
 				src: "https://res.cloudinary.com/dqweh6zte/image/upload/c_crop,h_780,w_1200/v1649688874/Rhino%20John%20Background%20Video/Rhinojon%20Product%20images/seafreight-transformed_dw4sjw.jpg",
 				alt: "Sea Transport services offered by Rhino John Prime Metals"
@@ -166,7 +166,7 @@ export const serviceItemInformation = [
 			title: "Land Transport",
 			id: "service-land-transport-modal",
 			icon: <LocalShippingIcon color="#fff" sx={{fontSize: "180px"}}/>,
-			listIcon: <LocalShippingIcon color="primary"/>,
+			listIcon: <LocalShippingIcon color="secondary"/>,
 			image: {
 				src: "https://res.cloudinary.com/dqweh6zte/image/upload/v1649688672/Rhino%20John%20Background%20Video/Rhinojon%20Product%20images/transitcargo-transformed_xkxslp.jpg",
 				alt: "Land Logistics service by Rhino John Prime Metals"
@@ -204,7 +204,7 @@ export const serviceItemInformation = [
 			title: "Customs Clearance",
 			id: "service-custom-clearance-modal",
 			icon: <ArticleIcon color="#fff" sx={{fontSize: "180px"}}/>,
-			listIcon: <ArticleIcon color="primary"/>,
+			listIcon: <ArticleIcon color="secondary"/>,
 			image: {
 				src: "https://res.cloudinary.com/dqweh6zte/image/upload/v1649750889/Rhino%20John%20Background%20Video/Rhinojon%20Product%20images/clearance-person-transformed_cklloq.jpg",
 				alt: "Customs Clearance, Rhino John Prime Metals"
@@ -242,7 +242,7 @@ export const serviceItemInformation = [
 			title: "Storage Services",
 			id: "service-storage-modal",
 			icon: <WarehouseIcon color="#fff" sx={{fontSize: "180px"}}/>,
-			listIcon: <WarehouseIcon color="primary"/>,
+			listIcon: <WarehouseIcon color="secondary"/>,
 			image: {
 				src: "https://res.cloudinary.com/dqweh6zte/image/upload/v1649662417/Rhino%20John%20Background%20Video/Rhinojon%20Product%20images/warehouse_lx0wm3.jpg",
 				alt: "Trading services offered by Rhino John Prime Metals"

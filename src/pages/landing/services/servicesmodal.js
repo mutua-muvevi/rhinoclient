@@ -52,6 +52,21 @@ const StyledModalContentArea = styled(Grid)(({theme}) => ({
 	justifyContent: "flex-start"
 }))
 
+
+const headerFont = {
+	color: "#dea95f",
+	fontWeight: 500,
+	fontFamily: "'Rubik', sans-serif",
+}
+
+const StyledListItems = styled(Box)(({ theme }) => ({
+	marginBottom: "10px", 
+	marginTop : "10px", 
+	display: "flex", 
+	alignItems: "center", 
+	justifyContent: "left",
+}))
+
 const ServicesModal = ({open, handleClose, modal}) => {
 
 	const [openItemFormModal, setOpenItemFormModal] = useState(false);
@@ -98,7 +113,7 @@ const ServicesModal = ({open, handleClose, modal}) => {
 					</StyledModalImageArea>
 
 					<StyledModalContentArea item lg={7} sm={12}>
-						<Typography id="modal-modal-title" sx={{marginBottom: "30px"}} variant="h3" gutterBottom component="h2">
+						<Typography id="modal-modal-title" style={headerFont} sx={{marginBottom: "30px"}} variant="h4" gutterBottom component="h2">
 							{ modal.title }
 						</Typography>
 
@@ -117,7 +132,7 @@ const ServicesModal = ({open, handleClose, modal}) => {
 							modal.list &&
 							modal.list.map((el, i) => (
 								<Box key={i} sx={{marginBottom: "10px", marginTop : "10px"}}>
-									<Typography variant="h4" gutterBottom>
+									<Typography variant="h5" style={headerFont} gutterBottom>
 										{el.title}
 									</Typography>
 
@@ -138,14 +153,14 @@ const ServicesModal = ({open, handleClose, modal}) => {
 									{
 										el.listItems &&
 										el.listItems.map((el, i) => (
-											<Box key={i} sx={{marginBottom: "10px", marginTop : "10px", display: "flex", alignItems: "center", justifyContent: "left"}}>
+											<StyledListItems key={i} >
 												{
 													el &&  modal.listIcon 
 												}
 												<Typography sx = {{ marginLeft: "10px" }}  variant="body1">
 													{el}
 												</Typography>
-											</Box>
+											</StyledListItems>
 										))
 									}
 								</Box>

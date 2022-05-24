@@ -22,7 +22,6 @@ const StyledModalContainerBox = styled(Box)(({theme}) => ({
 	boxShadow: 24,
 	paddingTop: 2,
 	paddingBottom: 2,
-	// borderRadius: "10px",
 }))
 
 const styledModalBox = {
@@ -32,6 +31,18 @@ const StyledButtonGroup = styled(ButtonGroup)(({ theme }) => ({
 	marginTop: "20px",
 	marginBottom: "20px",
 }))
+
+
+const headerFont = {
+	color: "#dea95f",
+	fontWeight: 500,
+	fontFamily: "'Rubik', sans-serif",
+}
+
+const titleFont = {
+	fontWeight: 500,
+	fontFamily: "'Rubik', sans-serif",
+}
 
 const ShipmentViewModal = ({ values, open, setOpen }) => {
 
@@ -321,7 +332,7 @@ const ShipmentViewModal = ({ values, open, setOpen }) => {
 						<Grid container spacing={2}>
 
 							<Grid sx={{marginTop: "20px"}} item xs={12}>
-								<Typography variant="h4" color="secondary" gutterBottom>
+								<Typography variant="h5" style={headerFont} gutterBottom>
 									Shipper's Information
 								</Typography>
 							<Divider/>
@@ -329,9 +340,9 @@ const ShipmentViewModal = ({ values, open, setOpen }) => {
 							{
 								shipperInformation && shipperInformation.map(el => (
 									<Grid item key={el.name} xl={el.xl} lg={el.lg} md={el.md} sm={el.sm} xs={el.xs}>
-										<Typography variant="h5">{el.name}</Typography>
+										<Typography style={titleFont} variant="body1">{el.name}</Typography>
 										<Box>
-											<Typography variant="body">{el.value}</Typography>
+											<Typography variant="body1">{el.value}</Typography>
 										</Box>
 									</Grid>
 								))
@@ -339,7 +350,7 @@ const ShipmentViewModal = ({ values, open, setOpen }) => {
 
 
 							<Grid item xs={12}>
-								<Typography variant="h4" color="secondary" gutterBottom>
+								<Typography variant="h5" style={headerFont} gutterBottom>
 									Consignee's Information
 								</Typography>
 							<Divider/>
@@ -347,9 +358,9 @@ const ShipmentViewModal = ({ values, open, setOpen }) => {
 							{
 								cosigneeInformation && cosigneeInformation.map(el => (
 									<Grid item key={el.name} xl={el.xl} lg={el.lg} md={el.md} sm={el.sm} xs={el.xs}>
-										<Typography variant="h5">{el.name}</Typography>
+										<Typography style={titleFont} variant="body1">{el.name}</Typography>
 										<Box>
-											<Typography variant="body">{el.value}</Typography>
+											<Typography variant="body1">{el.value}</Typography>
 										</Box>
 									</Grid>
 								))
@@ -357,7 +368,7 @@ const ShipmentViewModal = ({ values, open, setOpen }) => {
 
 
 							<Grid item xs={12}>
-								<Typography variant="h4" color="secondary" gutterBottom>
+								<Typography variant="h5" style={headerFont} gutterBottom>
 									Collector's Information
 								</Typography>
 							<Divider/>
@@ -365,7 +376,7 @@ const ShipmentViewModal = ({ values, open, setOpen }) => {
 							{
 								collectorsInformation && collectorsInformation.map(el => (
 									<Grid item key={el.name} xl={el.xl} lg={el.lg} md={el.md} sm={el.sm} xs={el.xs}>
-										<Typography variant="h5">{el.name}</Typography>
+										<Typography style={titleFont} variant="body1">{el.name}</Typography>
 										<Box>
 											<Typography variant="body">{el.value}</Typography>
 										</Box>
@@ -375,7 +386,7 @@ const ShipmentViewModal = ({ values, open, setOpen }) => {
 
 
 							<Grid item xs={12}>
-								<Typography variant="h4" color="secondary" gutterBottom>
+								<Typography variant="h5" style={headerFont} gutterBottom>
 									Track Information
 								</Typography>
 							<Divider/>
@@ -383,7 +394,7 @@ const ShipmentViewModal = ({ values, open, setOpen }) => {
 							{
 								trackAndDescription && trackAndDescription.map(el => (
 									<Grid item key={el.name} xl={el.xl} lg={el.lg} md={el.md} sm={el.sm} xs={el.xs}>
-										<Typography variant="h5">{el.name}</Typography>
+										<Typography style={titleFont} variant="body1">{el.name}</Typography>
 										<Box>
 											<Typography variant="body">{el.value}</Typography>
 										</Box>
@@ -393,7 +404,7 @@ const ShipmentViewModal = ({ values, open, setOpen }) => {
 
 
 							<Grid item xs={12}>
-								<Typography variant="h4" color="secondary" gutterBottom>
+								<Typography variant="h5" style={headerFont} gutterBottom>
 									Item Information
 								</Typography>
 							<Divider/>
@@ -401,7 +412,7 @@ const ShipmentViewModal = ({ values, open, setOpen }) => {
 							{
 								itemInformation && itemInformation.map(el => (
 									<Grid item key={el.name} xl={el.xl} lg={el.lg} md={el.md} sm={el.sm} xs={el.xs}>
-										<Typography variant="h5">{el.name}</Typography>
+										<Typography style={titleFont} variant="body1">{el.name}</Typography>
 										<Box>
 											<Typography variant="body">{el.value}</Typography>
 										</Box>
@@ -411,7 +422,7 @@ const ShipmentViewModal = ({ values, open, setOpen }) => {
 
 
 							<Grid item xs={12}>
-								<Typography variant="h4" color="secondary" gutterBottom>
+								<Typography variant="h5" style={headerFont} gutterBottom>
 									Origin Service Area Information
 								</Typography>
 							<Divider/>
@@ -419,7 +430,7 @@ const ShipmentViewModal = ({ values, open, setOpen }) => {
 							{
 								originServiceAreaInfo && originServiceAreaInfo.map(el => (
 									<Grid item key={el.name} xl={el.xl} lg={el.lg} md={el.md} sm={el.sm} xs={el.xs}>
-										<Typography variant="h5">{el.name}</Typography>
+										<Typography style={titleFont} variant="body1">{el.name}</Typography>
 										<Box>
 											<Typography variant="body">{el.value}</Typography>
 										</Box>
@@ -429,7 +440,7 @@ const ShipmentViewModal = ({ values, open, setOpen }) => {
 
 
 							<Grid item xs={12}>
-								<Typography variant="h4" color="secondary" gutterBottom>
+								<Typography variant="h5" style={headerFont} gutterBottom>
 									Destination Information
 								</Typography>
 							<Divider/>
@@ -437,7 +448,7 @@ const ShipmentViewModal = ({ values, open, setOpen }) => {
 							{
 								destinationInfo && destinationInfo.map(el => (
 									<Grid item key={el.name} xl={el.xl} lg={el.lg} md={el.md} sm={el.sm} xs={el.xs}>
-										<Typography variant="h5">{el.name}</Typography>
+										<Typography style={titleFont} variant="body1">{el.name}</Typography>
 										<Box>
 											<Typography variant="body">{el.value}</Typography>
 										</Box>

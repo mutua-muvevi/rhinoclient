@@ -5,7 +5,9 @@ import { styled } from "@mui/system";
 
 import { DataGrid} from '@mui/x-data-grid';
 
-const QuotationDatagrid = ({quotation, error}) => {
+import { connect } from "react-redux"
+
+const QuotationDatagrid = ({ quotation }) => {
 
 	const StyledDataGridContainer = styled(Card)(({theme}) => ({
 		backgroundColor: "inherit",
@@ -15,7 +17,9 @@ const QuotationDatagrid = ({quotation, error}) => {
 
 	const StyledDataGridHeader = styled(CardHeader)(({theme}) => ({
 		backgroundColor: "#131313",
-		color: theme.palette.common.white
+		color: theme.palette.secondary.main,
+		fontFamily: "'Rubik', sans-serif",
+		
 	}))
 
 	const StyledDataGrid = styled(DataGrid)(({theme}) =>({
@@ -25,7 +29,7 @@ const QuotationDatagrid = ({quotation, error}) => {
 		borderRadius: theme.shape.default,
 		"& .MuiDataGrid-columnHeaders": {
 			backgroundColor: "#333333",
-			color: "whitesmoke",
+			color: theme.palette.secondary.main,
 			fontSize: 18,
 			paddingTop: 2,
 			paddingBottom: 2,
@@ -43,10 +47,17 @@ const QuotationDatagrid = ({quotation, error}) => {
 			hide: true
 		},
 		{
-			field: "fullnames",
+			field: "firstname",
 			align: "left",
 			headerAlign: "left",
 			headerName: "Fullname",
+			width: 150
+		},
+		{
+			field: "lastname",
+			align: "left",
+			headerAlign: "left",
+			headerName: "Lastname",
 			width: 150
 		},
 		{
@@ -64,10 +75,10 @@ const QuotationDatagrid = ({quotation, error}) => {
 			width: 150
 		},
 		{
-			field: "company",
+			field: "product",
 			align: "left",
 			headerAlign: "left",
-			headerName: "Company",
+			headerName: "Product",
 			width: 150
 		},
 		{
@@ -95,7 +106,7 @@ const QuotationDatagrid = ({quotation, error}) => {
 
 	return (
 		<StyledDataGridContainer>
-			<StyledDataGridHeader title="General Enquiries" />
+			<StyledDataGridHeader style={{fontWeight: 500}} title="All Quotation" />
 			<StyledDataGrid
 				rows={quotation}
 				columns={columns}
@@ -108,4 +119,8 @@ const QuotationDatagrid = ({quotation, error}) => {
 	)
 }
 
-export default QuotationDatagrid
+const mapStateToProps = ({ quotation }) => ({
+	quotation: quotation.quotation
+})
+
+export default connect(mapStateToProps)(QuotationDatagrid)

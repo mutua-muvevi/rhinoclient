@@ -34,7 +34,7 @@ const Sizeheaderlandscape4 = ({item}) => {
 	return (
 		<BoxWrapper elevation={3}>
 			<HeaderSection>
-				<Typography variant="h6">
+				<Typography style={{fontFamily: "'Rubik', sans-serif"}} color="secondary" variant="h6">
 					{item.title.left}
 				</Typography>
 				<Button color="secondary" variant="text">

@@ -20,16 +20,16 @@ export const navPages = [
 		index: 1
 	},
 	{
-		label: "Service",
-		path: "/landing/services",
-		icon: <LocalShippingIcon/>,
-		index: 2
-	},
-	{
 		label: "Products",
 		path: "/landing/products",
 		icon: <DiamondIcon/>,
 		index: 3
+	},
+	{
+		label: "Service",
+		path: "/landing/services",
+		icon: <LocalShippingIcon/>,
+		index: 2
 	},
 	{
 		label: "Track",

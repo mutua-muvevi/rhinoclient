@@ -11,7 +11,7 @@ import { Link } from "react-router-dom"
 const StyledBreadCrumbs = styled(Breadcrumbs)(({theme}) => ({
 	marginTop: "20px",
 	marginBottom: "20px",
-	color: theme.palette.common.white
+	color: theme.palette.secondary.main
 }))
 
 const Track = () => {
@@ -21,7 +21,7 @@ const Track = () => {
 				<Link
 					underline="hover"
 					sx={{ display: 'flex', alignItems: 'center' }}
-					
+					style={{color: "inherit", textDecoration: "none"}}
 					to="/"
 				>
 					 <HomeIcon color="#fff" sx={{ mr: 0.5 }} fontSize="inherit" />
@@ -29,7 +29,7 @@ const Track = () => {
 				</Link>
 				<Typography
 					sx={{ display: 'flex', alignItems: 'center' }}
-					color="#fff"
+					color="rgba(250, 250, 250, 0.8)"
 				>
 					<TravelExploreIcon sx={{ mr: 0.5 }} fontSize="inherit" />
 					Track

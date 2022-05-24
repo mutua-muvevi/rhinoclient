@@ -13,6 +13,10 @@ const StyledBreadCrumbs = styled(Breadcrumbs)(({theme}) => ({
 	marginBottom: "20px"
 }))
 
+const headerFont = {
+	color: "#dea95f",
+	fontFamily: "'Rubik', sans-serif",
+}
 
 const Dashstorage = () => {
 	
@@ -22,8 +26,7 @@ const Dashstorage = () => {
 			<StyledBreadCrumbs>
 				<Link
 					underline="hover"
-					sx={{ display: 'flex', alignItems: 'center' }}
-					color="inherit"
+					style={headerFont}
 					href="/dashboard"
 				>
 					 <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Button, Container, Grid, Typography } from "@mui/material";
+import { Box, Container, Grid, Typography } from "@mui/material";
 import { styled } from "@mui/system"
 
 import { aboutCoreValuesContent } from "../../../pages/landing/about/aboutInfo";
@@ -30,6 +30,12 @@ const leftRightContainer = {
 		
 }
 
+const headerFont = {
+	color: "#dea95f",
+	fontWeight: 500,
+	fontFamily: "'Rubik', sans-serif",
+}
+
 const Values = () => {
 	return (
 		<StyledWrapper maxWidth="xl">
@@ -39,7 +45,7 @@ const Values = () => {
 				</Grid>
 				<Grid item lg={6} sm={12}>
 					<Box sx={gridItemContainer} maxWidth="lg">
-						<Typography variant="h4" gutterBottom>
+						<Typography variant="h4" style={headerFont} gutterBottom>
 							{aboutCoreValuesContent.title}
 						</Typography>
 						<Grid container spacing={2}>

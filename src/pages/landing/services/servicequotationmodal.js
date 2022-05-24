@@ -23,6 +23,12 @@ const detailsContainer = {
 	margin: 0,
 }
 
+const headerFont = {
+	color: "#dea95f",
+	fontWeight: 500,
+	fontFamily: "'Rubik', sans-serif",
+}
+
 const ServiceQuotationModal = ({title, open, setOpen}) => {
 
 	return (
@@ -34,7 +40,7 @@ const ServiceQuotationModal = ({title, open, setOpen}) => {
 			<Grow style={{ transformOrigin: '10 20 50' }} in timeout={1800}>
 
 				<StyledDetailedBox container sx={detailsContainer}>
-					<Typography variant="h3" sx={{ padding: 2}} gutterBottom>
+					<Typography variant="h3" style={headerFont} sx={{ padding: 2}} gutterBottom>
 						{title}
 					</Typography>
 					<Divider/>
