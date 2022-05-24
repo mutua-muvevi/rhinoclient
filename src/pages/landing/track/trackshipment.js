@@ -7,7 +7,7 @@ import { styled } from "@mui/system";
 import HomeIcon from '@mui/icons-material/Home';
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
-import ManageSearchIcon from '@mui/icons-material/ManageSearch';
+import SearchIcon from '@mui/icons-material/ManageSearch';
 
 import TrackItem from "./trackItem";
 
@@ -111,22 +111,22 @@ const TrackShipment = ({ shipment }) => {
 									onChange = {(e) => setSearchValue(e.target.value)}
 									value={searchValue}
 								/>
-								<StyledTrackButton type="submit" endIcon={<ManageSearchIcon/>} variant="contained" color="primary">
+								<StyledTrackButton type="submit" endIcon={<SearchIcon/>} variant="contained" color="secondary">
 									Search
 								</StyledTrackButton>
 							</FormGroup>
 						</form>
 
 					</Box>
-						{
-							trackItem ? (
-								<TrackItem
-									item = {trackItem}
-									modal={trackItemModal}
-									onClose={closeModal}
-								/>
-								) : null
-						}
+					{
+						trackItem ? (
+							<TrackItem
+								item = {trackItem}
+								modal={trackItemModal}
+								onClose={closeModal}
+							/>
+							) : null
+					}
 			</Box>
 		</Grow>
 	)

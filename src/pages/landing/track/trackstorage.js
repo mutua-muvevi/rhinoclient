@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from "react-router-dom";
+
 import { Box, Breadcrumbs, Button, FormGroup, Grow, InputBase, Typography } from "@mui/material"
 import { styled } from "@mui/system";
+
 import HomeIcon from '@mui/icons-material/Home';
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import WarehouseIcon from '@mui/icons-material/Warehouse';
 import SearchIcon from '@mui/icons-material/Search';
-import { Link } from "react-router-dom";
+
+import TrackStorageItem from "./trackstorageitem";
+
+import { connect } from "react-redux";
 
 const StyledBreadCrumbs = styled(Breadcrumbs)(({theme}) => ({
 	marginTop: "20px",
@@ -37,7 +43,31 @@ const formgroupStyle = {
 	}
 }
 
-const TrackStorage = () => {
+const TrackStorage = ({ storage }) => {
+
+	const [searchValue, setSearchValue] = useState("");
+	const [trackItem, setTrackItem] = useState(null);
+	
+	const [trackItemModal, setTrackItemModal] = useState(false)
+	
+	const closeModal = () => {
+		setTrackItemModal(false)
+	}
+	
+	const submitHandler = e => {
+		e.preventDefault()
+		
+		const searchItem = storage.find(track => track.trackno === searchValue )
+		
+		if(searchItem){
+			setTrackItem(searchItem)
+			setTrackItemModal(true)
+		} else {
+			setTrackItem(null)
+		}
+	}
+
+
 	return (
 		<Grow style={{ transformOrigin: '10 20 50' }} in timeout={2000}>
 			<Box id="track-storage">
@@ -73,20 +103,44 @@ const TrackStorage = () => {
 					<Typography variant="h1" color="white" sx={trackTitle} gutterBottom>
 						Track Your Storage
 					</Typography>
-					<FormGroup row sx={formgroupStyle}>
-						<StyledInputBase
-							color="white"
-							placeholder="Enter Storage Track Number..."
-							variant="standard"
-						/>
-						<StyledTrackButton endIcon={<SearchIcon/>} variant="contained" color="primary">
-							Search
-						</StyledTrackButton>
-					</FormGroup>
+
+					<form onSubmit={submitHandler}>
+
+					</form>
+
+
+						
+					<form onSubmit={submitHandler}>
+						<FormGroup row>
+							<StyledInputBase
+								color="white"
+								placeholder="Enter Storage Track Number..."
+								variant="standard"
+								onChange = {(e) => setSearchValue(e.target.value)}
+								value={searchValue}
+							/>
+							<StyledTrackButton type="submit" endIcon={<SearchIcon/>} variant="contained" color="secondary">
+								Search
+							</StyledTrackButton>
+						</FormGroup>
+					</form>
 				</Box>
+				{
+					trackItem ? (
+						<TrackStorageItem
+							item = {trackItem}
+							modal={trackItemModal}
+							onClose={closeModal}
+						/>
+						) : null
+				}
 			</Box>
 		</Grow>
 	)
 }
 
-export default TrackStorage
+const mapStateToProps = ({ storage }) => ({
+	storage: storage.data
+})
+
+export default connect(mapStateToProps)(TrackStorage)
