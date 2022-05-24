@@ -14,28 +14,41 @@ const StyledTrackItem = styled(Modal)(({ theme }) => ({
 	color: "rgba(220, 220, 220, 0.8)"
 }));
 
-const StyledHeaderTitle = styled(Box)(({theme}) => ({
-	padding: "10px",
+const StyledHeaderTitle = styled(Container)(({theme}) => ({
+	paddingTop: "20px",
+	paddingBottom: "10px",
 	backgroundColor: theme.palette.background.default,
 	borderTopLeftRadius: 4,
 	borderTopRightRadius: 4,
 	display: "flex",
-	justifyContent: "left",
-	alignItems: "center",
+	flexDirection: "column",
+	justifyContent: "center",
+	alignItems: "flex-start",
 	fontFamily: "'Rubik', sans-serif",
 }))
 
-const styledHeaderText = {
-	marginTop: "20px",
+const StyledHeaderTitleList = styled(Grid)(({theme}) => ({
+	display: "flex",
+	width: "100%"
+}))
+
+const styledHeaderTitles = {
 	fontFamily: "'Rubik', sans-serif",
 	fontWeight: 500,
-	color: "rgba(220, 220, 220, 0.8)"
+	color: "rgba(220, 220, 220, 0.8)",
+}
+
+const styledHeaderText = {
+	fontFamily: "'Rubik', sans-serif",
+	fontWeight: 500,
+	color: "#dea95f"
 }
 
 const StyledHeaderDetail = styled(Box)(({ theme }) => ({
 	backgroundColor: "rgba(18, 18, 18, 0.78)",
 	color: "rgba(220, 220, 220, 0.8)",
 	paddingLeft: "20px",
+	marginLeft: "10px",
 	paddingRight: "10px",
 	minWidth: "40vw"
 }))
@@ -59,6 +72,18 @@ const StyledHeaderItemTextContainer = styled(Box)(({ theme }) => ({
 	margin: "20px auto"
 }))
 
+const typographyColorHeader = {
+	color: "#dea95f",
+	fontFamily: "'Rubik', sans-serif",
+	fontSize: "18px",
+	fontWeight: 500,
+}
+
+const typographyColor = {
+	color: "rgba(220, 220, 220, 0.8)",
+	
+}
+
 const StyledTrackBodyDetails = styled(Box)(({ theme }) => ({
 	color: theme.palette.common.white,
 	borderRadius: 4,
@@ -75,6 +100,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 		backgroundColor: "rgba(18, 18, 18, 0.78)",
 		border: "none",
 		color: "rgba(220, 220, 220, 0.8)",
+		width: "200px"
 	},
 	[`&.${tableCellClasses.body}`]: {
 		fontSize: 14,
@@ -90,62 +116,93 @@ const TrackItem = ({ item, modal, onClose}) => {
 	const shipperHeaderItems = [
 		[
 			{
-				name: "Shipper",
-				value: item.shippersfullname,
+				name: "Shipper Information",
+				value: [
+					item.shippersfullname,
+					item.shippersemail,
+					item.shipperstelephone,
+					item.shippersaddress,
+				],
 				meta:""
 			},
 			{
-				name: "Address",
-				value: item.shippersaddress,
+				name: "Cosignee",
+				value: [
+					item.consignfullname,
+					item.consignemail,
+					item.consigntelephone,
+					item.collectoraddress
+				],
 				meta:""
-			}
+			},
 		],
 		[
 			{
 				name: "",
-				value: item.date,
+				value: [
+					item.date
+				],
 				meta:""
 			},
 			{
 				name: "Origin Service Area",
-				value: item.shippersfullname,
+				value: [
+					item.shippersfullname
+				],
 				meta:""
 			},
 			{
 				name: "Destination Service Area",
-				value: item.shippersfullname,
+				value: [
+					item.shippersfullname
+				],
 				meta:""
 			},
 			{
 				name: "Product Details",
-				value: item.shippersfullname,
+				value: [
+					item.shippersfullname
+				],
 				meta:""
 			},
 		],
 		[
 			{
 				name: "Estimated Delivery",
-				value: item.date,
+				value: [
+					item.date
+				],
 				meta:"By End of Day"
 			},
 			{
-				name: "Cosignee",
-				value: item.collectorfullname,
-				meta:""
-			},
-			{
-				name: "Cosignee Address",
-				value: item.collectoraddress,
-				meta:""
-			},
-			{
-				name: "Signed By",
-				value: item.collectorfullname,
+				name: "Notify Party",
+				value: [
+					item.collectorfullname,
+					item.collectoremail,
+					item.collectortel,
+					item.collectoraddress
+				],
 				meta:""
 			},
 		],
 	]
 
+	const sortedList = item.events.sort((a, b) => {
+		return b.number - a.number
+	})
+	const lastItem = sortedList[0]
+	console.log("THE LAST ITEM IS", lastItem)
+
+	const headerTitleList = [
+		{
+			name: "Track no",
+			value: item.trackno
+		},
+		{
+			name: "Current Status",
+			value: lastItem.notes
+		},
+	]
 
 	return (
 		
@@ -158,18 +215,31 @@ const TrackItem = ({ item, modal, onClose}) => {
 			>
 				{
 					item ? (
-					<>
+						<>
 						<Grow style={{ transformOrigin: '10 20 50' }} in timeout={2000}>
 							<Box>
-								<StyledHeaderTitle>
-									<Typography variant="h3" style={styledHeaderText} gutterBottom>
-										Shipment Details For :
-									</Typography>
-									<StyledHeaderDetail>
-										<Typography variant="h3" style={styledHeaderText} gutterBottom>
-											{item.trackno}
-										</Typography>
-									</StyledHeaderDetail>
+								<StyledHeaderTitle maxWidth="xl">
+
+									{
+										headerTitleList.map(e => (
+											<StyledHeaderTitleList container maxWidth="xl" spacing={2} rowSpacing={0}>
+												<Grid item xl={2} lg={2} md={2} sm={12}>
+													<Typography variant="h5" style={styledHeaderTitles} gutterBottom>
+														{ e.name }
+													</Typography>
+													
+												</Grid>
+												<Grid item xl={10} lg={10} md={10} sm={12}>
+													<StyledHeaderDetail>
+														<Typography variant="h5" style={styledHeaderText} gutterBottom>
+															{ e.value }
+														</Typography>
+													</StyledHeaderDetail>
+												</Grid>
+											</StyledHeaderTitleList>
+
+										))
+									}
 								</StyledHeaderTitle>
 
 								<Divider/>
@@ -181,20 +251,26 @@ const TrackItem = ({ item, modal, onClose}) => {
 											{
 												shipperHeaderItems &&
 												shipperHeaderItems.map((box, i) => (
-													<Grid key={box.value} item lg={4} sm={12} xs={12}>
+													<Grid key={box.value} item lg={4} md={4} sm={12} xs={12}>
 														{
 															box &&
 															box.map((el, i) => (
 																<StyledHeaderItemTextContainer key={i}>
-																	<Typography variant="h5">
+																	<Typography style={typographyColorHeader} variant="body1">
 																		{el.name}
 																	</Typography>
-																	<Box sx={{display: "flex", alignItems: "center", justifyContent: "left"}}>
-																		<KeyboardDoubleArrowRightIcon/>
-																		<Typography variant="body1" sx={{marginLeft: "10px"}}>
-																			{el.value}
-																		</Typography>
-																	</Box>
+																		{
+																			el.value &&
+																			el.value.map((val, i) => (
+																				<Box key={i} sx={{display: "flex", alignItems: "center", justifyContent: "left"}}>
+																					<KeyboardDoubleArrowRightIcon style={typographyColor}/>
+																					<Typography variant="body1" style={typographyColor} sx={{marginLeft: "10px"}}>
+																						{val}
+																					</Typography>
+																				</Box>
+																			))
+																		}
+																		
 																</StyledHeaderItemTextContainer>
 															))
 														}
@@ -224,7 +300,7 @@ const TrackItem = ({ item, modal, onClose}) => {
 																		"Status",
 																		"Observation"
 																	].map((cell, i) => (
-																		<StyledTableCell align="left">{cell}</StyledTableCell>
+																		<StyledTableCell key={i} align="left">{cell}</StyledTableCell>
 																	))
 																}
 															</TableRow>
@@ -246,7 +322,6 @@ const TrackItem = ({ item, modal, onClose}) => {
 																		</StyledTableCell>
 																	))
 																}
-																{console.log("EL.NUMBER IS", el.number)}
 															</TableRow>
 														</TableBody>
 													</Table>

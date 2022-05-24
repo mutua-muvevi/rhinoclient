@@ -9,8 +9,6 @@ import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import ManageSearchIcon from '@mui/icons-material/ManageSearch';
 
-// disposable import
-// import { shipping } from "./disposabledummy"
 import TrackItem from "./trackItem";
 
 import { connect } from "react-redux";
