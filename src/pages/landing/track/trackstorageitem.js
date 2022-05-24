@@ -3,12 +3,14 @@ import React from 'react';
 import { Box, Container, Divider, Grid, Modal, Grow, Table, TableBody, TableContainer, TableHead, TableRow, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 
+
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 
+
 const StyledTrackItem = styled(Modal)(({ theme }) => ({
 	width: "85vw",
-	margin: "10vh auto",
+	margin: "20vh auto",
 	border: 'none',
 	backgroundColor: "#333333",
 	borderRadius: 4,
@@ -57,7 +59,7 @@ const StyledHeaderDetail = styled(Box)(({ theme }) => ({
 const StyledItemContainer = styled(Container)(({ theme }) => ({
 	overflowY: "scroll",
 	overFlow: "hidden",
-	height: "66.19vh",
+	height: "45vh",
 	position: "relative"
 }))
 
@@ -84,141 +86,66 @@ const typographyColor = {
 	color: "rgba(220, 220, 220, 0.8)",
 	
 }
-
-const StyledTrackBodyDetails = styled(Box)(({ theme }) => ({
-	color: theme.palette.common.white,
-	borderRadius: 4,
-	marginTop: "20px"
-}))
-
-const StyledTableContainer = styled(TableContainer)(({ theme }) => ({
-	borderRadius: 4,
-	margin: "30px auto"
-}))
-
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-	[`&.${tableCellClasses.head}`]: {
-		backgroundColor: "rgba(18, 18, 18, 0.78)",
-		border: "none",
-		color: theme.palette.secondary.main,
-		width: "200px"
-	},
-	[`&.${tableCellClasses.body}`]: {
-		fontSize: 14,
-		backgroundColor: theme.palette.background.paper,
-		color: "rgba(220, 220, 220, 0.8)",
-		border: "none",
-	},
-}));
-
-const TrackItem = ({ item, modal, onClose}) => {
-
-
-	const shipperHeaderItems = [
-		[
-			{
-				name: "Shipper Information",
-				value: [
-					item.shippersfullname,
-					item.shippersemail,
-					item.shipperstelephone,
-					item.shippersaddress,
-				],
-				meta:""
-			},
-			{
-				name: "Cosignee",
-				value: [
-					item.consignfullname,
-					item.consignemail,
-					item.consigntelephone,
-					item.collectoraddress
-				],
-				meta:""
-			},
-		],
-		[
-			{
-				name: "",
-				value: [
-					item.date
-				],
-				meta:""
-			},
-			{
-				name: "Origin Service Area",
-				value: [
-					item.departureaddress,
-					`Airport Code: ${item.departureairportcode}`,
-					`Departed on ${item.departuredate} at ${item.departuretime}`
-				],
-				meta:""
-			},
-			{
-				name: "Destination Service Area",
-				value: [
-					item.shippersfullname
-				],
-				meta:""
-			},
-			{
-				name: "Product Details",
-				value: [
-					item.shippersfullname
-				],
-				meta:""
-			},
-		],
-		[
-			{
-				name: "Estimated Delivery",
-				value: [
-					item.date
-				],
-				meta:"By End of Day"
-			},
-			{
-				name: "Notify Party",
-				value: [
-					item.collectorfullname,
-					item.collectoremail,
-					item.collectortel,
-					item.collectoraddress
-				],
-				meta:""
-			},
-		],
-	]
-
-	const sortedList = item.events.sort((a, b) => {
-		return b.number - a.number
-	})
-	const lastItem = sortedList[0]
-	console.log("THE LAST ITEM IS", lastItem)
-
+const TrackStorageItem = ({ item, modal, onClose }) => {
+	
 	const headerTitleList = [
 		{
 			name: "Track no",
 			value: item.trackno
 		},
 		{
-			name: "Current Status",
-			value: lastItem.notes
+			name: "Description",
+			value: item.notes
 		},
 	]
 
+	const storageHeaderItems = [
+		[
+			{
+				name: "Customer Details",
+				value : [
+					item.fullname,
+					item.email,
+					item.telephone,
+				], 
+				meta: ""
+			}
+		],
+		[
+			{
+				name: "Product Details",
+				value : [
+					item.product,
+					item.storageaddress,
+				], 
+				meta: ""
+			}
+		],
+		[
+			{
+				name: "Transaction Details",
+				value : [
+					item.notes,
+					item.datein,
+					item.timein,
+				], 
+				meta: ""
+			}
+		],
+	]
+
 	return (
-		
+				
 		<StyledTrackItem 
 				open={modal}
 				onClose={onClose}
 				aria-labelledby="modal-modal-title"
 				aria-describedby="modal-modal-description"
 				id="track-item"
-			>
-				{
-					item ? (
-						<>
+		>
+			{
+				item ? (
+					<>
 						<Grow style={{ transformOrigin: '10 20 50' }} in timeout={2000}>
 							<Box>
 								<StyledHeaderTitle maxWidth="xl">
@@ -249,11 +176,11 @@ const TrackItem = ({ item, modal, onClose}) => {
 
 								<StyledItemContainer maxWidth="xl">
 
-									<StyledTrackHeaderDetails id="treack-title">
+								<StyledTrackHeaderDetails id="treack-title">
 										<Grid container spacing={2}>
 											{
-												shipperHeaderItems &&
-												shipperHeaderItems.map((box, i) => (
+												storageHeaderItems &&
+												storageHeaderItems.map((box, i) => (
 													<Grid key={box.value} item lg={4} md={4} sm={12} xs={12}>
 														{
 															box &&
@@ -282,61 +209,7 @@ const TrackItem = ({ item, modal, onClose}) => {
 											}
 										</Grid>
 									</StyledTrackHeaderDetails>
-
-									<StyledTrackBodyDetails id="track-body">
-										{
-											item.events &&
-											item.events.sort((a, b) => {
-												return b.number - a.number
-											})
-											.map((el, i) => (
-												<StyledTableContainer key={i} >
-													<Table aria-label="shipment event table">
-														<TableHead>
-															<TableRow>
-																{
-																	[
-																		"No", 
-																		"Time",
-																		"Date",
-																		"Location",
-																		"Status",
-																		"Observation"
-																	].map((cell, i) => (
-																		<StyledTableCell key={i} align="left">{cell}</StyledTableCell>
-																	))
-																}
-															</TableRow>
-														</TableHead>
-
-														<TableBody>
-															<TableRow>
-																{
-																	[
-																		el.number, 
-																		el.timeevents, 
-																		el.dateevents, 
-																		el.currentlocation, 
-																		el.shippingstatus, 
-																		el.notes
-																	].map((cell, i) => (
-																		<StyledTableCell key={i}>
-																			{ cell }
-																		</StyledTableCell>
-																	))
-																}
-															</TableRow>
-														</TableBody>
-													</Table>
-												</StyledTableContainer>
-											))
-										}
-									</StyledTrackBodyDetails>
-
 								</StyledItemContainer>
-								
-
-
 							</Box>
 						</Grow>
 					</>
@@ -346,4 +219,4 @@ const TrackItem = ({ item, modal, onClose}) => {
 	)
 }
 
-export default TrackItem
+export default TrackStorageItem
