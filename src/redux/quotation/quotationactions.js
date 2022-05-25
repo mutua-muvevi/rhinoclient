@@ -48,7 +48,7 @@ export const getQuotation = (token) => {
 			gettingQuotation()
 			dispatch(getAllQuotationSuccess(res.data.data))
 		} catch (error) {
-			dispatch(getAllQuotationFail(error.message))
+			dispatch(getAllQuotationFail(error.response.data.error))
 		}
 	}
 }

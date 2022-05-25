@@ -122,6 +122,7 @@ const LoginForm = ({ loginUser, isAuthenticated, errMessage }) => {
 									type={el.type} 
 									name={el.name} 
 									label={el.label}
+									size="medium"
 									required
 								/>
 							</StyledAuthInputs>
@@ -138,7 +139,7 @@ const LoginForm = ({ loginUser, isAuthenticated, errMessage }) => {
 
 const mapStateToProps = ({ auth }) => ({
 	isAuthenticated: auth.isAuthenticated,
-	errMessage: auth.errMessage,
+	errMessage: auth.loginError,
 })
 
 const mapDispatchToProps = (dispatch) => ({

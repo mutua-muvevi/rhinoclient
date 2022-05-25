@@ -28,7 +28,9 @@ const StyledGridWrapper = styled(Grid)(({ theme }) => ({
 }))
 
 const StyledFormGrid = styled(Grid)(({ theme }) => ({
-	
+	height: "80vh",
+	overflowY: "scroll",
+	overflowX: "hidden",
 }))
 
 
@@ -79,15 +81,15 @@ const ResetPassword = () => {
 					<StyledFormGrid item lg={7} xs={12}>
 						
 						<Container maxWidth="xl">
-							<StyledLogoTitle>
+							<StyledLogoTitle sx={{display: { xs: "block", sm : "block", md: "flex" }}}>
 								<img
 									src={Logo}
 									alt="Rhino John Prime Metals Logo"
 									style={{width: "120px"}}/>
-								<Typography sx={{marginLeft: "30px", marginTop: "20px"}} variant="h2">Password Reset</Typography>
+								<Typography sx={{marginLeft: "30px", marginTop: "20px"}} variant="h4">Password Reset</Typography>
 							</StyledLogoTitle>
 
-							<Typography variant="h4">
+							<Typography variant="h5">
 								Reset Your Login Password
 							</Typography>
 
