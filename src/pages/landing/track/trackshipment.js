@@ -72,10 +72,8 @@ const TrackShipment = ({ item, getShipmentByTrackNo, errMessage }) => {
 	}
 	
 	const submitHandler = trackno => {
-		
 		getShipmentByTrackNo(trackno)
 		setTrackItemModal(true)
-		console.log("the track item is", item)
 	}
 
 
@@ -119,7 +117,7 @@ const TrackShipment = ({ item, getShipmentByTrackNo, errMessage }) => {
 							errMessage ? (
 								<Grow  style={{ transformOrigin: '10 20 50', marginBottom: "30px" }} in timeout={1000}>
 									<Alert severity="error" variant="filled">
-										<AlertTitle>Post Quotation Error!</AlertTitle>
+										<AlertTitle>Track Shipment Error!</AlertTitle>
 										{ errMessage }
 									</Alert>
 								</Grow>
@@ -147,7 +145,6 @@ const TrackShipment = ({ item, getShipmentByTrackNo, errMessage }) => {
 								</StyledTrackButton>
 							</Form>
 						</Formik>
-						{console.log("AND ITEN IS", item)}
 
 					</Box>
 					{
