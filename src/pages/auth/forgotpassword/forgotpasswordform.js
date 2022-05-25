@@ -68,7 +68,9 @@ const ForgotPasswordForm = ({ forgotPassword, errMessage, data }) => {
 	const submitForgotPassword = values => {
 		forgotPassword(values)
 
-		setShowSuccess(true)
+		if(!errMessage){
+			setShowSuccess(true)
+		}
 		
 		setTimeout(() => {
 			if(errMessage.status === 200){

@@ -72,7 +72,9 @@ const ResetPasswordForm = ({ resetPassword, errMessage }) => {
 	const submitResetPassword = values => {
 		resetPassword(values, params)
 
-		setShowSuccess(true)
+		if (!errMessage){
+			setShowSuccess(true)
+		}
 
 		setTimeout(() => {
 			if(errMessage.status === 200){

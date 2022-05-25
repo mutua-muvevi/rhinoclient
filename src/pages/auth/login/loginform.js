@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate, Navigate } from 'react-router-dom';
 
 import { Alert, AlertTitle, Box, Button, Grow } from "@mui/material";
@@ -69,10 +69,17 @@ const StyledAuthInputs = styled(Box)(({ theme }) => ({
 
 const LoginForm = ({ loginUser, isAuthenticated, errMessage }) => {
 
+	const [ showSuccess, setShowSuccess ] = useState(false)
 	const navRoute = useNavigate()
 
 	const submitLogin = (values) => {
 		loginUser(values)
+
+		
+		if (!errMessage){
+			setShowSuccess(true)
+		}
+
 
 		if (!isAuthenticated){
 			return navRoute("/auth/login")
@@ -95,7 +102,7 @@ const LoginForm = ({ loginUser, isAuthenticated, errMessage }) => {
 			}
 
 			{
-				isAuthenticated === true ? (
+				showSuccess === true ? (
 					<>
 						<Grow  style={{ transformOrigin: '10 20 50' }} in timeout={1000}>
 							<Alert severity="success" variant="filled">
