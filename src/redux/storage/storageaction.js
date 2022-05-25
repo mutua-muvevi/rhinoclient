@@ -1,13 +1,13 @@
-import storageTypes from "./storagetypes";
 import axios from "axios";
+import storageTypes from "./storagetypes";
 
 export const getAllStorage = () => ({
 	type: storageTypes.GET_ALL_STORAGE_START,
 })
 
-export const getAllStorageSuccess = (shipment) => ({
+export const getAllStorageSuccess = (storage) => ({
 	type: storageTypes.GET_ALL_STORAGE_SUCCESS,
-	payload: shipment,
+	payload: storage,
 })
 
 export const getAllStorageFail = (errMessage) => ({
@@ -20,9 +20,9 @@ export const getOneStorage = () => ({
 	type: storageTypes.GET_ONE_STORAGE_START,
 })
 
-export const getOneStorageSuccess = (shipment) => ({
+export const getOneStorageSuccess = (storage) => ({
 	type: storageTypes.GET_ONE_STORAGE_SUCCESS,
-	payload: shipment,
+	payload: storage,
 })
 
 export const getOneStorageFail = (errMessage) => ({
@@ -31,14 +31,28 @@ export const getOneStorageFail = (errMessage) => ({
 })
 
 
+export const getStorageByTrack = () => ({
+	type: storageTypes.GET_STORAGE_BY_TRACKNO_START,
+})
+
+export const getStorageByTrackSuccess = (storage) => ({
+	type: storageTypes.GET_STORAGE_BY_TRACKNO_SUCCESS,
+	payload: storage,
+})
+
+export const getStorageByTrackFail = (errMessage) => ({
+	type: storageTypes.GET_STORAGE_BY_TRACKNO_FAIL,
+	payload: errMessage,
+})
+
 
 export const postStorage = () => ({
 	type: storageTypes.POST_STORAGE_START,
 })
 
-export const postStorageSuccess = (shipment) => ({
+export const postStorageSuccess = (storage) => ({
 	type: storageTypes.POST_STORAGE_SUCCESS,
-	payload: shipment,
+	payload: storage,
 })
 
 export const postStorageFail = (errMessage) => ({
@@ -51,9 +65,9 @@ export const editStorage = () => ({
 	type: storageTypes.POST_STORAGE_START,
 })
 
-export const editStorageSuccess = (shipment) => ({
+export const editStorageSuccess = (storage) => ({
 	type: storageTypes.POST_STORAGE_SUCCESS,
-	payload: shipment,
+	payload: storage,
 })
 
 export const editStorageFail = (errMessage) => ({
@@ -94,6 +108,21 @@ export const getSingleStorage = (id) => {
 			dispatch(getOneStorageSuccess(res.data.data))
 		} catch (error) {
 			dispatch(getOneStorageFail(error.response.data.error))
+		}
+	}
+}
+
+export const getStorageByTrackNo = (trackno) => {
+	return async (dispatch) => {
+		try {
+			const res = await axios.post(
+				`http://localhost:7000/api/storage/item/track`,
+				trackno
+				)
+			getStorageByTrack()
+			dispatch(getStorageByTrackSuccess(res.data.data))
+		} catch (error) {
+			dispatch(getStorageByTrackFail(error.response.data.error))
 		}
 	}
 }

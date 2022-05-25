@@ -113,6 +113,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 
 const TrackItem = ({ item, modal, onClose}) => {
 
+	console.log("THE IREM IS", item)
 
 	const shipperHeaderItems = [
 		[
@@ -203,8 +204,9 @@ const TrackItem = ({ item, modal, onClose}) => {
 		},
 		{
 			name: "Current Status",
-			value: lastItem.notes
+			value: lastItem.notes ? lastItem.notes : "EMPTY"
 		},
+		
 	]
 
 	return (
@@ -235,7 +237,7 @@ const TrackItem = ({ item, modal, onClose}) => {
 												<Grid item xl={10} lg={10} md={10} sm={12}>
 													<StyledHeaderDetail>
 														<Typography variant="h5" style={styledHeaderText} gutterBottom>
-															{ e.value }
+															{ e.value ? e.value : null }
 														</Typography>
 													</StyledHeaderDetail>
 												</Grid>

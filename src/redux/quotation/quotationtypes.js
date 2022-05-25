@@ -1,4 +1,4 @@
-const storageQuotationTypes = {
+const quotationTypes = {
 
 	GET_ALL_QUOTATION_START: "GET_ALL_QUOTATION_START",
 	GET_ALL_QUOTATION_SUCCESS: "GET_ALL_QUOTATION_SUCCESS",
@@ -14,4 +14,4 @@ const storageQuotationTypes = {
 
 };
 
-export default storageQuotationTypes;
+export default quotationTypes;

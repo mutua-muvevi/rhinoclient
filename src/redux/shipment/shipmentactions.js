@@ -31,6 +31,21 @@ export const getOneShipmentFail = (errMessage) => ({
 })
 
 
+export const getShipmentByTrack = () => ({
+	type: shipmentTypes.GET_SHIPMENT_BY_TRACKNO_START,
+})
+
+export const getShipmentByTrackSuccess = (shipment) => ({
+	type: shipmentTypes.GET_SHIPMENT_BY_TRACKNO_SUCCESS,
+	payload: shipment,
+})
+
+export const getShipmentByTrackFail = (errMessage) => ({
+	type: shipmentTypes.GET_SHIPMENT_BY_TRACKNO_FAIL,
+	payload: errMessage,
+})
+
+
 
 export const postShipment = () => ({
 	type: shipmentTypes.POST_SHIPMENT_START,
@@ -108,6 +123,21 @@ export const getSingleShipment = (id) => {
 			dispatch(getOneShipmentSuccess(res.data.data))
 		} catch (error) {
 			dispatch(getOneShipmentFail(error.response.data.error))
+		}
+	}
+}
+
+export const getShipmentByTrackNo = (trackno) => {
+	return async (dispatch) => {
+		try {
+			const res = await axios.post(
+				`http://localhost:7000/api/shipping/item/track`,
+				trackno
+				)
+			getShipmentByTrack()
+			dispatch(getShipmentByTrackSuccess(res.data.data))
+		} catch (error) {
+			dispatch(getShipmentByTrackFail(error.response.data.error))
 		}
 	}
 }

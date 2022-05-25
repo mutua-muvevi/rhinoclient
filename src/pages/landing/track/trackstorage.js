@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 
-import { Box, Breadcrumbs, Button, FormGroup, Grow, InputBase, Typography } from "@mui/material"
+import { Alert, AlertTitle, Box, Breadcrumbs, Button, FormGroup, Grow, Typography } from "@mui/material"
 import { styled } from "@mui/system";
 
 import HomeIcon from '@mui/icons-material/Home';
@@ -9,9 +9,16 @@ import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import WarehouseIcon from '@mui/icons-material/Warehouse';
 import SearchIcon from '@mui/icons-material/Search';
 
+import { Formik, Form } from "formik";
+import * as Yup from "yup";
+
+
 import TrackStorageItem from "./trackstorageitem";
 
+import TextfieldWrapper from "../../../components/formsUI/textfield/textfield";
+
 import { connect } from "react-redux";
+import { getStorageByTrackNo } from "../../../redux/storage/storageaction";
 
 const StyledBreadCrumbs = styled(Breadcrumbs)(({theme}) => ({
 	marginTop: "20px",
@@ -23,24 +30,43 @@ const trackTitle = {
 	marginTop: "20vh"
 }
 
-const StyledInputBase = styled(InputBase)(({theme}) => ({
-	color: "white",
-	border: "#fff solid 1px",
-	borderColor: theme.palette.common.white,
-	minWidth: "50vw",
-	padding: "10px"
-}))
+const styledAuthTextField = {
+	'& .MuiInput-underline:after': {
+		borderBottomColor: '#f48d3a !important',
+	},
+	'& .MuiOutlinedInput-root': {
+		color: "white",
+		'& fieldset': {
+			borderColor: '#f48d3a !important',
+		},
+		'&:hover fieldset': {
+			borderColor:'#f48d3a !important',
+		},
+		'&.Mui-focused fieldset': {
+			borderColor: '#f48d3a !important',
+		},
+	},
+	color: "#f48d3a !important"
+}
 
 const StyledTrackButton = styled(Button)(({theme}) => ({
 	padding: "10px",
+	marginTop: "30px",
 	minWidth: "20vw"
 }))
 
+const INITIAL_FORM_STATE = {
+	trackno: ""
+}
 
-const TrackStorage = ({ storage }) => {
+const FORM_VALIDATION = Yup.object().shape({
+	trackno: Yup.string().min(3).max(100).required("Please add a valid track number"),
+})
 
-	const [searchValue, setSearchValue] = useState("");
-	const [trackItem, setTrackItem] = useState(null);
+
+
+const TrackStorage = ({ item, getStorageByTrackNo, errMessage }) => {
+
 	
 	const [trackItemModal, setTrackItemModal] = useState(false)
 	
@@ -48,17 +74,9 @@ const TrackStorage = ({ storage }) => {
 		setTrackItemModal(false)
 	}
 	
-	const submitHandler = e => {
-		e.preventDefault()
-		
-		const searchItem = storage.find(track => track.trackno === searchValue )
-		
-		if(searchItem){
-			setTrackItem(searchItem)
-			setTrackItemModal(true)
-		} else {
-			setTrackItem(null)
-		}
+	const submitHandler = trackno => {
+		getStorageByTrackNo(trackno)
+		setTrackItemModal(true)
 	}
 
 
@@ -96,31 +114,43 @@ const TrackStorage = ({ storage }) => {
 						Track Your Storage
 					</Typography>
 
-					<form onSubmit={submitHandler}>
-
-					</form>
-
-
-						
-					<form onSubmit={submitHandler}>
-						<FormGroup row>
-							<StyledInputBase
-								color="white"
+					{
+						errMessage ? (
+							<Grow  style={{ transformOrigin: '10 20 50', marginBottom: "30px" }} in timeout={1000}>
+								<Alert severity="error" variant="filled">
+									<AlertTitle>Track Storage Error!</AlertTitle>
+									{ errMessage }
+								</Alert>
+							</Grow>
+						) : null
+					}
+					<Formik
+						initialValues={{
+							...INITIAL_FORM_STATE
+						}}
+						validationSchema={ FORM_VALIDATION }
+						onSubmit = { submitHandler }
+					>
+						<Form>
+							<TextfieldWrapper
+								type="text"
+								name="trackno"
 								placeholder="Enter Storage Track Number..."
 								variant="standard"
-								onChange = {(e) => setSearchValue(e.target.value)}
-								value={searchValue}
+								color="secondary"
+								sx={styledAuthTextField}
 							/>
+
 							<StyledTrackButton type="submit" endIcon={<SearchIcon/>} variant="contained" color="secondary">
 								Search
 							</StyledTrackButton>
-						</FormGroup>
-					</form>
+						</Form>
+					</Formik>
 				</Box>
 				{
-					trackItem ? (
+					item ? (
 						<TrackStorageItem
-							item = {trackItem}
+							item = {item}
 							modal={trackItemModal}
 							onClose={closeModal}
 						/>
@@ -132,7 +162,13 @@ const TrackStorage = ({ storage }) => {
 }
 
 const mapStateToProps = ({ storage }) => ({
-	storage: storage.data
+	data: storage.data,
+	item: storage.storage,
+	errMessage: storage.getOneError
 })
 
-export default connect(mapStateToProps)(TrackStorage)
+const mapDispatchToProps = (dispatch) => ({
+	getStorageByTrackNo: (trackno) => dispatch(getStorageByTrackNo(trackno))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(TrackStorage)
