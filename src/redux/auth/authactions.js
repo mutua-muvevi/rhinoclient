@@ -61,6 +61,10 @@ export const postResetPasswordFail = (errMessage) => ({
 })
 
 
+export const signOutUser = () => ({
+	type: authTypes.LOGOUT_USER
+})
+
 export const registerUser = (formData) => {
 	return async (dispatch) => {
 		try {
@@ -139,6 +143,19 @@ export const resetPassword = (values, params) => {
 			postResetPasswordSuccess(res.data.data)
 		} catch (error) {
 			dispatch(postResetPasswordFail(error.response.data.error))
+		}
+	}
+}
+
+export const logoutUser = () => {
+	return (dispatch) => {
+		try {
+			const storage = window.localStorage
+			console.log("THE STORAGE BEFORE", storage)
+			storage.removeItem("persist:root")
+			console.log("THE STORAGE AFTER", storage)
+		} catch (error) {
+			console.log(error)
 		}
 	}
 }

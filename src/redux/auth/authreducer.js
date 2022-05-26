@@ -169,6 +169,19 @@ const authReducer = (state = initialState, { type, payload }) => {
 				forgotError: undefined
 			}
 
+		case authTypes.LOGOUT_USER: 
+			return {
+				...state,
+				token: null,
+				data: null,
+				isLoading: false,
+				isAuthenticated: false,
+				errMessage: undefined,
+				loginError: undefined,
+				resetError: undefined,
+				forgotError: undefined
+			}
+
 		default:
 			return state;
 	}

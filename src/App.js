@@ -33,7 +33,7 @@ import ResetPassword from "./pages/auth/resetpassword/resetpassword";
 
 import { connect } from "react-redux";
 
-import { fetchUser } from "./redux/user/useraction"
+import { fetchAllAdmin, fetchAllUsers, fetchUser } from "./redux/user/useraction"
 import { getShipment } from "./redux/shipment/shipmentactions";
 import { getStorage } from "./redux/storage/storageaction";
 
@@ -41,12 +41,23 @@ import { getQuotation } from "./redux/quotation/quotationactions";
 import { getEmail } from "./redux/email/emailactions";
 
 
-function App({ token, getShipment, getStorage, getQuotation, getEmail, fetchUser }) {
+function App({ 
+	token, 
+	getShipment, 
+	getStorage, 
+	getQuotation, 
+	getEmail, 
+	fetchUser, 
+	fetchAllUsers, 
+	fetchAllAdmin 
+}) {
 
 	useEffect(() => {
 
 		try {
 			fetchUser(token);
+			fetchAllUsers(token);
+			fetchAllAdmin(token);
 
 			getShipment(token);
 			getStorage(token);
@@ -55,11 +66,17 @@ function App({ token, getShipment, getStorage, getQuotation, getEmail, fetchUser
 		} catch (error) {
 			console.log("USER ERROR", error)
 		}
-
-
-		// quotation
 		
-	},[ token, getShipment, getStorage, fetchUser, getQuotation, getEmail ])
+	},[ 
+		token, 
+		getShipment, 
+		getStorage, 
+		fetchUser, 
+		getQuotation, 
+		getEmail, 
+		fetchAllUsers, 
+		fetchAllAdmin 
+	])
 
 	return (
 		<div className="App">
@@ -111,6 +128,8 @@ const mapStateToProps = ({ auth }) => ({
 
 const mapDispatchToProps = (dispatch) => ({
 	fetchUser: (token) => dispatch(fetchUser(token)),
+	fetchAllUsers: (token) => dispatch(fetchAllUsers(token)),
+	fetchAllAdmin: (token) => dispatch(fetchAllAdmin(token)),
 
 	getShipment: (token) => dispatch(getShipment(token)),
 	getStorage: (token) => dispatch(getStorage(token)),

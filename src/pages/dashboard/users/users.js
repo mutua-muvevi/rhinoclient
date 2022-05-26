@@ -1,10 +1,15 @@
+import React from "react";
+
 import { Box, Breadcrumbs, Link, Typography } from "@mui/material"
+import { styled } from "@mui/system";
+
 import HomeIcon from '@mui/icons-material/Home';
 import GroupIcon from '@mui/icons-material/Warehouse';
-import { styled } from "@mui/system";
+
 import AdminTable from "./adminTable/adminTable";
 import UsersTable from "./users/usersTable";
 import Usercards3 from "./3usercards/usercard3";
+
 
 const StyledBreadCrumbs = styled(Breadcrumbs)(({theme}) => ({
 	marginBottom: "20px"
@@ -14,11 +19,12 @@ const headerFont = {
 	color: "#dea95f",
 	fontFamily: "'Rubik', sans-serif",
 }
-const Dashusers = () => {
+const Dashusers = ({ users }) => {
 
-
+	
 	return (
 		<Box>
+			{console.log("ALL THE USERS ARE", users)}
 			<StyledBreadCrumbs>
 				<Link
 					underline="hover"
@@ -43,5 +49,6 @@ const Dashusers = () => {
 		</Box>
 	)
 }
+
 
 export default Dashusers

@@ -82,7 +82,7 @@ const LoginForm = ({ loginUser, isAuthenticated, errMessage }) => {
 
 
 		if (!isAuthenticated){
-			return navRoute("/auth/login")
+			return navRoute("/dashboard")
 		}
 
 	}
