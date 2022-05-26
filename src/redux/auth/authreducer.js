@@ -6,6 +6,9 @@ const initialState = {
 	isLoading: false,
 	isAuthenticated: false,
 	errMessage: undefined,
+	loginError: undefined,
+	resetError: undefined,
+	forgotError: undefined
 };
 
 const authReducer = (state = initialState, { type, payload }) => {
@@ -13,46 +16,75 @@ const authReducer = (state = initialState, { type, payload }) => {
 		case authTypes.START_REGISTER_USER:
 			return { 
 				...state, 
+				token: null,
+				data: null,
 				isLoading: true,
 				isAuthenticated: false,
+				errMessage: undefined,
+				loginError: undefined,
+				resetError: undefined,
+				forgotError: undefined
 			};
 		case authTypes.SUCCESS_REGISTER_USER:
 			return {
 				...state,
-				isLoading: false,
 				token: payload,
+				data: null,
+				isLoading: false,
 				isAuthenticated: true,
-				errMessage: undefined
+				errMessage: undefined,
+				loginError: undefined,
+				resetError: undefined,
+				forgotError: undefined
 			};
 		case authTypes.FAIL_REGISTER_USER:
 			return {
-				...state,
+				token: null,
+				data: null,
 				isLoading: false,
+				isAuthenticated: false,
 				errMessage: payload,
-				isAuthenticated: false
+				loginError: undefined,
+				resetError: undefined,
+				forgotError: undefined
 			};
 		
 
 		case authTypes.START_LOGIN_USER:
 			return { 
 				...state, 
+				token: null,
+				data: null,
 				isLoading: true,
 				isAuthenticated: false,
+				errMessage: undefined,
+				loginError: undefined,
+				resetError: undefined,
+				forgotError: undefined
 			};
 		case authTypes.SUCCESS_LOGIN_USER:
 			return {
 				...state,
-				isLoading: false,
 				token: payload,
+				data: null,
+				isLoading: false,
 				isAuthenticated: true,
-				errMessage: undefined
+				errMessage: undefined,
+				loginError: undefined,
+				resetError: undefined,
+				forgotError: undefined
 			};
 		case authTypes.FAIL_LOGIN_USER:
 			return {
 				...state,
+				token: null,
+				data: null,
 				isLoading: false,
-				errMessage: payload,
-				isAuthenticated: false
+				isAuthenticated: false,
+				errMessage: undefined,
+				loginError: payload,
+				resetError: undefined,
+				forgotError: undefined
 			};
 		
 
@@ -60,25 +92,94 @@ const authReducer = (state = initialState, { type, payload }) => {
 		case authTypes.START_FORGOT_PASSWORD:
 			return {
 				...state,
+				token: null,
+				data: null,
 				isLoading: true,
 				isAuthenticated: false,
+				errMessage: undefined,
+				loginError: undefined,
+				resetError: undefined,
+				forgotError: undefined
 			}
 
 		case authTypes.SUCCESS_FORGOT_PASSWORD: 
 			return {
 				...state,
-				isLoading: false,
-				isAuthenticated: true,
+				token: null,
 				data: payload,
-				errMessage: undefined
+				isLoading: false,
+				isAuthenticated: false,
+				errMessage: undefined,
+				loginError: undefined,
+				resetError: undefined,
+				forgotError: undefined
 			}
 
 		case authTypes.FAIL_FORGOT_PASSWORD: 
 			return {
 				...state,
+				token: null,
+				data: null,
 				isLoading: false,
 				isAuthenticated: false,
-				errMessage: payload,
+				errMessage: undefined,
+				loginError: undefined,
+				resetError: undefined,
+				forgotError: payload
+			}
+		
+
+			
+		case authTypes.START_RESET_PASSWORD:
+			return {
+				...state,
+				token: null,
+				data: null,
+				isLoading: true,
+				isAuthenticated: false,
+				errMessage: undefined,
+				loginError: undefined,
+				resetError: undefined,
+				forgotError: undefined
+			}
+
+		case authTypes.SUCCESS_RESET_PASSWORD: 
+			return {
+				...state,
+				token: null,
+				data: payload,
+				isLoading: false,
+				isAuthenticated: false,
+				errMessage: undefined,
+				loginError: undefined,
+				resetError: undefined,
+				forgotError: undefined
+			}
+
+		case authTypes.FAIL_RESET_PASSWORD: 
+			return {
+				...state,
+				token: null,
+				data: null,
+				isLoading: false,
+				isAuthenticated: false,
+				errMessage: undefined,
+				loginError: undefined,
+				resetError: payload,
+				forgotError: undefined
+			}
+
+		case authTypes.LOGOUT_USER: 
+			return {
+				...state,
+				token: null,
+				data: null,
+				isLoading: false,
+				isAuthenticated: false,
+				errMessage: undefined,
+				loginError: undefined,
+				resetError: undefined,
+				forgotError: undefined
 			}
 
 		default:

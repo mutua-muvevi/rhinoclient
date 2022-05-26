@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Navigate } from 'react-router-dom';
-import axios from "axios"
-
 import { Box, Breadcrumbs, Link} from "@mui/material"
 import { styled } from "@mui/system";
 
@@ -29,24 +27,9 @@ const headerFont = {
 
 const Dashhome = ({ isAuthenticated }) => {
 
-	const [quotation, setQuotation] = useState([])
-	const [quotationError, setQuotationError] = useState(null)
-
-
-	useEffect(() => {
-		axios.get("https://rhinojohnbackend.herokuapp.com/api/quotation")
-			.then((res) =>{ 
-				setQuotation(res.data)
-			})
-			.catch(error => {
-				setQuotationError(error.response)
-			})
-	}, []);
-
 	if(!isAuthenticated){
 		return <Navigate to={"/auth/login"}/>
 	}
-
 	return (
 		<HomeStyled component="section" id="dash-home">
 			<StyledBreadCrumbs>
@@ -63,7 +46,7 @@ const Dashhome = ({ isAuthenticated }) => {
 
 			<Dashcards3/>
 			<Dashcards2 />
-			<QuotationDatagrid quotation = {quotation} error = {quotationError}/>
+			<QuotationDatagrid />
 		</HomeStyled>
 	)
 }

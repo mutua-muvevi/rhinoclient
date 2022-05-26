@@ -113,8 +113,6 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 
 const TrackItem = ({ item, modal, onClose}) => {
 
-	console.log("THE IREM IS", item)
-
 	const shipperHeaderItems = [
 		[
 			{
@@ -195,7 +193,6 @@ const TrackItem = ({ item, modal, onClose}) => {
 		return b.number - a.number
 	})
 	const lastItem = sortedList[0]
-	console.log("THE LAST ITEM IS", lastItem)
 
 	const headerTitleList = [
 		{
@@ -206,7 +203,7 @@ const TrackItem = ({ item, modal, onClose}) => {
 			name: "Current Status",
 			value: lastItem.notes ? lastItem.notes : "EMPTY"
 		},
-		
+
 	]
 
 	return (

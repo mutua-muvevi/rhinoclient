@@ -1,9 +1,10 @@
 import quotationTypes from './quotationtypes';
 
 const initialState = {
-	isLoading: true,
-	quotation: [],
+	isLoading: false,
+	quotation: null,
 	errMessage: undefined,
+	quotationError: undefined
 };
 
 const quotationReducer = (state = initialState, { type, payload }) => {
@@ -12,7 +13,9 @@ const quotationReducer = (state = initialState, { type, payload }) => {
 			return { 
 				...state, 
 				isLoading: true,
+				quotation: null,
 				errMessage: undefined,
+				quotationError: undefined
 			};
 		case quotationTypes.GET_ALL_QUOTATION_SUCCESS:
 			return {
@@ -20,12 +23,15 @@ const quotationReducer = (state = initialState, { type, payload }) => {
 				isLoading: false,
 				quotation: payload,
 				errMessage: undefined,
+				quotationError: undefined
 			};
 		case quotationTypes.GET_ALL_QUOTATION_FAIL:
 			return {
 				...state,
 				isLoading: false,
+				quotation: null,
 				errMessage: payload,
+				quotationError: undefined
 			};
 
 
@@ -33,7 +39,9 @@ const quotationReducer = (state = initialState, { type, payload }) => {
 			return { 
 				...state, 
 				isLoading: true,
+				quotation: null,
 				errMessage: undefined,
+				quotationError: undefined
 			};
 		case quotationTypes.POST_QUOTATION_SUCCESS:
 			return {
@@ -41,12 +49,15 @@ const quotationReducer = (state = initialState, { type, payload }) => {
 				isLoading: false,
 				quotation: payload,
 				errMessage: undefined,
+				quotationError: undefined
 			};
 		case quotationTypes.POST_QUOTATION_FAIL:
 			return {
 				...state,
 				isLoading: false,
-				errMessage: payload,
+				quotation: null,
+				errMessage: undefined,
+				quotationError: payload
 			};
 
 			

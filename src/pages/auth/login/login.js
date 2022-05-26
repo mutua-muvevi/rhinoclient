@@ -32,7 +32,8 @@ const StyledGridWrapper = styled(Grid)(({ theme }) => ({
 
 const StyledFormGrid = styled(Grid)(({ theme }) => ({
 	height: "80vh",
-	overFlowY: "scroll"
+	overflowY: "scroll",
+	overflowX: "hidden",
 }))
 
 
@@ -73,8 +74,8 @@ const Login = () => {
 					container
 				>
 
-					<StyledImageGrid item lg={5}>
-						<Box sx={{height: "100%"}} display={{xs: "none", sm : "none", lg : "block"}}>
+					<StyledImageGrid item lg={5} sx={{ display: { xs: "none", sm: "block", md: "block" } }}>
+						<Box sx={{height: "100%"}}>
 							<img
 								src="https://res.cloudinary.com/dqweh6zte/image/upload/v1649928582/Rhino%20John%20Background%20Video/Rhinojon%20Product%20images/air-transport-loading-transformed_ru22tk.jpg"
 								alt="Cargo Plane with door opened, Rhinojon prime metals"
@@ -86,16 +87,16 @@ const Login = () => {
 
 					<StyledFormGrid item lg={7} sm={12}>
 						
-						<Container maxWidth="xl" sx={{overFlowY: "scroll"}}>
-							<StyledLogoTitle>
+						<Container maxWidth="xl">
+							<StyledLogoTitle sx={{display: { xs: "block", sm : "block", md: "flex" }}}>
 								<img
 									src={Logo}
 									alt="Rhino John Prime Metals Logo"
 									style={{width: "120px"}}/>
-								<Typography sx={{marginLeft: "30px", marginTop: "20px"}} variant="h2">Login</Typography>
+								<Typography sx={{marginLeft: "30px", marginTop: "20px"}} variant="h4">Login</Typography>
 							</StyledLogoTitle>
 
-							<Typography variant="h4">
+							<Typography variant="h5">
 								Sign in to you account
 							</Typography>
 

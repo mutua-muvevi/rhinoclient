@@ -40,7 +40,6 @@ const SizeimgcontentfooterCard4 = ({ title, alt, image, paragraph, setModal, mod
 
 	const [singleModalContent, setSingleModalContent] = useState(null)
 
-	
 	const handleModal = () => {
 		setModal(!modal)
 		setSingleModalContent(modalData)

@@ -4,86 +4,66 @@ import axios from "axios";
 
 export const startRegisterUser = () => ({
 	type: authTypes.START_REGISTER_USER,
-	isLoading: true,
-	isAuthenticated: false,
 })
 
 export const registerUserSuccess = (token) => ({
 	type: authTypes.SUCCESS_REGISTER_USER,
-	isLoading: false,
-	isAuthenticated: true,
 	payload: token,
 })
 
 export const registerUserFail = (errMessage) => ({
 	type: authTypes.FAIL_REGISTER_USER,
-	isLoading: false,
-	isAuthenticated: false,
 	payload: errMessage,
 })
 
 
 export const startLoginUser = () => ({
 	type: authTypes.START_LOGIN_USER,
-	isLoading: true,
-	isAuthenticated: false,
 })
 
 export const loginUserSuccess = (token) => ({
 	type: authTypes.SUCCESS_LOGIN_USER,
-	isLoading: false,
-	isAuthenticated: true,
 	payload: token,
 })
 
 export const loginUserFail = (errMessage) => ({
 	type: authTypes.FAIL_LOGIN_USER,
-	isLoading: false,
-	isAuthenticated: false,
 	payload: errMessage,
 })
 
 
 export const loadForgotPassword = () => ({
 	type: authTypes.START_FORGOT_PASSWORD,
-	isLoading: true,
-	isAuthenticated: false,
 })
 
 export const postForgotPasswordSuccess = (data) => ({
 	type: authTypes.SUCCESS_FORGOT_PASSWORD,
-	isLoading: false,
 	payload: data,
-	isAuthenticated: false,
 })
 
 export const postForgotPasswordFail = (errMessage) => ({
-  type: authTypes.FAIL_FORGOT_PASSWORD,
-  isLoading: false,
-  payload: errMessage,
-  isAuthenticated: false,
+	type: authTypes.FAIL_FORGOT_PASSWORD,
+	payload: errMessage,
 })
 
 export const loadResetPassword = () => ({
 	type: authTypes.START_RESET_PASSWORD,
-	isLoading: true,
-	isAuthenticated: false,
 })
 
 export const postResetPasswordSuccess = (data) => ({
 	type: authTypes.SUCCESS_RESET_PASSWORD,
-	isLoading: false,
 	payload: data,
-	isAuthenticated: false,
 })
 
 export const postResetPasswordFail = (errMessage) => ({
 	type: authTypes.FAIL_RESET_PASSWORD,
-	isLoading: false,
 	payload: errMessage,
-	isAuthenticated: false,
 })
 
+
+export const signOutUser = () => ({
+	type: authTypes.LOGOUT_USER
+})
 
 export const registerUser = (formData) => {
 	return async (dispatch) => {
@@ -159,10 +139,23 @@ export const resetPassword = (values, params) => {
 					},
 				}
 			)
-			dispatch(loadForgotPassword())
-			postForgotPasswordSuccess(res.data.data)
+			loadResetPassword()
+			postResetPasswordSuccess(res.data.data)
 		} catch (error) {
 			dispatch(postResetPasswordFail(error.response.data.error))
+		}
+	}
+}
+
+export const logoutUser = () => {
+	return (dispatch) => {
+		try {
+			const storage = window.localStorage
+			console.log("THE STORAGE BEFORE", storage)
+			storage.removeItem("persist:root")
+			console.log("THE STORAGE AFTER", storage)
+		} catch (error) {
+			console.log(error)
 		}
 	}
 }

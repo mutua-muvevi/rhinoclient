@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate, Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import {Alert, AlertTitle, Box, Button, Grow } from "@mui/material";
 import { styled } from "@mui/system";
@@ -57,7 +57,6 @@ const FORM_VALIDATION = Yup.object().shape({
 
 const StyledAuthInputs = styled(Box)(({ theme }) => ({
 	margin: "30px 0px",
-	width: "40vw"
 }))
 
 const ForgotPasswordForm = ({ forgotPassword, errMessage, data }) => {
@@ -69,7 +68,9 @@ const ForgotPasswordForm = ({ forgotPassword, errMessage, data }) => {
 	const submitForgotPassword = values => {
 		forgotPassword(values)
 
-		setShowSuccess(true)
+		if(!errMessage){
+			setShowSuccess(true)
+		}
 		
 		setTimeout(() => {
 			if(errMessage.status === 200){
@@ -116,6 +117,7 @@ const ForgotPasswordForm = ({ forgotPassword, errMessage, data }) => {
 									type={el.type} 
 									name={el.name} 
 									label={el.label}
+									size="medium"
 									required
 								/>
 							</StyledAuthInputs>
@@ -134,7 +136,7 @@ const ForgotPasswordForm = ({ forgotPassword, errMessage, data }) => {
 
 const mapStateToProps = ({ auth }) => ({
 	isAuthenticated: auth.isAuthenticated,
-	errMessage: auth.errMessage,
+	errMessage: auth.forgotError,
 	data: auth.data
 })
 

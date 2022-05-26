@@ -60,7 +60,6 @@ const FORM_VALIDATION = Yup.object().shape({
 
 const StyledAuthInputs = styled(Box)(({ theme }) => ({
 	margin: "30px 0px",
-	width: "40vw"
 }))
 
 const ResetPasswordForm = ({ resetPassword, errMessage }) => {
@@ -73,7 +72,9 @@ const ResetPasswordForm = ({ resetPassword, errMessage }) => {
 	const submitResetPassword = values => {
 		resetPassword(values, params)
 
-		setShowSuccess(true)
+		if (!errMessage){
+			setShowSuccess(true)
+		}
 
 		setTimeout(() => {
 			if(errMessage.status === 200){
@@ -134,7 +135,7 @@ const ResetPasswordForm = ({ resetPassword, errMessage }) => {
 }
 
 const mapStateToProps = ({ auth }) => ({
-	errMessage: auth.errMessage
+	errMessage: auth.resetError
 })
 
 const mapDispatchToProps = (dispatch) => ({

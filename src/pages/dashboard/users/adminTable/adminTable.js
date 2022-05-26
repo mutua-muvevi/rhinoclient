@@ -1,7 +1,11 @@
 import React from 'react';
-import { DataGrid} from '@mui/x-data-grid';
-import { styled } from "@mui/system";
+
 import { Card, CardHeader} from "@mui/material";
+import { styled } from "@mui/system";
+
+import { DataGrid} from '@mui/x-data-grid';
+
+import { connect } from "react-redux";
 
 const StyledDataGridContainer = styled(Card)(({theme}) => ({
 	backgroundColor: "inherit",
@@ -34,7 +38,7 @@ const StyledDataGrid = styled(DataGrid)(({theme}) =>({
 	}
 }))
 
-const AdminTable = ({admin, error}) => {
+const AdminTable = ({ admin }) => {
 
 	const columns = [
 		{
@@ -83,6 +87,13 @@ const AdminTable = ({admin, error}) => {
 			headerName: "Country",
 			width: 200
 		},
+		{
+			field: "createdAt",
+			align: "left",
+			headerAlign: "left",
+			headerName: "Date Joined",
+			width: 200
+		},
 	]
 
 	return (
@@ -100,4 +111,8 @@ const AdminTable = ({admin, error}) => {
 	)
 }
 
-export default AdminTable
+const mapStateToProps = ({ user }) => ({
+	admin: user.admin
+})
+
+export default connect(mapStateToProps)(AdminTable)

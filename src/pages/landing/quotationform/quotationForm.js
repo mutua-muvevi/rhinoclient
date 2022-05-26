@@ -135,7 +135,7 @@ const QuotationForm = ({ setOpen, postQuotation, errMessage }) => {
 }
 
 const mapStateToProps = ({ quotation }) => ({
-	errMessage: quotation.errMessage,
+	errMessage: quotation.quotationError,
 	data: quotation.storageQuotation
 })
 
