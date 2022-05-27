@@ -654,3 +654,60 @@ export const news = [
 
 ]
 
+export const faqs = [
+	{
+		question: "Lorem ipsum dolor Question 1",
+		answer: `
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pulvinar, arcu ut pretium vehicula, 
+			arcu enim sagittis risus, quis imperdiet urna metus vitae quam. Phasellus nec condimentum orci.
+			 Aenean mollis massa vitae rutrum maximus. Aliquam sodales consectetur ex nec commodo. 
+			 Nam eu eros id arcu pharetra auctor. Ut facilisis enim nisi, ut ultricies augue ullamcorper a. 
+			 In lacinia nibh non volutpat hendrerit. Sed sit amet ornare risus. Pellentesque facilisis turpis dui, 
+			 vel accumsan ante varius ac. Aenean dictum dolor sed ligula sollicitudin, a consequat sapien volutpat. 
+		`
+	},
+	{
+		question: "Lorem ipsum dolor Question 2",
+		answer: `
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pulvinar, arcu ut pretium vehicula, 
+			arcu enim sagittis risus, quis imperdiet urna metus vitae quam. Phasellus nec condimentum orci.
+			 Aenean mollis massa vitae rutrum maximus. Aliquam sodales consectetur ex nec commodo. 
+			 Nam eu eros id arcu pharetra auctor. Ut facilisis enim nisi, ut ultricies augue ullamcorper a. 
+			 In lacinia nibh non volutpat hendrerit. Sed sit amet ornare risus. Pellentesque facilisis turpis dui, 
+			 vel accumsan ante varius ac. Aenean dictum dolor sed ligula sollicitudin, a consequat sapien volutpat. 
+		`
+	},
+	{
+		question: "Lorem ipsum dolor Question 3",
+		answer: `
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pulvinar, arcu ut pretium vehicula, 
+			arcu enim sagittis risus, quis imperdiet urna metus vitae quam. Phasellus nec condimentum orci.
+			 Aenean mollis massa vitae rutrum maximus. Aliquam sodales consectetur ex nec commodo. 
+			 Nam eu eros id arcu pharetra auctor. Ut facilisis enim nisi, ut ultricies augue ullamcorper a. 
+			 In lacinia nibh non volutpat hendrerit. Sed sit amet ornare risus. Pellentesque facilisis turpis dui, 
+			 vel accumsan ante varius ac. Aenean dictum dolor sed ligula sollicitudin, a consequat sapien volutpat. 
+		`
+	},
+	{
+		question: "Lorem ipsum dolor Question 4",
+		answer: `
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pulvinar, arcu ut pretium vehicula, 
+			arcu enim sagittis risus, quis imperdiet urna metus vitae quam. Phasellus nec condimentum orci.
+			 Aenean mollis massa vitae rutrum maximus. Aliquam sodales consectetur ex nec commodo. 
+			 Nam eu eros id arcu pharetra auctor. Ut facilisis enim nisi, ut ultricies augue ullamcorper a. 
+			 In lacinia nibh non volutpat hendrerit. Sed sit amet ornare risus. Pellentesque facilisis turpis dui, 
+			 vel accumsan ante varius ac. Aenean dictum dolor sed ligula sollicitudin, a consequat sapien volutpat. 
+		`
+	},
+	{
+		question: "Lorem ipsum dolor Question 5",
+		answer: `
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pulvinar, arcu ut pretium vehicula, 
+			arcu enim sagittis risus, quis imperdiet urna metus vitae quam. Phasellus nec condimentum orci.
+			 Aenean mollis massa vitae rutrum maximus. Aliquam sodales consectetur ex nec commodo. 
+			 Nam eu eros id arcu pharetra auctor. Ut facilisis enim nisi, ut ultricies augue ullamcorper a. 
+			 In lacinia nibh non volutpat hendrerit. Sed sit amet ornare risus. Pellentesque facilisis turpis dui, 
+			 vel accumsan ante varius ac. Aenean dictum dolor sed ligula sollicitudin, a consequat sapien volutpat. 
+		`
+	},
+]

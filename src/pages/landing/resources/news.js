@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Divider, Grid, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 
 import { news } from "./resourcesinfo";
@@ -21,12 +21,16 @@ const StyledBlogTitle = styled(Box)(({ theme }) => ({
 	marginBottom: "20px"
 }))
 
+const dividerStyle = {
+	margin: "40px auto",
+	backgroundColor: "#f48d3a"
+}
 const News = () => {
 	return (
 		<StyledBlogsWrapper>
 			<StyledBlogTitle>
 				<Typography variant="h4" color="secondary" gutterBottom>
-					Our News Articles
+					Our News Articles / Announcements
 				</Typography>
 				<Typography variant="h5">
 					Lorem ipsum text generator for subtitle
@@ -50,6 +54,7 @@ const News = () => {
 					))
 				}
 			</Grid>
+			<Divider sx={dividerStyle}/>
 		</StyledBlogsWrapper>
 	)
 }
