@@ -333,3 +333,324 @@ export const blogs = [
 
 
 ]
+
+
+export const news = [
+
+	{
+		title: "News Article 1",
+		subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pulvinar, arcu ut pretium vehicula, arcu enim sagittis risus, quis imperdiet urna metus vitae quam.",
+		coverImage: {
+			src: "https://res.cloudinary.com/dqweh6zte/image/upload/v1649689200/Rhino%20John%20Background%20Video/Rhinojon%20Product%20images/warehouse-transformed_htf88q.jpg",
+			alt: "This title + cover image photo"
+		},
+		thumbnail : {
+			src: "https://res.cloudinary.com/dqweh6zte/image/upload/c_scale,h_194,w_184/v1649662353/Rhino%20John%20Background%20Video/Rhinojon%20Product%20images/buyandsell_wnuch5.jpg",
+			alt: "This title + thumbnail"
+		}, 
+		content : [
+
+			{
+				header: "Header 1",
+				subHeader: "Sub header 1",
+				list: [
+					{
+						title: "List title 1",
+						items: [
+							"Lorem ipsum list item body 1 of rhinojon prime metals",
+							"Lorem ipsum list item body 2 of rhinojon prime metals",
+							"Lorem ipsum list item body 3 of rhinojon prime metals",
+							"Lorem ipsum list item body 4 of rhinojon prime metals",
+						]
+					},
+					{
+						title: "List title 2",
+						items: [
+							"Lorem ipsum list item body 1 of rhinojon prime metals",
+							"Lorem ipsum list item body 2 of rhinojon prime metals",
+							"Lorem ipsum list item body 3 of rhinojon prime metals",
+							"Lorem ipsum list item body 4 of rhinojon prime metals",
+						]
+					},
+					{
+						title: "List title 3",
+						items: [
+							"Lorem ipsum list item body 1 of rhinojon prime metals",
+							"Lorem ipsum list item body 2 of rhinojon prime metals",
+							"Lorem ipsum list item body 3 of rhinojon prime metals",
+							"Lorem ipsum list item body 4 of rhinojon prime metals",
+						]
+					},
+				], 
+				paragraph : [
+					{
+						title: "Paragraph title 1",
+						body: [
+							`
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pulvinar, 
+								arcu ut pretium vehicula, arcu enim sagittis risus, quis imperdiet urna metus vitae quam. 
+								Phasellus nec condimentum orci. Aenean mollis massa vitae rutrum maximus. 
+								Aliquam sodales consectetur ex nec commodo. Nam eu eros id arcu pharetra auctor. 
+								Ut facilisis enim nisi, ut ultricies augue ullamcorper a. In lacinia nibh non volutpat hendrerit.
+							`,
+							`
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pulvinar, 
+								arcu ut pretium vehicula, arcu enim sagittis risus, quis imperdiet urna metus vitae quam. 
+								Phasellus nec condimentum orci. Aenean mollis massa vitae rutrum maximus. 
+								Aliquam sodales consectetur ex nec commodo. Nam eu eros id arcu pharetra auctor. 
+								Ut facilisis enim nisi, ut ultricies augue ullamcorper a. In lacinia nibh non volutpat hendrerit.
+							`,
+						]
+					}
+				]
+			}
+
+		],
+		author: "Writer Nomeclature",
+		tags: [
+			"tag 1", "tag 2", "tag 3"
+		],
+		category: "Category 1",
+		date: "12/09/2021"
+	},
+
+	
+	{
+		title: "News Article 2",
+		subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pulvinar, arcu ut pretium vehicula, arcu enim sagittis risus, quis imperdiet urna metus vitae quam.",
+		coverImage: {
+			src: "https://res.cloudinary.com/dqweh6zte/image/upload/v1649662409/Rhino%20John%20Background%20Video/Rhinojon%20Product%20images/tradingbuysell_bpoc8x.jpg",
+			alt: "This title + cover image photo"
+		},
+		thumbnail : {
+			src: "https://res.cloudinary.com/dqweh6zte/image/upload/c_scale,h_194,w_184/v1649662353/Rhino%20John%20Background%20Video/Rhinojon%20Product%20images/buyandsell_wnuch5.jpg",
+			alt: "This title + thumbnail"
+		}, 
+		content : [
+
+			{
+				header: "Header 1",
+				subHeader: "Sub header 1",
+				list: [
+					{
+						title: "List title 1",
+						items: [
+							"Lorem ipsum list item body 1 of rhinojon prime metals",
+							"Lorem ipsum list item body 2 of rhinojon prime metals",
+							"Lorem ipsum list item body 3 of rhinojon prime metals",
+							"Lorem ipsum list item body 4 of rhinojon prime metals",
+						]
+					},
+					{
+						title: "List title 2",
+						items: [
+							"Lorem ipsum list item body 1 of rhinojon prime metals",
+							"Lorem ipsum list item body 2 of rhinojon prime metals",
+							"Lorem ipsum list item body 3 of rhinojon prime metals",
+							"Lorem ipsum list item body 4 of rhinojon prime metals",
+						]
+					},
+					{
+						title: "List title 3",
+						items: [
+							"Lorem ipsum list item body 1 of rhinojon prime metals",
+							"Lorem ipsum list item body 2 of rhinojon prime metals",
+							"Lorem ipsum list item body 3 of rhinojon prime metals",
+							"Lorem ipsum list item body 4 of rhinojon prime metals",
+						]
+					},
+				], 
+				paragraph : [
+					{
+						title: "Paragraph title 1",
+						body: [
+							`
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pulvinar, 
+								arcu ut pretium vehicula, arcu enim sagittis risus, quis imperdiet urna metus vitae quam. 
+								Phasellus nec condimentum orci. Aenean mollis massa vitae rutrum maximus. 
+								Aliquam sodales consectetur ex nec commodo. Nam eu eros id arcu pharetra auctor. 
+								Ut facilisis enim nisi, ut ultricies augue ullamcorper a. In lacinia nibh non volutpat hendrerit.
+							`,
+							`
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pulvinar, 
+								arcu ut pretium vehicula, arcu enim sagittis risus, quis imperdiet urna metus vitae quam. 
+								Phasellus nec condimentum orci. Aenean mollis massa vitae rutrum maximus. 
+								Aliquam sodales consectetur ex nec commodo. Nam eu eros id arcu pharetra auctor. 
+								Ut facilisis enim nisi, ut ultricies augue ullamcorper a. In lacinia nibh non volutpat hendrerit.
+							`,
+						]
+					}
+				]
+			}
+
+		],
+		author: "Writer Nomeclature",
+		tags: [
+			"tag 1", "tag 2", "tag 3"
+		],
+		category: "Category 1",
+		date: "02/02/2022"
+	},
+
+
+	
+	{
+		title: "News Article 3",
+		subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pulvinar, arcu ut pretium vehicula, arcu enim sagittis risus, quis imperdiet urna metus vitae quam.",
+		coverImage: {
+			src: "https://res.cloudinary.com/dqweh6zte/image/upload/v1649662381/Rhino%20John%20Background%20Video/Rhinojon%20Product%20images/miningtools_u6vdmu.jpg",
+			alt: "This title + cover image photo"
+		},
+		thumbnail : {
+			src: "https://res.cloudinary.com/dqweh6zte/image/upload/c_scale,h_194,w_184/v1649662353/Rhino%20John%20Background%20Video/Rhinojon%20Product%20images/buyandsell_wnuch5.jpg",
+			alt: "This title + thumbnail"
+		}, 
+		content : [
+
+			{
+				header: "Header 1",
+				subHeader: "Sub header 1",
+				list: [
+					{
+						title: "List title 1",
+						items: [
+							"Lorem ipsum list item body 1 of rhinojon prime metals",
+							"Lorem ipsum list item body 2 of rhinojon prime metals",
+							"Lorem ipsum list item body 3 of rhinojon prime metals",
+							"Lorem ipsum list item body 4 of rhinojon prime metals",
+						]
+					},
+					{
+						title: "List title 2",
+						items: [
+							"Lorem ipsum list item body 1 of rhinojon prime metals",
+							"Lorem ipsum list item body 2 of rhinojon prime metals",
+							"Lorem ipsum list item body 3 of rhinojon prime metals",
+							"Lorem ipsum list item body 4 of rhinojon prime metals",
+						]
+					},
+					{
+						title: "List title 3",
+						items: [
+							"Lorem ipsum list item body 1 of rhinojon prime metals",
+							"Lorem ipsum list item body 2 of rhinojon prime metals",
+							"Lorem ipsum list item body 3 of rhinojon prime metals",
+							"Lorem ipsum list item body 4 of rhinojon prime metals",
+						]
+					},
+				], 
+				paragraph : [
+					{
+						title: "Paragraph title 1",
+						body: [
+							`
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pulvinar, 
+								arcu ut pretium vehicula, arcu enim sagittis risus, quis imperdiet urna metus vitae quam. 
+								Phasellus nec condimentum orci. Aenean mollis massa vitae rutrum maximus. 
+								Aliquam sodales consectetur ex nec commodo. Nam eu eros id arcu pharetra auctor. 
+								Ut facilisis enim nisi, ut ultricies augue ullamcorper a. In lacinia nibh non volutpat hendrerit.
+							`,
+							`
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pulvinar, 
+								arcu ut pretium vehicula, arcu enim sagittis risus, quis imperdiet urna metus vitae quam. 
+								Phasellus nec condimentum orci. Aenean mollis massa vitae rutrum maximus. 
+								Aliquam sodales consectetur ex nec commodo. Nam eu eros id arcu pharetra auctor. 
+								Ut facilisis enim nisi, ut ultricies augue ullamcorper a. In lacinia nibh non volutpat hendrerit.
+							`,
+						]
+					}
+				]
+			}
+
+		],
+		author: "Writer Nomeclature",
+		tags: [
+			"tag 1", "tag 2", "tag 3"
+		],
+		category: "Category 1",
+		date: "05/03/2022"
+	},
+
+
+
+	
+	{
+		title: "News Article 4",
+		subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pulvinar, arcu ut pretium vehicula, arcu enim sagittis risus, quis imperdiet urna metus vitae quam.",
+		coverImage: {
+			src: "https://res.cloudinary.com/dqweh6zte/image/upload/v1649688672/Rhino%20John%20Background%20Video/Rhinojon%20Product%20images/transitcargo-transformed_xkxslp.jpg",
+			alt: "This title + cover image photo"
+		},
+		thumbnail : {
+			src: "https://res.cloudinary.com/dqweh6zte/image/upload/v1649688672/Rhino%20John%20Background%20Video/Rhinojon%20Product%20images/transitcargo-transformed_xkxslp.jpg",
+			alt: "This title + thumbnail"
+		}, 
+		content : [
+
+			{
+				header: "Header 1",
+				subHeader: "Sub header 1",
+				list: [
+					{
+						title: "List title 1",
+						items: [
+							"Lorem ipsum list item body 1 of rhinojon prime metals",
+							"Lorem ipsum list item body 2 of rhinojon prime metals",
+							"Lorem ipsum list item body 3 of rhinojon prime metals",
+							"Lorem ipsum list item body 4 of rhinojon prime metals",
+						]
+					},
+					{
+						title: "List title 2",
+						items: [
+							"Lorem ipsum list item body 1 of rhinojon prime metals",
+							"Lorem ipsum list item body 2 of rhinojon prime metals",
+							"Lorem ipsum list item body 3 of rhinojon prime metals",
+							"Lorem ipsum list item body 4 of rhinojon prime metals",
+						]
+					},
+					{
+						title: "List title 3",
+						items: [
+							"Lorem ipsum list item body 1 of rhinojon prime metals",
+							"Lorem ipsum list item body 2 of rhinojon prime metals",
+							"Lorem ipsum list item body 3 of rhinojon prime metals",
+							"Lorem ipsum list item body 4 of rhinojon prime metals",
+						]
+					},
+				], 
+				paragraph : [
+					{
+						title: "Paragraph title 1",
+						body: [
+							`
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pulvinar, 
+								arcu ut pretium vehicula, arcu enim sagittis risus, quis imperdiet urna metus vitae quam. 
+								Phasellus nec condimentum orci. Aenean mollis massa vitae rutrum maximus. 
+								Aliquam sodales consectetur ex nec commodo. Nam eu eros id arcu pharetra auctor. 
+								Ut facilisis enim nisi, ut ultricies augue ullamcorper a. In lacinia nibh non volutpat hendrerit.
+							`,
+							`
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pulvinar, 
+								arcu ut pretium vehicula, arcu enim sagittis risus, quis imperdiet urna metus vitae quam. 
+								Phasellus nec condimentum orci. Aenean mollis massa vitae rutrum maximus. 
+								Aliquam sodales consectetur ex nec commodo. Nam eu eros id arcu pharetra auctor. 
+								Ut facilisis enim nisi, ut ultricies augue ullamcorper a. In lacinia nibh non volutpat hendrerit.
+							`,
+						]
+					}
+				]
+			}
+
+		],
+		author: "Writer Nomeclature",
+		tags: [
+			"tag 1", "tag 2", "tag 3"
+		],
+		category: "Category 1",
+		date: "17/05/2022"
+	},
+
+
+]
+

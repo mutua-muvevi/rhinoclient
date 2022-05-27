@@ -49,7 +49,7 @@ const BlogCard = ({thumbnail, cover, title, subtitle, content, author, date}) =>
 
 	return (
 		<StyledBlogCard>
-			<Typography variant="h5" sx={styledTitle} color="secondary">
+			<Typography variant="h5" sx={styledTitle} color="secondary" gutterBottom>
 				{title}
 			</Typography>
 			<Typography variant="body1" color="whitesmoke">

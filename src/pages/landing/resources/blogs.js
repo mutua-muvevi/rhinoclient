@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Divider, Grid, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 
 import { blogs } from "./resourcesinfo";
@@ -21,11 +21,16 @@ const StyledBlogTitle = styled(Box)(({ theme }) => ({
 	marginBottom: "20px"
 }))
 
+const dividerStyle = {
+	margin: "40px auto",
+	backgroundColor: "#f48d3a"
+}
+
 const Blogs = () => {
 	return (
 		<StyledBlogsWrapper>
 			<StyledBlogTitle>
-				<Typography variant="h4">
+				<Typography variant="h4" color="secondary" >
 					Our Blogs
 				</Typography>
 				<Typography variant="h5">
@@ -50,6 +55,7 @@ const Blogs = () => {
 					))
 				}
 			</Grid>
+			<Divider sx={dividerStyle}/>
 		</StyledBlogsWrapper>
 	)
 }
