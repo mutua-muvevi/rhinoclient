@@ -13,8 +13,8 @@ import Track from "./pages/landing/track/track";
 import Widgets from "./pages/landing/widgets/widgets";
 
 import TrackStorage from "./pages/landing/track/trackstorage";
-import Tracklayout from "./components/layout/tracklayout";
 import TrackShipment from "./pages/landing/track/trackshipment";
+import Resources from "./pages/landing/resources/resources";
 
 import Dashhome from "./pages/dashboard/home/dashhome";
 import DashQuotation from "./pages/dashboard/quotation/quotation";
@@ -24,6 +24,7 @@ import Dashusers from "./pages/dashboard/users/users";
 import Layout from "./components/layout/layout";
 import Dashmap from "./pages/dashboard/map/map";
 
+import Tracklayout from "./components/layout/tracklayout";
 import Landinglayout from "./components/layout/landinglayout";
 import AuthLayout from "./components/layout/authlayout";
 
@@ -91,6 +92,7 @@ function App({
 							<Route path="/landing/services" element={<Services/>}/>
 							<Route path="/landing/contact" element={<Contact/>}/>
 							<Route path="/landing/widgets" element={<Widgets/>}/>
+							<Route path="/landing/resources" element={<Resources/>}/>
 						</Route>
 						
 						<Route path="/track" element={<Tracklayout/>}>

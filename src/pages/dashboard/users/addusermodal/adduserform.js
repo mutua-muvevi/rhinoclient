@@ -1,13 +1,18 @@
+import React, { useState } from 'react';
+
 import { Alert, AlertTitle, Box, Button, ButtonGroup, Grid, Grow, Typography } from "@mui/material";
 import { styled } from "@mui/system";
+
 import { Formik, Form } from "formik";
-import React, { useState } from 'react';
 import * as Yup from "yup";
+
 import CheckBoxField from "../../../../components/formsUI/checkbox/checkbox";
 import TextField from "../../../../components/formsUI/textfield/textfield"
-import { userFormContent } from "./adduserformcontent";
+
 import SendIcon from '@mui/icons-material/Send';
 import ClearIcon from '@mui/icons-material/Clear';
+
+import { userFormContent } from "./adduserformcontent";
 
 import { connect } from "react-redux"
 import { registerUser } from "../../../../redux/auth/authactions";

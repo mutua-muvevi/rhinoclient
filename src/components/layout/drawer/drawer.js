@@ -86,7 +86,61 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 			'& .MuiDrawer-paper': closedMixin(theme),
 		}),
 		}),
-  );
+);
+
+const StyledListItem = styled(ListItem)(({ theme }) => ({
+	margin: 0,
+	padding: 0,
+	"&:active": {
+		backgroundColor: theme.palette.secondary.dark,
+		color: "white",
+		"& .MuiListItemIcon-root": {
+			color: "white"
+		}
+	},
+	"&.Mui-active": {
+		backgroundColor: "red",
+		color: "white",
+		"& .MuiListItemIcon-root": {
+			color: "white"
+		}
+	},
+	"&.Mui-selected": {
+		backgroundColor: "red",
+		color: "white",
+		"& .MuiListItemIcon-root": {
+			color: "white"
+		}
+	},
+}))
+
+const StyledListItemButton = styled(ListItemButton)(({ theme }) => ({
+	"&:hover": {
+		backgroundColor: theme.palette.secondary.dark,
+		color: "white",
+		"& .MuiListItemIcon-root": {
+			color: "white"
+		}
+	},
+	"&.Mui-active": {
+		backgroundColor: "red",
+		color: "white",
+		"& .MuiListItemIcon-root": {
+			color: "white"
+		}
+	},
+}))
+
+const StyledListItemText = styled(ListItemText)(({ theme }) => ({
+
+	"&$selected:hover": {
+		backgroundColor: "purple",
+		color: "white",
+		"& .MuiListItemIcon-root": {
+			color: "white"
+		}
+	}
+}))
 
 const DrawerComponent = ({open, handleDrawerOpen, handleDrawerClose, theme}) => {
 	return (
@@ -122,17 +176,20 @@ const DrawerComponent = ({open, handleDrawerOpen, handleDrawerClose, theme}) => 
 							} 
 							to={el.path} 
 							key={index}>
-							<ListItemButton
-								sx={{
-									minHeight: 48,
-									justifyContent: open ? 'initial' : 'center',
-									px: 2.5,
-								}}
-							>
-								{el.icon}
-								<ListItemText primary={el.label} sx={{ opacity: open ? 1 : 0 , marginLeft: "15px"}} />
+							<StyledListItem>
+								<StyledListItemButton
+									sx={{
+										minHeight: 48,
+										justifyContent: open ? 'initial' : 'center',
+										px: 2.5,
+									}}
+								>
+									{el.icon}
+									<StyledListItemText primary={el.label} sx={{ opacity: open ? 1 : 0 , marginLeft: "15px"}} />
 
-							</ListItemButton>
+								</StyledListItemButton>
+								
+							</StyledListItem>
 						</NavLink>
 					))
 				}
