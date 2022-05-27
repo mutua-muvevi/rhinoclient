@@ -60,7 +60,7 @@ export const theme = createTheme({
 		rounded: 10
 	},
 	typography: {
-		fontFamily: "'Roboto', sans-serif",
+		fontFamily: "'Rubik', sans-serif",
 		h1: {
 			fontFamily: "'Rubik', sans-serif",
 		},

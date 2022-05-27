@@ -25,22 +25,21 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 
-const Layout = ({ isAuthenticated, token }) => {
-	
+const Layout = ({ token, user }) => {
 	const theme = useTheme();
 	const [open, setOpen] = useState(true);
-  
+	
 	const handleDrawerOpen = () => {
-	  setOpen(true);
+		setOpen(true);
 	};
-  
+	
 	const handleDrawerClose = () => {
-	  setOpen(false);
+		setOpen(false);
 	};
 
-	if (!isAuthenticated){
+	if (!user){
 		return <Navigate to="/auth/login"/>
-	}
+	};
 
 	return (
 		<Fade  in timeout={1000}>
@@ -59,9 +58,10 @@ const Layout = ({ isAuthenticated, token }) => {
 	)
 }
 
-const mapStatetoProps = ({ auth }) => ({
-	isAuthenticated: auth.isAuthenticated,
-	token: auth.token
+const mapStatetoProps = ({ auth, user }) => ({
+	token: auth.token,
+
+	user: user.user
 })
 
 export default connect(mapStatetoProps)(Layout)

@@ -67,7 +67,7 @@ const StyledAuthInputs = styled(Box)(({ theme }) => ({
 	margin: "30px 0px",
 }))
 
-const LoginForm = ({ loginUser, isAuthenticated, errMessage }) => {
+const LoginForm = ({ loginUser, isAuthenticated, errMessage, user }) => {
 
 	const [ showSuccess, setShowSuccess ] = useState(false)
 	const navRoute = useNavigate()
@@ -81,8 +81,10 @@ const LoginForm = ({ loginUser, isAuthenticated, errMessage }) => {
 		}
 
 
-		if (!isAuthenticated){
-			return navRoute("/dashboard")
+		if (!user){
+			return navRoute("/auth/login");
+		} else {
+			return navRoute("/dashboard");
 		}
 
 	}
@@ -144,9 +146,10 @@ const LoginForm = ({ loginUser, isAuthenticated, errMessage }) => {
 	)
 }
 
-const mapStateToProps = ({ auth }) => ({
+const mapStateToProps = ({ auth, user }) => ({
 	isAuthenticated: auth.isAuthenticated,
 	errMessage: auth.loginError,
+	user: user.user
 })
 
 const mapDispatchToProps = (dispatch) => ({

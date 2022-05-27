@@ -5,6 +5,7 @@ import DiamondIcon from '@mui/icons-material/Diamond';
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import ContactSupportIcon from '@mui/icons-material/ContactSupport';
 import LockIcon from '@mui/icons-material/Lock';
+import ArticleIcon from '@mui/icons-material/Article';
 
 export const navPages = [
 	{
@@ -36,6 +37,12 @@ export const navPages = [
 		path: "/track/main",
 		icon: <TravelExploreIcon/>,
 		index: 4
+	},
+	{
+		label: "Resources",
+		path: "/landing/resources",
+		icon: <ArticleIcon/>,
+		index: 3
 	},
 	{
 		label: "Contact",

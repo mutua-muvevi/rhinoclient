@@ -103,7 +103,7 @@ const ServicesModal = ({open, handleClose, modal}) => {
 			id={modal.id}
 		>
 				<StyledModalItems container sx={detailsContainer}>
-					<StyledModalImageArea item lg={5} sx={{ display: { xs: "none", sm: "block", md: "block" } }}>
+					<StyledModalImageArea item lg={5} sx={{ display: { xs: "none", sm: "none", md: "block" } }}>
 						<BoxOverlay>
 							{modal.icon}
 							<Typography variant="h3" sx={{fontWeight: 800}}>

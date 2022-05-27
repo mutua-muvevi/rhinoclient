@@ -15,9 +15,6 @@ const userReducer = (state = initialState, { type, payload }) => {
 			return { 
 				...state,
 				loading: true,
-				user: null,
-				users: null,
-				admin: null,
 				errMessage: undefined,
 				authenticated: false
 			};
@@ -27,9 +24,7 @@ const userReducer = (state = initialState, { type, payload }) => {
 				loading: false,
 				authenticated: true,
 				errMessage: undefined,
-				user: payload,
-				users: null,
-				admin: null,
+				user: payload
 			};
 		case userTypes.FAIL_FETCH_USER:
 			return {
@@ -37,9 +32,7 @@ const userReducer = (state = initialState, { type, payload }) => {
 				loading: false,
 				errMessage: payload,
 				authenticated: false,
-				user: null,
-				users: null,
-				admin: null,
+				user: null
 			};
 
 			
@@ -47,9 +40,6 @@ const userReducer = (state = initialState, { type, payload }) => {
 			return { 
 				...state,
 				loading: true,
-				user: null,
-				users: null,
-				admin: null,
 				errMessage: undefined,
 				authenticated: false
 			};
@@ -59,9 +49,7 @@ const userReducer = (state = initialState, { type, payload }) => {
 				loading: false,
 				authenticated: true,
 				errMessage: undefined,
-				user: null,
 				users: payload,
-				admin: null,
 			};
 		case userTypes.FAIL_FETCH_USERS:
 			return {
@@ -69,9 +57,7 @@ const userReducer = (state = initialState, { type, payload }) => {
 				loading: false,
 				errMessage: payload,
 				authenticated: false,
-				user: null,
 				users: null,
-				admin: null,
 			};
 
 
@@ -80,9 +66,6 @@ const userReducer = (state = initialState, { type, payload }) => {
 			return { 
 				...state,
 				loading: true,
-				user: null,
-				users: null,
-				admin: null,
 				errMessage: undefined,
 				authenticated: false
 			};
@@ -92,8 +75,6 @@ const userReducer = (state = initialState, { type, payload }) => {
 				loading: false,
 				authenticated: true,
 				errMessage: undefined,
-				user: null,
-				users: null,
 				admin: payload,
 			};
 		case userTypes.FAIL_FETCH_ADMIN:
@@ -102,8 +83,6 @@ const userReducer = (state = initialState, { type, payload }) => {
 				loading: false,
 				errMessage: payload,
 				authenticated: false,
-				user: null,
-				users: null,
 				admin: null,
 			};
 
