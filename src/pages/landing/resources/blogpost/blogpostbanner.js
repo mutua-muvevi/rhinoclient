@@ -21,14 +21,18 @@ const BlogpostBanner = ({ title, subtitle, image }) => {
 		backgroundPosition: "center",
 		backgroundRepeat: "no-repeat",
 		backgroundSize: "cover",
-		backgroundAttachment: "fixed",
 		paddingBottom: "30px"
 	}))
 
 	return (
 		<StyledBlogBanner>
 			<Container maxWidth= "xl">
-				
+				<Typography variant="h4" sx={styledTitle} gutterBottom color="secondary">
+					{title}
+				</Typography>
+				<Typography variant="h5" sx={styledTitle} gutterBottom>
+					{subtitle}
+				</Typography>
 			</Container>
 		</StyledBlogBanner>
 	)

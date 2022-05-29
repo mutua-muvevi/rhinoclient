@@ -8,6 +8,10 @@ import HomeIcon from '@mui/icons-material/Home';
 import FolderIcon from '@mui/icons-material/Folder';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 
+const StyledBlogHeader = styled(Box)(({ theme }) => ({
+	marginBottom: "30px"
+}))
+
 const StyledBreadCrumbsArea = styled(Container)(({ theme }) => ({
 	display: "flex",
 	justifyContent: "space-between",
@@ -24,18 +28,9 @@ const dividerStyle = {
 	backgroundColor: "#f48d3a"
 }
 
-const StyledTitleSubtitle = styled(Container)(({ theme }) => ({
-	display: "flex",
-	flexDirection: "column",
-	justifyContent: "center",
-	alignItems: "center",
-	textAlign: "center",
-	marginTop: "20px"
-}))
-
 const StyledAuthorSection = styled(Container)(({ theme }) => ({
 	display: "flex",
-	justifyContent: "center",
+	justifyContent: "flex-start",
 	alignItems: "center",
 	margin: "20px auto"
 }))
@@ -51,7 +46,7 @@ const StyledAuthorSectionText = styled(Box)(({ theme }) => ({
 
 const BlogHeader = ({ title, subtitle, author, date }) => {
 	return (
-		<Box>
+		<StyledBlogHeader>
 			<StyledBreadCrumbsArea maxWidth="xl">
 				<StyledBreadCrumbs>
 					<Link
@@ -88,23 +83,14 @@ const BlogHeader = ({ title, subtitle, author, date }) => {
 
 			<Divider sx={dividerStyle}/>
 
-			<StyledTitleSubtitle>
-				<Typography variant="h4" color="secondary" gutterBottom>
-					{ title }
-				</Typography>
-				<Typography variant="h5" gutterBottom>
-					{ subtitle }
-				</Typography>
-			</StyledTitleSubtitle>
-
 			<StyledAuthorSection>
 				<Avatar variant="rounded" sizes="small"/>
 				<StyledAuthorSectionText>
+					<Typography variant="body1" color="secondary"> Author </Typography>
 					<Typography variant="body1"> {author} </Typography>
-					<Typography variant="body1"> Role </Typography>
 				</StyledAuthorSectionText>
 			</StyledAuthorSection>
-		</Box>
+		</StyledBlogHeader>
 	)
 }
 

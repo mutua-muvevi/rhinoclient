@@ -22,7 +22,9 @@ const Blogpost = () => {
 				author={blogpost.author}
 				date={blogpost.date}
 			/>
-			<BlogBody/>
+			<BlogBody
+				body = {blogpost.content}
+			/>
 			<Typography variant="h3">Tags</Typography>
 			<Typography variant="h3">Author</Typography>
 			<Typography variant="h3">Latest posts</Typography>
