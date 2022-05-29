@@ -41,7 +41,7 @@ const StyledDataGrid = styled(DataGrid)(({theme}) =>({
 		"& .MuiDataGrid-row": {
 			"&:nth-of-type(2n)": { backgroundColor: theme.palette.background.paper }
 		}
-	}
+	},
 }))
 
 const StorageTable = ({storage}) => {

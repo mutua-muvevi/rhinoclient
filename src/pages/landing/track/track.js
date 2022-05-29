@@ -1,12 +1,14 @@
-import { Box, Breadcrumbs, Grid, Typography, Grow } from "@mui/material"
-import { styled } from "@mui/system";
 import React from 'react';
-import HomeIcon from '@mui/icons-material/Home';
-import TravelExploreIcon from '@mui/icons-material/TravelExplore';
-import { trackCardInfo } from "./trackinfo";
-import TrackCard from "../../../components/widgets/cards/track/track";
 import { Link } from "react-router-dom"
 
+import { Box, Breadcrumbs, Grid, Typography, Grow } from "@mui/material"
+import { styled } from "@mui/system";
+
+import HomeIcon from '@mui/icons-material/Home';
+import TravelExploreIcon from '@mui/icons-material/TravelExplore';
+
+import { trackCardInfo } from "./trackinfo";
+import TrackCard from "../../../components/widgets/cards/track/track";
 
 const StyledBreadCrumbs = styled(Breadcrumbs)(({theme}) => ({
 	marginTop: "20px",
@@ -41,7 +43,7 @@ const Track = () => {
 					<Typography variant="h1" color="white" gutterBottom>
 						Tracking
 					</Typography>
-					<Grid container spacing={2}>
+					<Grid container spacing={10}>
 						{
 							trackCardInfo.map((el, i) => (
 								<Grid item key={el.title} lg={6} sm={12} xs={12}>

@@ -10,7 +10,7 @@ const TrackCard = ({ title, subtitle, link, image, alt }) => {
 		height: "70vh",
 		borderRadius: theme.shape.default,
 		opacity: 0.69,
-		backgroundColor: "#00000 !important"
+		backgroundColor: "#00000 !important",
 	}))
 	
 	const StyledCardActionArea = styled(CardActionArea)(({theme}) => ({
