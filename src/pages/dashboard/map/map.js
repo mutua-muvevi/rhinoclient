@@ -40,6 +40,8 @@ const Dashmap = () => {
 		)
 	}, [])
 
+	console.log("The coordinates are", coords)
+
 	// useEffect(() => {
 	// 	setIsLoading(true)
 

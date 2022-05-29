@@ -17,6 +17,12 @@ const BoxWrapper = styled(Button)(({theme}) => ({
 
 }))
 
+const headerFont = {
+	color: "#dea95f",
+	fontWeight: 500,
+	fontFamily: "'Rubik', sans-serif",
+}
+
 const Usercards3 = () => {
 	
 	const [open, setOpen] = useState(false)
@@ -41,7 +47,7 @@ const Usercards3 = () => {
 
 			<Grid item  lg={4} sm={12} xs={12}>
 				<BoxWrapper onClick={handleShipmentModal} elevation={3}>
-					<Typography variant="h3">
+					<Typography style={headerFont} variant="h3">
 						Add Users
 					</Typography>
 				</BoxWrapper>
