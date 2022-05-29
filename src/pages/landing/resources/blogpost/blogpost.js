@@ -16,7 +16,12 @@ const Blogpost = () => {
 				title={blogpost.title}
 				subtitle={blogpost.subtitle}
 			/>
-			<BlogHeader/>
+			<BlogHeader
+				title={blogpost.title}
+				subtitle={blogpost.subtitle}
+				author={blogpost.author}
+				date={blogpost.date}
+			/>
 			<BlogBody/>
 			<Typography variant="h3">Tags</Typography>
 			<Typography variant="h3">Author</Typography>
