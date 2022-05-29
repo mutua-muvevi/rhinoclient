@@ -7,6 +7,8 @@ import { blogpost } from "../resourcesinfo";
 import BlogpostBanner from "./blogpostbanner";
 import BlogHeader from "./blogheader";
 import BlogBody from "./blogbody";
+import LatestBlogs from "./latestblogs";
+import NewsLetters from "./newsletters";
 
 const Blogpost = () => {
 	return (
@@ -24,11 +26,10 @@ const Blogpost = () => {
 			/>
 			<BlogBody
 				body = {blogpost.content}
+				tags = {blogpost.tags}
 			/>
-			<Typography variant="h3">Tags</Typography>
-			<Typography variant="h3">Author</Typography>
-			<Typography variant="h3">Latest posts</Typography>
-			<Typography variant="h3">Subscribe to news letters</Typography>
+			<LatestBlogs/>
+			<NewsLetters/>
 		</Box>
 	)
 }

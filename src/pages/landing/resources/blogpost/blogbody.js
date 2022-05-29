@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Container, List, ListItem, ListItemIcon, ListItemText, Typography } from "@mui/material";
+import { Box, Chip, Container, List, ListItem, ListItemIcon, ListItemText, Stack, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 
 import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
@@ -18,7 +18,15 @@ const StyledListContainer = styled(List)(({ theme }) => ({
 
 }))
 
-const BlogBody = ({ body }) => {
+const StyledTagsArea = styled(List)(({ theme }) => ({
+	display: "flex",
+	justifyContent: "left",
+	alignItems: "center",
+	textAlign: "center"
+}))
+
+
+const BlogBody = ({ body, tags }) => {
 	return (
 		<Box>
 			<Container>
@@ -66,6 +74,16 @@ const BlogBody = ({ body }) => {
 						</StyledBlogBodyContent>
 					))
 				}
+				<StyledTagsArea>
+					<Typography variant="body1">Tags :</Typography>
+					<Stack direction="row" sx={{marginLeft: "20px"}} spacing={2}>
+						{
+							tags.map((tg, i) => (
+								<Chip color="secondary" key={i} label={tg}/>
+							))
+						}
+					</Stack>
+				</StyledTagsArea>
 			</Container>
 		</Box>
 	)
