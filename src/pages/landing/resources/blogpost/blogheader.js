@@ -72,7 +72,7 @@ const BlogHeader = ({ title, subtitle, author, date }) => {
 						color="#fff"
 					>
 						<AssignmentIcon sx={{ mr: 0.5 }} fontSize="inherit" />
-						Track Shipment
+						{ title }
 					</Typography>
 				</StyledBreadCrumbs>
 

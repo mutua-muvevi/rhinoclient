@@ -18,7 +18,7 @@ const dividerStyle = {
 }
 
 const StyledContainerSection = styled(Container)(({ theme }) => ({
-	minHeight: "60vh",
+	minHeight: "50vh",
 	display: "flex",
 	justifyContent: "center",
 	alignItems: "center"
@@ -26,8 +26,11 @@ const StyledContainerSection = styled(Container)(({ theme }) => ({
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
 	width: "100%",
-	minHeight: "50vh",
-	padding: "20px"
+	minHeight: "40vh",
+	padding: "20px",
+	display: "flex",
+	flexDirection: "column",
+	justifyContent: "center"
 }))
 
 const styledAuthTextField = {
@@ -46,11 +49,12 @@ const styledAuthTextField = {
 			borderColor: '#f48d3a !important',
 		},
 	},
-	color: "#f48d3a !important"
+	color: "#f48d3a !important",
+	marginTop: "20px"
 }
 
 const StyledNewsLetterButton = styled(Button)(({ theme }) => ({
-
+	marginTop: "20px"
 }))
 
 const INITIAL_FORM_STATE = {
@@ -58,7 +62,7 @@ const INITIAL_FORM_STATE = {
 }
 
 const FORM_VALIDATION = Yup.object().shape({
-	email: Yup.string().min(3).max(100).required("Please add a valid email"),
+	email: Yup.string().email("Please add a valid email").min(3).max(100).required("Please add an email"),
 })
 
 const submitHandler = ( values, {resetForm} ) => {
@@ -86,21 +90,18 @@ const NewsLetters = () => {
 							onSubmit = { submitHandler }
 						>
 							<Form>
-								<FormGroup row>
-									<TextfieldWrapper
-										type="text"
-										name="trackno"
-										placeholder="Enter Shipping Track Number..."
-										variant="standard"
-										color="secondary"
-										sx={styledAuthTextField}
-									/>
+								<TextfieldWrapper
+									type="text"
+									name="email"
+									placeholder="Enter Shipping Track Number..."
+									variant="standard"
+									color="secondary"
+									sx={styledAuthTextField}
+								/>
 
-									<StyledNewsLetterButton type="submit" endIcon={<SendIcon/>} variant="contained" color="secondary">
-										Search
-									</StyledNewsLetterButton>
-
-								</FormGroup>
+								<StyledNewsLetterButton type="submit" endIcon={<SendIcon/>} variant="contained" color="secondary">
+									Subscribe
+								</StyledNewsLetterButton>
 							</Form>
 						</Formik>
 				</StyledPaper>
