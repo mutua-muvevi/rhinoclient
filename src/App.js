@@ -41,7 +41,7 @@ import { getStorage } from "./redux/storage/storageaction";
 import { getQuotation } from "./redux/quotation/quotationactions";
 import { getEmail } from "./redux/email/emailactions";
 import Blogpost from "./pages/landing/resources/blogpost/blogpost";
-import Newspost from "./pages/landing/resources/newspost";
+import NewsPost from "./pages/landing/resources/newspost/newspost";
 
 
 function App({ 
@@ -96,7 +96,7 @@ function App({
 							<Route path="/landing/widgets" element={<Widgets/>}/>
 							<Route path="/landing/resources" element={<Resources/>}/>
 							<Route path="/landing/blogpost" element={<Blogpost/>}/>
-							<Route path="/landing/newspost" element={<Newspost/>}/>
+							<Route path="/landing/newspost" element={<NewsPost/>}/>
 						</Route>
 						
 						<Route path="/track" element={<Tracklayout/>}>

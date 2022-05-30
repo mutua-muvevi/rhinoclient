@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 import { Box, Divider, Grid, Typography } from "@mui/material";
 import { styled } from "@mui/system";
@@ -41,15 +42,17 @@ const News = () => {
 					news &&
 					news.map((blog) => (
 						<Grid key={blog.title} item xl={3} lg={3} md={6} sm={12} xs={12}>
-							<NewsCard 
-								content={blog.content}
-								thumbnail={blog.thumbnail.src}
-								cover={blog.coverImage.src}
-								title={blog.title}
-								subtitle={blog.subtitle}
-								author={blog.author}
-								date={blog.date}
-							/>
+							<Link to="/landing/newspost" style={{textDecoration: "none", color: "inherit"}}>
+								<NewsCard 
+									content={blog.content}
+									thumbnail={blog.thumbnail.src}
+									cover={blog.coverImage.src}
+									title={blog.title}
+									subtitle={blog.subtitle}
+									author={blog.author}
+									date={blog.date}
+								/>
+							</Link>
 						</Grid>
 					))
 				}
