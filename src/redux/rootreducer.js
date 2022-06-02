@@ -13,6 +13,8 @@ import contactReducer from "./contact/contactreducers";
 import storageQuotationReducer from "./quotation/quotationreducers";
 import emailReducer from "./email/emailreducer";
 
+import blogReducer from "./blog/blogreducer";
+
 
 const config = {
 	key: 'root',
@@ -24,6 +26,7 @@ const config = {
 		"storage", 
 		"quotation",
 		"contact",
+		"blogs"
 	],
 };
 
@@ -38,6 +41,8 @@ const rootReducer = combineReducers({
 	quotation: storageQuotationReducer,
 
 	contact: contactReducer,
+
+	blogs: blogReducer
 
 });
 

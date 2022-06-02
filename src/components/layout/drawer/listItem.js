@@ -4,6 +4,7 @@ import WarehouseIcon from '@mui/icons-material/Warehouse';
 import ArticleIcon from '@mui/icons-material/Article';
 import GroupIcon from '@mui/icons-material/Group';
 import MapIcon from '@mui/icons-material/Map';
+import CreateNewFolderIcon from '@mui/icons-material/CreateNewFolder';
 
 import SettingsIcon from '@mui/icons-material/Settings';
 import SettingsPowerIcon from '@mui/icons-material/SettingsPower';
@@ -43,6 +44,14 @@ export const listItemsTop = [
 		label: "Quotation",
 		path: "/dashboard/quotation",
 		icon:  <ArticleIcon sx={sx}/>,
+		nested: [
+			{}
+		],
+	},
+	{
+		label: "Resources",
+		path: "/dashboard/resources",
+		icon:  <CreateNewFolderIcon sx={sx}/>,
 		nested: [
 			{}
 		],
