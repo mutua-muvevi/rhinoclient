@@ -5,6 +5,7 @@ import { styled } from "@mui/system";
 
 import EventRepeatIcon from '@mui/icons-material/EventRepeat';
 import DeleteIcon from '@mui/icons-material/Delete';
+
 import EventModal from "./eventmodal";
 
 const StyledModal = styled(Modal)(({ theme }) => ({
