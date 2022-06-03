@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Box, Button ,Typography } from "@mui/material";
 import { styled } from "@mui/system";
+
+import AddBlogModal from "./addblogsmodal/addblogsmodal";
 
 const StyledDashBlogHeader = styled(Box)(({ theme }) => {
 
@@ -21,6 +23,13 @@ const StyledHeaderLeft = styled(Box)(({ theme }) => {
 })
 
 const DashBlogHeader = () => {
+
+	const [open, setOpen] = useState(false)
+
+	const handleBlogModal = () => {
+		setOpen(true)
+	}
+
 	return (
 		<StyledDashBlogHeader sx={styledBlogHeader}>
 			<StyledHeaderLeft >
@@ -32,9 +41,11 @@ const DashBlogHeader = () => {
 				</Typography>
 				
 			</StyledHeaderLeft>
-			<Button variant="contained" color="secondary">
+			<Button variant="contained" onClick={handleBlogModal} color="secondary">
 				Create Blog
 			</Button>
+			{ console.log("The modal status is", open) }
+			<AddBlogModal  open={open} setOpen={setOpen}/>
 		</StyledDashBlogHeader>
 	)
 }

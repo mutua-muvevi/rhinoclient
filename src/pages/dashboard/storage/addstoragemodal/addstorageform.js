@@ -77,8 +77,6 @@ const AddStorageForm = ({ token, postAStorage, errMessage, data}) => {
 			resetForm()
 		}
 
-		console.log(values)
-
 	}
 	return (
 		<StyledWrapper container spacing={2}>

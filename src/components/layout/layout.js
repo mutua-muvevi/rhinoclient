@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { connect } from "react-redux";
 import { Navigate } from "react-router-dom";
 
 import { Box, CssBaseline, Fade} from "@mui/material";
@@ -9,6 +8,8 @@ import { Outlet } from 'react-router-dom';
 
 import DrawerComponent from "./drawer/drawer";
 import PrimarySearchAppBar from "./topbar/topbar";
+
+import { connect } from "react-redux";
 
 const Main = styled(Box)(({theme}) => ({
 	backgroundColor: theme.palette.background.default
@@ -38,6 +39,7 @@ const Layout = ({ token, user }) => {
 	};
 
 	if (!user){
+		console.log("The user is")
 		return <Navigate to="/auth/login"/>
 	};
 
