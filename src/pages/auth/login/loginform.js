@@ -3,6 +3,7 @@ import { useNavigate, Navigate } from 'react-router-dom';
 
 import { Alert, AlertTitle, Box, Button, Grow } from "@mui/material";
 import { styled } from "@mui/system";
+
 import SendIcon from '@mui/icons-material/Send';
 
 import { Formik, Form } from "formik";
@@ -83,8 +84,10 @@ const LoginForm = ({ loginUser, isAuthenticated, errMessage, user }) => {
 
 		if (!user){
 			return navRoute("/auth/login");
-		} else {
-			return navRoute("/dashboard");
+		}
+
+		if (user){
+			return (navRoute("/dashboard"))
 		}
 
 	}

@@ -42,6 +42,8 @@ import { getQuotation } from "./redux/quotation/quotationactions";
 import { getEmail } from "./redux/email/emailactions";
 import Blogpost from "./pages/landing/resources/blogpost/blogpost";
 import NewsPost from "./pages/landing/resources/newspost/newspost";
+import DashResources from "./pages/dashboard/resources/resourcesadmin";
+import { getBlogs } from "./redux/blog/blogactions";
 
 
 function App({ 
@@ -52,7 +54,8 @@ function App({
 	getEmail, 
 	fetchUser, 
 	fetchAllUsers, 
-	fetchAllAdmin 
+	fetchAllAdmin ,
+	getBlogs
 }) {
 
 	useEffect(() => {
@@ -64,8 +67,10 @@ function App({
 
 			getShipment(token);
 			getStorage(token);
-			getQuotation(token)
-			getEmail(token)
+			getQuotation(token);
+			getEmail(token);
+
+			getBlogs();
 		} catch (error) {
 			console.log("USER ERROR", error)
 		}
@@ -78,7 +83,8 @@ function App({
 		getQuotation, 
 		getEmail, 
 		fetchAllUsers, 
-		fetchAllAdmin 
+		fetchAllAdmin,
+		getBlogs
 	])
 
 	return (
@@ -118,6 +124,7 @@ function App({
 							<Route path="/dashboard/storage" element={<Dashstorage/>}/>
 							<Route path="/dashboard/users" element={<Dashusers/>}/>
 							<Route path="/dashboard/map" element={<Dashmap/>}/>
+							<Route path="/dashboard/resources" element={<DashResources/>}/>
 						</Route>
 						
 					</Routes>
@@ -141,7 +148,9 @@ const mapDispatchToProps = (dispatch) => ({
 	getStorage: (token) => dispatch(getStorage(token)),
 
 	getQuotation : (token) => dispatch(getQuotation(token)),
-	getEmail: (token) => dispatch(getEmail(token))
+	getEmail: (token) => dispatch(getEmail(token)),
+
+	getBlogs: () => dispatch(getBlogs())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
