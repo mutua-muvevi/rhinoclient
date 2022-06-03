@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { Box, Typography } from "@mui/material";
-// import { styled } from "@mui/system";
+import { Box } from "@mui/material";
 
 import { blogpost } from "../resourcesinfo";
+
 import BlogpostBanner from "./blogpostbanner";
 import BlogHeader from "./blogheader";
 import BlogBody from "./blogbody";
