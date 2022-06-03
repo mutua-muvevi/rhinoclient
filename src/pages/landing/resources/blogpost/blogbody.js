@@ -79,7 +79,7 @@ const BlogBody = ({ body, tags }) => {
 					<Stack direction="row" sx={{marginLeft: "20px"}} spacing={2}>
 						{
 							tags.map((tg, i) => (
-								<Chip color="secondary" key={i} label={tg}/>
+								<Chip color="secondary" variant="outlined" key={i} label={tg}/>
 							))
 						}
 					</Stack>
