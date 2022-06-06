@@ -75,8 +75,25 @@ export const deleteBlogFail = (errMessage) => ({
 	payload: errMessage,
 })
 
+export const writeBlog = (blog) => ({
+	type: blogTypes.WRITE_NEW_BLOG,
+	payload: blog
+})
 
+export const writeBlogFail = (blog) => ({
+	type: blogTypes.WRITE_NEW_BLOG_FAIL,
+	payload: blog
+})
 
+export const newParagraph = (paragraph) => ({
+	type: blogTypes.WRITE_NEW_BLOG_PARAGRAPH,
+	payload: paragraph
+})
+
+export const newParagraphFail = (paragraph) => ({
+	type: blogTypes.WRITE_NEW_BLOG_PARAGRAPH_FAIL,
+	payload: paragraph
+})
 
 
 export const getBlogs = () => {
@@ -168,6 +185,59 @@ export const deleteABlog = (id, token) => {
 			dispatch(editBlogSuccess(res.data.data))
 		} catch (error) {
 			dispatch(editBlogFail(error.response.data.error))
+		}
+	}
+}
+
+export const writeNewBlog = (blog) => {
+	return ( dispatch ) => {
+		try {
+			const article = blog
+			
+			dispatch(writeBlog({
+				title: article.title,
+				subtitle: article.subtitle,
+				coverImage: article.coverImage,
+				thumbnail: article.thumbnail,
+				author: article.author,
+				category: article.category,
+				
+				tags: [
+					...article.tags,
+					article.tags
+				],
+
+				content: [
+					...article.content,
+					{
+						header: article.content.header,
+						subheader: article.content.subheader,
+						list: [
+							{
+								listtitle: article.content.listtitle
+							}
+						]
+					}
+				],
+				
+			}))
+		} catch (error) {
+			dispatch(writeBlogFail(error))
+			console.log(error)
+		}
+	}
+}
+
+export const writeNewParagraph = (paragraph) => {
+	return ( dispatch ) => {
+		try {
+			
+			dispatch(newParagraph({
+				...paragraph
+			}))
+
+		} catch (error) {
+			dispatch(newParagraphFail(error))
 		}
 	}
 }

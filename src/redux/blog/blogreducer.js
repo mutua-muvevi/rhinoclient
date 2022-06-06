@@ -4,6 +4,12 @@ const initialState = {
 	loading: false,
 	data: null,
 	blog: null,
+	newBlog: {
+		
+	},
+	newBlogError: null,
+	paragraph: [],
+	paragraphError: null,
 	errMessage: undefined,
 	getOneError: undefined
 }
@@ -14,6 +20,7 @@ const blogReducer = ( state = initialState, { type, payload } ) => {
 			return { 
 				...state, 
 				loading: true,
+				newBlog: {},
 				errMessage: undefined,
 				getOneError: undefined,
 			};
@@ -22,6 +29,7 @@ const blogReducer = ( state = initialState, { type, payload } ) => {
 				...state, 
 				loading: false,
 				data: payload,
+				newBlog: {},
 				errMessage: undefined,
 				getOneError: undefined,
 			};
@@ -29,6 +37,7 @@ const blogReducer = ( state = initialState, { type, payload } ) => {
 			return { 
 				...state, 
 				loading: false,
+				newBlog: {},
 				errMessage: payload,
 				getOneError: undefined
 			};
@@ -39,6 +48,7 @@ const blogReducer = ( state = initialState, { type, payload } ) => {
 				...state, 
 				loading: true,
 				errMessage: undefined,
+				newBlog: {},
 				getOneError: undefined,
 			};
 		case blogTypes.GET_ONE_BLOG_SUCCESS: 
@@ -46,6 +56,7 @@ const blogReducer = ( state = initialState, { type, payload } ) => {
 				...state, 
 				loading: false,
 				blog: payload,
+				newBlog: {},
 				errMessage: undefined,
 				getOneError: undefined,
 			};
@@ -53,6 +64,7 @@ const blogReducer = ( state = initialState, { type, payload } ) => {
 			return { 
 				...state, 
 				loading: false,
+				newBlog: {},
 				errMessage: payload,
 				getOneError: undefined
 			};
@@ -64,6 +76,7 @@ const blogReducer = ( state = initialState, { type, payload } ) => {
 			return { 
 				...state, 
 				loading: true,
+				newBlog: {},
 				errMessage: undefined,
 				getOneError: undefined,
 			};
@@ -71,6 +84,7 @@ const blogReducer = ( state = initialState, { type, payload } ) => {
 			return { 
 				...state, 
 				loading: false,
+				newBlog: {},
 				data: payload,
 				errMessage: undefined,
 				getOneError: undefined,
@@ -79,6 +93,7 @@ const blogReducer = ( state = initialState, { type, payload } ) => {
 			return { 
 				...state, 
 				loading: false,
+				newBlog: {},
 				errMessage: payload,
 				getOneError: undefined
 			};
@@ -89,6 +104,7 @@ const blogReducer = ( state = initialState, { type, payload } ) => {
 			return { 
 				...state, 
 				loading: true,
+				newBlog: {},
 				errMessage: undefined,
 				getOneError: undefined,
 			};
@@ -96,6 +112,7 @@ const blogReducer = ( state = initialState, { type, payload } ) => {
 			return { 
 				...state, 
 				loading: false,
+				newBlog: {},
 				data: payload,
 				errMessage: undefined,
 				getOneError: undefined,
@@ -104,6 +121,7 @@ const blogReducer = ( state = initialState, { type, payload } ) => {
 			return { 
 				...state, 
 				loading: false,
+				newBlog: {},
 				errMessage: payload,
 				getOneError: undefined
 			};
@@ -114,6 +132,7 @@ const blogReducer = ( state = initialState, { type, payload } ) => {
 			return { 
 				...state, 
 				loading: true,
+				newBlog: {},
 				errMessage: undefined,
 				getOneError: undefined,
 			};
@@ -122,6 +141,7 @@ const blogReducer = ( state = initialState, { type, payload } ) => {
 				...state, 
 				loading: false,
 				data: payload,
+				newBlog: {},
 				errMessage: undefined,
 				getOneError: undefined,
 			};
@@ -129,9 +149,63 @@ const blogReducer = ( state = initialState, { type, payload } ) => {
 			return { 
 				...state, 
 				loading: false,
+				newBlog: {},
 				errMessage: payload,
 				getOneError: undefined
 			};
+
+		case blogTypes.WRITE_NEW_BLOG: 
+			return {
+				...state,
+				loading: false,
+				newBlog : payload
+			};
+
+		case blogTypes.WRITE_NEW_BLOG_FAIL: 
+			return {
+				...state,
+				loading: false,
+				newBlogError: payload
+			}
+
+			
+		case blogTypes.WRITE_NEW_BLOG_PARAGRAPH: {
+			return {
+					...state,
+					loading: false,
+					newBlog: {
+						...state.newBlog.paragraph,
+						paragraph: payload
+					}
+				}
+			}
+			
+		case blogTypes.WRITE_NEW_BLOG_PARAGRAPH_FAIL: 
+			return {
+				...state,
+				loading: false,
+				newBlogError: payload
+			}
+
+
+
+		case blogTypes.WRITE_NEW_BLOG_LIST: {
+			return {
+					...state,
+					loading: false,
+					newBlog: {
+						...state.newBlog,
+						list: payload
+					}
+				}
+			}
+			
+		case blogTypes.WRITE_NEW_BLOG_LIST_FAIL: 
+			return {
+				...state,
+				loading: false,
+				newBlogError: payload
+			}
 
 
 		default: 

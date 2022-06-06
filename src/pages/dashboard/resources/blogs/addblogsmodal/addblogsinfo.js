@@ -1,22 +1,30 @@
 
 
-export const blogFormTitle = {
-	type: "text",
-	label: "Title",
-	required: true,
-	name:"title",
-	xs:12,
-	sm:4
-}
+export const blogFormTitle = [
 
-export const blogFormSubtitle = {
-	type: "text",
-	label: "Subtitle",
-	required: true,
-	name:"subtitle",
-	xs:12,
-	sm:4
-}
+	{
+		type: "text",
+		label: "Title",
+		required: true,
+		name:"title",
+		xs:12,
+		sm:12,
+		md:12,
+		lg:12,
+		xl:12,
+	},
+	{
+		type: "text",
+		label: "Subtitle",
+		required: true,
+		name:"subtitle",
+		xs:12,
+		sm:12,
+		md:12,
+		lg:12,
+		xl:12,
+	}
+] 
 
 export const blogFormImages = [
 	{
