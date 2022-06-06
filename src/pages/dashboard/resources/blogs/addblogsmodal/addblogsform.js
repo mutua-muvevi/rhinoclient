@@ -1,15 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-import { Alert, AlertTitle, Box, Button, ButtonGroup, Divider, Grid, Grow, Typography } from "@mui/material"
+import { Alert, AlertTitle, Box, Button, ButtonGroup, Chip, Container, Divider, Grid, Grow, List, ListItem, ListItemIcon, ListItemText,  Stack, Typography } from "@mui/material"
 import { styled } from "@mui/system";
 
-import { Formik, Form } from "formik";
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+
+import { Formik, Form, useFormikContext } from "formik";
 import * as Yup from "yup";
 
 import TextField from "../../../../../components/formsUI/textfield/textfield";
+
 import { 
 	blogFormTitle, 
-	blogFormSubtitle, 
+
 	blogFormTags,
 	blogFormCategory, 
 
@@ -19,6 +22,12 @@ import {
 
 import SendIcon from '@mui/icons-material/Send';
 import ClearIcon from '@mui/icons-material/Clear';
+
+import { connect } from "react-redux";
+import { writeNewBlog, writeNewParagraph } from "../../../../../redux/blog/blogactions";
+
+import AddBlogTitleModal from "./addblogtitlemodal";
+import AddBlogContentModal from "./addblogcontentmodal";
 
 const StyledBlogsFormWrapper = styled(Box)(({ theme }) => ({
 	margin: "20px auto"
@@ -80,20 +89,101 @@ const StyledFormBlogView = styled(Box)(({ theme }) => ({
 }))
 
 
+const StyledBlogImageSection = styled(Box)(({ theme }) => ({
+	minHeight: "20vh",
+	backgroundColor: "primary",
+	display: "flex",
+	justifyContent: "flex-start",
+	alignItems: "flex-end"
+}))
+
+const StyledBlogImageSectionContent = styled(Box)(({ theme }) => ({
+	padding: "10px",
+}))
+
+
+const headerFont = {
+	color: "#dea95f",
+	fontWeight: 500,
+	fontFamily: "'Rubik', sans-serif",
+}
+
+
+const bodyTitleFont = {
+	color: "#dea95f",
+	fontFamily: "'Rubik', sans-serif",
+	marginTop: "20px",
+	textTransform: "capitalize"
+}
+
 const dividerStyle = {
 	margin: "40px auto",
 	backgroundColor: "#f48d3a"
 }
 
 
+const StyledViewContentBody = styled(Box)(({ theme }) => ({
+
+}))
+
+const StyledViewContentText = styled(Box)(({ theme }) => ({
+
+}))
+
+const StyledListContainer = styled(List)(({ theme }) => ({
+	margin: "20px auto"
+}))
+
+const StyledTagsArea = styled(Box)(({ theme }) => ({
+	display: "flex",
+	justifyContent: "left",
+	alignItems: "center",
+	textAlign: "left",
+	margin: "20px auto"
+}))
+
+const StyledCategoryArea = styled(Box)(({ theme }) => ({
+	display: "flex",
+	justifyContent: "left",
+	alignItems: "center",
+	textAlign: "left",
+	margin: "20px auto"
+}))
+
+
+const StyledAuthorArea = styled(Box)(({ theme }) => ({
+	display: "flex",
+	justifyContent: "left",
+	alignItems: "center",
+	textAlign: "left",
+	margin: "20px auto"
+}))
+
+
+
 const StyledFormArea = styled(Box)(({ theme }) => ({
 
 }))
 
-const AddBlogsForm = () => {
 
-	const { title, setTitle } = useState("");
-	const { subtitle, setSubtitle } = useState("");
+
+const FormObserver = ({ blog, writeNewBlog }) => {
+	const { values } = useFormikContext();
+
+	useEffect(() => {
+		console.log("FormObserver::values", values);
+		// console.log("BLOG::values", blog);
+		writeNewBlog(values)
+
+	}, [values]);
+  
+	return null;
+};
+
+
+const AddBlogsForm = ({writeNewBlog, blog, blogContent, writeNewParagraph}) => {
+
+	const [ titleModal, setTitleModal ] = useState(false);
 	const { coverImage, setCoverImage } = useState("");
 	const { thumbnail, setThumbnail } = useState("");
 	const { author, setAuthor } = useState("");
@@ -101,20 +191,121 @@ const AddBlogsForm = () => {
 
 	const { tags, setTags } = useState([]);
 
-	const { content, setContent } = useState([]);
+	const [ contentModal, setContentModal ] = useState(false);
 
-	const handleChange = (e) => {
-		console.log("HANDLE CHANGE", e.target.value)
-	}
 
 	const submitHandler = (values) => {
 		console.log("Blog values", values)
 	}
 
+
 	return (
 		<StyledBlogsFormWrapper>
 			<StyledFormBlogView>
+				{
+					blog &&
+					blog.title &&
+					blog.subtitle ? (
+						<StyledBlogImageSection>
+							<StyledBlogImageSectionContent>
+								<Typography variant="h4" gutterBottom sx={headerFont}>
+									{ blog && blog.title && blog.title }
+								</Typography>
+								<Typography variant="h5" gutterBottom>
+									{ blog && blog.subtitle && blog.subtitle }
+								</Typography>
+							</StyledBlogImageSectionContent>
+						</StyledBlogImageSection>
+					) : (
+						<Button onClick={() => setTitleModal(true)} type="button" variant="outlined" color="secondary">
+							Add Title and subtitle
+						</Button>
+					)
+				}
 
+				<Divider sx={dividerStyle} />
+
+				<StyledViewContentBody>
+
+					{
+						blog &&
+						blog.content &&
+						blog.content[0].header.length < 1 ? (
+							<Button onClick={() => setContentModal(true)} type="button" variant="outlined" color="secondary">
+								Add Blog Content
+							</Button>
+						) : (
+							<>
+								{
+									blog &&
+									blog.content &&
+									blog.content.map((el, i) => (
+										<StyledViewContentText key={i}>
+											<Typography variant="h5" sx={bodyTitleFont} gutterBottom>
+												{ el.header }
+											</Typography>
+											{
+												el.paragraph &&
+												el.paragraph.map(p => (
+													<Typography variant="body1" key={p} gutterBottom>
+														{ p }
+													</Typography>
+												))
+											}
+											{
+												el.list &&
+												el.list.map((li, i) => (
+													<StyledListContainer key={i}>
+														<Typography variant="h6" color="secondary" gutterBottom>
+															{ li.title }
+														</Typography>
+														<List>
+															{
+																li.items &&
+																li.items.map((el, i) => (
+																	<ListItem key={i}>
+																		<ListItemIcon>
+																			<ArrowForwardIosIcon  color="secondary"/>
+																		</ListItemIcon>
+																		<ListItemText primary={el}/>
+																	</ListItem>
+																))
+															}
+														</List>
+													</StyledListContainer>
+												))
+											}
+										</StyledViewContentText>
+									))
+								}
+							</>
+
+						)
+					}
+
+
+					<StyledTagsArea>
+						<Typography variant="body1">Tags :</Typography>
+						<Stack direction="row" sx={{marginLeft: "20px"}} spacing={2}>
+							{
+								blog.tags &&
+								blog.tags.map((tg, i) => (
+									<Chip color="secondary" variant="outlined" key={i} label={tg}/>
+								))
+							}
+						</Stack>
+					</StyledTagsArea>
+
+					<StyledCategoryArea>
+						<Typography variant="body1">Category :</Typography>
+						<Chip color="secondary" variant="outlined" label={blog.category} sx={{marginLeft: "20px"}} />
+					</StyledCategoryArea>
+
+					<StyledAuthorArea>
+						<Typography variant="body1">Author :</Typography>
+						<Chip color="secondary" variant="outlined" label={blog.author} sx={{marginLeft: "20px"}} />
+					</StyledAuthorArea>
+				</StyledViewContentBody>
 			</StyledFormBlogView>
 
 			<Divider sx={dividerStyle}/>
@@ -127,14 +318,14 @@ const AddBlogsForm = () => {
 					validationSchema={ FORM_VALIDATION }
 					onSubmit = {submitHandler}
 				>
-					<Form onChange={ handleChange }>
+					<Form>
 						
-						<TextField
-							label={blogFormTitle.label}
-							name={blogFormTitle.name}
-							type={blogFormTitle.type}
-						/>	
-					
+						<FormObserver writeNewBlog={writeNewBlog} blog={writeNewBlog} />
+
+							<AddBlogTitleModal open={titleModal} setOpen={setTitleModal}/>
+
+							<AddBlogContentModal open={contentModal} setOpen={setContentModal}/>
+
 						<ButtonGroup variant="contained" type="submit" sx={{marginTop: "30px"}}>
 							<Button type="submit" color="secondary"  endIcon={<SendIcon/>}>
 								Submit
@@ -151,4 +342,16 @@ const AddBlogsForm = () => {
 	)
 }
 
-export default AddBlogsForm
+
+const mapStateToProps = ({ blogs }) => ({
+	blog: blogs.newBlog,
+})
+
+const mapDispatchToProps = (dispatch) => ({
+	writeNewBlog: (values) => dispatch(writeNewBlog(values)),
+	writeNewParagraph: (paragraph) => dispatch(writeNewParagraph(paragraph))
+	
+})
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddBlogsForm)
