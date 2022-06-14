@@ -1,10 +1,16 @@
 import React from 'react';
 
-import { Box, Container, Grid, Modal, Typography } from "@mui/material";
+import { Box, Button, Container, Modal, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 
-import { blogFormTitle } from "./addblogsinfo";
+
+
+import { FieldArray } from "formik"
+
+import { blogContentTitles } from "./addblogsinfo";
 import TextField from "../../../../../components/formsUI/textfield/textfield";
+
+import { connect } from "react-redux"
 
 const StyledModal = styled(Modal)(({theme}) => ({
 	width: "60vw",
@@ -31,22 +37,14 @@ const StyledFormContainer = styled(Container)(({ theme }) => ({
 	paddingBottom: 2,
 }))
 
+
 const styledTitleFont = {
 	fontFamily: "'Rubik', sans-serif",
 	fontWeight: "500",
 	marginBottom: "20px"
 
 }
-
-const StyledFormTitleGrid = styled(Grid)(({ theme }) => ({
-
-}))
-
-const StyledFormGridItem = styled(Grid)(({ theme }) =>({
-
-}))
-
-const AddBlogTitleModal = ({ open, setOpen }) => {
+const AddBlogContentHeader = ({ open, setOpen, blog, values }) => {
     return (
 		<StyledModal
 			open={open}
@@ -55,31 +53,14 @@ const AddBlogTitleModal = ({ open, setOpen }) => {
 			aria-describedby="modal-modal-description"
 		>
 			<StyledFormContainerWrapper>
-				<StyledFormContainer>
-					<Typography sx={styledTitleFont} variant="h5" color="secondary" gutterBottom>
-						Add Blog Title
-					</Typography>
-					<StyledFormTitleGrid container spacing={2}>
-								
-
-						{
-							blogFormTitle &&
-							blogFormTitle.map((el, i) => (
-								<StyledFormGridItem item key={i} xs={el.xs} sm={el.sm} md={el.md} lg={el.lg} xl={el.xl}>
-									<TextField 
-										name={el.name}
-										label={el.label}
-										type={el.type}
-									/>
-								</StyledFormGridItem>
-							))
-						}
-
-					</StyledFormTitleGrid>
-				</StyledFormContainer>
+				
 			</StyledFormContainerWrapper>
 		</StyledModal>
     )
 }
 
-export default AddBlogTitleModal
+const mapStateToProps = ({ blogs }) => ({
+	blog: blogs.newBlog,
+})
+
+export default connect(mapStateToProps)(AddBlogContentHeader)

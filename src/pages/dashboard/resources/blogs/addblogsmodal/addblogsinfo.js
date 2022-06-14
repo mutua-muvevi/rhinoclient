@@ -26,7 +26,7 @@ export const blogFormTitle = [
 	}
 ] 
 
-export const blogFormImages = [
+export const blogImage = [
 	{
 		type: "text",
 		label: "Cover Image",
@@ -63,23 +63,27 @@ export const blogFormTags = {
 	sm:4
 }
 
-export const blogFormContent = [
+export const blogContentTitles = [
 	{
 		type: "text",
 		label: "Topic",
 		required: true,
-		name:"header",
+		name:"content[-1].header",
 		xs:12,
 		sm:4
 	},
 	{
 		type: "text",
 		label: "Subtopic",
-		required: true,
-		name:"subheader",
+		required: false,
+		name:"content[-1].subheader",
 		xs:12,
 		sm:4
-	},
+	}
+]
+
+export const blogFormContent = [
+
 	{
 		type: "text",
 		label: "Paragraph",

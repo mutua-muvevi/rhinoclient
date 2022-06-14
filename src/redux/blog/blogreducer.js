@@ -5,7 +5,15 @@ const initialState = {
 	data: null,
 	blog: null,
 	newBlog: {
-		
+		title: "",
+		subtitle: "",
+		author: "",
+		category: "",
+		header: "",
+		subHeader: "",
+		paragraph: [""],
+		content: [],
+		tags: []
 	},
 	newBlogError: null,
 	paragraph: [],
@@ -15,6 +23,7 @@ const initialState = {
 }
 
 const blogReducer = ( state = initialState, { type, payload } ) => {
+	console.log("THE REDUCER IS", payload)
 	switch(type){
 		case blogTypes.GET_ALL_BLOGS_START: 
 			return { 
@@ -155,10 +164,18 @@ const blogReducer = ( state = initialState, { type, payload } ) => {
 			};
 
 		case blogTypes.WRITE_NEW_BLOG: 
+			console.log("THE REDUCER PAYLOAD", payload)
 			return {
 				...state,
 				loading: false,
-				newBlog : payload
+				newBlog: {
+					title: payload.title,
+					subtitle: payload.subtitle,
+					author: payload.author,
+					category: payload.category,
+					coverImage: payload.coverImage,
+					content: payload.content,
+				}
 			};
 
 		case blogTypes.WRITE_NEW_BLOG_FAIL: 
@@ -190,13 +207,11 @@ const blogReducer = ( state = initialState, { type, payload } ) => {
 
 
 		case blogTypes.WRITE_NEW_BLOG_LIST: {
+			debugger
 			return {
 					...state,
 					loading: false,
-					newBlog: {
-						...state.newBlog,
-						list: payload
-					}
+					
 				}
 			}
 			

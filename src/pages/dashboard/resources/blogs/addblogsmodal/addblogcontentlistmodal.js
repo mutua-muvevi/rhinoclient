@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { Box, Container, Grid, Modal, Typography } from "@mui/material";
+import { Box, Container, Grid, Modal } from "@mui/material";
 import { styled } from "@mui/system";
 
-import { blogFormTitle } from "./addblogsinfo";
+// import { blogFormTitle } from "./addblogsinfo";
 import TextField from "../../../../../components/formsUI/textfield/textfield";
 
 const StyledModal = styled(Modal)(({theme}) => ({
@@ -31,13 +31,6 @@ const StyledFormContainer = styled(Container)(({ theme }) => ({
 	paddingBottom: 2,
 }))
 
-const styledTitleFont = {
-	fontFamily: "'Rubik', sans-serif",
-	fontWeight: "500",
-	marginBottom: "20px"
-
-}
-
 const StyledFormTitleGrid = styled(Grid)(({ theme }) => ({
 
 }))
@@ -46,7 +39,7 @@ const StyledFormGridItem = styled(Grid)(({ theme }) =>({
 
 }))
 
-const AddBlogTitleModal = ({ open, setOpen }) => {
+const AddBlogContentListModal = ({ open, setOpen }) => {
     return (
 		<StyledModal
 			open={open}
@@ -56,24 +49,7 @@ const AddBlogTitleModal = ({ open, setOpen }) => {
 		>
 			<StyledFormContainerWrapper>
 				<StyledFormContainer>
-					<Typography sx={styledTitleFont} variant="h5" color="secondary" gutterBottom>
-						Add Blog Title
-					</Typography>
 					<StyledFormTitleGrid container spacing={2}>
-								
-
-						{
-							blogFormTitle &&
-							blogFormTitle.map((el, i) => (
-								<StyledFormGridItem item key={i} xs={el.xs} sm={el.sm} md={el.md} lg={el.lg} xl={el.xl}>
-									<TextField 
-										name={el.name}
-										label={el.label}
-										type={el.type}
-									/>
-								</StyledFormGridItem>
-							))
-						}
 
 					</StyledFormTitleGrid>
 				</StyledFormContainer>
@@ -82,4 +58,4 @@ const AddBlogTitleModal = ({ open, setOpen }) => {
     )
 }
 
-export default AddBlogTitleModal
+export default AddBlogContentListModal

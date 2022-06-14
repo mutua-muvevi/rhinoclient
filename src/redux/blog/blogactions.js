@@ -193,32 +193,20 @@ export const writeNewBlog = (blog) => {
 	return ( dispatch ) => {
 		try {
 			const article = blog
-			
+			console.log("THA ARTICLE ACTION", article)			
 			dispatch(writeBlog({
 				title: article.title,
 				subtitle: article.subtitle,
 				coverImage: article.coverImage,
-				thumbnail: article.thumbnail,
 				author: article.author,
 				category: article.category,
 				
+				
 				tags: [
-					...article.tags,
 					article.tags
 				],
 
-				content: [
-					...article.content,
-					{
-						header: article.content.header,
-						subheader: article.content.subheader,
-						list: [
-							{
-								listtitle: article.content.listtitle
-							}
-						]
-					}
-				],
+				content: article.content
 				
 			}))
 		} catch (error) {
