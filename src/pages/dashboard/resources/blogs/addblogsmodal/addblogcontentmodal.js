@@ -1,46 +1,55 @@
 
-import React from 'react';
+import React, { useState, useEffect} from 'react';
 
-import { Box, Container, Grid, Modal, Typography } from "@mui/material";
+import { Box, Button, Container, Grid, Modal, Typography} from "@mui/material";
 import { styled } from "@mui/system";
 
-import { blogFormContent } from "./addblogsinfo";
+import CloseIcon from '@mui/icons-material/Close';
+
+import { FieldArray } from "formik"
+
 import TextField from "../../../../../components/formsUI/textfield/textfield";
 
+import { connect } from "react-redux";
+
+
 const StyledModal = styled(Modal)(({theme}) => ({
-	width: "60vw",
-	margin: "30vh auto",
+	width: "85vw",
+	margin: "10vh auto",
 	overflowY: "scroll",
 	border: 'none',
-	borderRadius: theme.shape.default
+	borderRadius: theme.shape.default,
 }))
 
-const StyledFormContainerWrapper = styled(Box)(({ theme }) => ({
+const StyledContainerWrapper = styled(Box)(({ theme }) => ({
 	backgroundColor: theme.palette.background.paper,
-	minHeight: "40vh",
+	minHeight: "80vh",
 	border: 'none',
 	boxShadow: 24,
-	paddingTop: 2,
-	paddingBottom: 2,
+	padding: "10px",
 	display: "flex",
-	justifyContent: "center",
-	alignItems: "center"
+	justifyContent: "center !important",
+	alignItems: "center",
 }))
+
 
 const StyledFormContainer = styled(Container)(({ theme }) => ({
 	paddingTop: 2,
 	paddingBottom: 2,
 }))
 
-const StyledFormTitleGrid = styled(Grid)(({ theme }) => ({
+const styledTitleFont = {
+	fontFamily: "'Rubik', sans-serif",
+	fontWeight: "500",
+	marginBottom: "20px"
+}
 
-}))
+const AddBlogContentModal = ({ open, setOpen, values, blog }) => {
 
-const StyledFormGridItem = styled(Grid)(({ theme }) =>({
+	useEffect(() => {
+		
+	}, [])
 
-}))
-
-const AddBlogContentModal = ({ open, setOpen }) => {
     return (
 		<StyledModal
 			open={open}
@@ -48,29 +57,97 @@ const AddBlogContentModal = ({ open, setOpen }) => {
 			aria-labelledby="modal-modal-title"
 			aria-describedby="modal-modal-description"
 		>
-			<StyledFormContainerWrapper>
+			<StyledContainerWrapper maxWidth="xl">
 				<StyledFormContainer>
-					<StyledFormTitleGrid container spacing={2}>
-								
+					<Typography sx={styledTitleFont} variant="h5" color="secondary" gutterBottom>
+						Add Content Block
+					</Typography>
 
-						{
-							blogFormContent &&
-							blogFormContent.map((el, i) => (
-								<StyledFormGridItem item key={i} xs={el.xs} sm={el.sm} md={el.md} lg={el.lg} xl={el.xl}>
-									<TextField 
-										name={el.name}
-										label={el.label}
-										type={el.type}
-									/>
-								</StyledFormGridItem>
-							))
-						}
+					<FieldArray name="content">
+						{arrayHelpers => {
+								const content = values.content
+								return (
+									<>
+									{ 
+										content && 
+										content.length > 0 ? 
+										content.map(
+											(item, index) => (
+												<Box key={index} sx={{marginBottom: "50px"}} >
+													<Grid container columnSpacing={2}>
+														<Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
+															<Typography variant="h5" >
+																Add a header
+															</Typography>
+														</Grid>
+														<Grid item xl={6} lg={6} md={6} sm={12} xs={12}>
+															<TextField 
+																name={`content.${index}.header`}
+																label="Content block header"
+																type="text"
+															/>
+														</Grid>
+														<Grid item xl={6} lg={6} md={6} sm={12} xs={12}>
+															<TextField 
+																name={`content.${index}.subheader`}
+																label="Content block sub header"
+																type="text"
+															/>
+														</Grid>
+														
+														<Grid item xl={12} lg={12} md={12} sm={12} xs={12} sx={{marginTop: "30px"}}>
+															<Typography variant="h5" gutterBottom >
+																Add a Paragraph
+															</Typography>
+															<TextField
+																name={`content.${index}.paragraph`}
+																label="Paragraph"
+																type="text"
+																multiline
+																rows={4}
+															/>
+														</Grid>
+													</Grid>
 
-					</StyledFormTitleGrid>
+
+													<Button
+														type="button"
+														onClick={
+															() => arrayHelpers.remove(index)
+														}
+													>
+														<CloseIcon color="secondary"/>
+													</Button>
+												</Box>
+											)
+										) : null
+									}
+									<Button
+										type="button"
+										variant="outlined"
+										color="secondary"
+										onClick = {
+											() => arrayHelpers.push({
+												header: "",
+												subheader: ""
+											})
+										}
+									>
+										Add another block
+									</Button>
+									</>
+								)
+							}}
+					</FieldArray>
+
 				</StyledFormContainer>
-			</StyledFormContainerWrapper>
+			</StyledContainerWrapper>
 		</StyledModal>
     )
 }
 
-export default AddBlogContentModal
+const mapStateToProps = ({ blogs }) => ({
+	blog: blogs.newBlog,
+})
+
+export default connect(mapStateToProps)(AddBlogContentModal)

@@ -46,7 +46,7 @@ const StyledFormGridItem = styled(Grid)(({ theme }) =>({
 
 }))
 
-const AddBlogTitleModal = ({ open, setOpen }) => {
+const AddBlogImageModal = ({ open, setOpen }) => {
     return (
 		<StyledModal
 			open={open}
@@ -57,29 +57,18 @@ const AddBlogTitleModal = ({ open, setOpen }) => {
 			<StyledFormContainerWrapper>
 				<StyledFormContainer>
 					<Typography sx={styledTitleFont} variant="h5" color="secondary" gutterBottom>
-						Add Blog Title
+						Add Blog Image
 					</Typography>
-					<StyledFormTitleGrid container spacing={2}>
-								
-
-						{
-							blogFormTitle &&
-							blogFormTitle.map((el, i) => (
-								<StyledFormGridItem item key={i} xs={el.xs} sm={el.sm} md={el.md} lg={el.lg} xl={el.xl}>
-									<TextField 
-										name={el.name}
-										label={el.label}
-										type={el.type}
-									/>
-								</StyledFormGridItem>
-							))
-						}
-
-					</StyledFormTitleGrid>
+					<TextField 
+						name="coverImage"
+						label="Cover Image"
+						type="file"
+					/>
 				</StyledFormContainer>
 			</StyledFormContainerWrapper>
 		</StyledModal>
     )
 }
 
-export default AddBlogTitleModal
+
+export default AddBlogImageModal
