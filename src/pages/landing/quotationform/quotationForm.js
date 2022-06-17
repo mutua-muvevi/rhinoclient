@@ -49,7 +49,7 @@ const FORM_VALIDATION = Yup.object().shape({
 	message: Yup.string().min(20).max(1000).required("Quotation message in required"),
 })
 
-const QuotationForm = ({ setOpen, postQuotation, errMessage }) => {
+const QuotationForm = ({ onClose, postQuotation, errMessage, close, open, handleModal}) => {
 
 	const [ showSuccess, setShowSuccess ] = useState(false);
 
@@ -63,7 +63,7 @@ const QuotationForm = ({ setOpen, postQuotation, errMessage }) => {
 		}
 
 		setTimeout(() => {
-			setOpen(false)
+			onClose(false)
 		}, 5000);
 	}
 
@@ -116,16 +116,17 @@ const QuotationForm = ({ setOpen, postQuotation, errMessage }) => {
 								type={messageTextArea.type} 
 								name={messageTextArea.name} 
 								label={messageTextArea.label}
-								/>
+							/>
 						</Grid>
 					</Grid>
 
-					<ButtonGroup variant="contained" type="submit" sx={{marginTop: "30px"}}>
-						<Button type="submit" color="secondary"  endIcon={<SendIcon/>}>
-							Submit Quotation
+					<ButtonGroup variant="contained" sx={{marginTop: "30px"}}>
+						<Button type="submit" onClick={ submitHandler } color="secondary"  endIcon={<SendIcon/>}>
+							Submit
 						</Button>
-						<Button onClick={() => setOpen(false)} type="submit" color="error" endIcon={<ClearIcon/>}>
-							Cancel Quotation
+						{ console.log("MODAL IN THE FORM IS", open) }
+						<Button onClick={ handleModal } color="error" endIcon={<ClearIcon/>}>
+							Cancel q
 						</Button>
 					</ButtonGroup>
 				</Form>

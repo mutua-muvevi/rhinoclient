@@ -7,9 +7,10 @@ import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
 import ServicesModal from "../../../../pages/landing/services/servicesmodal";
 
 const ImageContentCard = styled(Card)(({theme}) => ({
-	width: "100%",
+	maxWidth: "500px",
 	borderRadius: theme.shape.default,
-	backgroundColor: theme.palette.background.paper
+	backgroundColor: theme.palette.background.paper,
+
 }))
 
 const CardContentInfo = styled(CardContent)(({theme}) => ({
@@ -36,9 +37,11 @@ const buttonFont = {
 }
 
 
-const SizeimgcontentfooterCard4 = ({ title, alt, image, paragraph, setModal, modal, modalData }) => {
+const SizeimgcontentfooterCard4 = ({ title, alt, image, paragraph,  modalData }) => {
 
 	const [singleModalContent, setSingleModalContent] = useState(null)
+
+	const [modal, setModal] = useState(false);
 
 	const handleModal = () => {
 		setModal(!modal)

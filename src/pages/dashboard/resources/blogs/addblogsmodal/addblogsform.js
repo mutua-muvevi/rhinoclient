@@ -265,6 +265,10 @@ const AddBlogsForm = ({writeNewBlog, blog }) => {
 									{ el.header ? el.header : null }
 								</Typography>
 
+								<Typography variant="h6" sx={bodyTitleFont} gutterBottom>
+									{ el.subheader ? el.subheader : null }
+								</Typography>
+
 								<Typography variant="body1" key={i} gutterBottom>
 									{ el.paragraph ? el.paragraph : null }
 								</Typography>

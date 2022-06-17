@@ -41,11 +41,13 @@ const ServiceQuotationModal = ({title, open, setOpen}) => {
 
 				<StyledDetailedBox container sx={detailsContainer}>
 					<Typography variant="h3" style={headerFont} sx={{ padding: 2}} gutterBottom>
-						{title}
+						{title} ++
 					</Typography>
 					<Divider/>
 					<Box sx={{padding: 2}}>
-						<QuotationForm onClose={() => setOpen(false)} />
+						<QuotationForm 
+							onClose={() => setOpen(false)} />
+						{ console.log("THE MODAL VALUE IS", open) }
 					</Box>
 				</StyledDetailedBox>
 			</Grow>
