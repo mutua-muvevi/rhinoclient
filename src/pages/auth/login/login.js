@@ -11,6 +11,8 @@ import { metaAuthContent } from "../metacontent.js";
 import HomeIcon from '@mui/icons-material/Home';
 import LockIcon from '@mui/icons-material/Lock';
 
+import { connect } from "react-redux";
+
 const StyledAuthCardWrapper = styled(Card)(({ theme }) => ({
 	position: "absolute",
 	top: "10vh",
@@ -142,4 +144,8 @@ const Login = () => {
 	)
 }
 
-export default Login
+const mapStateToProps = ({ user }) => ({
+	user: user.user
+})
+
+export default connect(mapStateToProps)(Login)

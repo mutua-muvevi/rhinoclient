@@ -122,7 +122,7 @@ const AddUserForm = ({ onClose,  registerUser, isAuthenticated, errMessage }) =>
 
 				
 					<ButtonGroup variant="contained" type="submit" sx={{marginTop: "30px"}}>
-						<Button type="submit" color="primary"  endIcon={<SendIcon/>}>
+						<Button type="submit" color="secondary" sx={{ color: "black" }} endIcon={<SendIcon/>}>
 							Register User
 						</Button>
 						<Button onClick={onClose} type="submit" color="error" endIcon={<ClearIcon/>}>

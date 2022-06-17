@@ -16,7 +16,8 @@ const StyledDataGridContainer = styled(Card)(({theme}) => ({
 
 const StyledDataGridHeader = styled(CardHeader)(({theme}) => ({
 	backgroundColor: "#131313",
-	color: theme.palette.common.white
+	color: theme.palette.secondary.main,
+	fontWeight: "700"
 }))
 
 const StyledDataGrid = styled(DataGrid)(({theme}) =>({
@@ -99,20 +100,21 @@ const UsersTable = ({ users }) => {
 	return (
 		<StyledDataGridContainer>
 			<StyledDataGridHeader title="List of Registered Clients" />
+
 			<StyledDataGrid
-				rows={users}
+				rows={users ? users : null}
 				columns={columns}
 				autoPageSize
 				autoHeight
 				getRowId={users => users._id}
-				pageSize={100}
+				pageSize={20}
 			/>
 		</StyledDataGridContainer>
 	)
 }
 
 const mapStateToProps = ({ user }) => ({
-	user: user.users
+	users: user.users
 })
 
 export default connect(mapStateToProps)(UsersTable);
