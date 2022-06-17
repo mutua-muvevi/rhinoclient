@@ -29,10 +29,12 @@ const INITIAL_FORM_STATE = {
 	firstname: "",
 	lastname: "",
 	email: "",
+
 	company: "",
 	telephone: "",
 	city: "",
 	country: "",
+	
 	product: "",
 	message: ""
 }
@@ -41,9 +43,11 @@ const FORM_VALIDATION = Yup.object().shape({
 	firstname: Yup.string().min(3).max(100).required("Please add your first name"),
 	lastname: Yup.string().min(3).max(100).required("Please add your lastname"),
 	email: Yup.string().email("Please add a valid email").min(5).max(100).required("Please add your email"),
+	
 	telephone: Yup.string().min(3).max(100).required("Please add a telephone"),
 	company: Yup.string().min(3).max(100),
 	city: Yup.string().min(3).max(100).required("Please add your city"),
+	
 	country: Yup.string().min(3).max(100).required("Please add your country"),
 	product: Yup.string().min(3).max(100).required("Please add product/ service name/details"),
 	message: Yup.string().min(20).max(1000).required("Quotation message in required"),
@@ -121,12 +125,12 @@ const QuotationForm = ({ onClose, postQuotation, errMessage, close, open, handle
 					</Grid>
 
 					<ButtonGroup variant="contained" sx={{marginTop: "30px"}}>
-						<Button type="submit" onClick={ submitHandler } color="secondary"  endIcon={<SendIcon/>}>
+						<Button type="submit" onClick={ submitHandler } color="secondary"  endIcon={<SendIcon/>}  style={{color : "black"}}>
 							Submit
 						</Button>
 						{ console.log("MODAL IN THE FORM IS", open) }
 						<Button onClick={ handleModal } color="error" endIcon={<ClearIcon/>}>
-							Cancel q
+							Cancel
 						</Button>
 					</ButtonGroup>
 				</Form>

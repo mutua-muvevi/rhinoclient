@@ -53,7 +53,7 @@ const FORM_VALIDATION = Yup.object().shape({
 	message: Yup.string().min(20).max(1000).required("Quotation message in required"),
 })
 
-const QuotationForm = ({ setOpen, postQuotation, errMessage }) => {
+const QuotationFormTwo = ({ setOpen, postQuotation, errMessage }) => {
 
 	const [ showSuccess, setShowSuccess ] = useState(false);
 
@@ -125,11 +125,11 @@ const QuotationForm = ({ setOpen, postQuotation, errMessage }) => {
 						</Grid>
 					</Grid>
 
-					<ButtonGroup variant="contained" type="submit" sx={{marginTop: "30px"}}>
-						<Button type="submit" color="secondary"  endIcon={<SendIcon/>}>
+					<ButtonGroup variant="contained"  sx={{marginTop: "30px"}}>
+						<Button type="submit" color="secondary"  endIcon={<SendIcon/>} style={{color : "black"}}>
 							Submit Quotation
 						</Button>
-						<Button onClick={() => setOpen(false)} type="submit" color="error" endIcon={<ClearIcon/>}>
+						<Button onClick={() => setOpen(false)} type="button" color="error" endIcon={<ClearIcon/>}>
 							Cancel Quotation
 						</Button>
 					</ButtonGroup>
@@ -148,4 +148,4 @@ const mapDispatchToProps = (dispatch) => ({
 	postQuotation: (values) => dispatch(postQuotation(values))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(QuotationForm)
+export default connect(mapStateToProps, mapDispatchToProps)(QuotationFormTwo)

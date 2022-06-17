@@ -195,7 +195,7 @@ const ShipmentTable = ({ data }) => {
 					<Button
 						variant="contained"
 						color="secondary"
-						sx={{minWidth: "120px"}}
+						sx={{minWidth: "120px", color: "black"}}
 						onClick= {
 							e => {
 								handleClick(e, cellValues)
@@ -219,7 +219,7 @@ const ShipmentTable = ({ data }) => {
 					<Button
 					variant="contained"
 					color="secondary"
-					sx={{minWidth: "120px"}}
+					sx={{minWidth: "120px", color: "black" }}
 					onClick= {
 						e => {
 							handleEditClick(e, cellValues)

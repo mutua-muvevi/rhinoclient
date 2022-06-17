@@ -33,7 +33,7 @@ const CardActionsInfo = styled(CardActions)(({theme}) => ({
 const buttonFont = {
 	fontFamily: "'Rubik', sans-serif",
 	fontWeight: 500,
-	color: "#fff"
+	color: "black"
 }
 
 
@@ -75,7 +75,7 @@ const SizeimgcontentfooterCard4 = ({ title, alt, image, paragraph,  modalData })
 			</CardContentInfo>
 			
 			<CardActionsInfo>
-				<Button onClick={handleModal} variant="contained" color="secondary">
+				<Button onClick={handleModal} variant="contained" color="secondary"  style={{color : "black"}}>
 					<Typography variant="body2" style={buttonFont}>
 						Explore
 					</Typography>

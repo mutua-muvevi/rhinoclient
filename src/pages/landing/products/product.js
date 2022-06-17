@@ -10,6 +10,8 @@ const containerWrapper = {
 
 const gridStyle = {
 	width: "100%",
+	display: "flex",
+	justifyContent: "center",
 }
 
 
@@ -32,7 +34,7 @@ const Products = () => {
 					<Grid container spacing={2}>
 						{
 							productItemInformation.map((item, i) => (
-								<Grid sx={gridStyle} key={i} item lg={4} sm={12} >
+								<Grid sx={gridStyle} key={i} item lg={4} md={6} sm={12} xs={12} >
 									<SizeimgcontentfooterCard4
 										setModal = {setModal}
 										modal = {modal}

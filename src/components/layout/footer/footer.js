@@ -170,7 +170,7 @@ const Footer = ({ sendEmail }) => {
 										size="small"
 										required
 									/>
-									<Button type="submit" variant="contained" color="secondary" endIcon={<SendIcon/>}>
+									<Button type="submit" variant="contained" color="secondary" endIcon={<SendIcon/>} style={{color : "black"}}>
 										Submit Email
 									</Button>
 								</FormGroup>
