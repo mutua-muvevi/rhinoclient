@@ -15,11 +15,12 @@ const containerWrapper = {
 
 const gridStyle = {
 	width: "100%",
+	display: "flex",
+	justifyContent: "center",
 }
 
 
 const Services = () => {
-	const [modal, setModal] = useState(false);
 
 	return (
 		<Grow style={{ transformOrigin: '10 20 50' }} in timeout={2000}>
@@ -36,10 +37,8 @@ const Services = () => {
 					<Grid container spacing={2}>
 						{
 							serviceItemInformation.map((item, i) => (
-								<Grid spacing={2} sx={gridStyle} key={i} item lg={4} sm={12} >
+								<Grid spacing={2} sx={gridStyle} key={i} item lg={4} md={6} sm={12} xs={12} >
 									<SizeimgcontentfooterCard4
-										modal={modal}
-										setModal={setModal}
 
 										title={item.title}
 										image={item.image.src}

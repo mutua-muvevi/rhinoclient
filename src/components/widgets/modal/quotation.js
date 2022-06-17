@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Divider, Grow, Modal, Typography} from "@mui/material";
+import { Box, Divider, Grow, Modal, ModalManager, Typography} from "@mui/material";
 import { styled } from "@mui/system";
 import QuotationForm from "../../../pages/landing/quotationform/quotationForm";
 
@@ -32,11 +32,12 @@ const headerFont = {
 	fontFamily: "'Rubik', sans-serif",
 }
 
-const QuotationModal = ({title, open, setOpen}) => {
+const QuotationModal = ({title, open, setOpen, close, handleModal}) => {
 
 	return (
 		<StyledModal
 			open={open}
+			onClose={close}
 			aria-labelledby="modal-modal-title"
 			aria-describedby="modal-modal-description"
 		>
@@ -48,7 +49,8 @@ const QuotationModal = ({title, open, setOpen}) => {
 					</Typography>
 					<Divider/>
 					<Box sx={{padding: 2}}>
-						<QuotationForm setOpen={setOpen} />
+						<QuotationForm setOpen={setOpen} close={close} open={open} handleModal={handleModal} />
+						{console.log("THE QUOTATION MODAL STATUS IS", open)}
 					</Box>
 				</StyledDetailedBox>
 			</Grow>
