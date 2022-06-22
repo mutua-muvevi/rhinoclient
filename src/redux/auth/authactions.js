@@ -69,7 +69,7 @@ export const registerUser = (formData) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.post(
-				`http://localhost:7000/api/user/register`,
+				`/api/user/register`,
 				formData,
 				{
 					headers: {
@@ -89,7 +89,7 @@ export const loginUser = (formData) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.post(
-				`http://localhost:7000/api/user/login`,
+				`/api/user/login`,
 				formData,
 				{
 					headers: {
@@ -111,7 +111,7 @@ export const forgotPassword = (formData) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.post(
-				`http://localhost:7000/api/user/forgotpassword`,
+				`/api/user/forgotpassword`,
 				formData,
 				{
 					headers: {
@@ -131,7 +131,7 @@ export const resetPassword = (values, params) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.post(
-				`http://localhost:7000/api/user/resetpasword/${params}`,
+				`/api/user/resetpasword/${params}`,
 				values,
 				{
 					headers: {

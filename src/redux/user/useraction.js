@@ -51,7 +51,7 @@ export const fetchUser = (token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
-				`http://localhost:7000/api/user/me`,
+				`/api/user/me`,
 				{
 					headers: {
 						Authorization:`Bearer ${token}`,
@@ -70,7 +70,7 @@ export const fetchAllUsers = (token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
-				`http://localhost:7000/api/user/users`,
+				`/api/user/users`,
 				{
 					headers: {
 						Authorization:`Bearer ${token}`,
@@ -89,7 +89,7 @@ export const fetchAllAdmin = (token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
-				`http://localhost:7000/api/user/admin`,
+				`/api/user/admin`,
 				{
 					headers: {
 						Authorization:`Bearer ${token}`,

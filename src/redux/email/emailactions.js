@@ -36,7 +36,7 @@ export const sendEmail = (values) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.post(
-				"http://localhost:7000/api/email/post",
+				"/api/email/post",
 				values
 			)
 			startSendingEmail()
@@ -51,7 +51,7 @@ export const getEmail = (token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
-				"http://localhost:7000/api/email/all",
+				"/api/email/all",
 				{
 					headers: {
 						"Content-Type": "application/json",

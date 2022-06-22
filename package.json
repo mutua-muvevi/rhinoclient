@@ -1,7 +1,7 @@
 {
-  "name": "newfrontend",
+  "name": "frontend",
   "version": "0.1.0",
-  "proxy": "http://localhost:7000/",
+  "proxy": "https://rhinojonapi.herokuapp.com/",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.8.2",

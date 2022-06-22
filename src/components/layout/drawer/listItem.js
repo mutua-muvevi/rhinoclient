@@ -74,12 +74,12 @@ export const listItemsTop = [
 ]
 
 export const listItemsBottom = [
-	{
-		label: "Settings",
-		path: "#",
-		icon:  <SettingsIcon sx={sx}/>,
-		nested: [
-			{}
-		],
-	},
+	// {
+	// 	label: "Settings",
+	// 	path: "#",
+	// 	icon:  <SettingsIcon sx={sx}/>,
+	// 	nested: [
+	// 		{}
+	// 	],
+	// },
 ]

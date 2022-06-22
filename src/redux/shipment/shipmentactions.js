@@ -97,7 +97,7 @@ export const getShipment = (token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
-				"http://localhost:7000/api/shipping/all",
+				"/api/shipping/all",
 				{
 					headers: {
 						"Content-Type": "application/json",
@@ -117,7 +117,7 @@ export const getSingleShipment = (id) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
-				`http://localhost:7000/api/shipping/item/${id}`
+				`/api/shipping/item/${id}`
 			)
 			getOneShipment()
 			dispatch(getOneShipmentSuccess(res.data.data))
@@ -131,7 +131,7 @@ export const getShipmentByTrackNo = (trackno) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.post(
-				`http://localhost:7000/api/shipping/item/track`,
+				`/api/shipping/item/track`,
 				trackno
 				)
 			getShipmentByTrack()
@@ -146,7 +146,7 @@ export const postAShipment = (values, token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.post(
-				`http://localhost:7000/api/shipping/post`,
+				`/api/shipping/post`,
 				values,
 				{
 					headers: {
@@ -168,7 +168,7 @@ export const editAShipment = (values, token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.put(
-				`http://localhost:7000/api/shipping/item/update`,
+				`/api/shipping/item/update`,
 				values,
 				{
 					headers: {
@@ -190,7 +190,7 @@ export const postEvent = (values, token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.put(
-				`http://localhost:7000/api/shipping/event/update`,
+				`/api/shipping/event/update`,
 				values,
 				{
 					headers: {

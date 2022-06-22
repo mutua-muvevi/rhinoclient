@@ -82,7 +82,7 @@ export const getStorage = (token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
-				`http://localhost:7000/api/storage/all`,
+				`/api/storage/all`,
 				{
 					headers: {
 						"Content-Type": "application/json",
@@ -102,7 +102,7 @@ export const getSingleStorage = (id) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
-				`http://localhost:7000/api/storage/item/${id}`
+				`/api/storage/item/${id}`
 			)
 			getOneStorage()
 			dispatch(getOneStorageSuccess(res.data.data))
@@ -116,7 +116,7 @@ export const getStorageByTrackNo = (trackno) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.post(
-				`http://localhost:7000/api/storage/item/track`,
+				`/api/storage/item/track`,
 				trackno
 				)
 			getStorageByTrack()
@@ -131,7 +131,7 @@ export const postAStorage = (values, token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.post(
-				`http://localhost:7000/api/storage/post`,
+				`/api/storage/post`,
 				values,
 				{
 					headers: {
@@ -153,7 +153,7 @@ export const editAStorage = (values, token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.put(
-				`http://localhost:7000/api/storage/item/update`,
+				`/api/storage/item/update`,
 				values,
 				{
 					headers: {

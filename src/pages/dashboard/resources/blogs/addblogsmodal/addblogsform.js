@@ -65,7 +65,18 @@ const INITIAL_FORM_STATE = {
 const FORM_VALIDATION = Yup.object().shape({
 	title: Yup.string().required("Please add the Blog's title"),
 	subtitle: Yup.string().required("Please add the Blog's subtitle"),
-	coverImage: Yup.string().required("Please add the Blog's cover image"),
+	// coverImage: Yup.string().required("Please add the Blog's cover image"),
+	coverImage:Yup.lazy((value) =>
+		/^data/.test(value)
+		? Yup.string()
+			.trim()
+			.matches(
+				/^data:([a-z]+\/[a-z0-9-+.]+(;[a-z-]+=[a-z0-9-]+)?)?(;base64)?,([a-z0-9!$&',()*+;=\-._~:@/?%\s]*)$/i,
+				'Must be a valid data URI',
+			)
+			.required()
+		: Yup.string().trim().url('Must be a valid URL').required(),
+	),
 	author: Yup.string().required("Please add the Blog's author"),
 	category: Yup.string().required("Please add the Blog's category"),
 
@@ -135,7 +146,7 @@ const dividerStyle = {
 }
 
 
-const StyledViewContentBody = styled(Box)(({ theme }) => ({
+const StyledViewContentBody = styled(Container)(({ theme }) => ({
 
 }))
 
@@ -254,7 +265,7 @@ const AddBlogsForm = ({writeNewBlog, blog }) => {
 
 				<Divider sx={dividerStyle} />
 
-				<StyledViewContentBody>
+				<StyledViewContentBody maxWidth="xl">
 
 					{
 						blog &&
@@ -339,20 +350,20 @@ const AddBlogsForm = ({writeNewBlog, blog }) => {
 					onSubmit = {submitHandler}
 				>
 					{
-						({ values }) => (
+						({ values , setFieldValue}) => (
 
 							<Form>
 								
 								<FormObserver writeNewBlog={writeNewBlog} />
 
-								<AddBlogImageModal open= {imageModal} setOpen = {setImageModal} />
+								<AddBlogImageModal open= {imageModal} setOpen = {setImageModal} setFieldValue = {setFieldValue} />
 
 								<AddBlogTitleModal open={titleModal} setOpen={setTitleModal}/>
 
 								<AddBlogContentModal open={contentModal} setOpen={setContentModal} values = {values}/>
 
 								<ButtonGroup variant="contained" type="submit" sx={{marginTop: "30px"}}>
-									<Button type="submit" color="secondary"  endIcon={<SendIcon/>}>
+									<Button type="submit" color="secondary" sx={{color : "black"}}  endIcon={<SendIcon/>}>
 										Submit
 									</Button>
 									<Button  type="button" color="error" endIcon={<ClearIcon/>}>
