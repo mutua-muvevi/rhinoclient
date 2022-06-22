@@ -151,9 +151,7 @@ export const logoutUser = () => {
 	return (dispatch) => {
 		try {
 			const storage = window.localStorage
-			console.log("THE STORAGE BEFORE", storage)
 			storage.removeItem("persist:root")
-			console.log("THE STORAGE AFTER", storage)
 		} catch (error) {
 			console.log(error)
 		}

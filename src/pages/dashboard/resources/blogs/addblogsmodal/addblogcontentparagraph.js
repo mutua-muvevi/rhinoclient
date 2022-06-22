@@ -47,7 +47,6 @@ const AddBlogContentParagraph = ({ open, setOpen }) => {
 			aria-describedby="modal-modal-description"
 		>
 			<StyledFormContainerWrapper>
-			{console.log("ADD BLOG VONTENT RENDERING")}
 				<StyledFormContainer>
 					<Typography sx={styledTitleFont} variant="h5" color="secondary" gutterBottom>
 						Add Paragraph Block

@@ -107,8 +107,6 @@ const AddShipmentForm = ({ token, postAShipment, errMessage, data}) => {
 			resetForm()
 		}
 
-		console.log(values)
-
 	}
 
 	return (

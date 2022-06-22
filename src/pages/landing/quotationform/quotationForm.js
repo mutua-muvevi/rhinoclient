@@ -128,7 +128,6 @@ const QuotationForm = ({ onClose, postQuotation, errMessage, close, open, handle
 						<Button type="submit" onClick={ submitHandler } color="secondary"  endIcon={<SendIcon/>}  style={{color : "black"}}>
 							Submit
 						</Button>
-						{ console.log("MODAL IN THE FORM IS", open) }
 						<Button onClick={ handleModal } color="error" endIcon={<ClearIcon/>}>
 							Cancel
 						</Button>

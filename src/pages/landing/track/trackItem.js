@@ -309,7 +309,6 @@ const TrackItem = ({ item, modal, onClose}) => {
 														</TableHead>
 
 														<TableBody>
-															{console.log("EL IS", el)}
 															<TableRow>
 																{
 																	[

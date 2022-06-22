@@ -58,7 +58,6 @@ const DashBlogTable = ({ data }) => {
 
 	const handleEditClick = (e, values) => {
 		setSingleBlog(values.row)
-		console.log("VALUES PARENT", singleBlog)
 		setEditModal(true)
 	}
 

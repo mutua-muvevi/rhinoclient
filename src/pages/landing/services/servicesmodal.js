@@ -177,7 +177,6 @@ const ServicesModal = ({open, handleClose, modal}) => {
 						>
 							Request Quotation
 						</Button>
-						{console.log("MODAL FROM THE PARENT", openItemFormModal)}
 						<QuotationModal 
 							title={`Request Quotation For ${modal.title}`}
 							open={openItemFormModal} 

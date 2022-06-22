@@ -47,7 +47,6 @@ const ServiceQuotationModal = ({title, open, setOpen}) => {
 					<Box sx={{padding: 2}}>
 						<QuotationForm 
 							onClose={() => setOpen(false)} />
-						{ console.log("THE MODAL VALUE IS", open) }
 					</Box>
 				</StyledDetailedBox>
 			</Grow>

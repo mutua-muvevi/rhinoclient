@@ -191,8 +191,6 @@ const FormObserver = ({ writeNewBlog }) => {
 	const { values } = useFormikContext();
 
 	useEffect(() => {
-		console.log("FORM OBSERVER VALUES :::", values);
-		console.log("WRITE NEW BLOG", writeNewBlog);
 		writeNewBlog(values)
 
 	}, [values, writeNewBlog]);
@@ -220,7 +218,6 @@ const AddBlogsForm = ({writeNewBlog, blog }) => {
 	}))
 
 	const submitHandler = (values) => {
-		console.log("Blog values", values)
 		alert("Blog values", values)
 	}
 

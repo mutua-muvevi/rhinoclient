@@ -66,7 +66,6 @@ const EventForm = ({token, postEvent, errMessage}) => {
 
 
 	const submitHandler = ( values, { resetForm } ) => {
-		console.log(values)
 		postEvent(values, token)
 		setTrackNo(values.trackno)
 		

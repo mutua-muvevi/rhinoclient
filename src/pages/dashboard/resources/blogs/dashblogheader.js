@@ -44,7 +44,6 @@ const DashBlogHeader = () => {
 			<Button variant="contained" onClick={handleBlogModal} color="secondary">
 				Create Blog
 			</Button>
-			{ console.log("The modal status is", open) }
 			<AddBlogModal  open={open} setOpen={setOpen}/>
 		</StyledDashBlogHeader>
 	)
