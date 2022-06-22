@@ -23,7 +23,6 @@ const initialState = {
 }
 
 const blogReducer = ( state = initialState, { type, payload } ) => {
-	console.log("THE REDUCER IS", payload)
 	switch(type){
 		case blogTypes.GET_ALL_BLOGS_START: 
 			return { 
@@ -164,7 +163,6 @@ const blogReducer = ( state = initialState, { type, payload } ) => {
 			};
 
 		case blogTypes.WRITE_NEW_BLOG: 
-			console.log("THE REDUCER PAYLOAD", payload)
 			return {
 				...state,
 				loading: false,

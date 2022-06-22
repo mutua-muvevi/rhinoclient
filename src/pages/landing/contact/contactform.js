@@ -42,7 +42,6 @@ const ContactForm = ({ sendContacts, errMessage }) => {
 
 	const submitHandler =  ( values, { resetForm }) => {
 		sendContacts(values)
-		console.log("The values WE GET INCLUDE...",values)
 				
 		if (!errMessage || errMessage === undefined){
 			setShowSuccess(true)

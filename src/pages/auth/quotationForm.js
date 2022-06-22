@@ -59,7 +59,6 @@ const QuotationFormTwo = ({ setOpen, postQuotation, errMessage }) => {
 
 	const submitHandler = (values, {resetForm}) => {
 		postQuotation(values)
-		console.log(values)
 		
 		
 		if (!errMessage || errMessage === undefined){

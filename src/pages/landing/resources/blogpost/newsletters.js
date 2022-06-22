@@ -66,7 +66,6 @@ const FORM_VALIDATION = Yup.object().shape({
 })
 
 const submitHandler = ( values, {resetForm} ) => {
-	console.log(values)
 	resetForm()
 }
 

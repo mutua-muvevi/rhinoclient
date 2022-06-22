@@ -182,7 +182,6 @@ const BlogViewModal = ({ values, open, setOpen }) => {
 							<Chip color="secondary" variant="outlined" label={values.author} sx={{marginLeft: "20px"}} />
 						</StyledAuthorArea>
 					</StyledViewContentBody>
-								{console.log("BLOG", values)}
 				</StyledModalContainerBox>
 			</StyledModal>
 		</>

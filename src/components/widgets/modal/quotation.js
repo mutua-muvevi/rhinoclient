@@ -50,7 +50,6 @@ const QuotationModal = ({title, open, setOpen, close, handleModal}) => {
 					<Divider/>
 					<Box sx={{padding: 2}}>
 						<QuotationForm setOpen={setOpen} close={close} open={open} handleModal={handleModal} />
-						{console.log("THE QUOTATION MODAL STATUS IS", open)}
 					</Box>
 				</StyledDetailedBox>
 			</Grow>

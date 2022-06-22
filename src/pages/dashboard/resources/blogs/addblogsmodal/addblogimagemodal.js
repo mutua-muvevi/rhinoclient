@@ -50,7 +50,6 @@ const AddBlogImageModal = ({ open, setOpen, setFieldValue }) => {
 
 	const imageInputHandler = (event) => {
 		setFieldValue("coverImage", event.currentTarget.files[0]);
-		console.log(event.currentTarget.files[0])
 	}
 
     return (

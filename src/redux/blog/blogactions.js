@@ -193,10 +193,10 @@ export const writeNewBlog = (blog) => {
 	return ( dispatch ) => {
 		try {
 			const article = blog
-			console.log("THA ARTICLE ACTION", article)
+			// console.log("THA ARTICLE ACTION", article)
 
 			const pathname = article.coverImage
-			console.log("COVER IMAGE IS", pathname)
+			// console.log("COVER IMAGE IS", pathname)
 
 
 			dispatch(writeBlog({

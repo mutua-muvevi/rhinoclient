@@ -56,7 +56,6 @@ const AddUserForm = ({ onClose,  registerUser, isAuthenticated, errMessage }) =>
 	const [ alertSuccessDisplay, setAlertSuccessDisplay ] = useState("");
 
 	const submitHandler = (values, { resetForm }) => {
-		console.log("SUBMITED USER", values)
 
 		setUser(values)
 		registerUser(values)
