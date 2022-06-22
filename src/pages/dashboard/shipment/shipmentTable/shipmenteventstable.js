@@ -1,23 +1,20 @@
 import React from 'react';
 
+import { Box, Card, CardHeader } from "@mui/material";
 import { styled } from "@mui/system";
-import { Card, CardHeader} from "@mui/material";
-
 import { DataGrid} from '@mui/x-data-grid';
-
-import { connect } from "react-redux";
 
 const StyledDataGridContainer = styled(Card)(({theme}) => ({
 	backgroundColor: "inherit",
 	borderRadius: theme.shape.default,
 	marginTop: "30px",
-	marginBottom: "30px"
+	marginBottom: "30px",
+	filter: "drop-shadow(5px 7px 5px rgba(0,0,0, 0.4))",
 }))
 
 const StyledDataGridHeader = styled(CardHeader)(({theme}) => ({
 	backgroundColor: "#131313",
-	color: theme.palette.secondary.main,
-	fontWeight: "700"
+	color: theme.palette.secondary.main
 }))
 
 const StyledDataGrid = styled(DataGrid)(({theme}) =>({
@@ -27,7 +24,7 @@ const StyledDataGrid = styled(DataGrid)(({theme}) =>({
 	borderRadius: theme.shape.default,
 	"& .MuiDataGrid-columnHeaders": {
 		backgroundColor: "#333333",
-		color: "whitesmoke",
+		color: theme.palette.secondary.main,
 		fontSize: 18,
 		paddingTop: 2,
 		paddingBottom: 2,
@@ -39,7 +36,10 @@ const StyledDataGrid = styled(DataGrid)(({theme}) =>({
 	}
 }))
 
-const UsersTable = ({ users }) => {
+
+
+
+const ShipmentEventsTable = ({ events }) => {
 
 	const columns = [
 		{
@@ -47,74 +47,62 @@ const UsersTable = ({ users }) => {
 			hide: true
 		},
 		{
-			field: "firstname",
+			field: "number",
 			align: "left",
 			headerAlign: "left",
-			headerName: "Firstname",
+			headerName: "Number",
+			width: 100
+		},
+		{
+			field: "timeevents",
+			align: "left",
+			headerAlign: "left",
+			headerName: "Time",
 			width: 200
 		},
 		{
-			field: "lastname",
+			field: "dateevents",
 			align: "left",
 			headerAlign: "left",
-			headerName: "Lastname",
+			headerName: "Date",
 			width: 200
 		},
 		{
-			field: "email",
+			field: "currentlocation",
 			align: "left",
 			headerAlign: "left",
-			headerName: "Email",
+			headerName: "Location",
 			width: 200
 		},
 		{
-			field: "telephone",
+			field: "shippingstatus",
 			align: "left",
 			headerAlign: "left",
-			headerName: "Telephone",
+			headerName: "Status",
 			width: 200
 		},
 		{
-			field: "city",
+			field: "notes",
 			align: "left",
 			headerAlign: "left",
-			headerName: "City",
-			width: 200
-		},
-		{
-			field: "country",
-			align: "left",
-			headerAlign: "left",
-			headerName: "Country",
-			width: 200
-		},
-		{
-			field: "createdAt",
-			align: "left",
-			headerAlign: "left",
-			headerName: "Date Joined",
-			width: 200
+			headerName: "Statements",
+			minWidth: 390
 		},
 	]
 
 	return (
 		<StyledDataGridContainer>
-			<StyledDataGridHeader title="List of Registered Clients" />
-
+			<StyledDataGridHeader title="Events Records" />
 			<StyledDataGrid
-				rows={users ? users : null}
+				rows={events}
 				columns={columns}
 				autoPageSize
 				autoHeight
-				getRowId={users => users._id}
-				pageSize={20}
+				getRowId={event => event._id}
+				pageSize={50}
 			/>
 		</StyledDataGridContainer>
 	)
 }
 
-const mapStateToProps = ({ user }) => ({
-	users: user.users
-})
-
-export default connect(mapStateToProps)(UsersTable);
+export default ShipmentEventsTable

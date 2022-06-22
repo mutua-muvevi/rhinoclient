@@ -60,6 +60,13 @@ const QuotationTable = ({ quotation }) => {
 			hide: true
 		},
 		{
+			field: "createdAt",
+			align: "left",
+			headerAlign: "left",
+			headerName: "Date",
+			width: 150
+		},
+		{
 			field: "firstname",
 			align: "left",
 			headerAlign: "left",

@@ -37,7 +37,7 @@ export const getQuotation = (token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
-				"http://localhost:7000/api/quotation/all",
+				"/api/quotation/all",
 				{
 					headers: {
 						"Content-Type": "application/json",
@@ -58,7 +58,7 @@ export const postQuotation = (values) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.post(
-				`http://localhost:7000/api/quotation/post`,
+				`/api/quotation/post`,
 				values
 				)
 			

@@ -1,16 +1,26 @@
-import { Divider, IconButton, List, ListItem, ListItemButton} from "@mui/material";
+import React from 'react';
+
+import { Divider, IconButton, List, ListItem, Link, ListItemButton} from "@mui/material";
 import MuiDrawer from '@mui/material/Drawer';
 import { styled } from "@mui/system";
-import React from 'react';
+
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItemText from '@mui/material/ListItemText';
+import SettingsPowerIcon from '@mui/icons-material/SettingsPower';
+
 import { listItemsBottom, listItemsTop } from "./listItem";
 import { NavLink } from "react-router-dom";
 import Logo from "../../../assets/images/logos/Rhino card logo - PNG.png"
 
 
 const drawerWidth = 240;
+
+const sx= {
+	minWidth: 0,
+	// mr: open ? 3 : 'auto',
+	justifyContent: 'center',
+}
 
 // open drawer mixin
 const openedMixin = (theme) => ({
@@ -143,6 +153,11 @@ const StyledListItemText = styled(ListItemText)(({ theme }) => ({
 }))
 
 const DrawerComponent = ({open, handleDrawerOpen, handleDrawerClose, theme}) => {
+
+	const logOut = () => {
+		window.localStorage.clear()
+	}
+
 	return (
 		<Drawer
 			anchor="left"
@@ -193,7 +208,7 @@ const DrawerComponent = ({open, handleDrawerOpen, handleDrawerClose, theme}) => 
 						</NavLink>
 					))
 				}
-				<Divider color="grey"/>
+				<Divider sx={{ color: "secondary" }}/>
 
 				{
 					listItemsBottom.map((el, index) => (
@@ -217,6 +232,25 @@ const DrawerComponent = ({open, handleDrawerOpen, handleDrawerClose, theme}) => 
 						</NavLink>
 					))
 				}
+				<Link  
+					href="/auth/login" 
+					onClick={logOut}
+					style={{textDecoration: "none", color: "white"}}
+				>
+					<ListItemButton
+						sx={{
+							minHeight: 48,
+							justifyContent: open ? 'initial' : 'center',
+							px: 2.5,
+						}}
+					>
+						<SettingsPowerIcon sx={sx}/>
+						<ListItemText primary="Sign out" sx={{ opacity: open ? 1 : 0 , marginLeft: "15px"}} />
+
+					</ListItemButton>
+				</Link>
+
+
 
 			</List>
 

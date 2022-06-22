@@ -1,9 +1,14 @@
+import React, { useState } from 'react';
+
 import { Button,  Grid, Typography } from "@mui/material";
 import { styled } from "@mui/system";
-import React, { useState } from 'react';
+
 import Sizeheaderlandscape4 from "../../../../components/widgets/cards/4sizeheaderlandscape/sizeheaderlandscape4";
 import AddUsermodal from "../addusermodal/addusermodal";
-import { userCards3Content } from "./contentusercard3";
+
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import PersonIcon from '@mui/icons-material/Person';
+
 
 const BoxWrapper = styled(Button)(({theme}) => ({
 	minHeight: "20vh",
@@ -35,10 +40,35 @@ const Usercards3 = () => {
 		setOpen(false)
 	}
 
+	const userCard = [
+		{
+			title : {
+				left: "Clients",
+				right: <Button>View</Button>
+			},
+			body: {
+				left: <PersonIcon  sx={{ fontSize : 30}} />,
+				right: 45
+			},
+			footer: "Increase from last year"
+		},
+		{
+			title : {
+				left: "Admins",
+				right: <Button>View</Button>
+			},
+			body: {
+				left: <AdminPanelSettingsIcon  sx={{ fontSize : 30}} />,
+				right: 3
+			},
+			footer: "Increase from last year"
+		},
+	]
+
 	return (
 		<Grid container spacing={0.5} >
 			{
-				userCards3Content.map((item, i) => (
+				userCard.map((item, i) => (
 					<Grid key={i} item lg={4} sm={12} xs={12}>
 						<Sizeheaderlandscape4 item={item} />
 					</Grid>

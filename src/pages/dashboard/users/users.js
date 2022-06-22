@@ -24,7 +24,6 @@ const Dashusers = ({ users }) => {
 	
 	return (
 		<Box>
-			{console.log("ALL THE USERS ARE", users)}
 			<StyledBreadCrumbs>
 				<Link
 					underline="hover"

@@ -124,7 +124,7 @@ const ForgotPasswordForm = ({ forgotPassword, errMessage, data }) => {
 						))
 					}
 					
-				<Button type="submit" variant="contained" color="secondary" endIcon={<SendIcon/>}>
+				<Button type="submit" variant="contained" color="secondary" endIcon={<SendIcon/>}  style={{color : "black"}} >
 					Reset Password
 				</Button>
 				</Form>

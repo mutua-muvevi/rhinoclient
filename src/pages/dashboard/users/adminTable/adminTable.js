@@ -16,7 +16,7 @@ const StyledDataGridContainer = styled(Card)(({theme}) => ({
 
 const StyledDataGridHeader = styled(CardHeader)(({theme}) => ({
 	backgroundColor: "#131313",
-	color: theme.palette.common.white
+	color: theme.palette.secondary.main
 }))
 
 const StyledDataGrid = styled(DataGrid)(({theme}) =>({
@@ -105,7 +105,7 @@ const AdminTable = ({ admin }) => {
 				autoPageSize
 				autoHeight
 				getRowId={admin => admin._id}
-				pageSize={100}
+				pageSize={20}
 			/>
 		</StyledDataGridContainer>
 	)

@@ -100,7 +100,7 @@ export const getBlogs = () => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
-				"http://localhost:7000/api/blogs/all"
+				"/api/blogs/all"
 			)
 			getAllBlogs()
 			dispatch(getAllBlogsSuccess(res.data.data))
@@ -114,7 +114,7 @@ export const getSingleBlog = (id) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
-				`http://localhost:7000/api/blogs/blog/${id}`
+				`/api/blogs/blog/${id}`
 			)
 			getOneBlog()
 			dispatch(getOneBlogSuccess(res.data.data))
@@ -128,7 +128,7 @@ export const postABlog = (values, token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.post(
-				`http://localhost:7000/api/blogs/post`,
+				`/api/blogs/post`,
 				values,
 				{
 					headers: {
@@ -150,7 +150,7 @@ export const editABlog = (values, token, id) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.put(
-				`http://localhost:7000/api/blogs/edit/${id}`,
+				`/api/blogs/edit/${id}`,
 				values,
 				{
 					headers: {
@@ -172,7 +172,7 @@ export const deleteABlog = (id, token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.delete(
-				`http://localhost:7000/api/blogs/delete/${id}`,
+				`/api/blogs/delete/${id}`,
 					{
 						headers: {
 							"Content-Type": "application/json",
@@ -193,7 +193,12 @@ export const writeNewBlog = (blog) => {
 	return ( dispatch ) => {
 		try {
 			const article = blog
-			console.log("THA ARTICLE ACTION", article)			
+			console.log("THA ARTICLE ACTION", article)
+
+			const pathname = article.coverImage
+			console.log("COVER IMAGE IS", pathname)
+
+
 			dispatch(writeBlog({
 				title: article.title,
 				subtitle: article.subtitle,

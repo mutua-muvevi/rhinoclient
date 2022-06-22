@@ -7,7 +7,6 @@ import MapIcon from '@mui/icons-material/Map';
 import CreateNewFolderIcon from '@mui/icons-material/CreateNewFolder';
 
 import SettingsIcon from '@mui/icons-material/Settings';
-import SettingsPowerIcon from '@mui/icons-material/SettingsPower';
 
 const sx= {
 	minWidth: 0,
@@ -75,20 +74,12 @@ export const listItemsTop = [
 ]
 
 export const listItemsBottom = [
-	{
-		label: "Settings",
-		path: "#",
-		icon:  <SettingsIcon sx={sx}/>,
-		nested: [
-			{}
-		],
-	},
-	{
-		label: "Logout",
-		path: "#",
-		icon:  <SettingsPowerIcon sx={sx}/>,
-		nested: [
-			{}
-		],
-	},
+	// {
+	// 	label: "Settings",
+	// 	path: "#",
+	// 	icon:  <SettingsIcon sx={sx}/>,
+	// 	nested: [
+	// 		{}
+	// 	],
+	// },
 ]

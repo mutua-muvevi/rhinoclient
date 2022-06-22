@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Container, Grid, Modal, Typography } from "@mui/material";
+import { Box, Container, Grid, Input , Modal, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 
 import { blogFormTitle } from "./addblogsinfo";
@@ -46,7 +46,13 @@ const StyledFormGridItem = styled(Grid)(({ theme }) =>({
 
 }))
 
-const AddBlogImageModal = ({ open, setOpen }) => {
+const AddBlogImageModal = ({ open, setOpen, setFieldValue }) => {
+
+	const imageInputHandler = (event) => {
+		setFieldValue("coverImage", event.currentTarget.files[0]);
+		console.log(event.currentTarget.files[0])
+	}
+
     return (
 		<StyledModal
 			open={open}
@@ -59,10 +65,12 @@ const AddBlogImageModal = ({ open, setOpen }) => {
 					<Typography sx={styledTitleFont} variant="h5" color="secondary" gutterBottom>
 						Add Blog Image
 					</Typography>
-					<TextField 
+					<Input  
 						name="coverImage"
 						label="Cover Image"
 						type="file"
+						variant="contained"
+						onChange={imageInputHandler} 
 					/>
 				</StyledFormContainer>
 			</StyledFormContainerWrapper>

@@ -38,12 +38,12 @@ export const navPages = [
 		icon: <TravelExploreIcon/>,
 		index: 4
 	},
-	{
-		label: "Resources",
-		path: "/landing/resources",
-		icon: <ArticleIcon/>,
-		index: 3
-	},
+	// {
+	// 	label: "Resources",
+	// 	path: "/landing/resources",
+	// 	icon: <ArticleIcon/>,
+	// 	index: 3
+	// },
 	{
 		label: "Contact",
 		path: "/landing/contact",

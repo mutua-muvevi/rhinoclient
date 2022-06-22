@@ -173,6 +173,7 @@ const ServicesModal = ({open, handleClose, modal}) => {
 							endIcon={<TextsmsIcon/>}
 							color="secondary"
 							variant="contained"
+							style={{color : "black"}}
 						>
 							Request Quotation
 						</Button>

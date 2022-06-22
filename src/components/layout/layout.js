@@ -39,7 +39,6 @@ const Layout = ({ token, user }) => {
 	};
 
 	if (!user){
-		console.log("The user is")
 		return <Navigate to="/auth/login"/>
 	};
 

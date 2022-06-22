@@ -35,16 +35,6 @@ export const eventModalFormContent = [
 
 	{
 		type: "text",
-		label: "Status",
-		required: true,
-		name:"shippingstatus",
-		xs:12,
-		md:4,
-		multiline: false,
-		rows: 1
-	},
-	{
-		type: "text",
 		label: "Description",
 		required: true,
 		name:"notes",
@@ -57,7 +47,7 @@ export const eventModalFormContent = [
 
 export const eventTime = {
 	type: "time",
-	label: "Item's Name",
+	label: "Time events",
 	required: true,
 	name:"timeevents",
 	xs:12,
@@ -71,4 +61,16 @@ export const eventDate = {
 	name:"dateevents",
 	xs:12,
 	sm:4
+}
+
+export const eventStatus = {
+	type: "text",
+	label: "Status",
+	required: true,
+	name:"shippingstatus",
+	options: {
+		"ongoing": "ongoing",
+		"success": "success",
+		"canceled": "canceled",
+	}
 }

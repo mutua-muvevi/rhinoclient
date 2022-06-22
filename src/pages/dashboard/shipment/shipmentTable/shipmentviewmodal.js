@@ -7,6 +7,7 @@ import EventRepeatIcon from '@mui/icons-material/EventRepeat';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 import EventModal from "./eventmodal";
+import ShipmentEventsTable from "./shipmenteventstable";
 
 const StyledModal = styled(Modal)(({ theme }) => ({
 	width: "85vw",
@@ -457,6 +458,10 @@ const ShipmentViewModal = ({ values, open, setOpen }) => {
 								))
 							}
 
+							<Grid item xs={12}>
+								<ShipmentEventsTable events={ values.events } />
+							</Grid>
+
 
 						</Grid>
 						<StyledButtonGroup>
@@ -464,6 +469,7 @@ const ShipmentViewModal = ({ values, open, setOpen }) => {
 								endIcon={<EventRepeatIcon/>} 
 								type="button" variant="contained" 
 								color="secondary"
+								style={{color : "black"}}
 								onClick={() => setEventModal(true)}
 								>
 									Add events

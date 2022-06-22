@@ -223,8 +223,8 @@ const TrackItem = ({ item, modal, onClose}) => {
 								<StyledHeaderTitle maxWidth="xl">
 
 									{
-										headerTitleList.map(e => (
-											<StyledHeaderTitleList container maxWidth="xl" spacing={2} rowSpacing={0}>
+										headerTitleList.map((e, i) => (
+											<StyledHeaderTitleList container maxWidth="xl" spacing={2} rowSpacing={0} key={i}>
 												<Grid item xl={2} lg={2} md={2} sm={12}>
 													<Typography variant="h5" style={styledHeaderTitles} gutterBottom>
 														{ e.name }
@@ -309,6 +309,7 @@ const TrackItem = ({ item, modal, onClose}) => {
 														</TableHead>
 
 														<TableBody>
+															{console.log("EL IS", el)}
 															<TableRow>
 																{
 																	[

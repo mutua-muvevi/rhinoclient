@@ -19,7 +19,7 @@ export const sendContacts = (values) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.post(
-				"http://localhost:7000/api/contact/post",
+				"/api/contact/post",
 				values
 			)
 			startSending()

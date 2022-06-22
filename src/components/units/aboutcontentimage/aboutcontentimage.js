@@ -54,7 +54,7 @@ const Aboutcontentimage = ({title, paragraph, link}) => {
 							))
 						}
 						<Link style={{textDecoration: "none"}} to={link}>
-							<Button endIcon={<AddCircleIcon/>} color="secondary" sx={{minWidth: "150px"}} variant="contained">
+							<Button endIcon={<AddCircleIcon/>} color="secondary" sx={{minWidth: "150px"}} variant="contained" style={{color : "black"}}>
 								Explore
 							</Button>
 						</Link>
