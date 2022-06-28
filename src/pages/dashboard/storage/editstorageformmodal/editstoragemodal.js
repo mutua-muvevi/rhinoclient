@@ -1,8 +1,12 @@
-import React from 'react'
+import React from 'react';
+
+import { Box, } from "@mui/material";
 
 const EditStorageModal = () => {
 	return (
-		<div>EditStorageModal</div>
+		<Box>
+			.
+		</Box>
 	)
 }
 
