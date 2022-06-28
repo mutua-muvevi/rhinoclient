@@ -82,7 +82,7 @@ export const getStorage = (token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
-				`/api/storage/all`,
+				`https://rhinojonapi.herokuapp.com/api/storage/all`,
 				{
 					headers: {
 						"Content-Type": "application/json",
@@ -102,7 +102,7 @@ export const getSingleStorage = (id) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
-				`/api/storage/item/${id}`
+				`https://rhinojonapi.herokuapp.com/api/storage/item/${id}`
 			)
 			getOneStorage()
 			dispatch(getOneStorageSuccess(res.data.data))
@@ -116,7 +116,7 @@ export const getStorageByTrackNo = (trackno) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.post(
-				`/api/storage/item/track`,
+				`https://rhinojonapi.herokuapp.com/api/storage/item/track`,
 				trackno
 				)
 			getStorageByTrack()
@@ -131,7 +131,7 @@ export const postAStorage = (values, token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.post(
-				`/api/storage/post`,
+				`https://rhinojonapi.herokuapp.com/api/storage/post`,
 				values,
 				{
 					headers: {
@@ -153,7 +153,7 @@ export const editAStorage = (values, token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.put(
-				`/api/storage/item/update`,
+				`https://rhinojonapi.herokuapp.com/api/storage/item/update`,
 				values,
 				{
 					headers: {

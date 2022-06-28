@@ -28,7 +28,7 @@ const Counter = () => {
 				<Grid container spacing={2}>
 					{
 						aboutCounterInfo.map((el, i) => (
-							<Grid key={i} outline sx={{textAlign: "center"}} item lg={3} sm={12}>
+							<Grid key={i} outline sx={{textAlign: "center", margin: "20px, auto"}} item lg={3} sm={12} xs={12}>
 								<Box>
 									{el.icon}
 								</Box>

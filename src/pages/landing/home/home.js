@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { Box, Button, Container, CssBaseline, Grid, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 
+import InfoIcon from '@mui/icons-material/Info';
+
 import Homenav from "../../../components/layout/homenav/homenav";
 import { ElevationScroll } from "../../../components/layout/homenav/elevationScroll";
 import { homeInfo, socialIcons } from "./homeinfo";
@@ -46,7 +48,7 @@ const StyledOverlay = styled(Box)(({ theme }) => ({
 	height: "100vh",
 	display: "flex",
 	justifyContent: "center",
-	alignItems: "end"
+	alignItems: "center"
 
 }))
 
@@ -72,7 +74,7 @@ const StyledButton = styled(Button)(({ theme }) => ({
 
 const StyledSocial = styled(Box)(({ theme }) => ({
 	marginTop: "20px",
-	marginBottom: "10vh",
+	marginBottom: "30px",
 }))
 
 const styledSocialHeader = {
@@ -125,7 +127,7 @@ const Home = (props) => {
 									) )
 								}
 								<Link to="/landing/about" style={{textDecoration: "none"}}>
-									<StyledButton variant="contained" color="secondary" type="button">
+									<StyledButton variant="contained" color="secondary" type="button" endIcon={<InfoIcon/>}>
 										Explore more
 									</StyledButton>
 								</Link>

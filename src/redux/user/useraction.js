@@ -51,7 +51,7 @@ export const fetchUser = (token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
-				`/api/user/me`,
+				`https://rhinojonapi.herokuapp.com/api/user/me`,
 				{
 					headers: {
 						Authorization:`Bearer ${token}`,
@@ -70,7 +70,7 @@ export const fetchAllUsers = (token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
-				`/api/user/users`,
+				`https://rhinojonapi.herokuapp.com/api/user/users`,
 				{
 					headers: {
 						Authorization:`Bearer ${token}`,
@@ -89,7 +89,7 @@ export const fetchAllAdmin = (token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
-				`/api/user/admin`,
+				`https://rhinojonapi.herokuapp.com/api/user/admin`,
 				{
 					headers: {
 						Authorization:`Bearer ${token}`,
