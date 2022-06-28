@@ -1,39 +1,39 @@
-import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
+import AirplanemodeInactiveIcon from '@mui/icons-material/AirplanemodeInactive';
 import DirectionsBoatFilledIcon from '@mui/icons-material/DirectionsBoatFilled';
-import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import FlightLandIcon from '@mui/icons-material/FlightLand';
 import { Button } from "@mui/material";
 
 export const transportCardsContent = [
 	{
 		title : {
-			left: "Land Transport",
-			right: <Button>View</Button>
+			left: "Successful Shipment",
+			right: <Button color="success">View</Button>
 		},
 		body: {
-			left: <LocalShippingIcon  sx={{ fontSize : 30}} />,
-			right: 34535
+			left: <FlightLandIcon  sx={{ fontSize : 30}} />,
+			right: 34
 		},
 		footer: "Increase from last year"
 	},
 	{
 		title : {
-			left: "Sea Transport",
-			right: <Button>View</Button>
+			left: "Ongoing Shipment",
+			right: <Button color="danger">View</Button>
 		},
 		body: {
 			left: <DirectionsBoatFilledIcon  sx={{ fontSize : 30}} />,
-			right: 635
+			right: 6
 		},
 		footer: "Increase from last year"
 	},
 	{
 		title : {
-			left: "Air Transport",
+			left: "Cancelled Shipment",
 			right: <Button>View</Button>
 		},
 		body: {
-			left: <FlightTakeoffIcon  sx={{ fontSize : 30}} />,
-			right: 245
+			left: <AirplanemodeInactiveIcon  sx={{ fontSize : 30}} />,
+			right: 2
 		},
 		footer: "Increase from last year"
 	},

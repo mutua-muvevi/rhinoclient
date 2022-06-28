@@ -5,12 +5,12 @@ import { Button } from "@mui/material";
 export const storageCards3Content = [
 	{
 		title : {
-			left: "Domestic Storage",
+			left: "Local Storage",
 			right: <Button>View</Button>
 		},
 		body: {
 			left: <WarehouseIcon  sx={{ fontSize : 30}} />,
-			right: 235
+			right: 23
 		},
 		footer: "Increase from last year"
 	},

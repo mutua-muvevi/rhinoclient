@@ -5,23 +5,23 @@ import { Button } from "@mui/material";
 export const shipmentCards3Content = [
 	{
 		title : {
-			left: "Domestic Transportation",
+			left: "Successful shipment",
 			right: <Button>View</Button>
 		},
 		body: {
 			left: <LocalShippingIcon  sx={{ fontSize : 30}} />,
-			right: 34535
+			right: 34
 		},
 		footer: "Increase from last year"
 	},
 	{
 		title : {
-			left: "International Transportation",
+			left: "Ongoing Shipment",
 			right: <Button>View</Button>
 		},
 		body: {
 			left: <FlightTakeoffIcon  sx={{ fontSize : 30}} />,
-			right: 635
+			right: 6
 		},
 		footer: "Increase from last year"
 	},

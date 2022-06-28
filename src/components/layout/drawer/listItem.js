@@ -6,7 +6,7 @@ import GroupIcon from '@mui/icons-material/Group';
 import MapIcon from '@mui/icons-material/Map';
 import CreateNewFolderIcon from '@mui/icons-material/CreateNewFolder';
 
-import SettingsIcon from '@mui/icons-material/Settings';
+// import SettingsIcon from '@mui/icons-material/Settings';
 
 const sx= {
 	minWidth: 0,

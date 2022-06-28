@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from "react-router-dom";
+import React, { useEffect } from 'react';
+import { Link, useNavigate } from "react-router-dom";
 
 import { Box,  Breadcrumbs, Card, Container, Divider, Grid, Grow, Typography } from "@mui/material";
 import { styled } from "@mui/system";
@@ -63,8 +63,16 @@ const StyledLoginSection = styled(Box)(({ theme }) => ({
 	marginTop: "20px"
 }))
 
-const Login = () => {
+const Login = ({ user }) => {
 
+	const navigate = useNavigate()
+
+	useEffect(() => {
+		if(user){
+			console.log("OUR USER IS", user)
+			return navigate("/dashboard")
+		}
+	}, [ user ])
 	
 	return (
 		<Grow style={{ transformOrigin: '10 20 50' }} in timeout={2000}>
