@@ -19,7 +19,7 @@ export const sendContacts = (values) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.post(
-				"/api/contact/post",
+				"https://rhinojonapi.herokuapp.com/api/contact/post",
 				values
 			)
 			startSending()

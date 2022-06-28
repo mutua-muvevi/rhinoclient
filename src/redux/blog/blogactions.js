@@ -100,7 +100,7 @@ export const getBlogs = () => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
-				"/api/blogs/all"
+				"https://rhinojonapi.herokuapp.com/api/blogs/all"
 			)
 			getAllBlogs()
 			dispatch(getAllBlogsSuccess(res.data.data))
@@ -114,7 +114,7 @@ export const getSingleBlog = (id) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
-				`/api/blogs/blog/${id}`
+				`https://rhinojonapi.herokuapp.com/api/blogs/blog/${id}`
 			)
 			getOneBlog()
 			dispatch(getOneBlogSuccess(res.data.data))
@@ -128,7 +128,7 @@ export const postABlog = (values, token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.post(
-				`/api/blogs/post`,
+				`https://rhinojonapi.herokuapp.com/api/blogs/post`,
 				values,
 				{
 					headers: {
@@ -150,7 +150,7 @@ export const editABlog = (values, token, id) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.put(
-				`/api/blogs/edit/${id}`,
+				`https://rhinojonapi.herokuapp.com/api/blogs/edit/${id}`,
 				values,
 				{
 					headers: {
@@ -172,7 +172,7 @@ export const deleteABlog = (id, token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.delete(
-				`/api/blogs/delete/${id}`,
+				`https://rhinojonapi.herokuapp.com/api/blogs/delete/${id}`,
 					{
 						headers: {
 							"Content-Type": "application/json",

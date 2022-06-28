@@ -36,7 +36,7 @@ export const sendEmail = (values) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.post(
-				"/api/email/post",
+				"https://rhinojonapi.herokuapp.com/api/email/post",
 				values
 			)
 			startSendingEmail()
@@ -51,7 +51,7 @@ export const getEmail = (token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
-				"/api/email/all",
+				"https://rhinojonapi.herokuapp.com/api/email/all",
 				{
 					headers: {
 						"Content-Type": "application/json",

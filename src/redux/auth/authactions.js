@@ -69,7 +69,7 @@ export const registerUser = (formData) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.post(
-				`/api/user/register`,
+				`https://rhinojonapi.herokuapp.com/api/user/register`,
 				formData,
 				{
 					headers: {
@@ -89,7 +89,7 @@ export const loginUser = (formData) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.post(
-				`/api/user/login`,
+				`https://rhinojonapi.herokuapp.com/api/user/login`,
 				formData,
 				{
 					headers: {
@@ -111,7 +111,7 @@ export const forgotPassword = (formData) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.post(
-				`/api/user/forgotpassword`,
+				`https://rhinojonapi.herokuapp.com/api/user/forgotpassword`,
 				formData,
 				{
 					headers: {
@@ -131,7 +131,7 @@ export const resetPassword = (values, params) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.post(
-				`/api/user/resetpasword/${params}`,
+				`https://rhinojonapi.herokuapp.com/api/user/resetpasword/${params}`,
 				values,
 				{
 					headers: {
