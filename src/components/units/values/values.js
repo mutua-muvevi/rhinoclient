@@ -23,7 +23,12 @@ const gridItemContainer = {
 const imageBackground = {
 	backgroundImage: `url(https://res.cloudinary.com/dqweh6zte/image/upload/v1649764305/Rhino%20John%20Background%20Video/Rhinojon%20Product%20images/black_staff_yfqt5i.jpg)`,
 	backgroundPosition: "center",
-	backgroundSize: "cover"
+	backgroundSize: "cover",
+	display: {
+		xs: "none",
+		sm: "none",
+		md: "block"
+	}
 }
 
 const leftRightContainer = {

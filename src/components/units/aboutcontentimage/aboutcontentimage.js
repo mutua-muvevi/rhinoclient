@@ -26,6 +26,11 @@ const imageBackground = {
 	backgroundImage: `url(${Image})`,
 	backgroundPosition: "center",
 	backgroundSize: "cover",
+	display: {
+		xs: "none",
+		sm: "none",
+		md: "block"
+	}
 }
 
 
