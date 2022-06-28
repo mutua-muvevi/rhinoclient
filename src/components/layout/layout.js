@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Navigate } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 
 import { Box, CssBaseline, Fade} from "@mui/material";
 import { useTheme } from '@mui/material/styles';
@@ -38,9 +38,14 @@ const Layout = ({ token, user }) => {
 		setOpen(false);
 	};
 
-	if (!user){
-		return <Navigate to="/auth/login"/>
-	};
+	const navigate = useNavigate()
+
+	useEffect(() => {
+		if (!user){
+			return navigate("/auth/login")
+		};
+	}, [ user ])
+
 
 	return (
 		<Fade  in timeout={1000}>

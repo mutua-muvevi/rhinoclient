@@ -48,7 +48,7 @@ const StyledOverlay = styled(Box)(({ theme }) => ({
 	height: "100vh",
 	display: "flex",
 	justifyContent: "center",
-	alignItems: "end"
+	alignItems: "center"
 
 }))
 
@@ -74,7 +74,7 @@ const StyledButton = styled(Button)(({ theme }) => ({
 
 const StyledSocial = styled(Box)(({ theme }) => ({
 	marginTop: "20px",
-	marginBottom: "10vh",
+	marginBottom: "30px",
 }))
 
 const styledSocialHeader = {
