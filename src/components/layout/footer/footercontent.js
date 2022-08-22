@@ -12,7 +12,7 @@ export const footerLeft = {
 	title: "Rhino John Prime Metals",
 	paragraph: [
 		`
-			Rhinojohn Prime Metal Internatonal Limited is a global company that 
+			Rhinojohn Prime Metals Internatonal Limited is a global company that 
 			has grown to become one of the leading players in the precious 
 			metals and stones value chain. We focus on trading, safekeeping, 
 			logistics and delivery of these valuable products.
