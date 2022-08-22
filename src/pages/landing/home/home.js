@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 
-import { Box, Button, Container, CssBaseline, Grid, Typography } from "@mui/material";
+import { Box, Button, Container, CssBaseline, Grid, Grow, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 
 import InfoIcon from '@mui/icons-material/Info';
@@ -58,13 +58,24 @@ const StyledContentContainer = styled(Container)(({ theme }) => ({
 }))
 
 const styledHeader = {
-	fontWeight: "700",
-	color: "white",
+	typography: { 
+		lg: "h1",
+		md: "h3",
+		sm: 'h5',
+		xs: 'h5'
+	},
+	fontWeight: 700
 }
 
-const styledParagraph = {
-	color: "white",
-	fontSize: "20px"
+const styledParagraph = { 
+	typography: 
+	{
+		lg: "30px",
+		md: "subtitle1",
+		sm: 'body1',
+		xs: 'body2'
+	},
+	color: "white"
 }
 
 const StyledButton = styled(Button)(({ theme }) => ({
@@ -78,8 +89,15 @@ const StyledSocial = styled(Box)(({ theme }) => ({
 }))
 
 const styledSocialHeader = {
-	color: "white",
-	marginTop: "50px"
+	marginTop: "4vh",
+	typography: 
+	{
+		lg: "h6",
+		md: "h6",
+		sm: 'subtitle1',
+		xs: 'subtitle1'
+	},
+	color: "white"
 }
 
 const StyledSocialIcons = styled(Box)(({ theme }) => ({
@@ -115,40 +133,43 @@ const Home = (props) => {
 						</video>
 
 						<StyledOverlay>
-							<StyledContentContainer maxWidth="xl">
-								<Typography variant="h3" sx={styledHeader} gutterBottom>
-									{ homeInfo.title }
-								</Typography>
-								{
-									homeInfo.paragraph.map(p => (
-										<Typography variant="body1" key={p} sx={styledParagraph} gutterBottom>
-											{p}
-										</Typography>
-									) )
-								}
-								<Link to="/landing/about" style={{textDecoration: "none"}}>
-									<StyledButton variant="contained" color="secondary" type="button" endIcon={<InfoIcon/>}>
-										Explore more
-									</StyledButton>
-								</Link>
+							<Grow style={{ transformOrigin: '10 20 50' }} in timeout={2000}>
 
-								<StyledSocial>
-									<Typography variant="h5" sx={styledSocialHeader} gutterBottom>
-										Our social media pages
+								<StyledContentContainer maxWidth="xl">
+									<Typography variant="h3" sx={styledHeader} gutterBottom>
+										{ homeInfo.title }
 									</Typography>
-									<StyledSocialIcons>
-										{
-											socialIcons.map((el, i) => (
-												<a href={el.link} target="_blank" key={i} rel="noreferrer" style={socialLink}>
-													<Box >
-														{ el.icon }
-													</Box>
-												</a>
-											))
-										}
-									</StyledSocialIcons>
-								</StyledSocial>
-							</StyledContentContainer>
+									{
+										homeInfo.paragraph.map(p => (
+											<Typography variant="body1" key={p} sx={styledParagraph} gutterBottom>
+												{p}
+											</Typography>
+										) )
+									}
+									<Link to="/landing/about" style={{textDecoration: "none"}}>
+										<StyledButton variant="contained" color="secondary" type="button" endIcon={<InfoIcon/>}>
+											Explore more
+										</StyledButton>
+									</Link>
+
+									<StyledSocial>
+										<Typography variant="h5" sx={styledSocialHeader} gutterBottom>
+											Our social media pages
+										</Typography>
+										<StyledSocialIcons>
+											{
+												socialIcons.map((el, i) => (
+													<a href={el.link} target="_blank" key={i} rel="noreferrer" style={socialLink}>
+														<Box >
+															{ el.icon }
+														</Box>
+													</a>
+												))
+											}
+										</StyledSocialIcons>
+									</StyledSocial>
+								</StyledContentContainer>
+							</Grow>
 						</StyledOverlay>
 
 					</StyledNavGrid>
