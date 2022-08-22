@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
-import { ThemeProvider } from "@mui/material/styles";
+import { ThemeProvider, responsiveFontSizes, } from "@mui/material/styles";
 import {theme} from "./theme/muitheme";
 
 import Home from "./pages/landing/home/home";
@@ -32,6 +32,8 @@ import Login from "./pages/auth/login/login";
 import ForgotPassword from "./pages/auth/forgotpassword/forgotpassword";
 import ResetPassword from "./pages/auth/resetpassword/resetpassword";
 
+import Notfound from "./components/errorpage/notfound";
+
 import { connect } from "react-redux";
 
 import { fetchAllAdmin, fetchAllUsers, fetchUser } from "./redux/user/useraction"
@@ -45,6 +47,7 @@ import NewsPost from "./pages/landing/resources/newspost/newspost";
 import DashResources from "./pages/dashboard/resources/resourcesadmin";
 import { getBlogs } from "./redux/blog/blogactions";
 
+// theme = responsiveFontSizes()
 
 function App({ 
 	token, 
@@ -92,6 +95,7 @@ function App({
 			<BrowserRouter>
 				<ThemeProvider theme={theme}>
 					<Routes>
+						<Route path="*" element={<Notfound/>}/>
 						<Route path="/" element={<Home/>} />
 
 						<Route path="/landing" element={<Landinglayout/>}>

@@ -1,6 +1,6 @@
-import { createTheme } from "@mui/material/styles";
+import { createTheme,  } from "@mui/material/styles";
 
-export const theme = createTheme({
+export let theme = createTheme({
 	palette: {
 		drawer: {
 			default: "#131313"
@@ -63,27 +63,35 @@ export const theme = createTheme({
 		fontFamily: "'Rubik', sans-serif",
 		h1: {
 			fontFamily: "'Rubik', sans-serif",
+			fontWeight: "500 !important",
 		},
 		h2: {
 			fontFamily: "'Rubik', sans-serif",
+			fontWeight: "500 !important",
 		},
 		h3: {
 			fontFamily: "'Rubik', sans-serif",
+			fontWeight: "500 !important",
 		},
 		h4: {
 			fontFamily: "'Rubik', sans-serif",
+			fontWeight: "500 !important",
 		},
 		h5: {
 			fontFamily: "'Rubik', sans-serif",
+			fontWeight: "500 !important",
 		},
 		h6: {
 			fontFamily: "'Rubik', sans-serif",
+			fontWeight: "500 !important",
 		},
 		subtitle1: {
 			fontFamily: "'Fira Sans', sans-serif",
+			fontWeight: "500 important",
 		},
 		subtitle2: {
 			fontFamily: "'Fira Sans', sans-serif",
+			fontWeight: "500 important",
 		},
 		body1: {
 			fontFamily: "'Fira Sans', sans-serif",
