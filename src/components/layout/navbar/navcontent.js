@@ -27,7 +27,7 @@ export const navPages = [
 		index: 3
 	},
 	{
-		label: "Service",
+		label: "Services",
 		path: "/landing/services",
 		icon: <LocalShippingIcon/>,
 		index: 2

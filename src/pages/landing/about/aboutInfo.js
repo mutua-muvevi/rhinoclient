@@ -89,12 +89,12 @@ export const aboutCoreValuesContent = {
 		{
 			icon: <PersonAddAlt1Icon sx={{fontSize: 35}}/>,
 			valuesTitle: "Accountability",
-			valueText: "Accountability breeds responsibility, and we at Rhinojohn Prime Metal International Limited hold ourselves accountable for everything we do."
+			valueText: "Accountability breeds responsibility that is why we hold ourselves accountable for everything we do."
 		},
 		{
 			icon: <VerifiedIcon sx={{fontSize: 35}}/>,
 			valuesTitle: "Excellence",
-			valueText: "We strive to set the highest standard of quality in everything we do"
+			valueText: "We strive to set the highest standards of quality in everything we do"
 		}
 	]
 
@@ -114,11 +114,11 @@ export const aboutCounterInfo = [
 	{
 		icon: <DiamondIcon  sx={{ fontSize: 50 }}/>,
 		number: 75,
-		text: "Tonnes tonnes of Mineral Sold"
+		text: "Tonnes of Mineral Sold"
 	},
 	{
 		icon: <WarehouseIcon  sx={{ fontSize: 50 }}/>,
-		number: 345,
+		number: 57,
 		text: "Tonnes in Storage"
 	},
 ]
