@@ -5,6 +5,8 @@ import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import ArticleIcon from '@mui/icons-material/Article';
 import WarehouseIcon from '@mui/icons-material/Warehouse';
 
+import {GiRefinery} from "react-icons/gi"
+
 export const serviceBannerInfo = {
 	title: "Our Services",
 	subTitle: "",
@@ -264,5 +266,40 @@ export const serviceItemInformation = [
 				},
 			]
 		}
-	}
+	},
+	{
+		title: "Testing and Refinery",
+		image: {
+			src: "https://res.cloudinary.com/dqweh6zte/image/upload/v1661339653/Rhino%20John%20Background%20Video/Rhinojon%20Product%20images/refining_s2hkiw.jpg",
+			alt: "Storage Services,produced by Rhino John Prime Metals"
+		},
+		paragraph: [
+			`Gold refinery is set to be constructed in Nairobi, Kenya, by end of year 2023, to offer small-scale and artisanal miners the means to add value from gold extracted from mines across the East and Central Africa region and get substantial incomes while trading for the international market with the gold increased purity to 99.99%.`,
+			` This facility will provide additional services including but not limited to recycling of scrap precious metals, melting and conversion of gold from dusts, nuggets into gold bars, precious metals quality assay and minting.`,
+			
+		],
+		id: "testing-and-refining",
+		modal: {
+			title: "Testing and Refining",
+			id: "testing-and-refining-modal",
+			icon: <GiRefinery color="#fff" style={{fontSize: "180px"}}/>,
+			listIcon: <GiRefinery color="secondary"/>,
+			image: {
+				src: "https://res.cloudinary.com/dqweh6zte/image/upload/v1661339653/Rhino%20John%20Background%20Video/Rhinojon%20Product%20images/refining_s2hkiw.jpg",
+				alt: "Refinery services offered by Rhino John Prime Metals"
+			}, 
+			paragraph: [
+				`Gold refinery is set to be constructed in Nairobi, Kenya, by end of year 2023, to offer small-scale and artisanal miners the means to add value from gold extracted from mines across the East and Central Africa region and get substantial incomes while trading for the international market with the gold increased purity to 99.99%.`,
+				`This facility will provide additional services including but not limited to recycling of scrap precious metals, melting and conversion of gold from dusts, nuggets into gold bars, precious metals quality assay and minting.`,
+				`Currently, for the purpose of easy trade, we are operating a melting facility for form conversion, recycling and assaying of precious metals mainly for exports.`
+			],
+			list: [
+				{
+					title: ` `,
+					paragraph: [" "],
+					listItems: [``]
+				},
+			]
+		}
+	},
 ]

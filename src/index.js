@@ -23,3 +23,4 @@ ReactDOM.render(
 );
 
 reportWebVitals();
+// reportWebVitals(console.log);

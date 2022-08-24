@@ -135,7 +135,7 @@ export const resetPassword = (values, params) => {
 				values,
 				{
 					headers: {
-					"Content-Type": "application/json",
+						"Content-Type": "application/json",
 					},
 				}
 			)
