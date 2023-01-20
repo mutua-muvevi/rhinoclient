@@ -51,7 +51,7 @@ export const fetchUser = (token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
-				`https://rhinojonapi.herokuapp.com/api/user/me`,
+				`https://drab-jade-bison-cuff.cyclic.app/api/user/me`,
 				{
 					headers: {
 						Authorization:`Bearer ${token}`,
@@ -70,7 +70,7 @@ export const fetchAllUsers = (token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
-				`https://rhinojonapi.herokuapp.com/api/user/users`,
+				`https://drab-jade-bison-cuff.cyclic.app/api/user/users`,
 				{
 					headers: {
 						Authorization:`Bearer ${token}`,
@@ -89,7 +89,7 @@ export const fetchAllAdmin = (token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
-				`https://rhinojonapi.herokuapp.com/api/user/admin`,
+				`https://drab-jade-bison-cuff.cyclic.app/api/user/admin`,
 				{
 					headers: {
 						Authorization:`Bearer ${token}`,

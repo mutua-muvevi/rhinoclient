@@ -37,7 +37,7 @@ export const getQuotation = (token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
-				"https://rhinojonapi.herokuapp.com/api/quotation/all",
+				"https://drab-jade-bison-cuff.cyclic.app/api/quotation/all",
 				{
 					headers: {
 						"Content-Type": "application/json",
@@ -58,7 +58,7 @@ export const postQuotation = (values) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.post(
-				`https://rhinojonapi.herokuapp.com/api/quotation/post`,
+				`https://drab-jade-bison-cuff.cyclic.app/api/quotation/post`,
 				values
 				)
 			

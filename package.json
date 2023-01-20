@@ -1,7 +1,7 @@
 {
   "name": "frontend",
   "version": "0.1.0",
-  "proxy": "https://rhinojonapi.herokuapp.com/",
+  "proxy": "https://drab-jade-bison-cuff.cyclic.app/",
   "homepage": "https://rhinojonprimemetals.com",
   "private": true,
   "dependencies": {
