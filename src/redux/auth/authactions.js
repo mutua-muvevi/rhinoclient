@@ -69,7 +69,7 @@ export const registerUser = (formData) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.post(
-				`https://rhinojonapi.herokuapp.com/api/user/register`,
+				`https://drab-jade-bison-cuff.cyclic.app/api/user/register`,
 				formData,
 				{
 					headers: {
@@ -89,7 +89,7 @@ export const loginUser = (formData) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.post(
-				`https://rhinojonapi.herokuapp.com/api/user/login`,
+				`https://drab-jade-bison-cuff.cyclic.app/api/user/login`,
 				formData,
 				{
 					headers: {
@@ -111,7 +111,7 @@ export const forgotPassword = (formData) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.post(
-				`https://rhinojonapi.herokuapp.com/api/user/forgotpassword`,
+				`https://drab-jade-bison-cuff.cyclic.app/api/user/forgotpassword`,
 				formData,
 				{
 					headers: {
@@ -131,7 +131,7 @@ export const resetPassword = (values, params) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.post(
-				`https://rhinojonapi.herokuapp.com/api/user/resetpasword/${params}`,
+				`https://drab-jade-bison-cuff.cyclic.app/api/user/resetpasword/${params}`,
 				values,
 				{
 					headers: {

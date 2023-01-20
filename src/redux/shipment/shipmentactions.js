@@ -97,7 +97,7 @@ export const getShipment = (token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
-				"https://rhinojonapi.herokuapp.com/api/shipping/all",
+				"https://drab-jade-bison-cuff.cyclic.app/api/shipping/all",
 				{
 					headers: {
 						"Content-Type": "application/json",
@@ -117,7 +117,7 @@ export const getSingleShipment = (id) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
-				`https://rhinojonapi.herokuapp.com/api/shipping/item/${id}`
+				`https://drab-jade-bison-cuff.cyclic.app/api/shipping/item/${id}`
 			)
 			getOneShipment()
 			dispatch(getOneShipmentSuccess(res.data.data))
@@ -131,7 +131,7 @@ export const getShipmentByTrackNo = (trackno) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.post(
-				`https://rhinojonapi.herokuapp.com/api/shipping/item/track`,
+				`https://drab-jade-bison-cuff.cyclic.app/api/shipping/item/track`,
 				trackno
 				)
 			getShipmentByTrack()
@@ -146,7 +146,7 @@ export const postAShipment = (values, token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.post(
-				`https://rhinojonapi.herokuapp.com/api/shipping/post`,
+				`https://drab-jade-bison-cuff.cyclic.app/api/shipping/post`,
 				values,
 				{
 					headers: {
@@ -168,7 +168,7 @@ export const editAShipment = (values, token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.put(
-				`https://rhinojonapi.herokuapp.com/api/shipping/item/update`,
+				`https://drab-jade-bison-cuff.cyclic.app/api/shipping/item/update`,
 				values,
 				{
 					headers: {
@@ -190,7 +190,7 @@ export const postEvent = (values, token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.put(
-				`https://rhinojonapi.herokuapp.com/api/shipping/event/update`,
+				`https://drab-jade-bison-cuff.cyclic.app/api/shipping/event/update`,
 				values,
 				{
 					headers: {
