@@ -192,7 +192,7 @@ export const serviceItemInformation = [
 		}
 	},
 	{
-		title: "Custom Clearance",
+		title: "Customs Clearance",
 		image: {
 			src: "https://res.cloudinary.com/dqweh6zte/image/upload/v1649750889/Rhino%20John%20Background%20Video/Rhinojon%20Product%20images/clearance-person-transformed_cklloq.jpg",
 			alt: "Customs Clearance, Rhino John Prime Metals"

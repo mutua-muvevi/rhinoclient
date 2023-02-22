@@ -170,7 +170,7 @@ export const staticdata = {
 						image: Image,
 						alt:"some information here"
 					},
-					cardTitle: "Custom Clearance",
+					cardTitle: "Customs Clearance",
 					cardContent: "From our vast connection with fully licensed customs brokerage companies, we provide clients with the best services with regard to clearance of shipments with customs",
 					link:""
 				},
