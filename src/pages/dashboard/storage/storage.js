@@ -8,6 +8,7 @@ import WarehouseIcon from '@mui/icons-material/Warehouse';
 
 import Storagecards3 from "./3storagecards/storagecards3";
 import StorageTable from "./storageTable/storagetable";
+import { connect } from 'react-redux';
 
 const StyledBreadCrumbs = styled(Breadcrumbs)(({theme}) => ({
 	marginBottom: "20px"
@@ -18,8 +19,22 @@ const headerFont = {
 	fontFamily: "'Rubik', sans-serif",
 }
 
-const Dashstorage = () => {
-	
+function filterByAddress(objects) {
+	return objects.filter(obj => {
+	  return /nairobi|kenya|.+?(?=\s*\d)/i.test(obj.storageaddress);
+	});
+}
+
+function filterOutByAddress(objects) {
+	return objects.filter(obj => {
+	  return !/nairobi|kenya|.+?(?=\s*\d)/i.test(obj.storageaddress);
+	});
+}
+
+const Dashstorage = ({storage, }) => {
+
+	const storageLocal = filterByAddress(storage)
+	const internationalStorage = filterOutByAddress(storage)
 
 	return (
 		<Box>
@@ -39,11 +54,20 @@ const Dashstorage = () => {
 					<WarehouseIcon sx={{ mr: 0.5 }} fontSize="inherit" />
 					Storage
 				</Typography>
+				
 			</StyledBreadCrumbs>
-			<Storagecards3/>
+			<Storagecards3
+				storage={storage}
+				storageLocal={storageLocal}
+				internationalStorage={internationalStorage}
+			/>
 			<StorageTable/>
 		</Box>
 	)
 }
 
-export default Dashstorage
+const mapStateToProps = ({storage}) => ({
+	storage : storage.data,
+})
+
+export default connect(mapStateToProps)(Dashstorage)
