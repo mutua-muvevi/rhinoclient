@@ -5,8 +5,10 @@ import Sizeheaderlandscape4 from "../../../../components/widgets/cards/4sizehead
 import Addstoragemodal from "../addstoragemodal/addstoragemodal";
 import PublicSharpIcon from '@mui/icons-material/PublicSharp';
 import WarehouseIcon from '@mui/icons-material/Warehouse';
+import LocalStorageModal from "./localstorage";
+import InternationalStorageModal from "./internationalstorage";
 
-const BoxWrapper = styled(Button)(({theme}) => ({
+const ButtonWrapper = styled(Button)(({theme}) => ({
 	minHeight: "20vh",
 	width: "98%",
 	margin: "10px",
@@ -26,13 +28,23 @@ const headerFont = {
 
 const Storagecards3 = ({storage, storageLocal, internationalStorage}) => {
 
-	const [open, setOpen] = useState(false)
+	const [open, setOpen] = useState(false);
+	const [openLocalStorageModal, setOpenLocalStorageModal] = useState(false);
+	const [openInternationalStorageModal, setOpenInternationalStorageModal] = useState(false);
+	
+	const handleLocalStorageModal = () => {
+		setOpenLocalStorageModal(true);
+	}
+
+	const handleInternationalStorageModal = () => {
+		setOpenInternationalStorageModal(true);
+	}
 
 	const storageCards3Content = [
 		{
 			title : {
-				left: "Local Storage",
-				right: <Button>View</Button>
+				left: "Local Storages",
+				action: handleLocalStorageModal
 			},
 			body: {
 				left: <WarehouseIcon  sx={{ fontSize : 30}} />,
@@ -43,7 +55,7 @@ const Storagecards3 = ({storage, storageLocal, internationalStorage}) => {
 		{
 			title : {
 				left: "International Storage",
-				right: <Button>View</Button>
+				action: handleInternationalStorageModal
 			},
 			body: {
 				left: <PublicSharpIcon  sx={{ fontSize : 30}} />,
@@ -58,12 +70,11 @@ const Storagecards3 = ({storage, storageLocal, internationalStorage}) => {
 	}
 
 	return (
-		<div>
+		<>
 			<Grid container spacing={0.5} >
 				{
 					storageCards3Content.map((item, i) => (
 						<Grid key={i} item lg={4} sm={12} xs={12}>
-							{console.log("international storage",internationalStorage)}
 							<Sizeheaderlandscape4 item={item} />
 						</Grid>
 					))
@@ -71,17 +82,29 @@ const Storagecards3 = ({storage, storageLocal, internationalStorage}) => {
 
 				
 				<Grid item  lg={4} sm={12} xs={12}>
-					<BoxWrapper onClick={handleStorageModal} elevation={3}>
+					<ButtonWrapper onClick={handleStorageModal} elevation={3}>
 						<Typography style={headerFont} variant="h3">
 							Add Storage
 						</Typography>
-					</BoxWrapper>
+					</ButtonWrapper>
 				</Grid>
 
 				<Addstoragemodal open={open} setOpen={setOpen}/>
 				
 			</Grid>
-		</div>
+
+			<LocalStorageModal
+				open={openLocalStorageModal}
+				setOpen={setOpenLocalStorageModal}
+				data={storageLocal}
+			/>
+
+			<InternationalStorageModal
+				open={openInternationalStorageModal}
+				setOpen={setOpenInternationalStorageModal}
+				data={storageLocal}
+			/>
+		</>
 	)
 }
 
