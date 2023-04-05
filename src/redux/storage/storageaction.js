@@ -62,16 +62,16 @@ export const postStorageFail = (errMessage) => ({
 
 
 export const editStorage = () => ({
-	type: storageTypes.POST_STORAGE_START,
+	type: storageTypes.EDIT_STORAGE_START,
 })
 
 export const editStorageSuccess = (storage) => ({
-	type: storageTypes.POST_STORAGE_SUCCESS,
+	type: storageTypes.EDIT_STORAGE_SUCCESS,
 	payload: storage,
 })
 
 export const editStorageFail = (errMessage) => ({
-	type: storageTypes.POST_STORAGE_FAIL,
+	type: storageTypes.EDIT_STORAGE_FAIL,
 	payload: errMessage,
 })
 
@@ -156,7 +156,7 @@ export const editAStorage = (values, token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.put(
-				`http://localhost:8500/api/storage/item/update`,
+				`http://localhost:8500/api/storage/update/${values._id}`,
 				// `https://drab-jade-bison-cuff.cyclic.app/api/storage/item/update`,
 				values,
 				{
@@ -168,9 +168,10 @@ export const editAStorage = (values, token) => {
 				)
 			
 				editStorage()
-			dispatch(editStorageSuccess(res.data.data))
-		} catch (error) {
-			dispatch(editStorageFail(error.response.data.error))
+				dispatch(editStorageSuccess(res.data.data))
+			} catch (error) {
+			console.log(error.response)
+			dispatch(editStorageFail(error.response))
 		}
 	}
 }

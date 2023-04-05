@@ -14,7 +14,7 @@ import SendIcon from '@mui/icons-material/Send';
 import ClearIcon from '@mui/icons-material/Clear';
 
 import { connect } from "react-redux";
-import { editStorage } from "../../../../redux/storage/storageaction";
+import { editAStorage } from "../../../../redux/storage/storageaction";
 
 
 const StyledWrapper = styled(Box)(({theme}) => ({
@@ -28,6 +28,7 @@ const EditStorage = ({token, editStorage, errMessage, store}) => {
 
 	
 	const INITIAL_FORM_STATE = {
+		_id: store._id,
 		fullname: store.fullname,
 		email: store.email,
 		telephone: store.telephone,
@@ -216,7 +217,7 @@ const EditStorage = ({token, editStorage, errMessage, store}) => {
 				errMessage ? (
 					<Grow  style={{ transformOrigin: '10 20 50' }} in timeout={1000}>
 						<Alert severity="error" variant="filled">
-							<AlertTitle>Post Storage Error!</AlertTitle>
+							<AlertTitle>Edit Storage Error!</AlertTitle>
 							{ errMessage }
 						</Alert>
 					</Grow>
@@ -227,7 +228,7 @@ const EditStorage = ({token, editStorage, errMessage, store}) => {
 				showSuccess ? (
 					<Grow  style={{ transformOrigin: '10 20 50' }} in timeout={1000}>
 						<Alert severity="success" variant="filled">
-							<AlertTitle>Post Storage Success!</AlertTitle>
+							<AlertTitle>Edit Storage Success!</AlertTitle>
 							Storage of track number <strong> {trackNo} </strong> has been posted successfully
 						</Alert>
 					</Grow>
@@ -246,7 +247,6 @@ const EditStorage = ({token, editStorage, errMessage, store}) => {
 							<Typography variant="h5" color="secondary" gutterBottom>
 								Client Information
 							</Typography>
-							{console.log("DAta we get is", store)}
 						</Grid>
 						
 						{
@@ -348,7 +348,7 @@ const mapStateToProps = ({ auth, storage }) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-	editStorage: (values, token) => dispatch(editStorage(values, token))
+	editStorage: (values, token) => dispatch(editAStorage(values, token))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditStorage)
