@@ -131,7 +131,6 @@ export const getStorageByTrackNo = (trackno) => {
 export const postAStorage = (values, token) => {
 	return async (dispatch) => {
 		try {
-			console.log(values)
 			const res = await axios.post(
 				// `http://localhost:8500/api/storage/post`,
 				`https://drab-jade-bison-cuff.cyclic.app/api/storage/post`,
@@ -157,7 +156,7 @@ export const editAStorage = (values, token) => {
 		try {
 			const res = await axios.put(
 				// `http://localhost:8500/api/storage/update/${values._id}`,
-				`https://drab-jade-bison-cuff.cyclic.app/api/storage/item/update`,
+				`https://drab-jade-bison-cuff.cyclic.app/api/storage/update/${values._id}`,
 				values,
 				{
 					headers: {

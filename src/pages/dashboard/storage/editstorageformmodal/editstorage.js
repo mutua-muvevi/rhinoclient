@@ -137,7 +137,7 @@ const EditStorage = ({token, editStorage, errMessage, store}) => {
 			name: "weight",
 			label: "Weight",
 			required: true,
-			type: "number",
+			type: "text",
 			xs: 12,
 			sm: 6
 		},
@@ -331,7 +331,7 @@ const EditStorage = ({token, editStorage, errMessage, store}) => {
 							Submit Storage
 						</Button>
 						<Button  type="button" color="error" endIcon={<ClearIcon/>}>
-							Cancel Storage
+							Cancel 
 						</Button>
 					</ButtonGroup>
 				</Form>
