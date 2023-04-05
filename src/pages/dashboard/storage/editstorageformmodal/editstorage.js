@@ -6,8 +6,7 @@ import { styled } from "@mui/system";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 
-import TextField from "../../../../components/formsUI/textfield/textfield"
-import { contactInformation, productInformation, StorageArea, storageEvents, textareas } from "./addStorageformcontent";
+import TextField from "../../../../components/formsUI/textfield/textfield";
 import DateField from "../../../../components/formsUI/datepicker/datepicker";
 import TimeField from "../../../../components/formsUI/timepicker/timepicker"
 
@@ -15,61 +14,62 @@ import SendIcon from '@mui/icons-material/Send';
 import ClearIcon from '@mui/icons-material/Clear';
 
 import { connect } from "react-redux";
-import { postAStorage } from "../../../../redux/storage/storageaction";
+import { editStorage } from "../../../../redux/storage/storageaction";
 
 
 const StyledWrapper = styled(Box)(({theme}) => ({
 	padding: 10
 }))
 
-const INITIAL_FORM_STATE = {
-	fullname: "",
-	email: "",
-	telephone: "",
-	company: "",
 
-	trackno: "",
-	product: "",
-	weight: "",
-	description: "",
-
-	storageaddress: "",
-
-	datein: "",
-	dateout: "",
-	timein: "",
-	timeout: "",
-	
-	notes: "",
-}
-
-const FORM_VALIDATION = Yup.object().shape({
-	fullname: Yup.string().required("Please add the client's Fullname"),
-	email: Yup.string().email().required("Please add the client's Email"),
-	telephone: Yup.string().required("Please add the client's Telephone number"),
-	company: Yup.string().required("Please add the name of the client's company, If not add NULL"),
-	
-	trackno: Yup.string().required("Please add the client's item tracking number"),
-	product: Yup.string().required("Please add the client's product"),
-	weight: Yup.number().required("Please add the client's product mass"),
-	description: Yup.string().required("Please add the client's little description ,eg One bag of maize 10 killograms "),
-	
-	storageaddress: Yup.string().required("Please add the product's storage area"),
-	
-	datein: Yup.string().required("Please add the date the goods were brought in for storage"),
-	dateout: Yup.string(),
-	timein: Yup.string().required("Please add the time the goods were brought in for storage"),
-	timeout: Yup.string(),
-	notes: Yup.string().required("Please add the description of the goods"),
-})
-
-const AddStorageForm = ({ token, postAStorage, errMessage, data}) => {
-	
+const EditStorage = ({token, editStorage, errMessage, store}) => {
 	const [ trackNo, setTrackNo ] = useState("")
 	const [ showSuccess, setShowSuccess ] = useState(false);
 
+	
+	const INITIAL_FORM_STATE = {
+		fullname: store.fullname,
+		email: store.email,
+		telephone: store.telephone,
+		company: store.company,
+
+		trackno: store.trackno,
+		product: store.product,
+		weight: store.weight,
+		description: store.description,
+
+		storageaddress: store.storageaddress,
+
+		datein: store.datein,
+		dateout: store.dateout,
+		timein: store.timein,
+		timeout: store.timeout,
+		
+		notes: store.notes,
+	}
+
+	const FORM_VALIDATION = Yup.object().shape({
+		fullname: Yup.string(),
+		email: Yup.string().email(),
+		telephone: Yup.string(),
+		company: Yup.string(),
+		
+		trackno: Yup.string(),
+		product: Yup.string(),
+		weight: Yup.string(),
+		description: Yup.string(),
+		
+		storageaddress: Yup.string(),
+		
+		datein: Yup.string(),
+		dateout: Yup.string(),
+		timein: Yup.string(),
+		timeout: Yup.string(),
+		notes: Yup.string(),
+	})
+
 	const submitHandler = ( values, {resetForm} ) => {
-		postAStorage(values, token)
+		editStorage(values, token)
 
 		if (!errMessage || errMessage === undefined){
 			setShowSuccess(true)
@@ -78,6 +78,136 @@ const AddStorageForm = ({ token, postAStorage, errMessage, data}) => {
 		}
 
 	}
+
+
+	const contactInformation = [
+		{
+			type: "text",
+			label: "Fullname",
+			required: true,
+			name:"fullname",
+			xs:12,
+			sm:6
+		},
+		{
+			type: "email",
+			label: "Email",
+			required: true,
+			name:"email",
+			xs:12,
+			sm:6
+		},
+		{
+			type: "tel",
+			label: "Telephone",
+			required: true,
+			name:"telephone",
+			xs:12,
+			sm:12
+		},
+		{
+			type: "text",
+			label: "Company",
+			required: true,
+			name:"company",
+			xs:12,
+			sm:12
+		},
+	]
+	
+	const productInformation = [
+		{
+			name: "trackno",
+			label: "Track Number",
+			required: true,
+			type: "text",
+			xs: 12,
+			sm: 6
+		},
+		{
+			name: "product",
+			label: "Product Name",
+			required: true,
+			type: "text",
+			xs: 12,
+			sm: 6
+		},
+		{
+			name: "weight",
+			label: "Weight",
+			required: true,
+			type: "number",
+			xs: 12,
+			sm: 6
+		},
+		{
+			name: "description",
+			label: "Product Context",
+			required: true,
+			type: "text",
+			xs: 12,
+			sm: 6
+		}
+	]
+	
+	const StorageArea = [
+		{
+			name: "storageaddress",
+			label: "Storage Address",
+			type: "text",
+			xs: 12,
+			sm: 6
+		},
+	]
+	
+	const storageEvents = {	
+		dates: [
+			{
+				name: "datein",
+				label: "Date In",
+				type: "date",
+				xs: 12,
+				sm: 6
+			},
+			{
+				name: "dateout",
+				label: "Date Out",
+				type: "date",
+				xs: 12,
+				sm: 6
+			},
+		],
+		time : [
+			{
+				name: "timein",
+				label: "Time In",
+				type: "time",
+				xs: 12,
+				sm: 6
+			},
+		
+			{
+				name: "timeout",
+				label: "Time Out",
+				type: "time",
+				xs: 12,
+				sm: 6
+			},
+	
+		]
+	}
+	
+	const textareas = [
+		{
+			name: "notes",
+			label: "Notes",
+			type: "text",
+			xs: 12,
+			required: true,
+			multiline : true,
+			row: 4
+		},
+	]
 	
 	return (
 		<StyledWrapper container spacing={2}>
@@ -116,6 +246,7 @@ const AddStorageForm = ({ token, postAStorage, errMessage, data}) => {
 							<Typography variant="h5" color="secondary" gutterBottom>
 								Client Information
 							</Typography>
+							{console.log("DAta we get is", store)}
 						</Grid>
 						
 						{
@@ -209,7 +340,6 @@ const AddStorageForm = ({ token, postAStorage, errMessage, data}) => {
 		</StyledWrapper>
 	)
 }
-
 const mapStateToProps = ({ auth, storage }) => ({
 	token: auth.token,
 
@@ -218,7 +348,7 @@ const mapStateToProps = ({ auth, storage }) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-	postAStorage: (values, token) => dispatch(postAStorage(values, token))
+	editStorage: (values, token) => dispatch(editStorage(values, token))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddStorageForm)
+export default connect(mapStateToProps, mapDispatchToProps)(EditStorage)

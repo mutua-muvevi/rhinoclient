@@ -76,13 +76,12 @@ export const editStorageFail = (errMessage) => ({
 })
 
 
-
-
 export const getStorage = (token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
-				`https://drab-jade-bison-cuff.cyclic.app/api/storage/all`,
+				`http://localhost:8500/api/storage/all`,
+				// `https://drab-jade-bison-cuff.cyclic.app/api/storage/all`,
 				{
 					headers: {
 						"Content-Type": "application/json",
@@ -102,7 +101,8 @@ export const getSingleStorage = (id) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
-				`https://drab-jade-bison-cuff.cyclic.app/api/storage/item/${id}`
+				`http://localhost:8500/api/storage/item/${id}`
+				// `https://drab-jade-bison-cuff.cyclic.app/api/storage/item/${id}`
 			)
 			getOneStorage()
 			dispatch(getOneStorageSuccess(res.data.data))
@@ -116,7 +116,8 @@ export const getStorageByTrackNo = (trackno) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.post(
-				`https://drab-jade-bison-cuff.cyclic.app/api/storage/item/track`,
+				`http://localhost:8500/api/storage/item/track`,
+				// `https://drab-jade-bison-cuff.cyclic.app/api/storage/item/track`,
 				trackno
 				)
 			getStorageByTrack()
@@ -130,8 +131,10 @@ export const getStorageByTrackNo = (trackno) => {
 export const postAStorage = (values, token) => {
 	return async (dispatch) => {
 		try {
+			console.log(values)
 			const res = await axios.post(
-				`https://drab-jade-bison-cuff.cyclic.app/api/storage/post`,
+				`http://localhost:8500/api/storage/post`,
+				// `https://drab-jade-bison-cuff.cyclic.app/api/storage/post`,
 				values,
 				{
 					headers: {
@@ -153,7 +156,8 @@ export const editAStorage = (values, token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.put(
-				`https://drab-jade-bison-cuff.cyclic.app/api/storage/item/update`,
+				`http://localhost:8500/api/storage/item/update`,
+				// `https://drab-jade-bison-cuff.cyclic.app/api/storage/item/update`,
 				values,
 				{
 					headers: {

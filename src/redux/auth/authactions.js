@@ -69,7 +69,8 @@ export const registerUser = (formData) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.post(
-				`https://drab-jade-bison-cuff.cyclic.app/api/user/register`,
+				`http://localhost:8500/api/user/register`,
+				// `https://drab-jade-bison-cuff.cyclic.app/api/user/register`,
 				formData,
 				{
 					headers: {
@@ -87,9 +88,11 @@ export const registerUser = (formData) => {
 
 export const loginUser = (formData) => {
 	return async (dispatch) => {
+		
 		try {
 			const res = await axios.post(
-				`https://drab-jade-bison-cuff.cyclic.app/api/user/login`,
+				`http://localhost:8500/api/user/login`,
+				// `https://drab-jade-bison-cuff.cyclic.app/api/user/login`,
 				formData,
 				{
 					headers: {
@@ -98,6 +101,7 @@ export const loginUser = (formData) => {
 				}
 				
 			)
+			alert(JSON.stringify(res))
 			startLoginUser()
 			dispatch(loginUserSuccess(res.data.token))
 		} catch (error) {
@@ -115,7 +119,7 @@ export const forgotPassword = (formData) => {
 				formData,
 				{
 					headers: {
-					"Content-Type": "application/json",
+						"Content-Type": "application/json",
 					},
 				}
 			)
