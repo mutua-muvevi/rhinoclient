@@ -69,8 +69,8 @@ export const registerUser = (formData) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.post(
-				`http://localhost:8500/api/user/register`,
-				// `https://drab-jade-bison-cuff.cyclic.app/api/user/register`,
+				// `http://localhost:8500/api/user/register`,
+				`https://drab-jade-bison-cuff.cyclic.app/api/user/register`,
 				formData,
 				{
 					headers: {
@@ -91,8 +91,8 @@ export const loginUser = (formData) => {
 		
 		try {
 			const res = await axios.post(
-				`http://localhost:8500/api/user/login`,
-				// `https://drab-jade-bison-cuff.cyclic.app/api/user/login`,
+				// `http://localhost:8500/api/user/login`,
+				`https://drab-jade-bison-cuff.cyclic.app/api/user/login`,
 				formData,
 				{
 					headers: {
