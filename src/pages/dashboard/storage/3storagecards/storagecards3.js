@@ -3,9 +3,12 @@ import { styled } from "@mui/system";
 import React, { useState } from 'react';
 import Sizeheaderlandscape4 from "../../../../components/widgets/cards/4sizeheaderlandscape/sizeheaderlandscape4";
 import Addstoragemodal from "../addstoragemodal/addstoragemodal";
-import { storageCards3Content } from "./contentstoragecards3";
+import PublicSharpIcon from '@mui/icons-material/PublicSharp';
+import WarehouseIcon from '@mui/icons-material/Warehouse';
+import LocalStorageModal from "./localstorage";
+import InternationalStorageModal from "./internationalstorage";
 
-const BoxWrapper = styled(Button)(({theme}) => ({
+const ButtonWrapper = styled(Button)(({theme}) => ({
 	minHeight: "20vh",
 	width: "98%",
 	margin: "10px",
@@ -23,35 +26,85 @@ const headerFont = {
 	fontFamily: "'Rubik', sans-serif",
 }
 
-const Storagecards3 = () => {
+const Storagecards3 = ({storage, storageLocal, internationalStorage}) => {
 
-	const [open, setOpen] = useState(false)
+	const [open, setOpen] = useState(false);
+	const [openLocalStorageModal, setOpenLocalStorageModal] = useState(false);
+	const [openInternationalStorageModal, setOpenInternationalStorageModal] = useState(false);
+	
+	const handleLocalStorageModal = () => {
+		setOpenLocalStorageModal(true);
+	}
+
+	const handleInternationalStorageModal = () => {
+		setOpenInternationalStorageModal(true);
+	}
+
+	const storageCards3Content = [
+		{
+			title : {
+				left: "Local Storages",
+				action: handleLocalStorageModal
+			},
+			body: {
+				left: <WarehouseIcon  sx={{ fontSize : 30}} />,
+				right: storageLocal.length
+			},
+			footer: "Increase from last year"
+		},
+		{
+			title : {
+				left: "International Storage",
+				action: handleInternationalStorageModal
+			},
+			body: {
+				left: <PublicSharpIcon  sx={{ fontSize : 30}} />,
+				right: internationalStorage.length
+			},
+			footer: "Increase from last year"
+		},
+	]
 
 	const handleStorageModal = () => {
 		setOpen(true)
 	}
 
 	return (
-		<Grid container spacing={0.5} >
-			{
-				storageCards3Content.map((item, i) => (
-					<Grid key={i} item lg={4} sm={12} xs={12}>
-						<Sizeheaderlandscape4 item={item} />
-					</Grid>
-				))
-			}
+		<>
+			<Grid container spacing={0.5} >
+				{
+					storageCards3Content.map((item, i) => (
+						<Grid key={i} item lg={4} sm={12} xs={12}>
+							<Sizeheaderlandscape4 item={item} />
+						</Grid>
+					))
+				}
 
-			<Grid item  lg={4} sm={12} xs={12}>
-				<BoxWrapper onClick={handleStorageModal} elevation={3}>
-					<Typography style={headerFont} variant="h3">
-						Add Storage
-					</Typography>
-				</BoxWrapper>
+				
+				<Grid item  lg={4} sm={12} xs={12}>
+					<ButtonWrapper onClick={handleStorageModal} elevation={3}>
+						<Typography style={headerFont} variant="h3">
+							Add Storage
+						</Typography>
+					</ButtonWrapper>
+				</Grid>
+
+				<Addstoragemodal open={open} setOpen={setOpen}/>
+				
 			</Grid>
 
-			<Addstoragemodal open={open} setOpen={setOpen}/>
-			
-		</Grid>
+			<LocalStorageModal
+				open={openLocalStorageModal}
+				setOpen={setOpenLocalStorageModal}
+				data={storageLocal}
+			/>
+
+			<InternationalStorageModal
+				open={openInternationalStorageModal}
+				setOpen={setOpenInternationalStorageModal}
+				data={storageLocal}
+			/>
+		</>
 	)
 }
 

@@ -51,6 +51,7 @@ export const fetchUser = (token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
+				// `http://localhost:8500/api/user/me`,
 				`https://drab-jade-bison-cuff.cyclic.app/api/user/me`,
 				{
 					headers: {
@@ -70,7 +71,8 @@ export const fetchAllUsers = (token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
-				`https://drab-jade-bison-cuff.cyclic.app/api/user/users`,
+				// `http://localhost:8500/api/user/users`,
+				`https://drab-jade-bison-cuff.cyclic.app//api/user/users`,
 				{
 					headers: {
 						Authorization:`Bearer ${token}`,
@@ -89,6 +91,7 @@ export const fetchAllAdmin = (token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
+				// `http://localhost:8500/api/user/admin`,
 				`https://drab-jade-bison-cuff.cyclic.app/api/user/admin`,
 				{
 					headers: {

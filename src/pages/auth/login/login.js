@@ -84,7 +84,7 @@ const Login = ({ user }) => {
 					container
 				>
 
-					<StyledImageGrid item lg={5} sx={{ display: { xs: "none", sm: "none", md: "block" } }}>
+					<StyledImageGrid item lg={5} sx={{ display: { xs: "none", sm: "none", md: "none", lg:"block" } }}>
 						<Box sx={{height: "100%"}}>
 							<img
 								src="https://res.cloudinary.com/dqweh6zte/image/upload/v1649928582/Rhino%20John%20Background%20Video/Rhinojon%20Product%20images/air-transport-loading-transformed_ru22tk.jpg"

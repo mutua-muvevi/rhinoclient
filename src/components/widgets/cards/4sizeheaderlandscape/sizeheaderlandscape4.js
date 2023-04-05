@@ -43,6 +43,7 @@ const Sizeheaderlandscape4 = ({item}) => {
 			</HeaderSection>
 			<CardContentStyled >
 				{item.body.left}
+				
 				<Typography variant="h4" sx={{ml: "20px"}}>
 					{item.body.right}
 				</Typography>

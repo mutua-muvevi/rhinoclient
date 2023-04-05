@@ -5,8 +5,6 @@ import React from 'react';
 import { Box, Container, Modal, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 
-import Editstorage from './editstorage';
-
 
 const StyledModal = styled(Modal)(({theme}) => ({
 	width: "85vw",
@@ -24,27 +22,25 @@ const StyledFormContainerWrapper = styled(Box)(({ theme }) => ({
 	paddingBottom: 2,
 }))
 
-const EditStorageModal = ({open, setOpen, item}) => {
+const LocalStorageModal = ({open, setOpen, data}) => {
 	return (
 		<StyledModal
 			open={open}
 			onClose={() => setOpen(false)}
-			aria-labelledby="modal-modal-title"
-			aria-describedby="modal-modal-description"
+			aria-labelledby="local-storage-modal-title"
+			aria-describedby="local-storage-description"
 			
 		>
 			<StyledFormContainerWrapper >
+			{console.log("MODAL STATE IS", open)}
 				<Container maxWidth="xl">
-					<Typography style={{marginTop: "20px"}}  id="modal-modal-title" variant="h4" gutterBottom component="h2">
-						Edit Storage Form
+					<Typography style={{marginTop: "20px"}}  id="local-storage-title" variant="h4" gutterBottom component="h2">
+						Local storage modal
 					</Typography>
-					{console.log("ITEM I GET IN MODAL IS", item)}
-
-					<Editstorage store={item}/>
 				</Container>
 			</StyledFormContainerWrapper>
 		</StyledModal>
 	)
 }
 
-export default EditStorageModal
+export default LocalStorageModal

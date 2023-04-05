@@ -62,26 +62,25 @@ export const postStorageFail = (errMessage) => ({
 
 
 export const editStorage = () => ({
-	type: storageTypes.POST_STORAGE_START,
+	type: storageTypes.EDIT_STORAGE_START,
 })
 
 export const editStorageSuccess = (storage) => ({
-	type: storageTypes.POST_STORAGE_SUCCESS,
+	type: storageTypes.EDIT_STORAGE_SUCCESS,
 	payload: storage,
 })
 
 export const editStorageFail = (errMessage) => ({
-	type: storageTypes.POST_STORAGE_FAIL,
+	type: storageTypes.EDIT_STORAGE_FAIL,
 	payload: errMessage,
 })
-
-
 
 
 export const getStorage = (token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
+				// `http://localhost:8500/api/storage/all`,
 				`https://drab-jade-bison-cuff.cyclic.app/api/storage/all`,
 				{
 					headers: {
@@ -102,6 +101,7 @@ export const getSingleStorage = (id) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
+				// `http://localhost:8500/api/storage/item/${id}`
 				`https://drab-jade-bison-cuff.cyclic.app/api/storage/item/${id}`
 			)
 			getOneStorage()
@@ -116,6 +116,7 @@ export const getStorageByTrackNo = (trackno) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.post(
+				// `http://localhost:8500/api/storage/item/track`,
 				`https://drab-jade-bison-cuff.cyclic.app/api/storage/item/track`,
 				trackno
 				)
@@ -131,6 +132,7 @@ export const postAStorage = (values, token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.post(
+				// `http://localhost:8500/api/storage/post`,
 				`https://drab-jade-bison-cuff.cyclic.app/api/storage/post`,
 				values,
 				{
@@ -153,7 +155,8 @@ export const editAStorage = (values, token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.put(
-				`https://drab-jade-bison-cuff.cyclic.app/api/storage/item/update`,
+				// `http://localhost:8500/api/storage/update/${values._id}`,
+				`https://drab-jade-bison-cuff.cyclic.app/api/storage/update/${values._id}`,
 				values,
 				{
 					headers: {
@@ -164,9 +167,10 @@ export const editAStorage = (values, token) => {
 				)
 			
 				editStorage()
-			dispatch(editStorageSuccess(res.data.data))
-		} catch (error) {
-			dispatch(editStorageFail(error.response.data.error))
+				dispatch(editStorageSuccess(res.data.data))
+			} catch (error) {
+			console.log(error.response)
+			dispatch(editStorageFail(error.response))
 		}
 	}
 }
