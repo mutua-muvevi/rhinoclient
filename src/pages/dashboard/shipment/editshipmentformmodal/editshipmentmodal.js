@@ -24,7 +24,7 @@ const StyledFormContainerWrapper = styled(Box)(({ theme }) => ({
 
 
 
-const EditShipmentModal = ({open, setOpen}) => {
+const EditShipmentModal = ({ values, open, setOpen}) => {
 	return (
 		<StyledModal
 			open={open}
@@ -37,7 +37,7 @@ const EditShipmentModal = ({open, setOpen}) => {
 					<Typography style={{marginTop: "20px"}}  id="modal-modal-title" variant="h4" gutterBottom component="h2">
 						Edit Shipment Form
 					</Typography>
-					<EditShipmentForm/>
+					<EditShipmentForm shipment={values} open={open} setOpen={setOpen} />
 				</Container>
 			</StyledFormContainerWrapper>
 		</StyledModal>

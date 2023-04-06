@@ -247,11 +247,11 @@ const AddShipmentForm = ({ token, postAShipment, errMessage, data}) => {
 					</Grid>
 
 					<ButtonGroup variant="contained" type="submit" sx={{marginTop: "30px"}}>
-						<Button type="submit" color="secondary"  endIcon={<SendIcon/>}>
-							Submit Quotation
+						<Button type="submit" color="secondary"  endIcon={<SendIcon/>} sx={{color: "#000000"}}>
+							Submit Shipment
 						</Button>
 						<Button  type="button" color="error" endIcon={<ClearIcon/>}>
-							Cancel Quotation
+							Cancel
 						</Button>
 					</ButtonGroup>
 				</Form>

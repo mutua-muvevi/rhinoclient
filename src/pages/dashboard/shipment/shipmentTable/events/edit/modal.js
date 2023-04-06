@@ -3,44 +3,46 @@ import React from 'react';
 import { Box, Container, Modal, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 
-import EventForm from "./eventform";
+import EditEventForm from "../edit/form";
 
 
 const StyledModal = styled(Modal)(({theme}) => ({
-	width: "85vw",
-	margin: "10vh auto",
-	overflowY: "scroll",
+	width: "70vw",
+	margin: "auto auto",
 	border: 'none',
-	borderRadius: theme.shape.default
+	borderRadius: theme.shape.default,
+	position: "absolute",
+	top: "25%"
 }))
 
 const StyledFormContainerWrapper = styled(Box)(({ theme }) => ({
 	backgroundColor: theme.palette.background.paper,
 	border: 'none',
 	boxShadow: 24,
-	paddingTop: 2,
-	paddingBottom: 2,
+	paddingTop: 10,
+	paddingBottom: 10,
 }))
 
 
-const EventModal = ({ trackInfo, open, setOpen }) => {
+
+const EditEventModal = ({ event, open, setOpen, trackno}) => {
 	return (
 		<StyledModal
 			open={open}
 			onClose={() => setOpen(false)}
 			aria-labelledby="modal-modal-title"
 			aria-describedby="modal-modal-description"
-			>
+		>
 			<StyledFormContainerWrapper >
 				<Container maxWidth="xl">
 					<Typography style={{marginTop: "20px"}}  id="modal-modal-title" variant="h4" gutterBottom component="h2">
-						Add Events
+						Edit Event Form
 					</Typography>
-					<EventForm trackno={trackInfo} setOpen={setOpen}/>
+					<EditEventForm event={event} open={open} setOpen={setOpen} trackno={trackno} />
 				</Container>
 			</StyledFormContainerWrapper>
 		</StyledModal>
 	)
 }
 
-export default EventModal
+export default EditEventModal

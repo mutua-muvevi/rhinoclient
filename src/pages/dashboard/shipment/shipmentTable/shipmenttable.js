@@ -249,7 +249,7 @@ const ShipmentTable = ({ data }) => {
 				/>
 			</StyledDataGridContainer>
 			<ShipmentViewModal values={singleShipment} open={modal} setOpen={setModal}/>
-			<EditShipmentModal item={singleShipment} open={editModal} setOpen={setEditModal}/>
+			<EditShipmentModal values={singleShipment} open={editModal} setOpen={setEditModal}/>
 		</>
 	)
 }

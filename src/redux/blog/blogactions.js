@@ -100,7 +100,8 @@ export const getBlogs = () => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
-				"https://drab-jade-bison-cuff.cyclic.app/api/blogs/all"
+				"http://localhost:8500/api/blogs/all"
+				// "https://drab-jade-bison-cuff.cyclic.app/api/blogs/all"
 			)
 			getAllBlogs()
 			dispatch(getAllBlogsSuccess(res.data.data))
@@ -114,7 +115,8 @@ export const getSingleBlog = (id) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
-				`https://drab-jade-bison-cuff.cyclic.app/api/blogs/blog/${id}`
+				`http://localhost:8500/api/blogs/blog/${id}`
+				// `https://drab-jade-bison-cuff.cyclic.app/api/blogs/blog/${id}`
 			)
 			getOneBlog()
 			dispatch(getOneBlogSuccess(res.data.data))
@@ -128,7 +130,8 @@ export const postABlog = (values, token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.post(
-				`https://drab-jade-bison-cuff.cyclic.app/api/blogs/post`,
+				`http://localhost:8500/api/blogs/post`,
+				// `https://drab-jade-bison-cuff.cyclic.app/api/blogs/post`,
 				values,
 				{
 					headers: {
@@ -150,7 +153,8 @@ export const editABlog = (values, token, id) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.put(
-				`https://drab-jade-bison-cuff.cyclic.app/api/blogs/edit/${id}`,
+				`http://localhost:8500/api/blogs/edit/${id}`,
+				// `https://drab-jade-bison-cuff.cyclic.app/api/blogs/edit/${id}`,
 				values,
 				{
 					headers: {
@@ -172,7 +176,8 @@ export const deleteABlog = (id, token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.delete(
-				`https://drab-jade-bison-cuff.cyclic.app/api/blogs/delete/${id}`,
+				`http://localhost:8500/api/blogs/delete/${id}`,
+				// `https://drab-jade-bison-cuff.cyclic.app/api/blogs/delete/${id}`,
 					{
 						headers: {
 							"Content-Type": "application/json",

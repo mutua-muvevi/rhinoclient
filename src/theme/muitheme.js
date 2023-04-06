@@ -3,7 +3,8 @@ import { createTheme,  } from "@mui/material/styles";
 export let theme = createTheme({
 	palette: {
 		drawer: {
-			default: "#131313"
+			default: "rgba(19, 19, 19, 1)",
+			defaultHalfOpacity: "rgba(19, 19, 19, 0.5)",
 		},
 		common: {
 			black: "#000",
@@ -22,10 +23,11 @@ export let theme = createTheme({
 			contrastText: "#fff"
 		},
 		error: {
-			main: "#d33f3f",
-			light: "#ef5350",
-			dark: "#c62828",
-			contrastText: "#fff"
+			halfOpacity: "rgba(211, 63, 63, 0.5)",
+			main: "rgba(211, 63, 63, 1)",
+			light: "rgba(239, 83, 80, 1)",
+			dark: "rgba(198, 40, 40, 1)",
+			contrastText: "rgba(255, 255, 255, 1)",
 		},
 		warning: {
 			main: "#ed6c02",

@@ -36,7 +36,8 @@ export const sendEmail = (values) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.post(
-				"https://drab-jade-bison-cuff.cyclic.app/api/email/post",
+				"http://localhost:8500/api/email/post",
+				// "https://drab-jade-bison-cuff.cyclic.app/api/email/post",
 				values
 			)
 			startSendingEmail()
@@ -51,7 +52,8 @@ export const getEmail = (token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
-				"https://drab-jade-bison-cuff.cyclic.app/api/email/all",
+				"http://localhost:8500/api/email/all",
+				// "https://drab-jade-bison-cuff.cyclic.app/api/email/all",
 				{
 					headers: {
 						"Content-Type": "application/json",
