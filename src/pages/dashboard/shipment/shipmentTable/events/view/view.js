@@ -2,13 +2,20 @@ import { Box, Button, ButtonGroup, Container, Divider, Grid, Modal, Typography }
 import { styled } from "@mui/system";
 
 import ClearIcon from '@mui/icons-material/Clear';
+import { FaPrint } from "react-icons/fa";
 
 const StyledModal = styled(Modal)(({ theme }) => ({
-	width: "85vw",
-	margin: "10vh auto",
-	overflowY: "scroll",
+	overflowY: {
+		xs: "scroll",
+		sm:"scroll",
+		md:"scroll",
+		lg:"hidden"
+	},
+	display: "flex",
+	flexDirection: "column",
+	justifyContent: "center",
+	alignItems: "center",
 	border: 'none',
-	height: "80vh",
 	borderRadius: theme.shape.default
 }))
 
@@ -129,6 +136,16 @@ const EventViewModal = ({ event, open, setOpen }) => {
 						</Grid>
 
 						<StyledButtonGroup>
+							<Button 
+								endIcon={<FaPrint/>} 
+								type="button" 
+								variant="contained" 
+								color="secondary"
+								style={{minWidth: "150px"}}
+								onClick={() => setOpen(false)}
+								>
+									Print
+							</Button>
 							<Button 
 								endIcon={<ClearIcon/>} 
 								type="button" 

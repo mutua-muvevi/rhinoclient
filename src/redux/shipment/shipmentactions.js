@@ -242,19 +242,20 @@ export const editEvent = (values, token) => {
 export const deleteEvent = (values, token) => {
 	return async (dispatch) => {
 		try {
-			const res = await axios.delete(
-				`http://localhost:8500/api/shipping/event/update`,
-				// `https://drab-jade-bison-cuff.cyclic.app/api/shipping/event/update`,
-				values,
-				{
-					headers: {
-						"Content-Type": "application/json",
-						Authorization:`Bearer ${token}`
-					},
-				}
-			)
-			addEvent()
-			dispatch(addEventSuccess(res.data.data))
+			alert("Delete action now")
+			// const res = await axios.delete(
+			// 	`http://localhost:8500/api/shipping/event/update`,
+			// 	// `https://drab-jade-bison-cuff.cyclic.app/api/shipping/event/update`,
+			// 	values,
+			// 	{
+			// 		headers: {
+			// 			"Content-Type": "application/json",
+			// 			Authorization:`Bearer ${token}`
+			// 		},
+			// 	}
+			// )
+			// addEvent()
+			// dispatch(addEventSuccess(res.data.data))
 		} catch (error) {
 			dispatch(addEventFail(error.response.data.error))
 		}

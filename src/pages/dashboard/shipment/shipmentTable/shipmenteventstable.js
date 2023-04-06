@@ -9,6 +9,7 @@ import { Delete, Edit, Visibility } from "@mui/icons-material"
 import { useState } from 'react';
 import EditEventModal from './events/edit/modal';
 import EventViewModal from './events/view/view';
+import { deleteEvent } from '../../../../redux/shipment/shipmentactions';
 import DeleteEventModal from './events/delete/delete';
 
 const StyledDataGridContainer = styled(Card)(({theme}) => ({

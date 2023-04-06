@@ -4,10 +4,11 @@ import { Box, Button, ButtonGroup, Container, Divider, Grid, Modal, Typography }
 import { styled } from "@mui/system";
 
 import EventRepeatIcon from '@mui/icons-material/EventRepeat';
+
 import ClearIcon from '@mui/icons-material/Clear';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-import EventModal from "./eventmodal";
+import EventModal from "./events/new/modal";
 import ShipmentEventsTable from "./shipmenteventstable";
 
 const StyledModal = styled(Modal)(({ theme }) => ({
@@ -45,6 +46,18 @@ const headerFont = {
 const titleFont = {
 	fontWeight: 500,
 	fontFamily: "'Rubik', sans-serif",
+}
+
+const successfulShipment = (objects) => {
+	return objects.filter(obj => {
+	  return obj.status === "completed"
+	});
+}
+
+const ongoingShipment = (objects) => {
+	return objects.filter(obj => {
+	  return !obj.status === "completed";
+	});
 }
 
 const ShipmentViewModal = ({ values, open, setOpen }) => {

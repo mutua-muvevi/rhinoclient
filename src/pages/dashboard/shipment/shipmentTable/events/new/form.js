@@ -9,14 +9,14 @@ import ClearIcon from '@mui/icons-material/Clear';
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 
-import SelectWrapper from "../../../../components/formsUI/select/select";
-import TextfieldWrapper from "../../../../components/formsUI/textfield/textfield";
-import TimeField from "../../../../components/formsUI/timepicker/timepicker";
-import DateField from "../../../../components/formsUI/datepicker/datepicker";
-import { eventModalFormContent, eventTime, eventDate, eventStatus } from "./eventmodalcontent";
+import SelectWrapper from "../../../../../../components/formsUI/select/select";
+import TextfieldWrapper from "../../../../../../components/formsUI/textfield/textfield";
+import TimeField from "../../../../../../components/formsUI/timepicker/timepicker";
+import DateField from "../../../../../../components/formsUI/datepicker/datepicker";
+import { eventModalFormContent, eventTime, eventDate, eventStatus } from "./info";
 
 import { connect } from "react-redux";
-import { postEvent } from "../../../../redux/shipment/shipmentactions";
+import { postEvent } from "../../../../../../redux/shipment/shipmentactions";
 
 
 const EventForm = ({token, postEvent, errMessage, trackno, setOpen}) => {

@@ -3,6 +3,7 @@ import { styled } from "@mui/system";
 
 import ClearIcon from '@mui/icons-material/Clear';
 import { deleteEvent } from "../../../../../../redux/shipment/shipmentactions";
+import { connect } from "react-redux";
 
 const StyledModal = styled(Modal)(({ theme }) => ({
 	width: "100vw",
@@ -34,11 +35,11 @@ const StyledButtonGroup = styled(ButtonGroup)(({ theme }) => ({
 
 
 
-const DeleteEventModal = ({ token, event, open, setOpen }) => {
+const DeleteEventModal = ({ token, event, open, setOpen, deleteAction }) => {
 
 	const handleDelete = () => {
 		console.log("Deletting ...")
-		// deleteEvent()
+		deleteAction()
 	}
 
 	return (
@@ -86,4 +87,10 @@ const DeleteEventModal = ({ token, event, open, setOpen }) => {
 	)
 }
 
-export default DeleteEventModal
+const mapStateToProps = ({}) =>({});
+
+const mapDispatchToProps = (dispatch) => ({
+	deleteAction: () => dispatch(deleteEvent())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(DeleteEventModal)

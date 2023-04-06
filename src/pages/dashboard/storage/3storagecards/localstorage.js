@@ -32,7 +32,7 @@ const LocalStorageModal = ({open, setOpen, data}) => {
 			
 		>
 			<StyledFormContainerWrapper >
-			{console.log("MODAL STATE IS", open)}
+
 				<Container maxWidth="xl">
 					<Typography style={{marginTop: "20px"}}  id="local-storage-title" variant="h4" gutterBottom component="h2">
 						Local storage modal

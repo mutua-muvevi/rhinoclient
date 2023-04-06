@@ -3,7 +3,7 @@ import React from 'react';
 import { Box, Container, Modal, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 
-import EventForm from "./eventform";
+import EventForm from "./form";
 
 
 const StyledModal = styled(Modal)(({theme}) => ({
