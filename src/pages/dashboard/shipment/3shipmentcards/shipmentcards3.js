@@ -1,9 +1,12 @@
+import React, { useState } from 'react';
+
 import { Button,  Grid, Typography } from "@mui/material";
 import { styled } from "@mui/system";
-import React, { useState } from 'react';
+
+import { FaShippingFast, FaPlaneDeparture } from "react-icons/fa";
+
 import Sizeheaderlandscape4 from "../../../../components/widgets/cards/4sizeheaderlandscape/sizeheaderlandscape4";
 import Addshipmentmodal from "../addshipmentmodal/addshipmentmodal";
-import { shipmentCards3Content } from "./contentshipmentcards3";
 
 const BoxWrapper = styled(Button)(({theme}) => ({
 	minHeight: "20vh",
@@ -30,6 +33,31 @@ const Shipmentcards3 = () => {
 	const handleShipmentModal = () => {
 		setOpen(true)
 	}
+
+	const shipmentCards3Content = [
+		{
+			title : {
+				left: "Successful shipment",
+				right: <Button>View</Button>
+			},
+			body: {
+				left: <FaShippingFast  sx={{ fontSize : 30}} />,
+				right: 34
+			},
+			footer: "Increase from last year"
+		},
+		{
+			title : {
+				left: "Ongoing Shipment",
+				right: <Button>View</Button>
+			},
+			body: {
+				left: <FaPlaneDeparture  sx={{ fontSize : 30}} />,
+				right: 6
+			},
+			footer: "Increase from last year"
+		},
+	]
 
 	return (
 		<Grid container spacing={0.5} >

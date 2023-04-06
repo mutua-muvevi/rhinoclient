@@ -1,8 +1,16 @@
 import React from 'react';
 
-import { Box, Card, CardHeader } from "@mui/material";
+import { Box, Button, Card, CardHeader } from "@mui/material";
 import { styled } from "@mui/system";
+
 import { DataGrid} from '@mui/x-data-grid';
+
+import { Delete, Edit, Visibility } from "@mui/icons-material"
+import { useState } from 'react';
+import EditEventModal from './events/edit/modal';
+import EventViewModal from './events/view/view';
+import { deleteEvent } from '../../../../redux/shipment/shipmentactions';
+import DeleteEventModal from './events/delete/delete';
 
 const StyledDataGridContainer = styled(Card)(({theme}) => ({
 	backgroundColor: "inherit",
@@ -39,7 +47,28 @@ const StyledDataGrid = styled(DataGrid)(({theme}) =>({
 
 
 
-const ShipmentEventsTable = ({ events }) => {
+const ShipmentEventsTable = ({ events, trackno }) => {
+
+	const [singleEvent, setSingleEvent] = useState({})
+
+	const [openEventModal, setOpenEventModal] = useState(false);
+	const [openEditEventModal, setOpenEditEventModal] = useState(false);
+	const [openDeleteEventModal, setOpenDeleteEventModal] = useState(false);
+
+	const handleViewClick = (e, values) => {
+		setSingleEvent(values.row)
+		setOpenEventModal(true)
+	}
+
+	const handleEditClick = (e, values) => {
+		setSingleEvent(values.row)
+		setOpenEditEventModal(true)
+	}
+
+	const handleDeleteClick = (e, values) => {
+		setSingleEvent(values.row)
+		setOpenDeleteEventModal(true)
+	}
 
 	const columns = [
 		{
@@ -88,20 +117,107 @@ const ShipmentEventsTable = ({ events }) => {
 			headerName: "Statements",
 			minWidth: 390
 		},
+		{
+			field: "view",
+			headerName: "View event",
+			sortable: false,
+			width: 200,
+			disableClickEventBubbling: true,
+			renderCell: (cellValues) => (
+				<Button 
+					style={{width: "150px", color:"black"}}
+					variant="contained"
+					color="secondary"
+					onClick={
+						e => {
+							handleViewClick(e, cellValues)
+						}
+					}
+					endIcon={<Visibility/>}
+				>
+					View
+				</Button>
+			)
+		},
+		{
+			field: "edit",
+			headerName: "Edit event",
+			sortable: false,
+			width: 200,
+			disableClickEventBubbling: true,
+			renderCell: (cellValues) => (
+				<Button 
+					style={{width: "150px", color:"black"}}
+					variant="contained"
+					color="warning"
+					onClick={
+						e => {
+							handleEditClick(e, cellValues)
+						}
+					}
+					endIcon={<Edit/>}
+				>
+					Edit
+				</Button>
+			)
+		},
+		{
+			field: "delete",
+			headerName: "Delete event",
+			sortable: false,
+			width: 200,
+			disableClickEventBubbling: true,
+			renderCell: (cellValues) => (
+				<Button 
+					style={{width: "150px"}}
+					variant="contained"
+					color="error"
+					onClick={
+						e => {
+							handleDeleteClick(e, cellValues)
+						}
+					}
+					endIcon={<Delete/>}
+				>
+					Delete
+				</Button>
+			)
+		},
 	]
 
 	return (
-		<StyledDataGridContainer>
-			<StyledDataGridHeader title="Events Records" />
-			<StyledDataGrid
-				rows={events}
-				columns={columns}
-				autoPageSize
-				autoHeight
-				getRowId={event => event._id}
-				pageSize={50}
+		<>
+			<StyledDataGridContainer>
+				<StyledDataGridHeader title="Events Records" />
+				<StyledDataGrid
+					rows={events}
+					columns={columns}
+					autoPageSize
+					autoHeight
+					getRowId={event => event._id}
+					pageSize={50}
+				/>
+			</StyledDataGridContainer>
+
+			<EventViewModal
+				open={openEventModal}
+				setOpen={setOpenEventModal}
+				event={singleEvent}
 			/>
-		</StyledDataGridContainer>
+
+			<EditEventModal
+				open={openEditEventModal}
+				setOpen={setOpenEditEventModal}
+				event={singleEvent}
+				trackno={trackno}
+				/>
+
+			<DeleteEventModal
+				open={openDeleteEventModal}
+				setOpen={setOpenDeleteEventModal}
+				event={singleEvent}
+			/>
+		</>
 	)
 }
 

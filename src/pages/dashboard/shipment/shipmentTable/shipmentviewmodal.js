@@ -4,9 +4,11 @@ import { Box, Button, ButtonGroup, Container, Divider, Grid, Modal, Typography }
 import { styled } from "@mui/system";
 
 import EventRepeatIcon from '@mui/icons-material/EventRepeat';
+
+import ClearIcon from '@mui/icons-material/Clear';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-import EventModal from "./eventmodal";
+import EventModal from "./events/new/modal";
 import ShipmentEventsTable from "./shipmenteventstable";
 
 const StyledModal = styled(Modal)(({ theme }) => ({
@@ -44,6 +46,18 @@ const headerFont = {
 const titleFont = {
 	fontWeight: 500,
 	fontFamily: "'Rubik', sans-serif",
+}
+
+const successfulShipment = (objects) => {
+	return objects.filter(obj => {
+	  return obj.status === "completed"
+	});
+}
+
+const ongoingShipment = (objects) => {
+	return objects.filter(obj => {
+	  return !obj.status === "completed";
+	});
 }
 
 const ShipmentViewModal = ({ values, open, setOpen }) => {
@@ -459,7 +473,7 @@ const ShipmentViewModal = ({ values, open, setOpen }) => {
 							}
 
 							<Grid item xs={12}>
-								<ShipmentEventsTable events={ values.events } />
+								<ShipmentEventsTable events={ values.events } trackno={values.trackno}/>
 							</Grid>
 
 
@@ -469,10 +483,20 @@ const ShipmentViewModal = ({ values, open, setOpen }) => {
 								endIcon={<EventRepeatIcon/>} 
 								type="button" variant="contained" 
 								color="secondary"
-								style={{color : "black"}}
+								style={{color : "black", minWidth: "150px"}}
 								onClick={() => setEventModal(true)}
 								>
 									Add events
+							</Button>
+
+							<Button 
+								endIcon={<ClearIcon/>} 
+								type="button" 
+								variant="contained" 
+								color="warning"
+								style={{minWidth: "150px"}}
+								>
+									Close
 							</Button>
 
 							<Button 
@@ -480,6 +504,7 @@ const ShipmentViewModal = ({ values, open, setOpen }) => {
 								type="button" 
 								variant="contained" 
 								color="error"
+								style={{minWidth: "150px"}}
 								>
 									Delete Shipment
 							</Button>

@@ -1,38 +1,43 @@
 import React, { useState } from 'react';
 
-import { Alert, AlertTitle, Box,  Button, ButtonGroup, Grid, Grow, Typography } from "@mui/material";
+import { Alert, AlertTitle, Box, Button, ButtonGroup, Grid, Grow, Typography } from "@mui/material"
 import { styled } from "@mui/system";
-
-import SendIcon from '@mui/icons-material/Send';
-import ClearIcon from '@mui/icons-material/Clear';
 
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 
-import SelectWrapper from "../../../../components/formsUI/select/select";
-import TextfieldWrapper from "../../../../components/formsUI/textfield/textfield";
-import TimeField from "../../../../components/formsUI/timepicker/timepicker";
-import DateField from "../../../../components/formsUI/datepicker/datepicker";
-import { eventModalFormContent, eventTime, eventDate, eventStatus } from "./eventmodalcontent";
+import SelectWrapper from "../../../../../../components/formsUI/select/select";
+import TextfieldWrapper from "../../../../../../components/formsUI/textfield/textfield";
+import TimeField from "../../../../../../components/formsUI/timepicker/timepicker";
+import DateField from "../../../../../../components/formsUI/datepicker/datepicker";
+import { eventModalFormContent, eventTime, eventDate, eventStatus } from "./info";
+
+import SendIcon from '@mui/icons-material/Send';
+import ClearIcon from '@mui/icons-material/Clear';
+
 
 import { connect } from "react-redux";
-import { postEvent } from "../../../../redux/shipment/shipmentactions";
+import { editEvent } from "../../../../../../redux/shipment/shipmentactions";
+
+const StyledWrapper = styled(Box)(({theme}) => ({
+	padding: 10,
+	marginBottom: "30px"
+}))
 
 
-const EventForm = ({token, postEvent, errMessage}) => {
 
-	const [success, setSuccessAlert] = useState(false);
-	const [fail, setFailAlert] = useState(false);
-	const [trackNo, setTrackNo] = useState(null)
+const EditEventForm = ({ token, editEvent, errMessage, event, setOpen, trackno}) => {
 	
+	const [ showSuccess, setShowSuccess ] = useState(false);
+
 	const INITIAL_FORM_STATE = {
-		trackno: "",
-		timeevents : "",
-		dateevents : "",
-		currentlocation : "",
-		shippingstatus : "",
-		notes : "",
-		number : "",
+		trackno: trackno,
+		timeevents : event.timeevents,
+		dateevents : event.dateevents,
+		currentlocation : event.currentlocation,
+		shippingstatus : event.shippingstatus,
+		notes : event.notes,
+		number : event.number,
 	}
 	
 	const FORM_VALIDATION = Yup.object().shape({
@@ -63,30 +68,25 @@ const EventForm = ({token, postEvent, errMessage}) => {
 			.min(1, "Minimum integer required is One")
 			.required(),
 	})
+	
 
+	const submitHandler = ( values, {resetForm} ) => {
+		editEvent(values, token)
 
-	const submitHandler = ( values, { resetForm } ) => {
-		postEvent(values, token)
-		setTrackNo(values.trackno)
-		
 		if (!errMessage || errMessage === undefined){
-			setSuccessAlert(true)
+			setShowSuccess(true)
 			resetForm()
-		}
-
-		if (errMessage){
-			setFailAlert(true)
 		}
 	}
 
 	return (
-		<Box>
-			
+		<StyledWrapper container spacing={2}>
+
 			{
 				errMessage ? (
 					<Grow  style={{ transformOrigin: '10 20 50' }} in timeout={1000}>
 						<Alert severity="error" variant="filled">
-							<AlertTitle>Post Shipment Error!</AlertTitle>
+							<AlertTitle>Edit Event Error!</AlertTitle>
 							{ errMessage }
 						</Alert>
 					</Grow>
@@ -94,11 +94,11 @@ const EventForm = ({token, postEvent, errMessage}) => {
 			}
 
 			{
-				success ? (
+				showSuccess ? (
 					<Grow  style={{ transformOrigin: '10 20 50' }} in timeout={1000}>
 						<Alert severity="success" variant="filled">
-							<AlertTitle>Post Shipment Success!</AlertTitle>
-							Shipment of track number <strong> {trackNo} </strong> has been posted successfully
+							<AlertTitle>Edit Event Success!</AlertTitle>
+							Event of shipment track number <strong>{trackno}</strong>
 						</Alert>
 					</Grow>
 				) : null
@@ -135,7 +135,14 @@ const EventForm = ({token, postEvent, errMessage}) => {
 						{
 							eventModalFormContent.map((el, i) => (
 								<Grid key={i} item md={el.md} sm={el.sm} xs={el.xs}>
-									<TextfieldWrapper type={el.type} name={el.name} label={el.label} multiline={el.multiline} rows={el.rows}/>
+									<TextfieldWrapper
+										type={el.type}
+										name={el.name}
+										label={el.label}
+										multiline={el.multiline}
+										rows={el.rows}
+										disabled={el.disabled && el.disabled === true ? true : false}
+										/>
 								</Grid>
 							))
 						}
@@ -147,23 +154,26 @@ const EventForm = ({token, postEvent, errMessage}) => {
 						<Button type="submit" color="secondary"  endIcon={<SendIcon/>} style={{color : "black"}}>
 							Submit
 						</Button>
-						<Button  type="button" color="error" endIcon={<ClearIcon/>}>
+						<Button  type="button" color="error" endIcon={<ClearIcon/>} onClick={() => setOpen(false)}>
 							Cancel
 						</Button>
 					</ButtonGroup>
 				</Form>
 			</Formik>
-		</Box>
+
+		</StyledWrapper>
 	)
 }
 
 const mapStateToProps = ({ auth, shipment }) => ({
 	token: auth.token,
-	errMessage: shipment.errMessage
+
+	errMessage: shipment.errMessage,
+	data: shipment.data
 })
 
 const mapDispatchToProps = (dispatch) => ({
-	postEvent : (values, token) => dispatch(postEvent(values, token))
+	editEvent: (values, token) => dispatch(editEvent(values, token))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(EventForm)
+export default connect(mapStateToProps, mapDispatchToProps)(EditEventForm)

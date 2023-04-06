@@ -9,7 +9,8 @@ export const eventModalFormContent = [
 		sm:12,
 		md:4,
 		multiline: false,
-		rows: 1
+		rows: 1,
+		disabled: true
 	},
 	{
 		type: "number",

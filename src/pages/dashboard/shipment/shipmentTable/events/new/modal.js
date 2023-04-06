@@ -3,7 +3,7 @@ import React from 'react';
 import { Box, Container, Modal, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 
-import EventForm from "./eventform";
+import EventForm from "./form";
 
 
 const StyledModal = styled(Modal)(({theme}) => ({
@@ -36,7 +36,7 @@ const EventModal = ({ trackInfo, open, setOpen }) => {
 					<Typography style={{marginTop: "20px"}}  id="modal-modal-title" variant="h4" gutterBottom component="h2">
 						Add Events
 					</Typography>
-					<EventForm trackno={trackInfo}/>
+					<EventForm trackno={trackInfo} setOpen={setOpen}/>
 				</Container>
 			</StyledFormContainerWrapper>
 		</StyledModal>

@@ -19,86 +19,89 @@ import { connect } from "react-redux";
 import { editAShipment } from "../../../../redux/shipment/shipmentactions";
 
 const StyledWrapper = styled(Box)(({theme}) => ({
-	padding: 10
+	padding: 10,
+	marginBottom: "30px"
 }))
 
-const INITIAL_FORM_STATE = {
-	shippersfullname: "",
-	shippersemail:"",
-	shipperscompany:"",
-	shipperstelephone:"",
-	shippersaddress:"",
-
-	consignfullname:"",
-	consignemail:"",
-	consigncompany:"",
-	consigntelephone:"",
-	consignaddress:"",
-
-	collectorfullname:"",
-	collectoremail:"",
-	collectortel:"",
-	collectoraddress:"",
-
-	trackno:"",
-	itemsname:"",
-	itemsweight:"",
-	itemsweightunit:"",
-	itemspieces:"",
-	
-	departureaddress:"",
-	departureairportcode:"",
-	departuredate:"",
-	departuretime:"",
-	
-	arrivaladdress: "",
-	arrivalairportcode:"",
-	arrivaldate:"",
-	arrivaltime:"",
-}
-
-const FORM_VALIDATION = Yup.object().shape({
-	shippersfullname: Yup.string().required(),
-	shippersemail: Yup.string().email().required(),
-	shipperscompany: Yup.string().required(),
-	shipperstelephone: Yup.string().required(),
-	shippersaddress: Yup.string().required(),
-	
-	
-	consignfullname: Yup.string().required(),
-	consignemail: Yup.string().email().required(),
-	consigncompany: Yup.string().required(),
-	consigntelephone: Yup.string().required(),
-	consignaddress: Yup.string().required(),
-	
-	collectorfullname: Yup.string().required(),
-	collectoremail: Yup.string().email().required(),
-	collectortel: Yup.string().required(),
-	collectoraddress: Yup.string().required(),
-	
-	itemsname: Yup.string().required(),
-	itemsweight: Yup.number().required(),
-	itemsweightunit: Yup.string().required(),
-	trackno: Yup.string().required(),
-	itemspieces: Yup.number().required(),
-	
-	departureaddress: Yup.string().required(),
-	departureairportcode: Yup.string().required(),
-	departuredate: Yup.string().required(),
-	departuretime: Yup.string().required(),
-	
-	arrivaladdress: Yup.string().required(),
-	arrivalairportcode: Yup.string().required(),
-	arrivaltime: Yup.string().required(),
-	arrivaldate: Yup.string().required(),
-
-})
 
 
-const EditShipmentForm = ({ token, editAShipment, errMessage, data, item}) => {
+const EditShipmentForm = ({ token, editAShipment, errMessage, data, shipment, open, setOpen}) => {
 	
 	const [ trackNo, setTrackNo ] = useState("")
 	const [ showSuccess, setShowSuccess ] = useState(false);
+
+	const INITIAL_FORM_STATE = {
+		shippersfullname:  shipment.shippersfullname,
+		shippersemail: shipment.shippersemail,
+		shipperscompany: shipment.shipperscompany,
+		shipperstelephone: shipment.shipperstelephone,
+		shippersaddress: shipment.shippersaddress,
+	
+		consignfullname: shipment.consignfullname,
+		consignemail: shipment.consignemail,
+		consigncompany: shipment.consigncompany,
+		consigntelephone: shipment.consigntelephone,
+		consignaddress: shipment.consignaddress,
+	
+		collectorfullname: shipment.collectorfullname,
+		collectoremail: shipment.collectoremail,
+		collectortel: shipment.collectortel,
+		collectoraddress: shipment.collectoraddress,
+	
+		trackno: shipment.trackno,
+		itemsname: shipment.itemsname,
+		itemsweight: shipment.itemsweight,
+		itemsweightunit: shipment.itemsweightunit,
+		itemspieces: shipment.itemspieces,
+		
+		departureaddress: shipment.departureaddress,
+		departureairportcode: shipment.departureairportcode,
+		departuredate: shipment.departuredate,
+		departuretime: shipment.departuretime,
+		
+		arrivaladdress:  shipment.arrivaladdress,
+		arrivalairportcode: shipment.arrivalairportcode,
+		arrivaldate: shipment.arrivaldate,
+		arrivaltime: shipment.arrivaltime,
+	}
+	
+	const FORM_VALIDATION = Yup.object().shape({
+		shippersfullname: Yup.string().required(),
+		shippersemail: Yup.string().email().required(),
+		shipperscompany: Yup.string().required(),
+		shipperstelephone: Yup.string().required(),
+		shippersaddress: Yup.string().required(),
+		
+		
+		consignfullname: Yup.string().required(),
+		consignemail: Yup.string().email().required(),
+		consigncompany: Yup.string().required(),
+		consigntelephone: Yup.string().required(),
+		consignaddress: Yup.string().required(),
+		
+		collectorfullname: Yup.string().required(),
+		collectoremail: Yup.string().email().required(),
+		collectortel: Yup.string().required(),
+		collectoraddress: Yup.string().required(),
+		
+		itemsname: Yup.string().required(),
+		itemsweight: Yup.number().required(),
+		itemsweightunit: Yup.string().required(),
+		trackno: Yup.string().required(),
+		itemspieces: Yup.number().required(),
+		
+		departureaddress: Yup.string().required(),
+		departureairportcode: Yup.string().required(),
+		departuredate: Yup.string().required(),
+		departuretime: Yup.string().required(),
+		
+		arrivaladdress: Yup.string().required(),
+		arrivalairportcode: Yup.string().required(),
+		arrivaltime: Yup.string().required(),
+		arrivaldate: Yup.string().required(),
+	
+	})
+	
 
 	const submitHandler = ( values, {resetForm} ) => {
 		editAShipment(values, token)
@@ -248,11 +251,11 @@ const EditShipmentForm = ({ token, editAShipment, errMessage, data, item}) => {
 					</Grid>
 
 					<ButtonGroup variant="contained" type="submit" sx={{marginTop: "30px"}}>
-						<Button type="submit" color="secondary"  endIcon={<SendIcon/>}>
-							Submit Quotation
+						<Button type="submit" color="secondary"  endIcon={<SendIcon/>} sx={{color:"#000000"}}>
+							Submit
 						</Button>
-						<Button  type="button" color="error" endIcon={<ClearIcon/>}>
-							Cancel Quotation
+						<Button  type="button" color="error" endIcon={<ClearIcon/>} onClick={() => setOpen(false)}>
+							Cancel
 						</Button>
 					</ButtonGroup>
 				</Form>

@@ -63,16 +63,16 @@ export const postShipmentFail = (errMessage) => ({
 
 
 export const editShipment = () => ({
-	type: shipmentTypes.POST_SHIPMENT_START,
+	type: shipmentTypes.EDIT_SHIPMENT_START,
 })
 
 export const editShipmentSuccess = (shipment) => ({
-	type: shipmentTypes.POST_SHIPMENT_SUCCESS,
+	type: shipmentTypes.EDIT_SHIPMENT_SUCCESS,
 	payload: shipment,
 })
 
 export const editShipmentFail = (errMessage) => ({
-	type: shipmentTypes.POST_SHIPMENT_FAIL,
+	type: shipmentTypes.EDIT_SHIPMENT_FAIL,
 	payload: errMessage,
 })
 
@@ -97,7 +97,8 @@ export const getShipment = (token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
-				"https://drab-jade-bison-cuff.cyclic.app/api/shipping/all",
+				"http://localhost:8500/api/shipping/all",
+				// "https://drab-jade-bison-cuff.cyclic.app/api/shipping/all",
 				{
 					headers: {
 						"Content-Type": "application/json",
@@ -117,7 +118,8 @@ export const getSingleShipment = (id) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
-				`https://drab-jade-bison-cuff.cyclic.app/api/shipping/item/${id}`
+				`http://localhost:8500/api/shipping/item/${id}`
+				// `https://drab-jade-bison-cuff.cyclic.app/api/shipping/item/${id}`
 			)
 			getOneShipment()
 			dispatch(getOneShipmentSuccess(res.data.data))
@@ -131,7 +133,8 @@ export const getShipmentByTrackNo = (trackno) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.post(
-				`https://drab-jade-bison-cuff.cyclic.app/api/shipping/item/track`,
+				`http://localhost:8500/api/shipping/item/track`,
+				// `https://drab-jade-bison-cuff.cyclic.app/api/shipping/item/track`,
 				trackno
 				)
 			getShipmentByTrack()
@@ -146,7 +149,8 @@ export const postAShipment = (values, token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.post(
-				`https://drab-jade-bison-cuff.cyclic.app/api/shipping/post`,
+				`http://localhost:8500/api/shipping/post`,
+				// `https://drab-jade-bison-cuff.cyclic.app/api/shipping/post`,
 				values,
 				{
 					headers: {
@@ -168,7 +172,8 @@ export const editAShipment = (values, token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.put(
-				`https://drab-jade-bison-cuff.cyclic.app/api/shipping/item/update`,
+				`http://localhost:8500/api/shipping/item/update`,
+				// `https://drab-jade-bison-cuff.cyclic.app/api/shipping/item/update`,
 				values,
 				{
 					headers: {
@@ -186,11 +191,14 @@ export const editAShipment = (values, token) => {
 	}
 }
 
+//delete shipment
+
 export const postEvent = (values, token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.put(
-				`https://drab-jade-bison-cuff.cyclic.app/api/shipping/event/update`,
+				`http://localhost:8500/api/shipping/event/update`,
+				// `https://drab-jade-bison-cuff.cyclic.app/api/shipping/event/update`,
 				values,
 				{
 					headers: {
@@ -201,6 +209,53 @@ export const postEvent = (values, token) => {
 			)
 			addEvent()
 			dispatch(addEventSuccess(res.data.data))
+		} catch (error) {
+			dispatch(addEventFail(error.response.data.error))
+		}
+	}
+}
+
+//edit event
+export const editEvent = (values, token) => {
+	return async (dispatch) => {
+		try {
+			const res = await axios.put(
+				`http://localhost:8500/api/shipping/event/update`,
+				// `https://drab-jade-bison-cuff.cyclic.app/api/shipping/event/update`,
+				values,
+				{
+					headers: {
+						"Content-Type": "application/json",
+						Authorization:`Bearer ${token}`
+					},
+				}
+			)
+			addEvent()
+			dispatch(addEventSuccess(res.data.data))
+		} catch (error) {
+			dispatch(addEventFail(error.response.data.error))
+		}
+	}
+}
+
+//delete event
+export const deleteEvent = (values, token) => {
+	return async (dispatch) => {
+		try {
+			alert("Delete action now")
+			// const res = await axios.delete(
+			// 	`http://localhost:8500/api/shipping/event/update`,
+			// 	// `https://drab-jade-bison-cuff.cyclic.app/api/shipping/event/update`,
+			// 	values,
+			// 	{
+			// 		headers: {
+			// 			"Content-Type": "application/json",
+			// 			Authorization:`Bearer ${token}`
+			// 		},
+			// 	}
+			// )
+			// addEvent()
+			// dispatch(addEventSuccess(res.data.data))
 		} catch (error) {
 			dispatch(addEventFail(error.response.data.error))
 		}
