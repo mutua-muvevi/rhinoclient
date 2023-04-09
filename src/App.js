@@ -17,7 +17,6 @@ import TrackShipment from "./pages/landing/track/trackshipment";
 import Resources from "./pages/landing/resources/resources";
 
 import Dashhome from "./pages/dashboard/home/dashhome";
-import DashQuotation from "./pages/dashboard/quotation/quotation";
 import Dashshipment from "./pages/dashboard/shipment/shipment";
 import Dashstorage from "./pages/dashboard/storage/storage";
 import Dashusers from "./pages/dashboard/users/users";
@@ -126,7 +125,7 @@ function App({
 
 							<Route path="/dashboard" element={<Layout/>}>
 								<Route index element={<Dashhome/>}/>
-								<Route path="/dashboard/quotation" element={<DashQuotation/>}/>
+								{/* <Route path="/dashboard/quotation" element={<DashQuotation/>}/> */}
 								<Route path="/dashboard/shipment" element={<Dashshipment/>}/>
 								<Route path="/dashboard/storage" element={<Dashstorage/>}/>
 								<Route path="/dashboard/users" element={<Dashusers/>}/>

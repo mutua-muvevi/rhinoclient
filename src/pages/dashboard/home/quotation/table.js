@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import { Button, Card, CardHeader} from "@mui/material";
 import { styled } from "@mui/system";
@@ -6,65 +6,65 @@ import { styled } from "@mui/system";
 import { DataGrid} from '@mui/x-data-grid';
 
 import PageviewIcon from '@mui/icons-material/Pageview';
+import { Delete } from '@mui/icons-material';
 
-import QuotationViewModal from "./quotationviewmodal";
+import { connect } from "react-redux"
+import QuotationViewModal from './view';
+import DeleteQuotationModal from "./delete"
 
-import { connect } from "react-redux";
 
-const QuotationTable = ({ quotation }) => {
+const StyledDataGridContainer = styled(Card)(({theme}) => ({
+	backgroundColor: "inherit",
+	margin: "10px",
+	borderRadius: theme.shape.default
+}))
+
+const StyledDataGridHeader = styled(CardHeader)(({theme}) => ({
+	backgroundColor: "#131313",
+	color: theme.palette.secondary.main,
+	fontFamily: "'Rubik', sans-serif",
+	
+}))
+
+const StyledDataGrid = styled(DataGrid)(({theme}) =>({
+	border: "none",
+	backgroundColor: theme.palette.background.default,
+	width: "100%",
+	borderRadius: theme.shape.default,
+	"& .MuiDataGrid-columnHeaders": {
+		backgroundColor: "#333333",
+		color: theme.palette.secondary.main,
+		fontSize: 18,
+		paddingTop: 2,
+		paddingBottom: 2,
+	},
+	"& .MuiDataGrid-virtualScrollerRenderZone": {
+		"& .MuiDataGrid-row": {
+			"&:nth-of-type(2n)": { backgroundColor: theme.palette.background.paper }
+		}
+	}
+}));
+
+const QuotationDatagrid = ({ quotation }) => {
 
 	const [modal, setModal] = useState(false);
+	const [deleteModal, setDeleteModal] = useState(false);
 	const [singleQuotation, setSingleQuotation] = useState({});
 
-	
 	const handleClick = (e, values) => {
 		setSingleQuotation(values.row)
 		setModal(true)
 	}
 
-	const StyledDataGridContainer = styled(Card)(({theme}) => ({
-		backgroundColor: "inherit",
-		margin: "10px",
-		borderRadius: theme.shape.default
-	}))
-
-	const StyledDataGridHeader = styled(CardHeader)(({theme}) => ({
-		backgroundColor: "#131313",
-		color: theme.palette.secondary.main,
-		fontFamily: "'Rubik', sans-serif",
-		
-	}))
-
-	const StyledDataGrid = styled(DataGrid)(({theme}) =>({
-		border: "none",
-		backgroundColor: theme.palette.background.default,
-		width: "100%",
-		borderRadius: theme.shape.default,
-		"& .MuiDataGrid-columnHeaders": {
-			backgroundColor: "#333333",
-			color: theme.palette.secondary.main,
-			fontSize: 18,
-			paddingTop: 2,
-			paddingBottom: 2,
-		},
-		"& .MuiDataGrid-virtualScrollerRenderZone": {
-			"& .MuiDataGrid-row": {
-				"&:nth-of-type(2n)": { backgroundColor: theme.palette.background.paper }
-			}
-		}
-	}))
+	const handleDeleteClick = (e, values) => {
+		setSingleQuotation(values.row)
+		setDeleteModal(true)
+	}
 
 	const columns = [
 		{
 			field: "id",
 			hide: true
-		},
-		{
-			field: "createdAt",
-			align: "left",
-			headerAlign: "left",
-			headerName: "Date",
-			width: 150
 		},
 		{
 			field: "firstname",
@@ -126,14 +126,14 @@ const QuotationTable = ({ quotation }) => {
 			field: "View",
 			align: "left",
 			headerAlign: "left",
-			headerName: "View Shipment",
+			headerName: "View Quotation",
 			width: 150,
 			renderCell: (cellValues) => {
 				return (
 					<Button
 						variant="contained"
 						color="secondary"
-						sx={{minWidth: "120px"}}
+						sx={{minWidth: "120px", color: "black"}}
 						onClick= {
 							e => {
 								handleClick(e, cellValues)
@@ -142,7 +142,31 @@ const QuotationTable = ({ quotation }) => {
 						endIcon={<PageviewIcon/>}
 						>
 							View
-						</Button>
+					</Button>
+				)
+			}
+		},
+		{
+			field: "Delete",
+			align: "left",
+			headerAlign: "left",
+			headerName: "Delete Quotation",
+			width: 150,
+			renderCell: (cellValues) => {
+				return (
+					<Button
+						variant="contained"
+						color="error"
+						sx={{minWidth: "120px"}}
+						onClick= {
+							e => {
+								handleDeleteClick(e, cellValues)
+							}
+						}
+						endIcon={<Delete/>}
+						>
+							Delete
+					</Button>
 				)
 			}
 		},
@@ -161,7 +185,18 @@ const QuotationTable = ({ quotation }) => {
 					pageSize={100}
 				/>
 			</StyledDataGridContainer>
-			<QuotationViewModal  values={singleQuotation} open={modal} setOpen={setModal}/>
+
+			<QuotationViewModal
+				values={singleQuotation}
+				setOpen={setModal}
+				open={modal}
+			/>
+
+			<DeleteQuotationModal
+				open={deleteModal}
+				setOpen={setDeleteModal}
+				quotation={singleQuotation}
+			/>
 		</>
 	)
 }
@@ -170,4 +205,4 @@ const mapStateToProps = ({ quotation }) => ({
 	quotation: quotation.quotation
 })
 
-export default connect(mapStateToProps)(QuotationTable)
+export default connect(mapStateToProps)(QuotationDatagrid)

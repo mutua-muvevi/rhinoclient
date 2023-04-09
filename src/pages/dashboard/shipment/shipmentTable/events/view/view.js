@@ -142,7 +142,7 @@ const EventViewModal = ({ event, open, setOpen }) => {
 								variant="contained" 
 								color="secondary"
 								style={{minWidth: "150px"}}
-								onClick={() => setOpen(false)}
+								onClick={() =>  window.print()}
 								>
 									Print
 							</Button>

@@ -40,14 +40,6 @@ export const listItemsTop = [
 		],
 	},
 	{
-		label: "Quotation",
-		path: "/dashboard/quotation",
-		icon:  <ArticleIcon sx={sx}/>,
-		nested: [
-			{}
-		],
-	},
-	{
 		label: "Resources",
 		path: "/dashboard/resources",
 		icon:  <CreateNewFolderIcon sx={sx}/>,
