@@ -9,7 +9,7 @@ import * as Yup from "yup";
 import TextField from "../../../../components/formsUI/textfield/textfield"
 import DateField from "../../../../components/formsUI/datepicker/datepicker";
 import TimeField from "../../../../components/formsUI/timepicker/timepicker"
-import { collectorInformation, cosignInformation, departureInformation, destinationInformation, itemInformation, shippersInformation } from "./addshipmentformcontent"
+import { collectorInformation, cosignInformation, departureInformation, destinationInformation, itemInformation, shippersInformation } from "./info"
 
 import SendIcon from '@mui/icons-material/Send';
 import ClearIcon from '@mui/icons-material/Clear';
@@ -93,7 +93,7 @@ const FORM_VALIDATION = Yup.object().shape({
 
 })
 
-const AddShipmentForm = ({ token, postAShipment, errMessage, data}) => {
+const AddShipmentForm = ({ token, postAShipment, errMessage, data, setOpen}) => {
 
 	const [ trackNo, setTrackNo ] = useState("")
 	const [ showSuccess, setShowSuccess ] = useState(false);
@@ -247,7 +247,7 @@ const AddShipmentForm = ({ token, postAShipment, errMessage, data}) => {
 					</Grid>
 
 					<ButtonGroup variant="contained" type="submit" sx={{marginTop: "30px"}}>
-						<Button type="submit" color="secondary"  endIcon={<SendIcon/>} sx={{color: "#000000"}}>
+						<Button type="submit" color="secondary" onClick={() => setOpen(false())}  endIcon={<SendIcon/>} sx={{color: "#000000"}}>
 							Submit Shipment
 						</Button>
 						<Button  type="button" color="error" endIcon={<ClearIcon/>}>

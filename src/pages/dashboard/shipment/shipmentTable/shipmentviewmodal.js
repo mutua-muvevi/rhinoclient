@@ -495,6 +495,7 @@ const ShipmentViewModal = ({ values, open, setOpen }) => {
 								variant="contained" 
 								color="warning"
 								style={{minWidth: "150px"}}
+								onClick={() => setOpen(false)}
 								>
 									Close
 							</Button>

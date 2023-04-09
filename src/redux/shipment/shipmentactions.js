@@ -93,6 +93,21 @@ export const addEventFail = (errMessage) => ({
 })
 
 
+export const editEvent = () => ({
+	type: shipmentTypes.EDIT_SHIPMENT_EVENT_START,
+})
+
+export const editEventSuccess = (shipment) => ({
+	type: shipmentTypes.EDIT_SHIPMENT_EVENT_SUCCESS,
+	payload: shipment,
+})
+
+export const editEventFail = (errMessage) => ({
+	type: shipmentTypes.EDIT_SHIPMENT_EVENT_FAIL,
+	payload: errMessage,
+})
+
+
 export const getShipment = (token) => {
 	return async (dispatch) => {
 		try {
@@ -216,12 +231,13 @@ export const postEvent = (values, token) => {
 }
 
 //edit event
-export const editEvent = (values, token) => {
+export const editTheEvent = (id, values, token) => {
+
 	return async (dispatch) => {
 		try {
 			const res = await axios.put(
-				`http://localhost:8500/api/shipping/event/update`,
-				// `https://drab-jade-bison-cuff.cyclic.app/api/shipping/event/update`,
+				`http://localhost:8500/api/shipping/event/${id}/edit`,
+				// `https://drab-jade-bison-cuff.cyclic.app/api/shipping/event/${id}/edit`,
 				values,
 				{
 					headers: {
@@ -230,10 +246,10 @@ export const editEvent = (values, token) => {
 					},
 				}
 			)
-			addEvent()
-			dispatch(addEventSuccess(res.data.data))
+			editEvent()
+			dispatch(editEventSuccess(res.data.data))
 		} catch (error) {
-			dispatch(addEventFail(error.response.data.error))
+			dispatch(editEventFail(error.response.data.error))
 		}
 	}
 }

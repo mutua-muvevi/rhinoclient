@@ -17,7 +17,7 @@ import ClearIcon from '@mui/icons-material/Clear';
 
 
 import { connect } from "react-redux";
-import { editEvent } from "../../../../../../redux/shipment/shipmentactions";
+import { editTheEvent } from "../../../../../../redux/shipment/shipmentactions";
 
 const StyledWrapper = styled(Box)(({theme}) => ({
 	padding: 10,
@@ -71,12 +71,18 @@ const EditEventForm = ({ token, editEvent, errMessage, event, setOpen, trackno})
 	
 
 	const submitHandler = ( values, {resetForm} ) => {
-		editEvent(values, token)
+		const id = event._id
+		editEvent(id, values, token)
+		console.log("TOKEN FROM SUBMIT", token)
 
 		if (!errMessage || errMessage === undefined){
 			setShowSuccess(true)
 			resetForm()
 		}
+
+		setTimeout(() => {
+			setOpen(false)
+		}, 2000);
 	}
 
 	return (
@@ -151,7 +157,7 @@ const EditEventForm = ({ token, editEvent, errMessage, event, setOpen, trackno})
 					</Grid>
 					
 					<ButtonGroup variant="contained" type="submit" sx={{margin: "30px auto"}}>
-						<Button type="submit" color="secondary"  endIcon={<SendIcon/>} style={{color : "black"}}>
+						<Button type="submit" color="secondary"  endIcon={<SendIcon/>} sx={{color : "#000000"}}>
 							Submit
 						</Button>
 						<Button  type="button" color="error" endIcon={<ClearIcon/>} onClick={() => setOpen(false)}>
@@ -169,11 +175,11 @@ const mapStateToProps = ({ auth, shipment }) => ({
 	token: auth.token,
 
 	errMessage: shipment.errMessage,
-	data: shipment.data
+	data: shipment.data,
 })
 
 const mapDispatchToProps = (dispatch) => ({
-	editEvent: (values, token) => dispatch(editEvent(values, token))
+	editEvent: (id, values, token) => dispatch(editTheEvent(id, values, token))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditEventForm)

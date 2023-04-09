@@ -3,7 +3,7 @@ import React from 'react';
 import { Box, Container, Modal, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 
-import AddShipmentForm from "./addshipmentform";
+import AddShipmentForm from "./form";
 
 
 const StyledModal = styled(Modal)(({theme}) => ({
@@ -28,15 +28,15 @@ const Addshipmentmodal = ({open, setOpen}) => {
 		<StyledModal
 			open={open}
 			onClose={() => setOpen(false)}
-			aria-labelledby="modal-modal-title"
-			aria-describedby="modal-modal-description"
+			aria-labelledby="add-shipment-modal-title"
+			aria-describedby="add-shipment-modal-description"
 		>
 			<StyledFormContainerWrapper >
 				<Container maxWidth="xl">
 					<Typography style={{marginTop: "20px"}}  id="modal-modal-title" variant="h4" gutterBottom component="h2">
 						Add Shipment
 					</Typography>
-					<AddShipmentForm/>
+					<AddShipmentForm open={open} setOpen={setOpen}/>
 				</Container>
 			</StyledFormContainerWrapper>
 		</StyledModal>
