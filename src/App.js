@@ -46,6 +46,7 @@ import Blogpost from "./pages/landing/resources/blogpost/blogpost";
 import NewsPost from "./pages/landing/resources/newspost/newspost";
 import DashResources from "./pages/dashboard/resources/resourcesadmin";
 import { getBlogs } from "./redux/blog/blogactions";
+import DashAccount from "./pages/dashboard/account/account";
 
 // theme = responsiveFontSizes()
 
@@ -129,6 +130,7 @@ function App({
 							<Route path="/dashboard/users" element={<Dashusers/>}/>
 							<Route path="/dashboard/map" element={<Dashmap/>}/>
 							<Route path="/dashboard/resources" element={<DashResources/>}/>
+							<Route path="/dashboard/account" element={<DashAccount/>}/>
 						</Route>
 						
 					</Routes>

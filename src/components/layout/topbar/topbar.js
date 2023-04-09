@@ -15,6 +15,8 @@ import SearchIcon from '@mui/icons-material/Search';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import { Stack } from '@mui/material';
+import Usermenu from './usermenu';
 
 const drawerWidth = 240;
 
@@ -189,12 +191,14 @@ export default function PrimarySearchAppBar({ handleDrawerOpen, open }) {
 						/>
 					</Search>
 					<Box sx={{ flexGrow: 1 }} />
-					<Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+
+					<Stack direction="row" alignItems="center">
 						<IconButton size="large" aria-label="show 4 new mails" color="inherit">
 							<Badge badgeContent={4} color="error">
 								<MailIcon />
 							</Badge>
 						</IconButton>
+
 						<IconButton
 							size="large"
 							aria-label="show 17 new notifications"
@@ -204,19 +208,21 @@ export default function PrimarySearchAppBar({ handleDrawerOpen, open }) {
 								<NotificationsIcon />
 							</Badge>
 						</IconButton>
-					</Box>
-					<Box sx={{ display: { xs: 'flex', md: 'none' } }}>
-						<IconButton
-							size="large"
-							aria-label="show more"
-							aria-controls={mobileMenuId}
-							aria-haspopup="true"
-							onClick={handleMobileMenuOpen}
-							color="inherit"
-						>
-							<MoreIcon />
-						</IconButton>
-					</Box>
+
+						<Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+							<IconButton
+								size="large"
+								aria-label="show more"
+								aria-controls={mobileMenuId}
+								aria-haspopup="true"
+								onClick={handleMobileMenuOpen}
+								color="inherit"
+							>
+								<MoreIcon />
+							</IconButton>
+						</Box>
+						<Usermenu/>
+					</Stack>
 				</Toolbar>
 			</AppBarWrapper>
 			{renderMobileMenu}
