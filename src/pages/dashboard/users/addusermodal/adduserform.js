@@ -43,7 +43,7 @@ const FORM_VALIDATION = Yup.object().shape({
 	city: Yup.string().required("Please add your city"),
 	country: Yup.string().required("Please add your country"),
 	password: Yup.string().min(8).required("Please add your password"),
-	authorization: Yup.string().required("Please add your authentication level")
+	authorization: Yup.string().required("Please add your authentication status")
     
 })
 
@@ -101,7 +101,7 @@ const AddUserForm = ({ onClose,  registerUser, isAuthenticated, errMessage }) =>
 					<Grid container spacing={2}>
 						<Grid item xs={12}>
 							<Typography variant="h5" color="secondary" gutterBottom>
-								User Information
+								Register User
 							</Typography>
 						</Grid>
 						

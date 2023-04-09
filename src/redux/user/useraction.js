@@ -47,6 +47,22 @@ export const fetchAdminFail = (errMessage) => ({
 })
 
 
+
+export const editAdminStart = () => ({
+	type: userTypes.START_EDIT_ADMIN
+})
+
+export const editAdminSuccess = (user) => ({
+	type: userTypes.SUCCESS_EDIT_ADMIN,
+	payload: user,
+})
+
+export const editAdminFail = (errMessage) => ({
+	type: userTypes.FAIL_EDIT_ADMIN,
+	payload: errMessage,
+})
+
+
 export const fetchUser = (token) => {
 	return async (dispatch) => {
 		try {
@@ -103,6 +119,31 @@ export const fetchAllAdmin = (token) => {
 			dispatch(fetchAdminSuccess(res.data.data))
 		} catch (error) {
 			dispatch(fetchAdminFail(error.response.data.error))
+		}
+	}
+}
+
+export const editUser = ({id, token, values}) => {
+	console.log("ID", id)
+	console.log("Token", token)
+	console.log("values", values)
+	return async (dispatch) => {
+		try {
+			const res = await axios.put(
+				`http://localhost:8500/api/user/edit/${id}`,
+				// `https://drab-jade-bison-cuff.cyclic.app//api/user/users`,
+				values,
+				{
+					headers: {
+						Authorization:`Bearer ${token}`,
+					}
+				}
+			)
+
+			editAdminStart()
+			dispatch(editAdminSuccess(res.data.data))
+		} catch (error) {
+			dispatch(editAdminFail(error.response.data.error))
 		}
 	}
 }
