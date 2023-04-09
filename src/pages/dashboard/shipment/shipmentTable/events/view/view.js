@@ -2,7 +2,7 @@ import { Box, Button, ButtonGroup, Container, Divider, Grid, Modal, Typography }
 import { styled } from "@mui/system";
 
 import ClearIcon from '@mui/icons-material/Clear';
-import { FaPrint } from "react-icons/fa";
+import { BsPrinterFill } from "react-icons/bs";
 
 const StyledModal = styled(Modal)(({ theme }) => ({
 	overflowY: {
@@ -137,11 +137,11 @@ const EventViewModal = ({ event, open, setOpen }) => {
 
 						<StyledButtonGroup>
 							<Button 
-								endIcon={<FaPrint/>} 
+								endIcon={<BsPrinterFill/>} 
 								type="button" 
 								variant="contained" 
 								color="secondary"
-								style={{minWidth: "150px"}}
+								style={{minWidth: "150px", color : "#000000"}}
 								onClick={() =>  window.print()}
 								>
 									Print

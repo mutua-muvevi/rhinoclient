@@ -125,7 +125,6 @@ function App({
 
 							<Route path="/dashboard" element={<Layout/>}>
 								<Route index element={<Dashhome/>}/>
-								{/* <Route path="/dashboard/quotation" element={<DashQuotation/>}/> */}
 								<Route path="/dashboard/shipment" element={<Dashshipment/>}/>
 								<Route path="/dashboard/storage" element={<Dashstorage/>}/>
 								<Route path="/dashboard/users" element={<Dashusers/>}/>

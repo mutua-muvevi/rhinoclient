@@ -6,7 +6,8 @@ import { styled } from "@mui/system";
 import { FaShippingFast, FaPlaneDeparture } from "react-icons/fa";
 
 import Sizeheaderlandscape4 from "../../../../components/widgets/cards/4sizeheaderlandscape/sizeheaderlandscape4";
-import Addshipmentmodal from "../addshipmentmodal/addshipmentmodal";
+import Addshipmentmodal from "../addshipmentmodal/modal";
+import { connect } from 'react-redux';
 
 const BoxWrapper = styled(Button)(({theme}) => ({
 	minHeight: "20vh",
@@ -26,7 +27,7 @@ const headerFont = {
 	fontFamily: "'Rubik', sans-serif",
 }
 
-const Shipmentcards3 = () => {
+const Shipmentcards3 = ({shipment}) => {
 	
 	const [open, setOpen] = useState(false)
 
@@ -37,19 +38,17 @@ const Shipmentcards3 = () => {
 	const shipmentCards3Content = [
 		{
 			title : {
-				left: "Successful shipment",
-				right: <Button>View</Button>
+				left: "All Shipments",
 			},
 			body: {
 				left: <FaShippingFast  sx={{ fontSize : 30}} />,
-				right: 34
+				right: shipment.length
 			},
 			footer: "Increase from last year"
 		},
 		{
 			title : {
 				left: "Ongoing Shipment",
-				right: <Button>View</Button>
 			},
 			body: {
 				left: <FaPlaneDeparture  sx={{ fontSize : 30}} />,
@@ -82,4 +81,8 @@ const Shipmentcards3 = () => {
 	)
 }
 
-export default Shipmentcards3
+const mapStateToProps = ({shipment}) => ({
+	shipment: shipment.data
+})
+
+export default connect(mapStateToProps)(Shipmentcards3)
