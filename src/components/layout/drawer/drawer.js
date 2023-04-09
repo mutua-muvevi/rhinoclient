@@ -1,4 +1,4 @@
-import React from 'react';
+import { NavLink } from "react-router-dom";
 
 import { Divider, IconButton, List, ListItem, Link, ListItemButton} from "@mui/material";
 import MuiDrawer from '@mui/material/Drawer';
@@ -10,9 +10,8 @@ import ListItemText from '@mui/material/ListItemText';
 import SettingsPowerIcon from '@mui/icons-material/SettingsPower';
 
 import { listItemsBottom, listItemsTop } from "./listItem";
-import { NavLink } from "react-router-dom";
+
 import Logo from "../../../assets/images/logos/Rhino card logo - PNG.png"
-import { useTheme } from '@emotion/react';
 
 
 const drawerWidth = 240;

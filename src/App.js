@@ -47,6 +47,7 @@ import NewsPost from "./pages/landing/resources/newspost/newspost";
 import DashResources from "./pages/dashboard/resources/resourcesadmin";
 import { getBlogs } from "./redux/blog/blogactions";
 import DashAccount from "./pages/dashboard/account/account";
+import ErrorBoundary from "./components/errorpage/error";
 
 // theme = responsiveFontSizes()
 
@@ -95,45 +96,47 @@ function App({
 		<div className="App">
 			<BrowserRouter>
 				<ThemeProvider theme={theme}>
-					<Routes>
-						<Route path="*" element={<Notfound/>}/>
-						<Route path="/" element={<Home/>} />
+					<ErrorBoundary>
+						<Routes>
+							<Route path="*" element={<Notfound/>}/>
+							<Route path="/" element={<Home/>} />
 
-						<Route path="/landing" element={<Landinglayout/>}>
-							<Route path="/landing/about" element={<About/>}/>
-							<Route path="/landing/products" element={<Products/>}/>
-							<Route path="/landing/services" element={<Services/>}/>
-							<Route path="/landing/contact" element={<Contact/>}/>
-							<Route path="/landing/widgets" element={<Widgets/>}/>
-							<Route path="/landing/resources" element={<Resources/>}/>
-							<Route path="/landing/blogpost" element={<Blogpost/>}/>
-							<Route path="/landing/newspost" element={<NewsPost/>}/>
-						</Route>
-						
-						<Route path="/track" element={<Tracklayout/>}>
-							<Route path="/track/main" element={<Track/>}/>
-							<Route path="/track/shipment" element={<TrackShipment/>}/>
-							<Route path="/track/storage" element={<TrackStorage/>}/>
-						</Route>
+							<Route path="/landing" element={<Landinglayout/>}>
+								<Route path="/landing/about" element={<About/>}/>
+								<Route path="/landing/products" element={<Products/>}/>
+								<Route path="/landing/services" element={<Services/>}/>
+								<Route path="/landing/contact" element={<Contact/>}/>
+								<Route path="/landing/widgets" element={<Widgets/>}/>
+								<Route path="/landing/resources" element={<Resources/>}/>
+								<Route path="/landing/blogpost" element={<Blogpost/>}/>
+								<Route path="/landing/newspost" element={<NewsPost/>}/>
+							</Route>
+							
+							<Route path="/track" element={<Tracklayout/>}>
+								<Route path="/track/main" element={<Track/>}/>
+								<Route path="/track/shipment" element={<TrackShipment/>}/>
+								<Route path="/track/storage" element={<TrackStorage/>}/>
+							</Route>
 
-						<Route path="/auth" element={<AuthLayout/>}>
-							<Route path="/auth/login" element={<Login/>}/>
-							<Route path="/auth/forgotpassword" element={<ForgotPassword/>}/>
-							<Route path="/auth/resetpassword/:resetToken" element={<ResetPassword/>}/>
-						</Route>
+							<Route path="/auth" element={<AuthLayout/>}>
+								<Route path="/auth/login" element={<Login/>}/>
+								<Route path="/auth/forgotpassword" element={<ForgotPassword/>}/>
+								<Route path="/auth/resetpassword/:resetToken" element={<ResetPassword/>}/>
+							</Route>
 
-						<Route path="/dashboard" element={<Layout/>}>
-							<Route index element={<Dashhome/>}/>
-							<Route path="/dashboard/quotation" element={<DashQuotation/>}/>
-							<Route path="/dashboard/shipment" element={<Dashshipment/>}/>
-							<Route path="/dashboard/storage" element={<Dashstorage/>}/>
-							<Route path="/dashboard/users" element={<Dashusers/>}/>
-							<Route path="/dashboard/map" element={<Dashmap/>}/>
-							<Route path="/dashboard/resources" element={<DashResources/>}/>
-							<Route path="/dashboard/account" element={<DashAccount/>}/>
-						</Route>
-						
-					</Routes>
+							<Route path="/dashboard" element={<Layout/>}>
+								<Route index element={<Dashhome/>}/>
+								<Route path="/dashboard/quotation" element={<DashQuotation/>}/>
+								<Route path="/dashboard/shipment" element={<Dashshipment/>}/>
+								<Route path="/dashboard/storage" element={<Dashstorage/>}/>
+								<Route path="/dashboard/users" element={<Dashusers/>}/>
+								<Route path="/dashboard/map" element={<Dashmap/>}/>
+								<Route path="/dashboard/resources" element={<DashResources/>}/>
+								<Route path="/dashboard/account" element={<DashAccount/>}/>
+							</Route>
+							
+						</Routes>
+					</ErrorBoundary>
 				</ThemeProvider>
 			</BrowserRouter>
 		</div>
