@@ -52,11 +52,9 @@ export const navPages = [
 	},
 ]
 
-export const navItemBottom = [
-	{
-		label: "Login",
-		path: "/auth/login",
-		icon: <LockIcon/>,
-		index: 6
-	},
-]
+export const navItemBottom = {
+	label: "Login",
+	path: "/auth/login",
+	icon: <LockIcon/>,
+	index: 6
+}

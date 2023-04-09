@@ -6,10 +6,12 @@ import { Box, styled } from "@mui/system";
 
 import LockIcon from '@mui/icons-material/Lock';
 import MenuIcon from '@mui/icons-material/Menu';
+import { FaUser } from "react-icons/fa"
 
 import SwipeableSideDrawer from "./swipeabledrawer";
 import Logo from "../../../assets/images/logos/Rhino card logo - PNG.png";
 import { navPages, navItemBottom } from "./navcontent";
+import { connect } from 'react-redux';
 
 const StyledContainer = styled(Container)(({theme}) => ({
 	display: "flex",
@@ -59,9 +61,10 @@ const styledAuthNav = {
 		xs: 'none',
 		md: 'flex',
 	},
+	color: "#000000"
 }
 
-const Navbar = () => {
+const Navbar = ({user}) => {
 
 	const [mobileNav, setMobileNav] = useState(false)
 
@@ -91,15 +94,20 @@ const Navbar = () => {
 							))
 						}
 					</StyledNavItems>
-					{
-						navItemBottom.map((el, i) => (
-							<NavLink key={i} style={{textDecoration: "none", color: "white"}} to={el.path}>
-								<Button sx={styledAuthNav} endIcon={<LockIcon/>} color="secondary" variant="contained">
-									Login
-								</Button>
+							<NavLink style={{textDecoration: "none", color: "white"}} to={navItemBottom.path}>
+								{
+									user ? (
+										<Button sx={styledAuthNav} endIcon={<FaUser/>} color="secondary" variant="contained">
+											{user.firstname}
+										</Button>
+									) : (
+										<Button sx={styledAuthNav} endIcon={<LockIcon/>} color="secondary" variant="contained">
+											Login
+										</Button>
+									)
+								}
 							</NavLink>
-						))
-					}
+					
 					<IconButton
 						size="large"
 						aria-label="account of current user"
@@ -120,4 +128,8 @@ const Navbar = () => {
 	)
 }
 
-export default Navbar
+const mapStateToProps = ({user}) => ({
+	user: user.user
+})
+
+export default connect(mapStateToProps)(Navbar)

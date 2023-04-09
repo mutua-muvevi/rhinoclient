@@ -101,7 +101,6 @@ export const loginUser = (formData) => {
 				}
 				
 			)
-			alert(JSON.stringify(res))
 			startLoginUser()
 			dispatch(loginUserSuccess(res.data.token))
 		} catch (error) {
