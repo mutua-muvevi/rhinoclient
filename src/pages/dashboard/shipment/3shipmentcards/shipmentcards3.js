@@ -42,7 +42,7 @@ const Shipmentcards3 = ({shipment}) => {
 			},
 			body: {
 				left: <FaShippingFast  sx={{ fontSize : 30}} />,
-				right: shipment.length
+				right: shipment ? shipment.length : ""
 			},
 			footer: "Increase from last year"
 		},

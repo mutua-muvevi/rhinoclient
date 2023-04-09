@@ -48,7 +48,7 @@ const Storagecards3 = ({storage, storageLocal, internationalStorage}) => {
 			},
 			body: {
 				left: <WarehouseIcon  sx={{ fontSize : 30}} />,
-				right: storageLocal.length
+				right: storageLocal ? storageLocal.length : ""
 			},
 			footer: "Increase from last year"
 		},
@@ -59,7 +59,7 @@ const Storagecards3 = ({storage, storageLocal, internationalStorage}) => {
 			},
 			body: {
 				left: <PublicSharpIcon  sx={{ fontSize : 30}} />,
-				right: internationalStorage.length
+				right: internationalStorage ? internationalStorage.length : ""
 			},
 			footer: "Increase from last year"
 		},
