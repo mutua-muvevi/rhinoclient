@@ -18,7 +18,7 @@ const Dashcards3 = ({ shipment, storage, quotation }) => {
 						</Link>
 			},
 			body: {
-				left: <FaPlane  sx={{ fontSize : 30}} />,
+				left: <FaPlane  style={{ fontSize : "20px"}} />,
 				right: shipment ? shipment.length : ""
 			},
 			footer: "A huge increase from last year"
@@ -31,8 +31,8 @@ const Dashcards3 = ({ shipment, storage, quotation }) => {
 						</Link>
 			},
 			body: {
-				left: <FaWarehouse  sx={{ fontSize : 30}} />,
-				right: 6
+				left: <FaWarehouse  style={{ fontSize : "20px"}} />,
+				right: storage ? storage.length : ""
 			},
 			footer: "A huge increase from last year"
 		},
@@ -44,8 +44,8 @@ const Dashcards3 = ({ shipment, storage, quotation }) => {
 						</Link>
 			},
 			body: {
-				left: <FaQuoteLeft  sx={{ fontSize : 30}} />,
-				right: quotation.length
+				left: <FaQuoteLeft  style={{ fontSize : "20px"}} />,
+				right: quotation ? quotation.length: ""
 			},
 			footer: "A huge increase from last year"
 		},
@@ -67,7 +67,7 @@ const Dashcards3 = ({ shipment, storage, quotation }) => {
 const mapStateToProps = ({shipment, storage, quotation}) => ({
 	shipment: shipment.data,
 	storage: storage.data,
-	quotation: quotation.data,
+	quotation: quotation.quotation,
 });
 
 export default connect(mapStateToProps)(Dashcards3)

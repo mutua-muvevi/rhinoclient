@@ -7,7 +7,7 @@ import { styled } from "@mui/system";
 import HomeIcon from '@mui/icons-material/Home';
 import Dashcards3 from "./3dashcards/dashcards3";
 import Dashcards2 from "./2dashcards/dashcards2";
-import QuotationDatagrid from "./quotationDatagrid/quotationDatagrid";
+import QuotationDatagrid from "./quotation/table";
 
 import { connect } from "react-redux";
 

@@ -1,8 +1,12 @@
 import React from 'react';
 
-import { Box,  Container, Divider, Grid, Modal, Typography } from "@mui/material";
+import { Box, Button, ButtonGroup, Container, Divider, Grid, Modal, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 
+import DeleteIcon from '@mui/icons-material/Delete';
+import { BsPrinterFill } from "react-icons/bs";
+
+import { useTheme } from '@emotion/react';
 
 const StyledModal = styled(Modal)(({ theme }) => ({
 	width: "85vw",
@@ -19,12 +23,16 @@ const StyledModalContainerBox = styled(Box)(({theme}) => ({
 	boxShadow: 24,
 	paddingTop: 2,
 	paddingBottom: 2,
-	minHeight: "70vh"
+	minHeight: "70vh",
 }))
 
 const styledModalBox = {
 }
 
+const StyledButtonGroup = styled(ButtonGroup)(({ theme }) => ({
+	marginTop: "20px",
+	marginBottom: "20px",
+}))
 
 
 const headerFont = {
@@ -38,9 +46,11 @@ const titleFont = {
 	fontFamily: "'Rubik', sans-serif",
 }
 
-const QuotationViewModal = ({ values, open, setOpen }) => {
 
-	const quotationBody = [
+const QuotationViewModal = ({ values, open, setOpen }) => {
+	const theme = useTheme();
+
+	const quotationItem = [
 		{
 			name: "Firstname",
 			value: values.firstname,
@@ -51,7 +61,7 @@ const QuotationViewModal = ({ values, open, setOpen }) => {
 			xs: 12
 		},
 		{
-			name: "Lastname",
+			name: "lastname",
 			value: values.lastname,
 			xl: 4,
 			lg: 4,
@@ -121,7 +131,7 @@ const QuotationViewModal = ({ values, open, setOpen }) => {
 			md: 12,
 			sm: 12,
 			xs: 12
-		}
+		},
 	]
 
 	return (
@@ -138,12 +148,13 @@ const QuotationViewModal = ({ values, open, setOpen }) => {
 
 							<Grid sx={{marginTop: "20px"}} item xs={12}>
 								<Typography variant="h5" style={headerFont} gutterBottom>
-									Quotation Body
+									Quotation
 								</Typography>
-							<Divider/>
+							<Divider sx={{backgroundColor: theme.palette.primary.main}}/>
 							</Grid>
+
 							{
-								quotationBody && quotationBody.map(el => (
+								quotationItem && quotationItem.map(el => (
 									<Grid item key={el.name} xl={el.xl} lg={el.lg} md={el.md} sm={el.sm} xs={el.xs}>
 										<Typography style={titleFont} variant="body1">{el.name}</Typography>
 										<Box>
@@ -153,7 +164,30 @@ const QuotationViewModal = ({ values, open, setOpen }) => {
 								))
 							}
 
+							
+							
 						</Grid>
+
+						<StyledButtonGroup>
+							<Button 
+								endIcon={<BsPrinterFill/>} 
+								type="button" variant="contained" 
+								color="secondary"
+								onClick={() =>  window.print()}
+								sx={{color: "#000000"}}
+								>
+									Print
+							</Button>
+
+							<Button 
+								endIcon={<DeleteIcon/>} 
+								type="button" 
+								variant="contained" 
+								color="error"
+								>
+									Delete
+							</Button>
+						</StyledButtonGroup>
 					</Container>
 				</StyledModalContainerBox>
 			</StyledModal>
