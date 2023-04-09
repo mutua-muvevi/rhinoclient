@@ -37,9 +37,7 @@ const Sizeheaderlandscape4 = ({item}) => {
 				<Typography style={{fontFamily: "'Rubik', sans-serif"}} color="secondary" variant="h6">
 					{item.title.left}
 				</Typography>
-				<Button color="secondary" variant="text">
-					View
-				</Button>
+				{item.title.right}
 			</HeaderSection>
 			<CardContentStyled >
 				{item.body.left}

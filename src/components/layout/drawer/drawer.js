@@ -1,4 +1,4 @@
-import React from 'react';
+import { NavLink } from "react-router-dom";
 
 import { Divider, IconButton, List, ListItem, Link, ListItemButton} from "@mui/material";
 import MuiDrawer from '@mui/material/Drawer';
@@ -10,7 +10,7 @@ import ListItemText from '@mui/material/ListItemText';
 import SettingsPowerIcon from '@mui/icons-material/SettingsPower';
 
 import { listItemsBottom, listItemsTop } from "./listItem";
-import { NavLink } from "react-router-dom";
+
 import Logo from "../../../assets/images/logos/Rhino card logo - PNG.png"
 
 
@@ -70,13 +70,6 @@ const navlinkStyle = {
 	color: "white"
 }
 
-const activeNavlink={
-	textDecoration: "none",
-	color: "#1976d2",
-	borderTopLeftRadius: "20px",
-	borderBottomLeftRadius: "20px",
-	background: "white !important"
-}
 
 
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
@@ -153,6 +146,13 @@ const StyledListItemText = styled(ListItemText)(({ theme }) => ({
 }))
 
 const DrawerComponent = ({open, handleDrawerOpen, handleDrawerClose, theme}) => {
+
+	const activeNavlink={
+		textDecoration: "none",
+		color: theme.palette.primary.main,
+		borderTopLeftRadius: "20px",
+		borderBottomLeftRadius: "20px",
+	}
 
 	const logOut = () => {
 		window.localStorage.clear()
