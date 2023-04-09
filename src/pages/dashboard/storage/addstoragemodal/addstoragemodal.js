@@ -36,7 +36,8 @@ const Addstoragemodal = ({open, setOpen}) => {
 					<Typography style={{marginTop: "20px"}}  id="modal-modal-title" variant="h4" gutterBottom component="h2">
 						Add Storage Form
 					</Typography>
-					<AddStorageForm/>
+
+					<AddStorageForm open={open} setOpen={setOpen}/>
 				</Container>
 			</StyledFormContainerWrapper>
 		</StyledModal>

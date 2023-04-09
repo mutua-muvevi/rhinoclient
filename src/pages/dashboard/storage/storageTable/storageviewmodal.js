@@ -207,7 +207,8 @@ const StorageViewModal = ({ values, open, setOpen }) => {
 								endIcon={<EventRepeatIcon/>} 
 								type="button" variant="contained" 
 								color="secondary"
-								// onClick={() => setEventModal(true)}
+								style={{width: "150px", color: "black"}}
+								onClick={() => window.print()}
 								>
 									Print
 							</Button>

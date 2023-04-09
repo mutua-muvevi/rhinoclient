@@ -195,14 +195,18 @@ const StorageTable = ({storage}) => {
 		<>
 			<StyledDataGridContainer>
 				<StyledDataGridHeader title="Storage Records" />
-				<StyledDataGrid
-					rows={storage}
-					columns={columns}
-					autoPageSize
-					autoHeight
-					getRowId={storage => storage._id}
-					pageSize={100}
-				/>
+				{
+					storage ?  (
+						<StyledDataGrid
+							rows={storage}
+							columns={columns}
+							autoPageSize
+							autoHeight
+							getRowId={storage => storage._id}
+							pageSize={100}
+						/>
+					) : ""
+				}
 			</StyledDataGridContainer>
 			<StorageViewModal  values={singleStorage} open={modal} setOpen={setModal}/>
 			<EditStorageModal item={singleStorage} open={editModal} setOpen={setEditModal}/>

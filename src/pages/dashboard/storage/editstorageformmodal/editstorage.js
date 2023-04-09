@@ -327,8 +327,8 @@ const EditStorage = ({token, editStorage, errMessage, store}) => {
 
 					
 					<ButtonGroup variant="contained" type="submit" sx={{marginTop: "30px"}}>
-						<Button type="submit" color="secondary"  endIcon={<SendIcon/>}>
-							Submit Storage
+						<Button type="submit" color="secondary"  endIcon={<SendIcon/>} sx={{color: "#000000"}}>
+							Submit
 						</Button>
 						<Button  type="button" color="error" endIcon={<ClearIcon/>}>
 							Cancel 

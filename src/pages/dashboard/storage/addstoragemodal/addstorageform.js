@@ -44,26 +44,26 @@ const INITIAL_FORM_STATE = {
 }
 
 const FORM_VALIDATION = Yup.object().shape({
-	fullname: Yup.string().required("Please add the client's Fullname"),
-	email: Yup.string().email().required("Please add the client's Email"),
-	telephone: Yup.string().required("Please add the client's Telephone number"),
-	company: Yup.string().required("Please add the name of the client's company, If not add NULL"),
+	fullname: Yup.string().min(3, "Minimum characters required for fullname is 3").required("Please add the client's Fullname"),
+	email: Yup.string().min(3, "Minimum characters required for email is 3").email().required("Please add the client's Email"),
+	telephone: Yup.string().min(3, "Minimum characters required for telephone is 3").required("Please add the client's Telephone number"),
+	company: Yup.string().min(3, "Minimum characters required for company is 3").required("Please add the name of the client's company, If not add NULL"),
 	
-	trackno: Yup.string().required("Please add the client's item tracking number"),
-	product: Yup.string().required("Please add the client's product"),
-	weight: Yup.number().required("Please add the client's product mass"),
-	description: Yup.string().required("Please add the client's little description ,eg One bag of maize 10 killograms "),
+	trackno: Yup.string().min(3, "Minimum characters required for trackno is 3").required("Please add the client's item tracking number"),
+	product: Yup.string().min(3, "Minimum characters required for product is 3").required("Please add the client's product"),
+	weight: Yup.number().min(3, "Minimum amount required for weight is 0").required("Please add the client's product mass"),
+	description: Yup.string().min(3, "Minimum characters required for description is 3").required("Please add the client's little description ,eg One bag of maize 10 killograms "),
 	
-	storageaddress: Yup.string().required("Please add the product's storage area"),
+	storageaddress: Yup.string().min(3, "Minimum characters required for storage address is 3").required("Please add the product's storage area"),
 	
-	datein: Yup.string().required("Please add the date the goods were brought in for storage"),
+	datein: Yup.string().min(3, "Minimum characters required for date in is 3").required("Please add the date the goods were brought in for storage"),
 	dateout: Yup.string(),
-	timein: Yup.string().required("Please add the time the goods were brought in for storage"),
+	timein: Yup.string().min(3, "Minimum characters required for time in is 3").required("Please add the time the goods were brought in for storage"),
 	timeout: Yup.string(),
-	notes: Yup.string().required("Please add the description of the goods"),
+	notes: Yup.string().min(20, "Minimum characters required for notes is 20").max(1000).required("Please add the description of the goods"),
 })
 
-const AddStorageForm = ({ token, postAStorage, errMessage, data}) => {
+const AddStorageForm = ({ token, postAStorage, errMessage, setOpen}) => {
 	
 	const [ trackNo, setTrackNo ] = useState("")
 	const [ showSuccess, setShowSuccess ] = useState(false);
@@ -76,6 +76,10 @@ const AddStorageForm = ({ token, postAStorage, errMessage, data}) => {
 			setTrackNo(values.trackno)
 			resetForm()
 		}
+
+		setTimeout(() => {
+			setOpen(false)
+		}, 2000);
 
 	}
 	
@@ -196,11 +200,11 @@ const AddStorageForm = ({ token, postAStorage, errMessage, data}) => {
 
 					
 					<ButtonGroup variant="contained" type="submit" sx={{marginTop: "30px"}}>
-						<Button type="submit" color="secondary"  endIcon={<SendIcon/>}>
-							Submit Storage
+						<Button type="submit" color="secondary"  endIcon={<SendIcon/>} style={{color: "black"}}>
+							Submit
 						</Button>
 						<Button  type="button" color="error" endIcon={<ClearIcon/>}>
-							Cancel Storage
+							Cancel
 						</Button>
 					</ButtonGroup>
 				</Form>

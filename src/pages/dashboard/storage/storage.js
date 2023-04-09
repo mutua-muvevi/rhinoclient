@@ -33,8 +33,8 @@ function filterOutByAddress(objects) {
 
 const Dashstorage = ({storage, }) => {
 
-	const storageLocal = filterByAddress(storage)
-	const internationalStorage = filterOutByAddress(storage)
+	const storageLocal = storage ? filterByAddress(storage): ""
+	const internationalStorage = storage ? filterOutByAddress(storage): ""
 
 	return (
 		<Box>
