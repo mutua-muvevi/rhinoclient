@@ -100,8 +100,8 @@ export const getBlogs = () => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
-				// "http://localhost:8500/api/blogs/all"
-				"https://drab-jade-bison-cuff.cyclic.app/api/blogs/all"
+				"http://localhost:8500/api/blogs/all"
+				// "https://drab-jade-bison-cuff.cyclic.app/api/blogs/all"
 			)
 			getAllBlogs()
 			dispatch(getAllBlogsSuccess(res.data.data))
@@ -115,8 +115,8 @@ export const getSingleBlog = (id) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
-				// `http://localhost:8500/api/blogs/blog/${id}`
-				`https://drab-jade-bison-cuff.cyclic.app/api/blogs/blog/${id}`
+				`http://localhost:8500/api/blogs/blog/${id}`
+				// `https://drab-jade-bison-cuff.cyclic.app/api/blogs/blog/${id}`
 			)
 			getOneBlog()
 			dispatch(getOneBlogSuccess(res.data.data))
@@ -130,8 +130,8 @@ export const postABlog = (values, token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.post(
-				// `http://localhost:8500/api/blogs/post`,
-				`https://drab-jade-bison-cuff.cyclic.app/api/blogs/post`,
+				`http://localhost:8500/api/blogs/post`,
+				// `https://drab-jade-bison-cuff.cyclic.app/api/blogs/post`,
 				values,
 				{
 					headers: {
@@ -153,8 +153,8 @@ export const editABlog = (values, token, id) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.put(
-				// `http://localhost:8500/api/blogs/edit/${id}`,
-				`https://drab-jade-bison-cuff.cyclic.app/api/blogs/edit/${id}`,
+				`http://localhost:8500/api/blogs/edit/${id}`,
+				// `https://drab-jade-bison-cuff.cyclic.app/api/blogs/edit/${id}`,
 				values,
 				{
 					headers: {

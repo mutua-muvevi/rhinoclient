@@ -69,8 +69,8 @@ export const registerUser = (formData) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.post(
-				// `http://localhost:8500/api/user/register`,
-				`https://drab-jade-bison-cuff.cyclic.app/api/user/register`,
+				`http://localhost:8500/api/user/register`,
+				// `https://drab-jade-bison-cuff.cyclic.app/api/user/register`,
 				formData,
 				{
 					headers: {
@@ -91,8 +91,8 @@ export const loginUser = (formData) => {
 		
 		try {
 			const res = await axios.post(
-				// `http://localhost:8500/api/user/login`,
-				`https://drab-jade-bison-cuff.cyclic.app/api/user/login`,
+				`http://localhost:8500/api/user/login`,
+				// `https://drab-jade-bison-cuff.cyclic.app/api/user/login`,
 				formData,
 				{
 					headers: {
@@ -114,8 +114,8 @@ export const forgotPassword = (formData) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.post(
-				// `http://localhost:8500/api/user/forgotpassword`,
-				`https://drab-jade-bison-cuff.cyclic.app/api/user/forgotpassword`,
+				`http://localhost:8500/api/user/forgotpassword`,
+				// `https://drab-jade-bison-cuff.cyclic.app/api/user/forgotpassword`,
 				formData,
 				{
 					headers: {
@@ -135,8 +135,8 @@ export const resetPassword = (values, params) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.post(
-				// `http://localhost:8500/api/user/resetpasword/${params}`,
-				`https://drab-jade-bison-cuff.cyclic.app/api/user/resetpasword/${params}`,
+				`http://localhost:8500/api/user/resetpasword/${params}`,
+				// `https://drab-jade-bison-cuff.cyclic.app/api/user/resetpasword/${params}`,
 				values,
 				{
 					headers: {
@@ -153,10 +153,9 @@ export const resetPassword = (values, params) => {
 }
 
 export const logoutUser = () => {
-	return (dispatch) => {
+	return () => {
 		try {
-			const storage = window.localStorage
-			storage.removeItem("persist:root")
+			window.localStorage.clear()
 		} catch (error) {
 			console.log(error)
 		}
