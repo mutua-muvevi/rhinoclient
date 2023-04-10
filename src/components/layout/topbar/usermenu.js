@@ -9,7 +9,8 @@ import {
 	Stack,
 	MenuItem,
 	Avatar,
-	IconButton,
+	Link,
+	Button,
 } from "@mui/material";
 import { styled } from "@mui/system";
 // components
@@ -17,7 +18,6 @@ import { styled } from "@mui/system";
 // import account from "../../_mock/account";
 
 import { connect } from "react-redux";
-import { logoutUser } from "../../../redux/auth/authactions";
 import MenuPopover from "../popover";
 
 const StyledAvatar = styled(Avatar)(({ theme }) => ({
@@ -45,7 +45,7 @@ const MENU_OPTIONS = [
 
 // ----------------------------------------------------------------------
 
-const UserMenu = ({ me, logout }) => {
+const UserMenu = ({ me }) => {
 	const anchorRef = useRef(null);
 	const navigate = useNavigate();
 
@@ -63,15 +63,19 @@ const UserMenu = ({ me, logout }) => {
 		console.log("It is working, ")
 	}
 
-	const handleLogout = () => {
-		navigate("/auth/login")
-		logout()
+	const logout = () => {
+		window.localStorage.clear()
+	}
+
+	const linkStyles = {
+		color: "inherit",
+		textDecoration: "none"
 	}
 
 	return (
 		<>
 			<Stack direction="row" spacing={3}>
-				<IconButton
+				<Box
 					ref={anchorRef}
 					onClick={handleOpen}
 					sx={{
@@ -90,12 +94,12 @@ const UserMenu = ({ me, logout }) => {
 						}),
 					}}>
 						{
-							me && me.email ?
-							<StyledAvatar sx={{width: "25px", height: "25px"}}>
-								{me.email[0]}
-							</StyledAvatar> :""
+							me && me.firstname ?
+							<Button variant="contained" color="secondary" sx={{width: "25px", height: "25px", color: "black"}}>
+								{me.firstname}
+							</Button> :""
 						}
-				</IconButton>
+				</Box>
 
 			</Stack>
 
@@ -143,9 +147,11 @@ const UserMenu = ({ me, logout }) => {
 
 				<StyledDivider/>
 
-				<MenuItem onClick={handleLogout} sx={{ m: 1 }}>
-					Logout
-				</MenuItem>
+				<Link href="/auth/login" style={linkStyles}>
+					<MenuItem onClick={logout} sx={{ m: 1 }}>
+						Logout
+					</MenuItem>
+				</Link>
 			</MenuPopover>
 		</>
 	);
@@ -157,7 +163,7 @@ const mapStateToProps = ({user}) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-	logout: () => dispatch(logoutUser())
+
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserMenu)
