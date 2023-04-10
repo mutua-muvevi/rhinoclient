@@ -28,7 +28,7 @@ const headerFont = {
 	fontFamily: "'Rubik', sans-serif",
 }
 
-const Usercards3 = () => {
+const Usercards3 = ({ admin, clients }) => {
 	
 	const [open, setOpen] = useState(false)
 
@@ -36,37 +36,31 @@ const Usercards3 = () => {
 		setOpen(true)
 	}
 
-	const closeShipmentModal = () => {
-		setOpen(false)
-	}
-
 	const userCard = [
 		{
 			title : {
 				left: "Clients",
-				right: <Button>View</Button>
 			},
 			body: {
 				left: <PersonIcon  sx={{ fontSize : 30}} />,
-				right: 45
+				right: clients ? clients.length : ""
 			},
 			footer: "Increase from last year"
 		},
 		{
 			title : {
 				left: "Admins",
-				right: <Button>View</Button>
 			},
 			body: {
 				left: <AdminPanelSettingsIcon  sx={{ fontSize : 30}} />,
-				right: 3
+				right: admin ? admin.length : ""
 			},
 			footer: "Increase from last year"
 		},
 	]
 
 	return (
-		<Grid container spacing={0.5} >
+		<Grid container spacing={3} >
 			{
 				userCard.map((item, i) => (
 					<Grid key={i} item lg={4} sm={12} xs={12}>
@@ -83,7 +77,7 @@ const Usercards3 = () => {
 				</BoxWrapper>
 			</Grid>
 			
-			<AddUsermodal open={open} setOpen={setOpen} onClose={closeShipmentModal} />
+			<AddUsermodal open={open} setOpen={setOpen}/>
 		</Grid>
 	)
 }

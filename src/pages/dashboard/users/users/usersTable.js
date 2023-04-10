@@ -51,55 +51,62 @@ const UsersTable = ({ users }) => {
 			align: "left",
 			headerAlign: "left",
 			headerName: "Firstname",
-			width: 200
+			minWidth: 200,
+			flex:1
 		},
 		{
 			field: "lastname",
 			align: "left",
 			headerAlign: "left",
 			headerName: "Lastname",
-			width: 200
+			minWidth: 200,
+			flex:1
 		},
 		{
 			field: "email",
 			align: "left",
 			headerAlign: "left",
 			headerName: "Email",
-			width: 200
+			minWidth: 200,
+			flex:1
 		},
 		{
 			field: "telephone",
 			align: "left",
 			headerAlign: "left",
 			headerName: "Telephone",
-			width: 200
+			minWidth: 200,
+			flex:1
 		},
 		{
 			field: "city",
 			align: "left",
 			headerAlign: "left",
 			headerName: "City",
-			width: 200
+			minWidth: 200,
+			flex:1
 		},
 		{
 			field: "country",
 			align: "left",
 			headerAlign: "left",
 			headerName: "Country",
-			width: 200
+			minWidth: 200,
+			flex:1
 		},
 		{
 			field: "createdAt",
 			align: "left",
 			headerAlign: "left",
 			headerName: "Date Joined",
-			width: 200
+			minWidth: 200,
+			flex:1
 		},
 	]
 
 	return (
 		<StyledDataGridContainer>
-			<StyledDataGridHeader title="List of Registered Clients" />
+			<StyledDataGridHeader title="Clients" />
 
 			<StyledDataGrid
 				rows={users ? users : null}

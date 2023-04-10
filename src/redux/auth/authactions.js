@@ -68,6 +68,7 @@ export const signOutUser = () => ({
 export const registerUser = (formData) => {
 	return async (dispatch) => {
 		try {
+			console.log(formData)
 			const res = await axios.post(
 				`http://localhost:8500/api/user/register`,
 				// `https://drab-jade-bison-cuff.cyclic.app/api/user/register`,
