@@ -22,7 +22,7 @@ const StyledFormContainerWrapper = styled(Box)(({ theme }) => ({
 
 
 
-const AddUsermodal = ({open, setOpen, onClose}) => {
+const AddUsermodal = ({open, setOpen}) => {
 	return (
 		<StyledModal
 			open={open}
@@ -35,7 +35,7 @@ const AddUsermodal = ({open, setOpen, onClose}) => {
 					<Typography style={{marginTop: "20px"}}  id="modal-modal-title" variant="h4" gutterBottom component="h2">
 						Add User
 					</Typography>
-					<AddUserForm onClose={onClose}/>
+					<AddUserForm setOpen={setOpen}/>
 				</Container>
 			</StyledFormContainerWrapper>
 		</StyledModal>

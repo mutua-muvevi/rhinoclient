@@ -47,7 +47,7 @@ const FORM_VALIDATION = Yup.object().shape({
     
 })
 
-const AddUserForm = ({ onClose,  registerUser, isAuthenticated, errMessage }) => {
+const AddUserForm = ({ setOpen,  registerUser, isAuthenticated, errMessage }) => {
 
 	const [ user, setUser ] = useState({});
 
@@ -56,7 +56,7 @@ const AddUserForm = ({ onClose,  registerUser, isAuthenticated, errMessage }) =>
 	const [ alertSuccessDisplay, setAlertSuccessDisplay ] = useState("");
 
 	const submitHandler = (values, { resetForm }) => {
-
+		console.log("Values", values)
 		setUser(values)
 		registerUser(values)
 		resetForm()
@@ -66,6 +66,10 @@ const AddUserForm = ({ onClose,  registerUser, isAuthenticated, errMessage }) =>
 			setAlertSuccess(false)
 			setAlertSuccessDisplay("none")
 		}, [2000])
+
+		setTimeout(() => {
+			setOpen(false)
+		}, 4000);
 	}
 
 	return (
@@ -122,10 +126,10 @@ const AddUserForm = ({ onClose,  registerUser, isAuthenticated, errMessage }) =>
 				
 					<ButtonGroup variant="contained" type="submit" sx={{marginTop: "30px"}}>
 						<Button type="submit" color="secondary" sx={{ color: "black" }} endIcon={<SendIcon/>}>
-							Register User
+							Register
 						</Button>
-						<Button onClick={onClose} type="submit" color="error" endIcon={<ClearIcon/>}>
-							Cancel Registration
+						<Button onClick={() => setOpen(false)} type="submit" color="error" endIcon={<ClearIcon/>}>
+							Cancel
 						</Button>
 					</ButtonGroup>
 				</Form>

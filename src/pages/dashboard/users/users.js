@@ -9,6 +9,7 @@ import GroupIcon from '@mui/icons-material/Warehouse';
 import AdminTable from "./adminTable/adminTable";
 import UsersTable from "./users/usersTable";
 import Usercards3 from "./3usercards/usercard3";
+import { connect } from "react-redux";
 
 
 const StyledBreadCrumbs = styled(Breadcrumbs)(({theme}) => ({
@@ -19,7 +20,7 @@ const headerFont = {
 	color: "#dea95f",
 	fontFamily: "'Rubik', sans-serif",
 }
-const Dashusers = ({ users }) => {
+const Dashusers = ({ admin, clients }) => {
 
 	
 	return (
@@ -42,12 +43,20 @@ const Dashusers = ({ users }) => {
 				</Typography>
 			</StyledBreadCrumbs>
 			
-			<Usercards3/>
-			<AdminTable />
-			<UsersTable />
+			<Usercards3
+				clients={clients}
+				admin={admin}
+			/>
+
+			{ admin ? <AdminTable /> : "" }
+			{ clients ? <UsersTable /> : "" }
 		</Box>
 	)
 }
 
+const mapStateToProps = ({user}) => ({
+	admin: user.admin,
+	clients: user.users
+})
 
-export default Dashusers
+export default connect(mapStateToProps)(Dashusers)
