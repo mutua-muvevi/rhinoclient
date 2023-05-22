@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Box, Container, Modal, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 

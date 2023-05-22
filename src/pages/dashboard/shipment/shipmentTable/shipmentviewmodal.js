@@ -10,6 +10,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 import EventModal from "./events/new/modal";
 import ShipmentEventsTable from "./shipmenteventstable";
+import DeleteShipment from '../delete/delete';
 
 const StyledModal = styled(Modal)(({ theme }) => ({
 	width: "85vw",
@@ -62,7 +63,8 @@ const ongoingShipment = (objects) => {
 
 const ShipmentViewModal = ({ values, open, setOpen }) => {
 
-	const [ eventModal, setEventModal ] = useState(false)
+	const [ eventModal, setEventModal ] = useState(false);
+	const [ deleteModal, setDeleteModal ] = useState(false);
 
 	const shipperInformation = [
 		{
@@ -506,6 +508,7 @@ const ShipmentViewModal = ({ values, open, setOpen }) => {
 								variant="contained" 
 								color="error"
 								style={{minWidth: "150px"}}
+								onClick={() => setDeleteModal(true)}
 								>
 									Delete Shipment
 							</Button>
@@ -513,7 +516,9 @@ const ShipmentViewModal = ({ values, open, setOpen }) => {
 					</Container>
 				</StyledModalContainerBox>
 			</StyledModal>
+
 			<EventModal trackInfo={values.trackno} open={eventModal} setOpen={setEventModal}/>
+			<DeleteShipment shipment={values} open={deleteModal} setOpen={setDeleteModal}/>
 		</>
 	)
 }
