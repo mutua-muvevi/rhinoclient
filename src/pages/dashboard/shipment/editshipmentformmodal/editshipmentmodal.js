@@ -4,6 +4,7 @@ import { Box, Container, Modal, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 
 import EditShipmentForm from "./editshipmentform";
+import { connect } from 'react-redux';
 
 
 const StyledModal = styled(Modal)(({theme}) => ({
@@ -24,7 +25,7 @@ const StyledFormContainerWrapper = styled(Box)(({ theme }) => ({
 
 
 
-const EditShipmentModal = ({ values, open, setOpen}) => {
+const EditShipmentModal = ({ shipment, open, setOpen}) => {
 	return (
 		<StyledModal
 			open={open}
@@ -37,11 +38,15 @@ const EditShipmentModal = ({ values, open, setOpen}) => {
 					<Typography style={{marginTop: "20px"}}  id="modal-modal-title" variant="h4" gutterBottom component="h2">
 						Edit Shipment Form
 					</Typography>
-					<EditShipmentForm shipment={values} open={open} setOpen={setOpen} />
+					<EditShipmentForm shipment={shipment} open={open} setOpen={setOpen} />
 				</Container>
 			</StyledFormContainerWrapper>
 		</StyledModal>
 	)
 }
 
-export default EditShipmentModal
+const mapStateToProps = ({shipment}) => ({
+	shipment: shipment.shipment
+})
+
+export default connect(mapStateToProps)(EditShipmentModal)

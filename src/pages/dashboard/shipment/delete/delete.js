@@ -12,6 +12,8 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/system";
 import { useTheme } from "@emotion/react";
+import { deleteShipment } from "../../../../redux/shipment/shipmentactions";
+import { connect } from "react-redux";
 
 const StyledModal = styled(Modal)(({ theme }) => ({
 	width: "50vw",
@@ -32,7 +34,7 @@ const buttonStyle = {
 	minWidth: "150px"
 }
 
-const DeleteShipment = ({ open, setOpen, shipment }) => {
+const DeleteShipment = ({ open, setOpen, shipment, token, deleteShipment }) => {
 	const [inputValue, setInputValue] = useState("");
 	const navigate = useNavigate();
 	const theme = useTheme();
@@ -42,7 +44,7 @@ const DeleteShipment = ({ open, setOpen, shipment }) => {
 	};
 
 	const handleDeleteClick = () => {
-		// deleteService(token, createdBy._id, service._id);
+		deleteShipment(token, shipment._id)
 		// navigate("/admin/freelancer/services/home")
 	};
 
@@ -119,4 +121,12 @@ const DeleteShipment = ({ open, setOpen, shipment }) => {
 	);
 };
 
-export default DeleteShipment;
+const mapStateToProps = ({auth}) => ({
+	token: auth.token
+})
+
+const mapDispatchToProps = (dispatch) => ({
+	deleteShipment: (token, id) => dispatch(deleteShipment(token, id))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(DeleteShipment);

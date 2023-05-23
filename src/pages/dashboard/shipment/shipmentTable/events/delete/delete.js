@@ -48,7 +48,7 @@ const StyledButtonGroup = styled(ButtonGroup)(({ theme }) => ({
 	marginBottom: "20px",
 }));
 
-const DeleteEventModal = ({ token, event, open, setOpen, deleteAction }) => {
+const DeleteEventModal = ({ token, event, open, setOpen, deleteAction, shipment }) => {
 	const [inputValue, setInputValue] = useState("");
 	const navigate = useNavigate();
 	const theme = useTheme();
@@ -58,7 +58,7 @@ const DeleteEventModal = ({ token, event, open, setOpen, deleteAction }) => {
 	};
 
 	const handleDeleteClick = () => {
-		// deleteService(token, createdBy._id, service._id);
+		deleteAction(token, shipment.trackno, event._id)
 		// navigate("/admin/freelancer/services/home")
 	};
 
@@ -133,10 +133,14 @@ const DeleteEventModal = ({ token, event, open, setOpen, deleteAction }) => {
 	);
 };
 
-const mapStateToProps = ({}) => ({});
+const mapStateToProps = ({auth, shipment}) => ({
+	token: auth.token,
+	event: shipment.event,
+	shipment: shipment.shipment
+});
 
 const mapDispatchToProps = (dispatch) => ({
-	deleteAction: () => dispatch(deleteEvent()),
+	deleteAction: (token, trackno, id) => dispatch(deleteEvent(token, trackno, id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DeleteEventModal);

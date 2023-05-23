@@ -3,6 +3,7 @@ import { styled } from "@mui/system";
 
 import ClearIcon from '@mui/icons-material/Clear';
 import { BsPrinterFill } from "react-icons/bs";
+import { connect } from "react-redux";
 
 const StyledModal = styled(Modal)(({ theme }) => ({
 	overflowY: {
@@ -52,7 +53,7 @@ const EventViewModal = ({ event, open, setOpen }) => {
 	const eventInfo = [
 		{
 			name: "Number",
-			value: event.number,
+			value: event.number ? event.number : "",
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -61,7 +62,7 @@ const EventViewModal = ({ event, open, setOpen }) => {
 		},
 		{
 			name: "Status",
-			value: event.shippingstatus,
+			value: event.shippingstatus ? event.shippingstatus : "",
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -70,7 +71,7 @@ const EventViewModal = ({ event, open, setOpen }) => {
 		},
 		{
 			name: "Time",
-			value: event.timeevents,
+			value: event.timeevents ? event.timeevents : "",
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -79,7 +80,7 @@ const EventViewModal = ({ event, open, setOpen }) => {
 		},
 		{
 			name: "Date",
-			value: event.dateevents,
+			value: event.dateevents ? event.dateevents : "",
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -88,7 +89,7 @@ const EventViewModal = ({ event, open, setOpen }) => {
 		},
 		{
 			name: "Current location",
-			value: event.currentlocation,
+			value: event.currentlocation ? event.currentlocation : "",
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -97,7 +98,7 @@ const EventViewModal = ({ event, open, setOpen }) => {
 		},
 		{
 			name: "Notes",
-			value: event.notes,
+			value: event.notes ? event.notes : "",
 			xl: 12,
 			lg: 12,
 			md: 12,
@@ -164,4 +165,8 @@ const EventViewModal = ({ event, open, setOpen }) => {
 	)
 }
 
-export default EventViewModal
+const mapStateToProps = ({ shipment }) => ({
+	event: shipment.event
+})
+
+export default connect(mapStateToProps)(EventViewModal)
