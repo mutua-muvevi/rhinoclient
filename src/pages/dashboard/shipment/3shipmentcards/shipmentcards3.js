@@ -82,7 +82,7 @@ const Shipmentcards3 = ({shipment}) => {
 }
 
 const mapStateToProps = ({shipment}) => ({
-	shipment: shipment.data
+	shipment: shipment.allShipment
 })
 
 export default connect(mapStateToProps)(Shipmentcards3)

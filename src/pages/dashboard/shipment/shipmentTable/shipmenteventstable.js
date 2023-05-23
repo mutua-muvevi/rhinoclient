@@ -1,31 +1,35 @@
-import React from 'react';
+import React from "react";
 
 import { Box, Button, Card, CardHeader } from "@mui/material";
 import { styled } from "@mui/system";
 
-import { DataGrid} from '@mui/x-data-grid';
+import { DataGrid } from "@mui/x-data-grid";
 
-import { Delete, Edit, Visibility } from "@mui/icons-material"
-import { useState } from 'react';
-import EditEventModal from './events/edit/modal';
-import EventViewModal from './events/view/view';
-import { deleteEvent } from '../../../../redux/shipment/shipmentactions';
-import DeleteEventModal from './events/delete/delete';
+import { Delete, Edit, Visibility } from "@mui/icons-material";
+import { useState } from "react";
+import EditEventModal from "./events/edit/modal";
+import EventViewModal from "./events/view/view";
+import {
+	deleteEvent,
+	setEvent,
+} from "../../../../redux/shipment/shipmentactions";
+import DeleteEventModal from "./events/delete/delete";
+import { connect } from "react-redux";
 
-const StyledDataGridContainer = styled(Card)(({theme}) => ({
+const StyledDataGridContainer = styled(Card)(({ theme }) => ({
 	backgroundColor: "inherit",
 	borderRadius: theme.shape.default,
 	marginTop: "30px",
 	marginBottom: "30px",
 	filter: "drop-shadow(5px 7px 5px rgba(0,0,0, 0.4))",
-}))
+}));
 
-const StyledDataGridHeader = styled(CardHeader)(({theme}) => ({
+const StyledDataGridHeader = styled(CardHeader)(({ theme }) => ({
 	backgroundColor: "#131313",
-	color: theme.palette.secondary.main
-}))
+	color: theme.palette.secondary.main,
+}));
 
-const StyledDataGrid = styled(DataGrid)(({theme}) =>({
+const StyledDataGrid = styled(DataGrid)(({ theme }) => ({
 	border: "none",
 	backgroundColor: theme.palette.background.default,
 	width: "100%",
@@ -39,83 +43,79 @@ const StyledDataGrid = styled(DataGrid)(({theme}) =>({
 	},
 	"& .MuiDataGrid-virtualScrollerRenderZone": {
 		"& .MuiDataGrid-row": {
-			"&:nth-of-type(2n)": { backgroundColor: theme.palette.background.paper }
-		}
-	}
-}))
+			"&:nth-of-type(2n)": {
+				backgroundColor: theme.palette.background.paper,
+			},
+		},
+	},
+}));
 
-
-
-
-const ShipmentEventsTable = ({ events, trackno }) => {
-
-	const [singleEvent, setSingleEvent] = useState({})
-
+const ShipmentEventsTable = ({ events, trackno, setEvent, event }) => {
 	const [openEventModal, setOpenEventModal] = useState(false);
 	const [openEditEventModal, setOpenEditEventModal] = useState(false);
 	const [openDeleteEventModal, setOpenDeleteEventModal] = useState(false);
 
 	const handleViewClick = (e, values) => {
-		setSingleEvent(values.row)
-		setOpenEventModal(true)
-	}
+		setEvent(values.row);
+		setOpenEventModal(true);
+	};
 
 	const handleEditClick = (e, values) => {
-		setSingleEvent(values.row)
-		setOpenEditEventModal(true)
-	}
+		setEvent(values.row);
+		setOpenEditEventModal(true);
+	};
 
 	const handleDeleteClick = (e, values) => {
-		setSingleEvent(values.row)
-		setOpenDeleteEventModal(true)
-	}
+		setEvent(values.row);
+		setOpenDeleteEventModal(true);
+	};
 
 	const columns = [
 		{
 			field: "id",
-			hide: true
+			hide: true,
 		},
 		{
 			field: "number",
 			align: "left",
 			headerAlign: "left",
 			headerName: "Number",
-			width: 100
+			width: 100,
 		},
 		{
 			field: "timeevents",
 			align: "left",
 			headerAlign: "left",
 			headerName: "Time",
-			width: 200
+			width: 200,
 		},
 		{
 			field: "dateevents",
 			align: "left",
 			headerAlign: "left",
 			headerName: "Date",
-			width: 200
+			width: 200,
 		},
 		{
 			field: "currentlocation",
 			align: "left",
 			headerAlign: "left",
 			headerName: "Location",
-			width: 200
+			width: 200,
 		},
 		{
 			field: "shippingstatus",
 			align: "left",
 			headerAlign: "left",
 			headerName: "Status",
-			width: 200
+			width: 200,
 		},
 		{
 			field: "notes",
 			align: "left",
 			headerAlign: "left",
 			headerName: "Statements",
-			minWidth: 390
+			minWidth: 390,
 		},
 		{
 			field: "view",
@@ -124,20 +124,18 @@ const ShipmentEventsTable = ({ events, trackno }) => {
 			width: 200,
 			disableClickEventBubbling: true,
 			renderCell: (cellValues) => (
-				<Button 
-					style={{width: "150px", color:"black"}}
+				<Button
+					style={{ width: "150px", color: "black" }}
 					variant="contained"
 					color="secondary"
-					onClick={
-						e => {
-							handleViewClick(e, cellValues)
-						}
-					}
-					endIcon={<Visibility/>}
+					onClick={(e) => {
+						handleViewClick(e, cellValues);
+					}}
+					endIcon={<Visibility />}
 				>
 					View
 				</Button>
-			)
+			),
 		},
 		{
 			field: "edit",
@@ -146,20 +144,18 @@ const ShipmentEventsTable = ({ events, trackno }) => {
 			width: 200,
 			disableClickEventBubbling: true,
 			renderCell: (cellValues) => (
-				<Button 
-					style={{width: "150px", color:"black"}}
+				<Button
+					style={{ width: "150px", color: "black" }}
 					variant="contained"
 					color="warning"
-					onClick={
-						e => {
-							handleEditClick(e, cellValues)
-						}
-					}
-					endIcon={<Edit/>}
+					onClick={(e) => {
+						handleEditClick(e, cellValues);
+					}}
+					endIcon={<Edit />}
 				>
 					Edit
 				</Button>
-			)
+			),
 		},
 		{
 			field: "delete",
@@ -168,22 +164,20 @@ const ShipmentEventsTable = ({ events, trackno }) => {
 			width: 200,
 			disableClickEventBubbling: true,
 			renderCell: (cellValues) => (
-				<Button 
-					style={{width: "150px"}}
+				<Button
+					style={{ width: "150px" }}
 					variant="contained"
 					color="error"
-					onClick={
-						e => {
-							handleDeleteClick(e, cellValues)
-						}
-					}
-					endIcon={<Delete/>}
+					onClick={(e) => {
+						handleDeleteClick(e, cellValues);
+					}}
+					endIcon={<Delete />}
 				>
 					Delete
 				</Button>
-			)
+			),
 		},
-	]
+	];
 
 	return (
 		<>
@@ -194,31 +188,50 @@ const ShipmentEventsTable = ({ events, trackno }) => {
 					columns={columns}
 					autoPageSize
 					autoHeight
-					getRowId={event => event._id}
+					getRowId={(event) => event._id}
 					pageSize={50}
 				/>
 			</StyledDataGridContainer>
 
-			<EventViewModal
-				open={openEventModal}
-				setOpen={setOpenEventModal}
-				event={singleEvent}
-			/>
-
-			<EditEventModal
-				open={openEditEventModal}
-				setOpen={setOpenEditEventModal}
-				event={singleEvent}
-				trackno={trackno}
+			{event ? (
+				<EventViewModal
+					open={openEventModal}
+					setOpen={setOpenEventModal}
 				/>
-
-			<DeleteEventModal
-				open={openDeleteEventModal}
-				setOpen={setOpenDeleteEventModal}
-				event={singleEvent}
-			/>
+			) : (
+				""
+			)}
+			{event ? (
+				<EditEventModal
+					open={openEditEventModal}
+					setOpen={setOpenEditEventModal}
+				/>
+			) : (
+				""
+			)}
+			{event ? (
+				<DeleteEventModal
+					open={openDeleteEventModal}
+					setOpen={setOpenDeleteEventModal}
+				/>
+			) : (
+				""
+			)}
 		</>
-	)
-}
+	);
+};
 
-export default ShipmentEventsTable
+const mapStateToProps = ({ shipment }) => ({
+	events: shipment.shipment.events,
+	trackno: shipment.shipment.trackno,
+	event: shipment.event
+});
+
+const mapDispatchToProps = (dispatch) => ({
+	setEvent: (event) => dispatch(setEvent(event)),
+});
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(ShipmentEventsTable);

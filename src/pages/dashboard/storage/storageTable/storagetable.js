@@ -12,6 +12,7 @@ import StorageViewModal from "./storageviewmodal";
 
 import { connect } from "react-redux"
 import EditStorageModal from "../editstorageformmodal/editstoragemodal";
+import { setStorage } from '../../../../redux/storage/storageaction';
 
 const StyledDataGridContainer = styled(Card)(({theme}) => ({
 	backgroundColor: "inherit",
@@ -44,7 +45,7 @@ const StyledDataGrid = styled(DataGrid)(({theme}) =>({
 	},
 }))
 
-const StorageTable = ({storage}) => {
+const StorageTable = ({storage, setStorage}) => {
 
 	
 	const [modal, setModal] = useState(false);
@@ -53,11 +54,13 @@ const StorageTable = ({storage}) => {
 
 	const handleClick = (e, values) => {
 		setSingleStorage(values.row)
+		setStorage(values.row)
 		setModal(true)
 	}
 
 	const handleEditClick = (e, values) => {
 		setSingleStorage(values.row)
+		setStorage(values.row)
 		setEditModal(true)
 	}
 
@@ -216,8 +219,12 @@ const StorageTable = ({storage}) => {
 
 
 const mapStateToProps = ({ storage }) => ({
-	storage: storage.data,
+	storage: storage.allStorage,
 	errMessage: storage.errMessage
 });
 
-export default connect(mapStateToProps)(StorageTable)
+const mapDispatchToProps = (dispatch) => ({
+	setStorage: (storage) => dispatch(setStorage(storage))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(StorageTable)

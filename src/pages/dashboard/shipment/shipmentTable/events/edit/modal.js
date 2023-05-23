@@ -4,6 +4,7 @@ import { Box, Container, Modal, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 
 import EditEventForm from "../edit/form";
+import { connect } from 'react-redux';
 
 
 const StyledModal = styled(Modal)(({theme}) => ({
@@ -45,4 +46,9 @@ const EditEventModal = ({ event, open, setOpen, trackno}) => {
 	)
 }
 
-export default EditEventModal
+const mapStateToProps = ({shipment}) => ({
+	event: shipment.event,
+	trackno: shipment.shipment.trackno
+})
+
+export default connect(mapStateToProps)(EditEventModal)

@@ -1,52 +1,61 @@
-import React from 'react';
+import React from "react";
 
-import { Box, Button, ButtonGroup, Container, Divider, Grid, Modal, Typography } from "@mui/material";
+import {
+	Box,
+	Button,
+	ButtonGroup,
+	Container,
+	Divider,
+	Grid,
+	Modal,
+	Typography,
+} from "@mui/material";
 import { styled } from "@mui/system";
 
-import EventRepeatIcon from '@mui/icons-material/EventRepeat';
-import DeleteIcon from '@mui/icons-material/Delete';
+import EventRepeatIcon from "@mui/icons-material/EventRepeat";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { useState } from "react";
+import DeleteStorage from "../delete/delete";
 
 const StyledModal = styled(Modal)(({ theme }) => ({
 	width: "85vw",
 	margin: "15vh auto",
 	overflowY: "scroll",
-	border: 'none',
+	border: "none",
 	height: "70vh",
-	borderRadius: theme.shape.default
-}))
+	borderRadius: theme.shape.default,
+}));
 
-const StyledModalContainerBox = styled(Box)(({theme}) => ({
+const StyledModalContainerBox = styled(Box)(({ theme }) => ({
 	backgroundColor: theme.palette.background.paper,
-	border: 'none',
+	border: "none",
 	boxShadow: 24,
 	paddingTop: 2,
 	paddingBottom: 2,
 	minHeight: "70vh",
-}))
+}));
 
-const styledModalBox = {
-}
+const styledModalBox = {};
 
 const StyledButtonGroup = styled(ButtonGroup)(({ theme }) => ({
 	marginTop: "20px",
 	marginBottom: "20px",
-}))
-
+}));
 
 const headerFont = {
 	color: "#dea95f",
 	fontWeight: 500,
 	fontFamily: "'Rubik', sans-serif",
-}
+};
 
 const titleFont = {
 	fontWeight: 500,
 	fontFamily: "'Rubik', sans-serif",
-}
-
+};
 
 const StorageViewModal = ({ values, open, setOpen }) => {
-	
+	const [deleteStorage, setDeleteStorage] = useState(false)
+
 	const ownerInformation = [
 		{
 			name: "Owner's Fullname",
@@ -55,7 +64,7 @@ const StorageViewModal = ({ values, open, setOpen }) => {
 			lg: 4,
 			md: 4,
 			sm: 12,
-			xs: 12
+			xs: 12,
 		},
 		{
 			name: "Owner'sEmail",
@@ -64,7 +73,7 @@ const StorageViewModal = ({ values, open, setOpen }) => {
 			lg: 4,
 			md: 4,
 			sm: 12,
-			xs: 12
+			xs: 12,
 		},
 		{
 			name: "Owner's Company",
@@ -73,7 +82,7 @@ const StorageViewModal = ({ values, open, setOpen }) => {
 			lg: 4,
 			md: 4,
 			sm: 12,
-			xs: 12
+			xs: 12,
 		},
 		{
 			name: "Owner'sTelephone",
@@ -82,7 +91,7 @@ const StorageViewModal = ({ values, open, setOpen }) => {
 			lg: 4,
 			md: 4,
 			sm: 12,
-			xs: 12
+			xs: 12,
 		},
 		{
 			name: "Owner'sAddress",
@@ -91,9 +100,9 @@ const StorageViewModal = ({ values, open, setOpen }) => {
 			lg: 4,
 			md: 4,
 			sm: 12,
-			xs: 12
+			xs: 12,
 		},
-	]
+	];
 
 	const goodsInformation = [
 		{
@@ -103,7 +112,7 @@ const StorageViewModal = ({ values, open, setOpen }) => {
 			lg: 4,
 			md: 4,
 			sm: 12,
-			xs: 12
+			xs: 12,
 		},
 		{
 			name: "Product",
@@ -112,7 +121,7 @@ const StorageViewModal = ({ values, open, setOpen }) => {
 			lg: 4,
 			md: 4,
 			sm: 12,
-			xs: 12
+			xs: 12,
 		},
 		{
 			name: "Date of Storage",
@@ -121,7 +130,7 @@ const StorageViewModal = ({ values, open, setOpen }) => {
 			lg: 4,
 			md: 4,
 			sm: 12,
-			xs: 12
+			xs: 12,
 		},
 		{
 			name: "Time of Storage",
@@ -130,7 +139,7 @@ const StorageViewModal = ({ values, open, setOpen }) => {
 			lg: 4,
 			md: 4,
 			sm: 12,
-			xs: 12
+			xs: 12,
 		},
 		{
 			name: "Storage Address",
@@ -139,7 +148,7 @@ const StorageViewModal = ({ values, open, setOpen }) => {
 			lg: 4,
 			md: 4,
 			sm: 12,
-			xs: 12
+			xs: 12,
 		},
 		{
 			name: "Storage Notes",
@@ -148,9 +157,9 @@ const StorageViewModal = ({ values, open, setOpen }) => {
 			lg: 12,
 			md: 12,
 			sm: 12,
-			xs: 12
+			xs: 12,
 		},
-	]
+	];
 
 	return (
 		<>
@@ -163,70 +172,107 @@ const StorageViewModal = ({ values, open, setOpen }) => {
 				<StyledModalContainerBox sx={styledModalBox}>
 					<Container maxWidth="xl">
 						<Grid container spacing={2}>
-
-							<Grid sx={{marginTop: "20px"}} item xs={12}>
-								<Typography variant="h5" style={headerFont} gutterBottom>
+							<Grid sx={{ marginTop: "20px" }} item xs={12}>
+								<Typography
+									variant="h5"
+									style={headerFont}
+									gutterBottom
+								>
 									Owner's Information
 								</Typography>
-							<Divider/>
+								<Divider />
 							</Grid>
 
-							{
-								ownerInformation && ownerInformation.map(el => (
-									<Grid item key={el.name} xl={el.xl} lg={el.lg} md={el.md} sm={el.sm} xs={el.xs}>
-										<Typography style={titleFont} variant="body1">{el.name}</Typography>
+							{ownerInformation &&
+								ownerInformation.map((el) => (
+									<Grid
+										item
+										key={el.name}
+										xl={el.xl}
+										lg={el.lg}
+										md={el.md}
+										sm={el.sm}
+										xs={el.xs}
+									>
+										<Typography
+											style={titleFont}
+											variant="body1"
+										>
+											{el.name}
+										</Typography>
 										<Box>
-											<Typography variant="body1">{el.value}</Typography>
+											<Typography variant="body1">
+												{el.value}
+											</Typography>
 										</Box>
 									</Grid>
-								))
-							}
+								))}
 
-							
 							<Grid item xs={12}>
-								<Typography variant="h5" style={headerFont} gutterBottom>
+								<Typography
+									variant="h5"
+									style={headerFont}
+									gutterBottom
+								>
 									Product Information
 								</Typography>
-							<Divider/>
+								<Divider />
 							</Grid>
-							{
-								goodsInformation && goodsInformation.map(el => (
-									<Grid item key={el.name} xl={el.xl} lg={el.lg} md={el.md} sm={el.sm} xs={el.xs}>
-										<Typography style={titleFont} variant="body1">{el.name}</Typography>
+							{goodsInformation &&
+								goodsInformation.map((el) => (
+									<Grid
+										item
+										key={el.name}
+										xl={el.xl}
+										lg={el.lg}
+										md={el.md}
+										sm={el.sm}
+										xs={el.xs}
+									>
+										<Typography
+											style={titleFont}
+											variant="body1"
+										>
+											{el.name}
+										</Typography>
 										<Box>
-											<Typography variant="body1">{el.value}</Typography>
+											<Typography variant="body1">
+												{el.value}
+											</Typography>
 										</Box>
 									</Grid>
-								))
-							}
-
+								))}
 						</Grid>
 
 						<StyledButtonGroup>
-							<Button 
-								endIcon={<EventRepeatIcon/>} 
-								type="button" variant="contained" 
+							<Button
+								endIcon={<EventRepeatIcon />}
+								type="button"
+								variant="contained"
 								color="secondary"
-								style={{width: "150px", color: "black"}}
+								style={{ width: "150px", color: "black" }}
 								onClick={() => window.print()}
-								>
-									Print
+							>
+								Print
 							</Button>
 
-							<Button 
-								endIcon={<DeleteIcon/>} 
-								type="button" 
-								variant="contained" 
+							<Button
+								endIcon={<DeleteIcon />}
+								type="button"
+								variant="contained"
 								color="error"
-								>
-									Delete
+								onClick={() => setDeleteStorage(true)}
+							>
+								Delete
 							</Button>
 						</StyledButtonGroup>
 					</Container>
 				</StyledModalContainerBox>
 			</StyledModal>
-		</>
-	)
-}
 
-export default StorageViewModal
+			<DeleteStorage storage={values} open={deleteStorage} setOpen={setDeleteStorage}/>
+		</>
+	);
+};
+
+export default StorageViewModal;

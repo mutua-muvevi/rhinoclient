@@ -3,7 +3,14 @@ import storageTypes from "./storagetypes";
 const initialState = {
 	loading: false,
 	data: null,
+
+	allStorage: null,
+	allStorageError: null,
 	storage: null,
+	storageError: null,
+	editStorage: null,
+	editStorageError: null,
+
 	errMessage: undefined,
 	getOneError: undefined
 }
@@ -14,28 +21,22 @@ const storageReducer = ( state = initialState, { type, payload } ) => {
 			return { 
 				...state, 
 				loading: true,
-				storage: null,
-				data: null,
-				errMessage: undefined,
-				getOneError: undefined,
+				allStorage: null,
+				allStorageError: null,
 			};
 		case storageTypes.GET_ALL_STORAGE_SUCCESS: 
 			return { 
 				...state, 
 				loading: false,
-				data: payload,
-				storage: null,
-				errMessage: undefined,
-				getOneError: undefined,
+				allStorage: payload,
+				allStorageError: null
 			};
 		case storageTypes.GET_ALL_STORAGE_FAIL: 
 			return { 
 				...state, 
 				loading: false,
-				storage: null,
-				data: null,
-				errMessage: payload,
-				getOneError: undefined
+				allStorage: null,
+				allStorageError: payload,
 			};
 
 			
@@ -44,27 +45,21 @@ const storageReducer = ( state = initialState, { type, payload } ) => {
 				...state, 
 				loading: true,
 				storage: null,
-				data: null,
-				errMessage: undefined,
-				getOneError: undefined,
+				storageError: null,
 			};
 		case storageTypes.GET_ONE_STORAGE_SUCCESS: 
 			return { 
 				...state, 
 				loading: false,
 				storage: payload,
-				data: null,
-				errMessage: undefined,
-				getOneError: undefined
+				storageError: null,
 			};
 		case storageTypes.GET_ONE_STORAGE_FAIL: 
 			return { 
 				...state, 
 				loading: false,
 				storage: null,
-				data: null,
-				errMessage: undefined,
-				getOneError: payload
+				storageError: payload,
 			};
 
 
@@ -73,27 +68,21 @@ const storageReducer = ( state = initialState, { type, payload } ) => {
 				...state, 
 				loading: true,
 				storage: null,
-				data: null,
-				errMessage: undefined,
-				getOneError: undefined,
+				storageError: null,
 			};
 		case storageTypes.GET_STORAGE_BY_TRACKNO_SUCCESS: 
 			return { 
 				...state, 
 				loading: false,
 				storage: payload,
-				data: null,
-				errMessage: undefined,
-				getOneError: undefined
+				storageError: null,
 			};
 		case storageTypes.GET_STORAGE_BY_TRACKNO_FAIL: 
 			return { 
 				...state, 
 				loading: false,
 				storage: null,
-				data: null,
-				errMessage: undefined,
-				getOneError: payload
+				storageError: payload,
 			};
 
 
