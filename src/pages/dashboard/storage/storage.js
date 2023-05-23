@@ -19,16 +19,22 @@ const headerFont = {
 	fontFamily: "'Rubik', sans-serif",
 }
 
-function filterByAddress(objects) {
-	return objects.filter(obj => {
-	  return /nairobi|kenya|.+?(?=\s*\d)/i.test(obj.storageaddress);
-	});
+const filterByAddress = (objects) => {
+    if (!Array.isArray(objects)) {
+        return [];
+    }
+    return objects.filter(obj => {
+        return /nairobi|kenya|.+?(?=\s*\d)/i.test(obj.storageaddress);
+    });
 }
 
-function filterOutByAddress(objects) {
-	return objects.filter(obj => {
-	  return !/nairobi|kenya|.+?(?=\s*\d)/i.test(obj.storageaddress);
-	});
+const filterOutByAddress = (objects) => {
+    if (!Array.isArray(objects)) {
+        return [];
+    }
+    return objects.filter(obj => {
+        return !/nairobi|kenya|.+?(?=\s*\d)/i.test(obj.storageaddress);
+    });
 }
 
 const Dashstorage = ({storage, }) => {
@@ -67,7 +73,7 @@ const Dashstorage = ({storage, }) => {
 }
 
 const mapStateToProps = ({storage}) => ({
-	storage : storage.data,
+	storage : storage.allStorage,
 })
 
 export default connect(mapStateToProps)(Dashstorage)

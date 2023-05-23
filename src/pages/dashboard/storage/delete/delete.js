@@ -12,6 +12,8 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/system";
 import { useTheme } from "@emotion/react";
+import { connect } from "react-redux";
+import { deleteStorage } from "../../../../redux/storage/storageaction";
 
 const StyledModal = styled(Modal)(({ theme }) => ({
 	width: "50vw",
@@ -32,7 +34,7 @@ const buttonStyle = {
 	minWidth: "150px"
 }
 
-const DeleteStorage = ({ open, setOpen, storage }) => {
+const DeleteStorage = ({ open, setOpen, storage, deleteStorage, token }) => {
 	const [inputValue, setInputValue] = useState("");
 	const navigate = useNavigate();
 	const theme = useTheme();
@@ -42,7 +44,7 @@ const DeleteStorage = ({ open, setOpen, storage }) => {
 	};
 
 	const handleDeleteClick = () => {
-		// deleteService(token, createdBy._id, service._id);
+		deleteStorage(token, storage._id);
 		// navigate("/admin/freelancer/services/home")
 	};
 
@@ -99,7 +101,7 @@ const DeleteStorage = ({ open, setOpen, storage }) => {
 								disabled={inputValue !== storage.trackno}
 								sx={buttonStyle}
 							>
-								Delete Shipment
+								Delete Storage
 							</Button>
 
 							<Button
@@ -119,4 +121,13 @@ const DeleteStorage = ({ open, setOpen, storage }) => {
 	);
 };
 
-export default DeleteStorage;
+const mapStateToProps = ({storage, auth}) => ({
+	token: auth.token,
+	storage: storage.storage
+})
+
+const mapDispatchToProps = (dispatch) => ({
+	deleteStorage: (token, id) => dispatch(deleteStorage(token, id))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(DeleteStorage);

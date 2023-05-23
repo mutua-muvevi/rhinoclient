@@ -76,6 +76,21 @@ export const editStorageFail = (errMessage) => ({
 })
 
 
+export const deleteStorageStart = () => ({
+	type: storageTypes.DELETE_STORAGE_START,
+})
+
+export const deleteStorageSuccess = (storage) => ({
+	type: storageTypes.DELETE_STORAGE_SUCCESS,
+	payload: storage,
+})
+
+export const deleteStorageFail = (errMessage) => ({
+	type: storageTypes.DELETE_STORAGE_FAIL,
+	payload: errMessage,
+})
+
+
 export const getStorage = (token) => {
 	return async (dispatch) => {
 		try {
@@ -128,6 +143,16 @@ export const getStorageByTrackNo = (trackno) => {
 	}
 }
 
+export const setStorage = (storage) => {
+	return (dispatch) => {
+		try {
+			dispatch(getOneStorageSuccess(storage))
+		} catch (error) {
+			dispatch(getOneStorageFail(error))
+		}
+	}
+}
+
 export const postAStorage = (values, token) => {
 	return async (dispatch) => {
 		try {
@@ -176,3 +201,23 @@ export const editAStorage = (values, token) => {
 }
 
 //delete storge
+export const deleteStorage = (token, id) => {
+	return async (dispatch) => {
+		try {
+			const res = await axios.delete(
+				`http://localhost:8500/api/storage/delete/${id}`,
+				// `https://drab-jade-bison-cuff.cyclic.app/api/storage/delete/${id}/`,
+				{
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: `Bearer ${token}`,
+					},
+				}
+			);
+			dispatch(deleteStorageStart())
+			dispatch(deleteStorageSuccess(res.data.data))
+		} catch (error) {
+			dispatch(deleteStorageFail(error.response))
+		}
+	}
+}
