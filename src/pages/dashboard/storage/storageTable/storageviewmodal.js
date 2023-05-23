@@ -16,6 +16,7 @@ import EventRepeatIcon from "@mui/icons-material/EventRepeat";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useState } from "react";
 import DeleteStorage from "../delete/delete";
+import { connect } from "react-redux";
 
 const StyledModal = styled(Modal)(({ theme }) => ({
 	width: "85vw",
@@ -53,8 +54,8 @@ const titleFont = {
 	fontFamily: "'Rubik', sans-serif",
 };
 
-const StorageViewModal = ({ values, open, setOpen }) => {
-	const [deleteStorage, setDeleteStorage] = useState(false)
+const StorageViewModal = ({ values, open, setOpen, storage }) => {
+	const [deleteStorage, setDeleteStorage] = useState(false);
 
 	const ownerInformation = [
 		{
@@ -270,9 +271,21 @@ const StorageViewModal = ({ values, open, setOpen }) => {
 				</StyledModalContainerBox>
 			</StyledModal>
 
-			<DeleteStorage storage={values} open={deleteStorage} setOpen={setDeleteStorage}/>
+			{storage ? (
+				<DeleteStorage
+					storage={values}
+					open={deleteStorage}
+					setOpen={setDeleteStorage}
+				/>
+			) : (
+				""
+			)}
 		</>
 	);
 };
 
-export default StorageViewModal;
+const mapStateToProps = ({ storage }) => ({
+	storage: storage.storage,
+});
+
+export default connect(mapStateToProps)(StorageViewModal);

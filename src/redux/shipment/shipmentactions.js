@@ -145,8 +145,8 @@ export const getShipment = (token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
-				"http://localhost:8500/api/shipping/all",
-				// "https://drab-jade-bison-cuff.cyclic.app/api/shipping/all",
+				// "http://localhost:8500/api/shipping/all",
+				"https://drab-jade-bison-cuff.cyclic.app/api/shipping/all",
 				{
 					headers: {
 						"Content-Type": "application/json",
@@ -166,8 +166,8 @@ export const getSingleShipment = (id) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
-				`http://localhost:8500/api/shipping/item/${id}`
-				// `https://drab-jade-bison-cuff.cyclic.app/api/shipping/item/${id}`
+				// `http://localhost:8500/api/shipping/item/${id}`
+				`https://drab-jade-bison-cuff.cyclic.app/api/shipping/item/${id}`
 			);
 			getOneShipment();
 			dispatch(getOneShipmentSuccess(res.data.data));
@@ -181,8 +181,8 @@ export const getShipmentByTrackNo = (trackno) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.post(
-				`http://localhost:8500/api/shipping/item/track`,
-				// `https://drab-jade-bison-cuff.cyclic.app/api/shipping/item/track`,
+				// `http://localhost:8500/api/shipping/item/track`,
+				`https://drab-jade-bison-cuff.cyclic.app/api/shipping/item/track`,
 				trackno
 			);
 			getShipmentByTrack();
@@ -207,8 +207,8 @@ export const postAShipment = (values, token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.post(
-				`http://localhost:8500/api/shipping/post`,
-				// `https://drab-jade-bison-cuff.cyclic.app/api/shipping/post`,
+				// `http://localhost:8500/api/shipping/post`,
+				`https://drab-jade-bison-cuff.cyclic.app/api/shipping/post`,
 				values,
 				{
 					headers: {
@@ -230,8 +230,8 @@ export const editAShipment = (values, token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.put(
-				`http://localhost:8500/api/shipping/item/update`,
-				// `https://drab-jade-bison-cuff.cyclic.app/api/shipping/item/update`,
+				// `http://localhost:8500/api/shipping/item/update`,
+				`https://drab-jade-bison-cuff.cyclic.app/api/shipping/item/update`,
 				values,
 				{
 					headers: {
@@ -254,8 +254,8 @@ export const deleteShipment = (token, id) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.delete(
-				`http://localhost:8500/api/shipping/delete/${id}`,
-				// `https://drab-jade-bison-cuff.cyclic.app/api/shipping/delete/${id}/`,
+				// `http://localhost:8500/api/shipping/delete/${id}`,
+				`https://drab-jade-bison-cuff.cyclic.app/api/shipping/delete/${id}/`,
 				{
 					headers: {
 						"Content-Type": "application/json",
@@ -285,8 +285,8 @@ export const postEvent = (values, token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.put(
-				`http://localhost:8500/api/shipping/event/add`,
-				// `https://drab-jade-bison-cuff.cyclic.app/api/shipping/event/add`,
+				// `http://localhost:8500/api/shipping/event/add`,
+				`https://drab-jade-bison-cuff.cyclic.app/api/shipping/event/add`,
 				values,
 				{
 					headers: {
@@ -308,8 +308,8 @@ export const editTheEvent = (id, values, token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.put(
-				`http://localhost:8500/api/shipping/event/${id}/edit`,
-				// `https://drab-jade-bison-cuff.cyclic.app/api/shipping/event/${id}/edit`,
+				// `http://localhost:8500/api/shipping/event/${id}/edit`,
+				`https://drab-jade-bison-cuff.cyclic.app/api/shipping/event/${id}/edit`,
 				values,
 				{
 					headers: {
@@ -331,8 +331,8 @@ export const deleteEvent = (token, trackno, id) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.delete(
-				`http://localhost:8500/api/shipping/event/${trackno}/delete/${id}`,
-				// `https://drab-jade-bison-cuff.cyclic.app/api/shipping/event/${trackno}/delete/${id}`,
+				// `http://localhost:8500/api/shipping/event/${trackno}/delete/${id}`,
+				`https://drab-jade-bison-cuff.cyclic.app/api/shipping/event/${trackno}/delete/${id}`,
 				{
 					headers: {
 						"Content-Type": "application/json",

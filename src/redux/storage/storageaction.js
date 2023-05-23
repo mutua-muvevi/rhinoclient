@@ -95,8 +95,8 @@ export const getStorage = (token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
-				`http://localhost:8500/api/storage/all`,
-				// `https://drab-jade-bison-cuff.cyclic.app/api/storage/all`,
+				// `http://localhost:8500/api/storage/all`,
+				`https://drab-jade-bison-cuff.cyclic.app/api/storage/all`,
 				{
 					headers: {
 						"Content-Type": "application/json",
@@ -116,8 +116,8 @@ export const getSingleStorage = (id) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
-				`http://localhost:8500/api/storage/item/${id}`
-				// `https://drab-jade-bison-cuff.cyclic.app/api/storage/item/${id}`
+				// `http://localhost:8500/api/storage/item/${id}`
+				`https://drab-jade-bison-cuff.cyclic.app/api/storage/item/${id}`
 			)
 			getOneStorage()
 			dispatch(getOneStorageSuccess(res.data.data))
@@ -131,8 +131,8 @@ export const getStorageByTrackNo = (trackno) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.post(
-				`http://localhost:8500/api/storage/item/track`,
-				// `https://drab-jade-bison-cuff.cyclic.app/api/storage/item/track`,
+				// `http://localhost:8500/api/storage/item/track`,
+				`https://drab-jade-bison-cuff.cyclic.app/api/storage/item/track`,
 				trackno
 				)
 			getStorageByTrack()
@@ -157,8 +157,8 @@ export const postAStorage = (values, token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.post(
-				`http://localhost:8500/api/storage/post`,
-				// `https://drab-jade-bison-cuff.cyclic.app/api/storage/post`,
+				// `http://localhost:8500/api/storage/post`,
+				`https://drab-jade-bison-cuff.cyclic.app/api/storage/post`,
 				values,
 				{
 					headers: {
@@ -180,8 +180,8 @@ export const editAStorage = (values, token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.put(
-				`http://localhost:8500/api/storage/update/${values._id}`,
-				// `https://drab-jade-bison-cuff.cyclic.app/api/storage/update/${values._id}`,
+				// `http://localhost:8500/api/storage/update/${values._id}`,
+				`https://drab-jade-bison-cuff.cyclic.app/api/storage/update/${values._id}`,
 				values,
 				{
 					headers: {
@@ -205,8 +205,8 @@ export const deleteStorage = (token, id) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.delete(
-				`http://localhost:8500/api/storage/delete/${id}`,
-				// `https://drab-jade-bison-cuff.cyclic.app/api/storage/delete/${id}/`,
+				// `http://localhost:8500/api/storage/delete/${id}`,
+				`https://drab-jade-bison-cuff.cyclic.app/api/storage/delete/${id}/`,
 				{
 					headers: {
 						"Content-Type": "application/json",
