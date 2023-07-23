@@ -155,7 +155,7 @@ export const setStorage = (storage) => {
 
 export const postAStorage = (values, token) => {
 	return async (dispatch) => {
-		try {
+		try {console.log("VALUES FROM ACTION IS", values)
 			const res = await axios.post(
 				`http://localhost:8500/api/storage/post`,
 				// `https://drab-jade-bison-cuff.cyclic.app/api/storage/post`,

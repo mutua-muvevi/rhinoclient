@@ -27,12 +27,9 @@ const AddStorageForm = ({ token, postAStorage, errMessage, setOpen}) => {
 	
 	const [ trackNo, setTrackNo ] = useState("");
 	const [ showSuccess, setShowSuccess ] = useState(false);
-	const [ productModal, setProductModal ] = useState(false);
 
 	const submitHandler = ( values, {resetForm} ) => {
-		// postAStorage(values, token)
-		console.log(values)
-		alert(JSON.stringify(values))
+		postAStorage(values, token)
 
 		if (!errMessage || errMessage === undefined){
 			setShowSuccess(true)
