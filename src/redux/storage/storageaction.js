@@ -157,8 +157,8 @@ export const postAStorage = (values, token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.post(
-				// `http://localhost:8500/api/storage/post`,
-				`https://drab-jade-bison-cuff.cyclic.app/api/storage/post`,
+				`http://localhost:8500/api/storage/post`,
+				// `https://drab-jade-bison-cuff.cyclic.app/api/storage/post`,
 				values,
 				{
 					headers: {
@@ -180,8 +180,8 @@ export const editAStorage = (values, token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.put(
-				// `http://localhost:8500/api/storage/update/${values._id}`,
-				`https://drab-jade-bison-cuff.cyclic.app/api/storage/update/${values._id}`,
+				`http://localhost:8500/api/storage/update/${values._id}`,
+				// `https://drab-jade-bison-cuff.cyclic.app/api/storage/update/${values._id}`,
 				values,
 				{
 					headers: {
@@ -205,8 +205,8 @@ export const deleteStorage = (token, id) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.delete(
-				// `http://localhost:8500/api/storage/delete/${id}`,
-				`https://drab-jade-bison-cuff.cyclic.app/api/storage/delete/${id}/`,
+				`http://localhost:8500/api/storage/delete/${id}`,
+				// `https://drab-jade-bison-cuff.cyclic.app/api/storage/delete/${id}/`,
 				{
 					headers: {
 						"Content-Type": "application/json",

@@ -280,29 +280,6 @@ const AddBlogsForm = ({writeNewBlog, blog }) => {
 								<Typography variant="body1" key={i} gutterBottom>
 									{ el.paragraph ? el.paragraph : null }
 								</Typography>
-								{/* {
-									el.list &&
-									el.list.map((li, i) => (
-										<StyledListContainer key={i}>
-											<Typography variant="h6" color="secondary" gutterBottom>
-												{ li.title }
-											</Typography>
-											<List>
-												{
-													li.items &&
-													li.items.map((el, i) => (
-														<ListItem key={i}>
-															<ListItemIcon>
-																<ArrowForwardIosIcon  color="secondary"/>
-															</ListItemIcon>
-															<ListItemText primary={el}/>
-														</ListItem>
-													))
-												}
-											</List>
-										</StyledListContainer>
-									))
-								} */}
 							</StyledViewContentText>
 						))
 					}
@@ -357,7 +334,7 @@ const AddBlogsForm = ({writeNewBlog, blog }) => {
 
 								<AddBlogTitleModal open={titleModal} setOpen={setTitleModal}/>
 
-								<AddBlogContentModal open={contentModal} setOpen={setContentModal} values = {values}/>
+								<AddBlogContentModal open={contentModal} setOpen={setContentModal} values={values}/>
 
 								<ButtonGroup variant="contained" type="submit" sx={{marginTop: "30px"}}>
 									<Button type="submit" color="secondary" sx={{color : "black"}}  endIcon={<SendIcon/>}>

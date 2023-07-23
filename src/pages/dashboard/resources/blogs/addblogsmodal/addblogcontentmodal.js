@@ -62,79 +62,79 @@ const AddBlogContentModal = ({ open, setOpen, values, blog }) => {
 					<Typography sx={styledTitleFont} variant="h5" color="secondary" gutterBottom>
 						Add Content Block
 					</Typography>
-
+{console.log("Balues here is", values)}
 					<FieldArray name="content">
 						{arrayHelpers => {
 								const content = values.content
 								return (
 									<>
-									{ 
-										content && 
-										content.length > 0 ? 
-										content.map(
-											(item, index) => (
-												<Box key={index} sx={{marginBottom: "50px"}} >
-													<Grid container columnSpacing={2}>
-														<Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
-															<Typography variant="h5" >
-																Add a header
-															</Typography>
+										{ 
+											content && 
+											content.length > 0 ? 
+											content.map(
+												(item, index) => (
+													<Box key={index} sx={{marginBottom: "50px"}} >
+														<Grid container columnSpacing={2}>
+															<Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
+																<Typography variant="h5" >
+																	Add a header
+																</Typography>
+															</Grid>
+															<Grid item xl={6} lg={6} md={6} sm={12} xs={12}>
+																<TextField 
+																	name={`content.${index}.header`}
+																	label="Content block header"
+																	type="text"
+																/>
+															</Grid>
+															<Grid item xl={6} lg={6} md={6} sm={12} xs={12}>
+																<TextField 
+																	name={`content.${index}.subheader`}
+																	label="Content block sub header"
+																	type="text"
+																/>
+															</Grid>
+															
+															<Grid item xl={12} lg={12} md={12} sm={12} xs={12} sx={{marginTop: "30px"}}>
+																<Typography variant="h5" gutterBottom >
+																	Add a Paragraph
+																</Typography>
+																<TextField
+																	name={`content.${index}.paragraph`}
+																	label="Paragraph"
+																	type="text"
+																	multiline
+																	rows={4}
+																/>
+															</Grid>
 														</Grid>
-														<Grid item xl={6} lg={6} md={6} sm={12} xs={12}>
-															<TextField 
-																name={`content.${index}.header`}
-																label="Content block header"
-																type="text"
-															/>
-														</Grid>
-														<Grid item xl={6} lg={6} md={6} sm={12} xs={12}>
-															<TextField 
-																name={`content.${index}.subheader`}
-																label="Content block sub header"
-																type="text"
-															/>
-														</Grid>
-														
-														<Grid item xl={12} lg={12} md={12} sm={12} xs={12} sx={{marginTop: "30px"}}>
-															<Typography variant="h5" gutterBottom >
-																Add a Paragraph
-															</Typography>
-															<TextField
-																name={`content.${index}.paragraph`}
-																label="Paragraph"
-																type="text"
-																multiline
-																rows={4}
-															/>
-														</Grid>
-													</Grid>
 
 
-													<Button
-														type="button"
-														onClick={
-															() => arrayHelpers.remove(index)
-														}
-													>
-														<CloseIcon color="secondary"/>
-													</Button>
-												</Box>
-											)
-										) : null
-									}
-									<Button
-										type="button"
-										variant="outlined"
-										color="secondary"
-										onClick = {
-											() => arrayHelpers.push({
-												header: "",
-												subheader: ""
-											})
+														<Button
+															type="button"
+															onClick={
+																() => arrayHelpers.remove(index)
+															}
+														>
+															<CloseIcon color="secondary"/>
+														</Button>
+													</Box>
+												)
+											) : null
 										}
-									>
-										Add another block
-									</Button>
+										<Button
+											type="button"
+											variant="outlined"
+											color="secondary"
+											onClick = {
+												() => arrayHelpers.push({
+													header: "",
+													subheader: ""
+												})
+											}
+										>
+											Add another block
+										</Button>
 									</>
 								)
 							}}
