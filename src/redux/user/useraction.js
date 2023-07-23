@@ -67,8 +67,8 @@ export const fetchUser = (token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
-				// `http://localhost:8500/api/user/me`,
-				`https://drab-jade-bison-cuff.cyclic.app/api/user/me`,
+				`http://localhost:8500/api/user/me`,
+				// `https://drab-jade-bison-cuff.cyclic.app/api/user/me`,
 				{
 					headers: {
 						Authorization:`Bearer ${token}`,
