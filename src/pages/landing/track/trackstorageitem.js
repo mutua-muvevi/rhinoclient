@@ -132,54 +132,6 @@ const TrackStorageItem = ({ storage, modal, onClose }) => {
 		},
 	]
 
-	const cosigneeInformation = [
-		{
-			name: "Cosignee Fullname",
-			value: storage.cosignee.fullname,
-			xl: 4,
-			lg: 4,
-			md: 4,
-			sm: 12,
-			xs: 12,
-		},
-		{
-			name: "Cosignee Email",
-			value: storage.cosignee.email,
-			xl: 4,
-			lg: 4,
-			md: 4,
-			sm: 12,
-			xs: 12,
-		},
-		{
-			name: "Cosignee Telephone",
-			value: storage.cosignee.telephone,
-			xl: 4,
-			lg: 4,
-			md: 4,
-			sm: 12,
-			xs: 12,
-		},
-		{
-			name: "Cosignee Company",
-			value: storage.cosignee.company,
-			xl: 4,
-			lg: 4,
-			md: 4,
-			sm: 12,
-			xs: 12,
-		},
-		{
-			name: "Cosignee Address",
-			value: storage.cosignee.address,
-			xl: 4,
-			lg: 4,
-			md: 4,
-			sm: 12,
-			xs: 12,
-		},
-	]
-
 	const ownerInformation = [
 		{
 			name: "Owner's Fullname",
@@ -229,63 +181,6 @@ const TrackStorageItem = ({ storage, modal, onClose }) => {
 		{
 			name: "Owner's Account Number",
 			value: storage.owner.accountNo,
-			xl: 4,
-			lg: 4,
-			md: 4,
-			sm: 12,
-			xs: 12,
-		},
-	]
-
-	const receiverInformation = [
-		{
-			name: "Recipient's Fullname",
-			value: storage.receiver.fullname,
-			xl: 4,
-			lg: 4,
-			md: 4,
-			sm: 12,
-			xs: 12,
-		},
-		{
-			name: "Recipient's Email",
-			value: storage.receiver.email,
-			xl: 4,
-			lg: 4,
-			md: 4,
-			sm: 12,
-			xs: 12,
-		},
-		{
-			name: "Recipient's Telephone",
-			value: storage.receiver.telephone,
-			xl: 4,
-			lg: 4,
-			md: 4,
-			sm: 12,
-			xs: 12,
-		},
-		{
-			name: "Received on",
-			value: storage.receiver.date,
-			xl: 4,
-			lg: 4,
-			md: 4,
-			sm: 12,
-			xs: 12,
-		},
-		{
-			name: "Received at",
-			value: storage.receiver.time,
-			xl: 4,
-			lg: 4,
-			md: 4,
-			sm: 12,
-			xs: 12,
-		},
-		{
-			name: "Receipt Number",
-			value: storage.receiver.receiptNo,
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -451,44 +346,6 @@ const TrackStorageItem = ({ storage, modal, onClose }) => {
 									style={headerFont}
 									gutterBottom
 								>
-									Consignee's Information
-								</Typography>
-								<Divider />
-							</Grid>
-
-							{cosigneeInformation &&
-								cosigneeInformation.map((el) => (
-									<Grid
-										item
-										key={el.name}
-										xl={el.xl}
-										lg={el.lg}
-										md={el.md}
-										sm={el.sm}
-										xs={el.xs}
-									>
-										<Typography
-											sx={{color: "#ffffff"}}
-											variant="body1"
-										>
-											{el.name}
-										</Typography>
-										<Box>
-											<Typography variant="body1">
-												{el.value}
-											</Typography>
-										</Box>
-									</Grid>
-								))}
-
-
-							
-							<Grid sx={{ marginTop: "20px" }} item xs={12}>
-								<Typography
-									variant="h5"
-									style={headerFont}
-									gutterBottom
-								>
 									Owner's Information
 								</Typography>
 								<Divider />
@@ -506,7 +363,7 @@ const TrackStorageItem = ({ storage, modal, onClose }) => {
 										xs={el.xs}
 									>
 										<Typography
-											sx={{color: "#ffffff"}}
+											color="secondary"
 											variant="body1"
 										>
 											{el.name}
@@ -519,43 +376,6 @@ const TrackStorageItem = ({ storage, modal, onClose }) => {
 									</Grid>
 								))}
 
-
-							
-							<Grid sx={{ marginTop: "20px" }} item xs={12}>
-								<Typography
-									variant="h5"
-									style={headerFont}
-									gutterBottom
-								>
-									Receiver's Information
-								</Typography>
-								<Divider />
-							</Grid>
-
-							{receiverInformation &&
-								receiverInformation.map((el) => (
-									<Grid
-										item
-										key={el.name}
-										xl={el.xl}
-										lg={el.lg}
-										md={el.md}
-										sm={el.sm}
-										xs={el.xs}
-									>
-										<Typography
-											sx={{color: "#ffffff"}}
-											variant="body1"
-										>
-											{el.name}
-										</Typography>
-										<Box>
-											<Typography variant="body1">
-												{el.value}
-											</Typography>
-										</Box>
-									</Grid>
-								))}
 
 
 							
@@ -582,7 +402,7 @@ const TrackStorageItem = ({ storage, modal, onClose }) => {
 										xs={el.xs}
 									>
 										<Typography
-											sx={{color: "#ffffff"}}
+											color="secondary"
 											variant="body1"
 										>
 											{el.name}
