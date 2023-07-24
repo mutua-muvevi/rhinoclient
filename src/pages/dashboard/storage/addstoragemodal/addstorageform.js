@@ -7,7 +7,7 @@ import { Formik, Form, FieldArray } from "formik";
 import * as Yup from "yup";
 
 import TextField from "../../../../components/formsUI/textfield/textfield"
-import { depositorInformation, consigneeInformation, receiverInformation, acceptanceInformation, goodsOwnerInformation, productDetailsInformation, trackNumber, otherDetails, INITIAL_FORM_STATE, FORM_VALIDATION } from "./addStorageformcontent";
+import { depositorInformation, acceptanceInformation, goodsOwnerInformation, productDetailsInformation, trackNumber, otherDetails, INITIAL_FORM_STATE, FORM_VALIDATION } from "./addStorageformcontent";
 import DateField from "../../../../components/formsUI/datepicker/datepicker";
 
 import SendIcon from '@mui/icons-material/Send';
@@ -28,6 +28,7 @@ const AddStorageForm = ({ token, postAStorage, errMessage, setOpen}) => {
 
 	const submitHandler = ( values, {resetForm} ) => {
 		postAStorage(values, token)
+		resetForm()
 
 		if (!errMessage || errMessage === undefined){
 			setShowSuccess(true)
@@ -84,34 +85,6 @@ const AddStorageForm = ({ token, postAStorage, errMessage, setOpen}) => {
 								
 								{
 									depositorInformation.map((el, i) => (
-										<Grid key={i} item sm={el.sm} xs={el.xs}>
-											<TextField type={el.type} name={el.name} label={el.label}/>
-										</Grid>
-									))
-								}
-
-								<Grid item xs={12}>
-									<Typography variant="h5" color="secondary" gutterBottom>
-										Consignee's Information
-									</Typography>
-								</Grid>
-
-								{
-									consigneeInformation.map((el, i) => (
-										<Grid key={i} item sm={el.sm} xs={el.xs}>
-											<TextField type={el.type} name={el.name} label={el.label}/>
-										</Grid>
-									))
-								}
-
-								<Grid item xs={12}>
-									<Typography variant="h5" color="secondary" gutterBottom>
-										Receiver's Information
-									</Typography>
-								</Grid>
-
-								{
-									receiverInformation.map((el, i) => (
 										<Grid key={i} item sm={el.sm} xs={el.xs}>
 											<TextField type={el.type} name={el.name} label={el.label}/>
 										</Grid>

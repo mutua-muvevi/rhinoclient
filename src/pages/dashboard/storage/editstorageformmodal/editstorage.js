@@ -6,11 +6,10 @@ import { styled } from "@mui/system";
 import { Formik, Form, FieldArray } from "formik";
 import * as Yup from "yup";
 
-import { depositorInformation, consigneeInformation, receiverInformation, acceptanceInformation, goodsOwnerInformation, productDetailsInformation, trackNumber, otherDetails, FORM_VALIDATION } from "./info";
+import { depositorInformation, acceptanceInformation, goodsOwnerInformation, productDetailsInformation, otherDetails, FORM_VALIDATION } from "./info";
 
 import TextField from "../../../../components/formsUI/textfield/textfield";
 import DateField from "../../../../components/formsUI/datepicker/datepicker";
-import TimeField from "../../../../components/formsUI/timepicker/timepicker"
 
 import SendIcon from '@mui/icons-material/Send';
 import ClearIcon from '@mui/icons-material/Clear';
@@ -24,7 +23,7 @@ const StyledWrapper = styled(Box)(({theme}) => ({
 }))
 
 
-const EditStorage = ({token, editStorage, errMessage, storage}) => {
+const EditStorage = ({token, editStorage, errMessage, storage, setOpen}) => {
 	const [ trackNo, setTrackNo ] = useState("")
 	const [ showSuccess, setShowSuccess ] = useState(false);
 
@@ -35,19 +34,6 @@ const EditStorage = ({token, editStorage, errMessage, storage}) => {
 		depositorTelephone: storage.depositor.telephone,
 		depositorCompany: storage.depositor.company,
 		depositorAddress: storage.depositor.address,
-	
-		consigneeFullname: storage.cosignee.fullname,
-		consigneeEmail: storage.cosignee.email,
-		consigneeTelephone: storage.cosignee.telephone,
-		consigneeCompany: storage.cosignee.company,
-		consigneeAddress: storage.cosignee.address,
-	
-		receiverFullname: storage.receiver.fullname,
-		receiverEmail: storage.receiver.email,
-		receiverTelephone: storage.receiver.telephone,
-		receiverDate: storage.receiver.time,
-		receiverTime: storage.receiver.date,
-		receiverReceiptNo: storage.receiver.receiptNo,
 	
 		acceptedFromDate: storage.acceptance.from.date,
 		acceptedFromTime: storage.acceptance.from.time,
@@ -76,12 +62,17 @@ const EditStorage = ({token, editStorage, errMessage, storage}) => {
 
 	const submitHandler = ( values, {resetForm} ) => {
 		editStorage(values, token)
+		resetForm()
 
 		if (!errMessage || errMessage === undefined){
 			setShowSuccess(true)
 			setTrackNo(values.trackno)
 			resetForm()
 		}
+
+		setTimeout(() => {
+			setOpen(false)
+		}, 2000);
 
 	}
 
@@ -129,34 +120,6 @@ const EditStorage = ({token, editStorage, errMessage, storage}) => {
 								
 								{
 									depositorInformation.map((el, i) => (
-										<Grid key={i} item sm={el.sm} xs={el.xs}>
-											<TextField type={el.type} name={el.name} label={el.label}/>
-										</Grid>
-									))
-								}
-
-								<Grid item xs={12}>
-									<Typography variant="h5" color="secondary" gutterBottom>
-										Consignee's Information
-									</Typography>
-								</Grid>
-
-								{
-									consigneeInformation.map((el, i) => (
-										<Grid key={i} item sm={el.sm} xs={el.xs}>
-											<TextField type={el.type} name={el.name} label={el.label}/>
-										</Grid>
-									))
-								}
-
-								<Grid item xs={12}>
-									<Typography variant="h5" color="secondary" gutterBottom>
-										Receiver's Information
-									</Typography>
-								</Grid>
-
-								{
-									receiverInformation.map((el, i) => (
 										<Grid key={i} item sm={el.sm} xs={el.xs}>
 											<TextField type={el.type} name={el.name} label={el.label}/>
 										</Grid>

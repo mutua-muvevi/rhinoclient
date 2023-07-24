@@ -68,71 +68,42 @@ const StorageTable = ({ allStorage, setStorage }) => {
 		{
 			field: "id",
 			hide: true,
-		  },
-		  {
+		},
+		{
 			field: "depositorFullName",
 			align: "left",
 			headerAlign: "left",
 			headerName: "Depositor Fullname",
 			width: 200,
-			valueGetter: (params) => { console.log("Params is", params.row); return params.row.depositor.fullname},
-		  },
-		  {
+			valueGetter: (params) => {
+				console.log("Params is", params.row);
+				return params.row.depositor.fullname;
+			},
+		},
+		{
 			field: "depositorEmail",
 			align: "left",
 			headerAlign: "left",
 			headerName: "Depositor Email",
 			width: 200,
 			valueGetter: (params) => params.row.depositor.email,
-		  },
-		  {
-			field: "cosigneeFullName",
-			align: "left",
-			headerAlign: "left",
-			headerName: "Cosignee Fullname",
-			width: 200,
-			valueGetter: (params) => params.row.cosignee.fullname,
-		  },
-		  {
-			field: "cosigneeEmail",
-			align: "left",
-			headerAlign: "left",
-			headerName: "Cosignee Email",
-			width: 200,
-			valueGetter: (params) => params.row.cosignee.email,
-		  },
-		  {
+		},
+		{
 			field: "ownerFullName",
 			align: "left",
 			headerAlign: "left",
 			headerName: "Owner Fullname",
 			width: 200,
 			valueGetter: (params) => params.row.owner.fullname,
-		  },
-		  {
+		},
+		{
 			field: "ownerEmail",
 			align: "left",
 			headerAlign: "left",
 			headerName: "Owner Email",
 			width: 200,
 			valueGetter: (params) => params.row.owner.email,
-		  },
-		  {
-			field: "receiverFullName",
-			align: "left",
-			headerAlign: "left",
-			headerName: "Receiver Fullname",
-			width: 200,
-			valueGetter: (params) => params.row.receiver.fullname,
-		  },
-		  {
-			field: "receiverEmail",
-			align: "left",
-			headerAlign: "left",
-			headerName: "Receiver Email",
-			width: 200,
-			valueGetter: (params) => params.row.receiver.email,
-		  },
+		},
 		{
 			field: "View",
 			align: "left",
@@ -146,7 +117,7 @@ const StorageTable = ({ allStorage, setStorage }) => {
 						color="secondary"
 						sx={{ minWidth: "120px", color: "black" }}
 						onClick={(e) => {
-							console.log("cell values.....", cellValues)
+							console.log("cell values.....", cellValues);
 							handleClick(e, cellValues);
 						}}
 						endIcon={<PageviewIcon />}
@@ -184,14 +155,14 @@ const StorageTable = ({ allStorage, setStorage }) => {
 		<>
 			<StyledDataGridContainer>
 				<StyledDataGridHeader title="Storage Records" />
-					<StyledDataGrid
-						rows={allStorage}
-						columns={columns}
-						autoPageSize
-						autoHeight
-						getRowId={(storage) => storage._id}
-						pageSize={100}
-					/>
+				<StyledDataGrid
+					rows={allStorage}
+					columns={columns}
+					autoPageSize
+					autoHeight
+					getRowId={(storage) => storage._id}
+					pageSize={100}
+				/>
 			</StyledDataGridContainer>
 			<StorageViewModal
 				values={singleStorage}

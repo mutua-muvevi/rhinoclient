@@ -204,8 +204,8 @@ export const deleteStorage = (token, id) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.delete(
-				// `http://localhost:8500/api/storage/delete/${id}`,
-				`https://drab-jade-bison-cuff.cyclic.app/api/storage/delete/${id}/`,
+				`http://localhost:8500/api/storage/delete/${id}`,
+				// `https://drab-jade-bison-cuff.cyclic.app/api/storage/delete/${id}/`,
 				{
 					headers: {
 						"Content-Type": "application/json",
