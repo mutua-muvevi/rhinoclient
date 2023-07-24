@@ -39,7 +39,7 @@ const EditStorageModal = ({open, setOpen, item}) => {
 						Edit Storage Form
 					</Typography>
 
-					<Editstorage storage={item}/>
+					<Editstorage storage={item} setOpen={setOpen}/>
 				</Container>
 			</StyledFormContainerWrapper>
 		</StyledModal>
