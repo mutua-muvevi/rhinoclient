@@ -17,6 +17,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { useState } from "react";
 import DeleteStorage from "../delete/delete";
 import { connect } from "react-redux";
+import StorageGoodsTable from "./goodsTable";
 
 const StyledModal = styled(Modal)(({ theme }) => ({
 	width: "85vw",
@@ -536,6 +537,7 @@ const StorageViewModal = ({ values, open, setOpen, storage }) => {
 									Product Information
 								</Typography>
 								<Divider />
+								<StorageGoodsTable />
 							</Grid>
 							
 						</Grid>
