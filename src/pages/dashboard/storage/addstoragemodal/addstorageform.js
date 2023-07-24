@@ -9,14 +9,12 @@ import * as Yup from "yup";
 import TextField from "../../../../components/formsUI/textfield/textfield"
 import { depositorInformation, consigneeInformation, receiverInformation, acceptanceInformation, goodsOwnerInformation, productDetailsInformation, trackNumber, otherDetails, INITIAL_FORM_STATE, FORM_VALIDATION } from "./addStorageformcontent";
 import DateField from "../../../../components/formsUI/datepicker/datepicker";
-import TimeField from "../../../../components/formsUI/timepicker/timepicker"
 
 import SendIcon from '@mui/icons-material/Send';
 import ClearIcon from '@mui/icons-material/Clear';
 
 import { connect } from "react-redux";
 import { postAStorage } from "../../../../redux/storage/storageaction";
-import AddStorageProductModal from './addproductmodal';
 
 
 const StyledWrapper = styled(Box)(({theme}) => ({
@@ -218,7 +216,7 @@ const AddStorageForm = ({ token, postAStorage, errMessage, setOpen}) => {
 																				</Box>
 																			)
 																		)}
-				{console.log("Product item is", item, "index is", index, "values is", values, "product details", productDetails)}
+																		
 																		<Button
 																			variant="contained"
 																			color="error"

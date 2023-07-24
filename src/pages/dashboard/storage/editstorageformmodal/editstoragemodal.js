@@ -38,9 +38,8 @@ const EditStorageModal = ({open, setOpen, item}) => {
 					<Typography style={{marginTop: "20px"}}  id="modal-modal-title" variant="h4" gutterBottom component="h2">
 						Edit Storage Form
 					</Typography>
-					{console.log("ITEM I GET IN MODAL IS", item)}
 
-					<Editstorage store={item}/>
+					<Editstorage storage={item}/>
 				</Container>
 			</StyledFormContainerWrapper>
 		</StyledModal>
