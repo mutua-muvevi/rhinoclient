@@ -178,7 +178,7 @@ export const postAStorage = (values, token) => {
 
 export const editAStorage = (values, token) => {
 	return async (dispatch) => {
-		try {console.log("VALUES WE GET HERE IS", values)
+		try {
 			const res = await axios.put(
 				`http://localhost:8500/api/storage/update/${values._id}`,
 				// `https://drab-jade-bison-cuff.cyclic.app/api/storage/update/${values._id}`,
@@ -194,7 +194,6 @@ export const editAStorage = (values, token) => {
 				editStorage()
 				dispatch(editStorageSuccess(res.data.data))
 			} catch (error) {
-			console.log(error.response)
 			dispatch(editStorageFail(error.response))
 		}
 	}
