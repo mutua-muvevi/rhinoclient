@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 
-import { Alert, AlertTitle, Box, Button, ButtonGroup, Grid, Grow, Typography } from "@mui/material"
+import { Alert, AlertTitle, Box, Button, ButtonGroup, Grid, Grow, Stack, Typography } from "@mui/material"
 import { styled } from "@mui/system";
 
-import { Formik, Form } from "formik";
+import { Formik, Form, FieldArray } from "formik";
 import * as Yup from "yup";
+
+import { depositorInformation, consigneeInformation, receiverInformation, acceptanceInformation, goodsOwnerInformation, productDetailsInformation, trackNumber, otherDetails, FORM_VALIDATION } from "./info";
 
 import TextField from "../../../../components/formsUI/textfield/textfield";
 import DateField from "../../../../components/formsUI/datepicker/datepicker";
@@ -22,52 +24,54 @@ const StyledWrapper = styled(Box)(({theme}) => ({
 }))
 
 
-const EditStorage = ({token, editStorage, errMessage, store}) => {
+const EditStorage = ({token, editStorage, errMessage, storage}) => {
 	const [ trackNo, setTrackNo ] = useState("")
 	const [ showSuccess, setShowSuccess ] = useState(false);
 
 	
 	const INITIAL_FORM_STATE = {
-		_id: store._id,
-		fullname: store.fullname,
-		email: store.email,
-		telephone: store.telephone,
-		company: store.company,
-
-		trackno: store.trackno,
-		product: store.product,
-		weight: store.weight,
-		description: store.description,
-
-		storageaddress: store.storageaddress,
-
-		datein: store.datein,
-		dateout: store.dateout,
-		timein: store.timein,
-		timeout: store.timeout,
-		
-		notes: store.notes,
-	}
-
-	const FORM_VALIDATION = Yup.object().shape({
-		fullname: Yup.string(),
-		email: Yup.string().email(),
-		telephone: Yup.string(),
-		company: Yup.string(),
-		
-		trackno: Yup.string(),
-		product: Yup.string(),
-		weight: Yup.string(),
-		description: Yup.string(),
-		
-		storageaddress: Yup.string(),
-		
-		datein: Yup.string(),
-		dateout: Yup.string(),
-		timein: Yup.string(),
-		timeout: Yup.string(),
-		notes: Yup.string(),
-	})
+		depositorFullname: storage.depositor.fullname,
+		depositorEmail: storage.depositor.email,
+		depositorTelephone: storage.depositor.telephone,
+		depositorCompany: storage.depositor.company,
+		depositorAddress: storage.depositor.address,
+	
+		consigneeFullname: storage.cosignee.fullname,
+		consigneeEmail: storage.cosignee.email,
+		consigneeTelephone: storage.cosignee.telephone,
+		consigneeCompany: storage.cosignee.company,
+		consigneeAddress: storage.cosignee.address,
+	
+		receiverFullname: storage.receiver.fullname,
+		receiverEmail: storage.receiver.email,
+		receiverTelephone: storage.receiver.telephone,
+		receiverDate: storage.receiver.time,
+		receiverTime: storage.receiver.date,
+		receiverReceiptNo: storage.receiver.receiptNo,
+	
+		acceptedFromDate: storage.acceptance.from.date,
+		acceptedFromTime: storage.acceptance.from.time,
+		acceptedToDate: storage.acceptance.to.date,
+		acceptedToTime: storage.acceptance.to.time,
+	
+		ownerFullname: storage.owner.fullname,
+		ownerEmail: storage.owner.email,
+		ownerTelephone: storage.owner.telephone,
+		ownerCompany: storage.owner.company,
+		ownerAddress: storage.owner.address,
+		ownerAccountNumber: storage.owner.accountNo,
+	
+		productDetailArray: storage.productDetails,
+	
+		privateMarks: storage.privateMarks,
+		handlingCharges: storage.handlingCharges,
+		assuredFor: storage.assuredFor,
+		receiptNumber: storage.receiptNumber,
+		receiptValidUpTo: storage.receiptValidUpTo,
+		productOrigin: storage.productOrigin,
+	
+		trackno: storage.trackno,
+	};
 
 	const submitHandler = ( values, {resetForm} ) => {
 		editStorage(values, token)
@@ -80,135 +84,6 @@ const EditStorage = ({token, editStorage, errMessage, store}) => {
 
 	}
 
-
-	const contactInformation = [
-		{
-			type: "text",
-			label: "Fullname",
-			required: true,
-			name:"fullname",
-			xs:12,
-			sm:6
-		},
-		{
-			type: "email",
-			label: "Email",
-			required: true,
-			name:"email",
-			xs:12,
-			sm:6
-		},
-		{
-			type: "tel",
-			label: "Telephone",
-			required: true,
-			name:"telephone",
-			xs:12,
-			sm:12
-		},
-		{
-			type: "text",
-			label: "Company",
-			required: true,
-			name:"company",
-			xs:12,
-			sm:12
-		},
-	]
-	
-	const productInformation = [
-		{
-			name: "trackno",
-			label: "Track Number",
-			required: true,
-			type: "text",
-			xs: 12,
-			sm: 6
-		},
-		{
-			name: "product",
-			label: "Product Name",
-			required: true,
-			type: "text",
-			xs: 12,
-			sm: 6
-		},
-		{
-			name: "weight",
-			label: "Weight",
-			required: true,
-			type: "text",
-			xs: 12,
-			sm: 6
-		},
-		{
-			name: "description",
-			label: "Product Context",
-			required: true,
-			type: "text",
-			xs: 12,
-			sm: 6
-		}
-	]
-	
-	const StorageArea = [
-		{
-			name: "storageaddress",
-			label: "Storage Address",
-			type: "text",
-			xs: 12,
-			sm: 6
-		},
-	]
-	
-	const storageEvents = {	
-		dates: [
-			{
-				name: "datein",
-				label: "Date In",
-				type: "date",
-				xs: 12,
-				sm: 6
-			},
-			{
-				name: "dateout",
-				label: "Date Out",
-				type: "date",
-				xs: 12,
-				sm: 6
-			},
-		],
-		time : [
-			{
-				name: "timein",
-				label: "Time In",
-				type: "time",
-				xs: 12,
-				sm: 6
-			},
-		
-			{
-				name: "timeout",
-				label: "Time Out",
-				type: "time",
-				xs: 12,
-				sm: 6
-			},
-	
-		]
-	}
-	
-	const textareas = [
-		{
-			name: "notes",
-			label: "Notes",
-			type: "text",
-			xs: 12,
-			required: true,
-			multiline : true,
-			row: 4
-		},
-	]
 	
 	return (
 		<StyledWrapper container spacing={2}>
@@ -241,100 +116,200 @@ const EditStorage = ({token, editStorage, errMessage, store}) => {
 				validationSchema={ FORM_VALIDATION }
 				onSubmit = {submitHandler}
 			>
-				<Form>
-					<Grid container spacing={2}>
-						<Grid item xs={12}>
-							<Typography variant="h5" color="secondary" gutterBottom>
-								Client Information
-							</Typography>
-						</Grid>
-						
-						{
-							contactInformation.map((el, i) => (
-								<Grid key={i} item sm={el.sm} xs={el.xs}>
-									<TextField type={el.type} name={el.name} label={el.label}/>
+				{
+					({ values }) => (
+						<Form>
+							<Grid container spacing={2}>
+								<Grid item xs={12}>
+									<Typography variant="h5" color="secondary" gutterBottom>
+										Depositor's Information
+									</Typography>
 								</Grid>
-							))
-						}
+								
+								{
+									depositorInformation.map((el, i) => (
+										<Grid key={i} item sm={el.sm} xs={el.xs}>
+											<TextField type={el.type} name={el.name} label={el.label}/>
+										</Grid>
+									))
+								}
 
-						<Grid item xs={12}>
-							<Typography variant="h5" color="secondary" gutterBottom>
-								Product Information
-							</Typography>
-						</Grid>
-
-						{
-							productInformation.map((el, i) => (
-								<Grid key={i} item sm={el.sm} xs={el.xs}>
-									<TextField type={el.type} name={el.name} label={el.label}/>
+								<Grid item xs={12}>
+									<Typography variant="h5" color="secondary" gutterBottom>
+										Consignee's Information
+									</Typography>
 								</Grid>
-							))
-						}
 
-						<Grid item xs={12}>
-							<Typography variant="h5" color="secondary" gutterBottom>
-								Storage Geographical Area
-							</Typography>
-						</Grid>
+								{
+									consigneeInformation.map((el, i) => (
+										<Grid key={i} item sm={el.sm} xs={el.xs}>
+											<TextField type={el.type} name={el.name} label={el.label}/>
+										</Grid>
+									))
+								}
 
-						{
-							StorageArea.map((el, i) => (
-								<Grid key={i} item sm={el.sm} xs={el.xs}>
-									<TextField type={el.type} name={el.name} label={el.label}/>
+								<Grid item xs={12}>
+									<Typography variant="h5" color="secondary" gutterBottom>
+										Receiver's Information
+									</Typography>
 								</Grid>
-							))
-						}
+
+								{
+									receiverInformation.map((el, i) => (
+										<Grid key={i} item sm={el.sm} xs={el.xs}>
+											<TextField type={el.type} name={el.name} label={el.label}/>
+										</Grid>
+									))
+								}
 
 
-						<Grid item xs={12}>
-							<Typography variant="h5" color="secondary" gutterBottom>
-								Storage Events
-							</Typography>
-						</Grid>
-
-						{
-							storageEvents.dates.map((el, i) => (
-								<Grid key={i} item sm={el.sm} xs={el.xs}>
-									<DateField type={el.type} name={el.name} label={el.label}/>
+								<Grid item xs={12}>
+									<Typography variant="h5" color="secondary" gutterBottom>
+										Goods Acceptance Period
+									</Typography>
 								</Grid>
-							))
-						}
 
-						{
-							storageEvents.time.map((el, i) => (
-								<Grid key={i} item sm={el.sm} xs={el.xs}>
-									<TimeField type={el.type} name={el.name} label={el.label}/>
+								{
+									acceptanceInformation.map((el, i) => (
+										<Grid key={i} item sm={el.sm} xs={el.xs}>
+											<DateField type={el.type} name={el.name} label={el.label}/>
+										</Grid>
+									))
+								}
+
+
+								<Grid item xs={12}>
+									<Typography variant="h5" color="secondary" gutterBottom>
+										The Goods Owner's information
+									</Typography>
 								</Grid>
-							))
-						}
+
+								{
+									goodsOwnerInformation.map((el, i) => (
+										<Grid key={i} item sm={el.sm} xs={el.xs}>
+											<TextField type={el.type} name={el.name} label={el.label}/>
+										</Grid>
+									))
+								}
 
 
-						<Grid item xs={12}>
-							<Typography variant="h5" color="secondary" gutterBottom>
-								Storage Documentation
-							</Typography>
-						</Grid>
-
-						{
-							textareas.map((el, i) => (
-								<Grid key={i} item sm={el.sm} xs={el.xs}>
-									<TextField multiline rows={el.row} type={el.type} name={el.name} label={el.label}/>
+								<Grid item xs={12}>
+									<Typography variant="h5" color="secondary" gutterBottom>
+										Track/Reference Number
+									</Typography>
 								</Grid>
-							))
-						}
 
-					</Grid>
+								{
+									trackNumber.map((el, i) => (
+										<Grid key={i} item sm={el.sm} xs={el.xs}>
+											<TextField type={el.type} name={el.name} label={el.label}/>
+										</Grid>
+									))
+								}
 
-					
-					<ButtonGroup variant="contained" type="submit" sx={{marginTop: "30px"}}>
-						<Button type="submit" color="secondary"  endIcon={<SendIcon/>} sx={{color: "#000000"}}>
-							Submit
-						</Button>
-						<Button  type="button" color="error" endIcon={<ClearIcon/>}>
-							Cancel 
-						</Button>
-					</ButtonGroup>
-				</Form>
+
+								<Grid item xs={12}>
+									<Typography variant="h5" color="secondary" gutterBottom>
+										Other Details
+									</Typography>
+								</Grid>
+
+								{
+									otherDetails.map((el, i) => (
+										<Grid key={i} item sm={el.sm} xs={el.xs}>
+											<TextField type={el.type} name={el.name} label={el.label}/>
+										</Grid>
+									))
+								}
+
+
+								<Grid item xs={12}>
+									<Typography variant="h5" color="secondary" gutterBottom>
+										Product Information
+									</Typography>
+								</Grid>
+
+								<Grid itex xs={12}>
+									<FieldArray name="productDetailArray">
+										{(arrayHelpers) => {
+											const productDetails = values.productDetailArray
+											
+											return (
+												<>
+													{productDetails && productDetails.length > 0
+														? productDetails.map((item, index) => (
+																<Box
+																	key={index}
+																	sx={{
+																		marginBottom: "50px",
+																	}}
+																>
+																	<Stack direction="column" spacing={3}>
+																		{productDetailsInformation.map(
+																			(info, indx) => (
+																				<Box key={indx}>
+																					<Stack direction="column" spacing={3}>
+																						<TextField 
+																							type={ info.type }
+																							name={ `productDetailArray.${index}.${info.name}` }
+																							label={ info.label }
+																							fullWidth
+																						/>
+
+																					</Stack>
+																				</Box>
+																			)
+																		)}
+																		
+																		<Button
+																			variant="contained"
+																			color="error"
+																			type="button"
+																			onClick={() =>
+																				arrayHelpers.remove(index)
+																			}
+																		>
+																			Remove Product
+																		</Button>
+																	</Stack>
+																</Box>
+														))
+														: null}
+													<Button
+														type="button"
+														variant="outlined"
+														color="secondary"
+														onClick={() => arrayHelpers.push({
+															HSCode: "",
+															packagesNo: "",
+															netQuantity: "",
+															marketRate: "",
+															totalMarketValue: "",
+															description: ""
+														})}
+													>
+														Add another product
+													</Button>
+												</>
+											);
+										}}
+									</FieldArray>
+								</Grid>
+							</Grid>
+
+							
+							<ButtonGroup variant="contained" type="submit" sx={{marginTop: "30px"}}>
+								<Button type="submit" color="secondary"  endIcon={<SendIcon/>} style={{color: "black"}}>
+									Submit
+								</Button>
+								<Button  type="button" color="error" endIcon={<ClearIcon/>}>
+									Cancel
+								</Button>
+							</ButtonGroup>
+						</Form>
+
+					)
+				}
 
 			</Formik>
 		</StyledWrapper>
@@ -344,7 +319,7 @@ const mapStateToProps = ({ auth, storage }) => ({
 	token: auth.token,
 
 	errMessage: storage.errMessage,
-	data: storage.data
+	data: storage.data,
 })
 
 const mapDispatchToProps = (dispatch) => ({
