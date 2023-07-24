@@ -15,6 +15,7 @@ import ClearIcon from '@mui/icons-material/Clear';
 
 import { connect } from "react-redux";
 import { postAStorage } from "../../../../redux/storage/storageaction";
+import TimePicker from '../../../../components/formsUI/timepicker/timepicker';
 
 
 const StyledWrapper = styled(Box)(({theme}) => ({
@@ -101,7 +102,9 @@ const AddStorageForm = ({ token, postAStorage, errMessage, setOpen}) => {
 								{
 									acceptanceInformation.map((el, i) => (
 										<Grid key={i} item sm={el.sm} xs={el.xs}>
-											<DateField type={el.type} name={el.name} label={el.label}/>
+											{
+												el.formType === "datefield" ? <DateField type={el.type} name={el.name} label={el.label}/> : <TimePicker type={el.type} name={el.name} label={el.label}/>
+											}
 										</Grid>
 									))
 								}

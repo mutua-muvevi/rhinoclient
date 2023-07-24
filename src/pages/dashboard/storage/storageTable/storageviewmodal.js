@@ -235,6 +235,26 @@ const StorageViewModal = ({ values, open, setOpen, storage }) => {
 			sm: 12,
 			xs: 12,
 		},
+		{
+			name: "Warehouse Location",
+			value:
+				storage && storage.receiptValidUpTo && storage.receiptValidUpTo,
+			xl: 4,
+			lg: 4,
+			md: 4,
+			sm: 12,
+			xs: 12,
+		},
+		{
+			name: "Received by",
+			value:
+				storage && storage.receivedBy && storage.receivedBy,
+			xl: 4,
+			lg: 4,
+			md: 4,
+			sm: 12,
+			xs: 12,
+		},
 	];
 
 	return (

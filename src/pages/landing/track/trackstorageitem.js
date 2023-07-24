@@ -76,13 +76,14 @@ const headerFont = {
 	fontFamily: "'Rubik', sans-serif",
 };
 
-const titleFont = {
-	fontWeight: 500,
-	fontFamily: "'Rubik', sans-serif",
-	color: "#dea95f",
-};
-
 const TrackStorageItem = ({ storage, modal, onClose }) => {
+
+	const headerTitleList = [
+		{
+			name: "Track / Reference Number",
+			value: storage.trackno
+		},
+	]
 
 	const depositorInformation = [
 		{
@@ -244,19 +245,26 @@ const TrackStorageItem = ({ storage, modal, onClose }) => {
 			sm: 12,
 			xs: 12,
 		},
+		{
+			name: "Warehouse Location",
+			value: storage.wareHouseLocation,
+			xl: 4,
+			lg: 4,
+			md: 4,
+			sm: 12,
+			xs: 12,
+		},
+		{
+			name: "Received by",
+			value: storage.receivedBy,
+			xl: 4,
+			lg: 4,
+			md: 4,
+			sm: 12,
+			xs: 12,
+		},
 	]
 	
-
-	const headerTitleList = [
-		{
-			name: "Track no",
-			value: storage.trackno
-		},
-		{
-			name: "Description",
-			value:  storage.productDetails.slice(-1)[0]?.description || ""
-		},
-	]
 
 	return (
 				
@@ -277,15 +285,15 @@ const TrackStorageItem = ({ storage, modal, onClose }) => {
 									{
 										headerTitleList.map(e => (
 											<StyledHeaderTitleList container maxWidth="xl" spacing={2} rowSpacing={0}>
-												<Grid item xl={2} lg={2} md={2} sm={12}>
-													<Typography variant="h5" style={styledHeaderTitles} gutterBottom>
+												<Grid item xl={4} lg={4} md={4} sm={12}>
+													<Typography variant="h4" style={styledHeaderTitles} gutterBottom>
 														{ e.name }
 													</Typography>
 													
 												</Grid>
-												<Grid item xl={10} lg={10} md={10} sm={12}>
+												<Grid item xl={8} lg={8} md={8} sm={12}>
 													<StyledHeaderDetail>
-														<Typography variant="h5" style={styledHeaderText} gutterBottom>
+														<Typography variant="h4" style={styledHeaderText} gutterBottom>
 															{ e.value }
 														</Typography>
 													</StyledHeaderDetail>
@@ -418,14 +426,6 @@ const TrackStorageItem = ({ storage, modal, onClose }) => {
 
 
 							<Grid item xs={12}>
-								<Typography
-									variant="h5"
-									style={headerFont}
-									gutterBottom
-								>
-									Product Information
-								</Typography>
-								<Divider />
 								<StorageGoodsTable/>
 							</Grid>
 										</Grid>

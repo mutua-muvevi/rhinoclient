@@ -16,6 +16,7 @@ import ClearIcon from '@mui/icons-material/Clear';
 
 import { connect } from "react-redux";
 import { editAStorage } from "../../../../redux/storage/storageaction";
+import TimePicker from '../../../../components/formsUI/timepicker/timepicker';
 
 
 const StyledWrapper = styled(Box)(({theme}) => ({
@@ -55,6 +56,8 @@ const EditStorage = ({token, editStorage, errMessage, storage, setOpen}) => {
 		receiptNumber: storage.receiptNumber,
 		receiptValidUpTo: storage.receiptValidUpTo,
 		productOrigin: storage.productOrigin,
+		wareHouseLocation: storage.wareHouseLocation,
+		receivedBy: storage.receivedBy,
 	
 		trackno: storage.trackno,
 		_id: storage._id
@@ -136,7 +139,9 @@ const EditStorage = ({token, editStorage, errMessage, storage, setOpen}) => {
 								{
 									acceptanceInformation.map((el, i) => (
 										<Grid key={i} item sm={el.sm} xs={el.xs}>
-											<DateField type={el.type} name={el.name} label={el.label}/>
+											{
+												el.formType === "datefield" ? <DateField type={el.type} name={el.name} label={el.label}/> : <TimePicker type={el.type} name={el.name} label={el.label}/>
+											}
 										</Grid>
 									))
 								}

@@ -76,7 +76,6 @@ const StorageTable = ({ allStorage, setStorage }) => {
 			headerName: "Track Number",
 			minWidth: 250,
 			valueGetter: (params) => {
-				console.log("Params is", params.row);
 				return params.row.trackno;
 			},
 		},
@@ -87,7 +86,6 @@ const StorageTable = ({ allStorage, setStorage }) => {
 			headerName: "Depositor Fullname",
 			minWidth: 250,
 			valueGetter: (params) => {
-				console.log("Params is", params.row);
 				return params.row.depositor.fullname;
 			},
 		},
