@@ -135,7 +135,7 @@ const StorageGoodsTable = ({ storage }) => {
 	return (
 		<>
 			<StyledDataGridContainer>
-				<StyledDataGridHeader title="Storage Goods Records" />
+				<StyledDataGridHeader title="Products information" />
 				{rows.length > 0 ? (
 					<StyledDataGrid
 						rows={rows}

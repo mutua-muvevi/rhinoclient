@@ -48,6 +48,7 @@ export const acceptanceInformation = [
 		name: "acceptedFromDate",
 		xs: 12,
 		sm: 6,
+		formType: "datefield"
 	},
 	{
 		type: "text",
@@ -56,6 +57,7 @@ export const acceptanceInformation = [
 		name: "acceptedFromTime",
 		xs: 12,
 		sm: 6,
+		formType: "timefield"
 	},
 	{
 		type: "text",
@@ -64,6 +66,7 @@ export const acceptanceInformation = [
 		name: "acceptedToDate",
 		xs: 12,
 		sm: 6,
+		formType: "datefield"
 	},
 	{
 		type: "text",
@@ -72,6 +75,7 @@ export const acceptanceInformation = [
 		name: "acceptedToTime",
 		xs: 12,
 		sm: 6,
+		formType: "timefield"
 	},
 ];
 
@@ -221,6 +225,20 @@ export const otherDetails = [
 		xs: 12,
 		sm: 6,
 	},
+	{
+		name: "wareHouseLocation",
+		label: "Warehouse Location",
+		type: "text",
+		xs: 12,
+		sm: 6,
+	},
+	{
+		name: "receivedBy",
+		label: "Goods Received By",
+		type: "text",
+		xs: 12,
+		sm: 6,
+	},
 ];
 
 
@@ -230,41 +248,13 @@ export const FORM_VALIDATION = Yup.object().shape({
 		.required("Please add the depositor's Fullname"),
 	depositorEmail: Yup.string()
 		.email("please add a valid email")
-		.min(3, "Minimum characters required for depositor's email is 3")
-		.required("Please add the depositor's email"),
+		.min(3, "Minimum characters required for depositor's email is 3"),
 	depositorTelephone: Yup.string()
 		.min(3, "Minimum characters required for depositor's telephone is 3"),
 	depositorCompany: Yup.string()
 		.min(3, "Minimum characters required for depositor's company is 3"),
 	depositorAddress: Yup.string()
 		.min(3, "Minimum characters required for depositor's address is 3"),
-
-
-	consigneeFullname: Yup.string()
-		.min(3, "Minimum characters required for consignee's fullname is 3"),
-	consigneeEmail: Yup.string()
-		.min(3, "Minimum characters required for consignee's email is 3"),
-	consigneeTelephone: Yup.string()
-		.min(3, "Minimum characters required for consignee's telephone is 3"),
-	consigneeCompany: Yup.string()
-		.min(3, "Minimum characters required for consignee's company is 3"),
-	consigneeAddress: Yup.string()
-		.min(3, "Minimum characters required for consignee's address is 3"),
-
-
-	receiverFullname: Yup.string()
-		.min(3, "Minimum characters required for receiver's fullname is 3"),
-	receiverEmail: Yup.string()
-		.email("please add a valid email")
-		.min(3, "Minimum characters required for receiver's email is 3"),
-	receiverTelephone: Yup.string()
-		.min(3, "Minimum characters required for receiver's telephone number is 3"),
-	receiverDate: Yup.string()
-		.min(3, "Minimum characters required for receiver's date is 3"),
-	receiverTime: Yup.string()
-		.min(3, "Minimum characters required for receiver's time is 3"),
-	receiverReceiptNo: Yup.string()
-		.min(3, "Minimum characters required for receiver's receipt number is 3"),
 
 
 	acceptedFromDate: Yup.string()
@@ -323,6 +313,10 @@ export const FORM_VALIDATION = Yup.object().shape({
 		.min(3, "Minimum characters required for receipt validation period is 3"),
 	productOrigin: Yup.string()
 		.min(3, "Minimum characters required for product origin is 3"),
+	wareHouseLocation: Yup.string()
+		.min(3, "Minimum characters required for warehouse location is 3"),
+	receivedBy: Yup.string()
+		.min(3, "Minimum characters required for goods received by is 3"),
 
 
 	trackno: Yup.string()

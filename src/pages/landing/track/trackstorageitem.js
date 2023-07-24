@@ -84,6 +84,17 @@ const titleFont = {
 
 const TrackStorageItem = ({ storage, modal, onClose }) => {
 
+	const headerTitleList = [
+		{
+			name: "Track no",
+			value: storage.trackno
+		},
+		{
+			name: "Description",
+			value:  storage.productDetails.slice(-1)[0]?.description || ""
+		},
+	]
+
 	const depositorInformation = [
 		{
 			name: "Depositor's Fullname",
@@ -244,19 +255,26 @@ const TrackStorageItem = ({ storage, modal, onClose }) => {
 			sm: 12,
 			xs: 12,
 		},
+		{
+			name: "Warehouse Location",
+			value: storage.wareHouseLocation,
+			xl: 4,
+			lg: 4,
+			md: 4,
+			sm: 12,
+			xs: 12,
+		},
+		{
+			name: "Received by",
+			value: storage.receivedBy,
+			xl: 4,
+			lg: 4,
+			md: 4,
+			sm: 12,
+			xs: 12,
+		},
 	]
 	
-
-	const headerTitleList = [
-		{
-			name: "Track no",
-			value: storage.trackno
-		},
-		{
-			name: "Description",
-			value:  storage.productDetails.slice(-1)[0]?.description || ""
-		},
-	]
 
 	return (
 				
@@ -418,14 +436,6 @@ const TrackStorageItem = ({ storage, modal, onClose }) => {
 
 
 							<Grid item xs={12}>
-								<Typography
-									variant="h5"
-									style={headerFont}
-									gutterBottom
-								>
-									Product Information
-								</Typography>
-								<Divider />
 								<StorageGoodsTable/>
 							</Grid>
 										</Grid>
