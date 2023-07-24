@@ -70,11 +70,22 @@ const StorageTable = ({ allStorage, setStorage }) => {
 			hide: true,
 		},
 		{
+			field: "trackno",
+			align: "left",
+			headerAlign: "left",
+			headerName: "Track Number",
+			minWidth: 250,
+			valueGetter: (params) => {
+				console.log("Params is", params.row);
+				return params.row.trackno;
+			},
+		},
+		{
 			field: "depositorFullName",
 			align: "left",
 			headerAlign: "left",
 			headerName: "Depositor Fullname",
-			width: 200,
+			minWidth: 250,
 			valueGetter: (params) => {
 				console.log("Params is", params.row);
 				return params.row.depositor.fullname;
@@ -85,7 +96,7 @@ const StorageTable = ({ allStorage, setStorage }) => {
 			align: "left",
 			headerAlign: "left",
 			headerName: "Depositor Email",
-			width: 200,
+			minWidth: 250,
 			valueGetter: (params) => params.row.depositor.email,
 		},
 		{
@@ -93,7 +104,7 @@ const StorageTable = ({ allStorage, setStorage }) => {
 			align: "left",
 			headerAlign: "left",
 			headerName: "Owner Fullname",
-			width: 200,
+			minWidth: 250,
 			valueGetter: (params) => params.row.owner.fullname,
 		},
 		{
@@ -101,7 +112,7 @@ const StorageTable = ({ allStorage, setStorage }) => {
 			align: "left",
 			headerAlign: "left",
 			headerName: "Owner Email",
-			width: 200,
+			minWidth: 250,
 			valueGetter: (params) => params.row.owner.email,
 		},
 		{
