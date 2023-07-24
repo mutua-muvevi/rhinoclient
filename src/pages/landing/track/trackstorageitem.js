@@ -76,22 +76,12 @@ const headerFont = {
 	fontFamily: "'Rubik', sans-serif",
 };
 
-const titleFont = {
-	fontWeight: 500,
-	fontFamily: "'Rubik', sans-serif",
-	color: "#dea95f",
-};
-
 const TrackStorageItem = ({ storage, modal, onClose }) => {
 
 	const headerTitleList = [
 		{
-			name: "Track no",
+			name: "Track / Reference Number",
 			value: storage.trackno
-		},
-		{
-			name: "Description",
-			value:  storage.productDetails.slice(-1)[0]?.description || ""
 		},
 	]
 
@@ -295,15 +285,15 @@ const TrackStorageItem = ({ storage, modal, onClose }) => {
 									{
 										headerTitleList.map(e => (
 											<StyledHeaderTitleList container maxWidth="xl" spacing={2} rowSpacing={0}>
-												<Grid item xl={2} lg={2} md={2} sm={12}>
-													<Typography variant="h5" style={styledHeaderTitles} gutterBottom>
+												<Grid item xl={4} lg={4} md={4} sm={12}>
+													<Typography variant="h4" style={styledHeaderTitles} gutterBottom>
 														{ e.name }
 													</Typography>
 													
 												</Grid>
-												<Grid item xl={10} lg={10} md={10} sm={12}>
+												<Grid item xl={8} lg={8} md={8} sm={12}>
 													<StyledHeaderDetail>
-														<Typography variant="h5" style={styledHeaderText} gutterBottom>
+														<Typography variant="h4" style={styledHeaderText} gutterBottom>
 															{ e.value }
 														</Typography>
 													</StyledHeaderDetail>
