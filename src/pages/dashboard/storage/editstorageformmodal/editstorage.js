@@ -71,6 +71,7 @@ const EditStorage = ({token, editStorage, errMessage, storage}) => {
 		productOrigin: storage.productOrigin,
 	
 		trackno: storage.trackno,
+		_id: storage._id
 	};
 
 	const submitHandler = ( values, {resetForm} ) => {
@@ -186,21 +187,6 @@ const EditStorage = ({token, editStorage, errMessage, storage}) => {
 
 								{
 									goodsOwnerInformation.map((el, i) => (
-										<Grid key={i} item sm={el.sm} xs={el.xs}>
-											<TextField type={el.type} name={el.name} label={el.label}/>
-										</Grid>
-									))
-								}
-
-
-								<Grid item xs={12}>
-									<Typography variant="h5" color="secondary" gutterBottom>
-										Track/Reference Number
-									</Typography>
-								</Grid>
-
-								{
-									trackNumber.map((el, i) => (
 										<Grid key={i} item sm={el.sm} xs={el.xs}>
 											<TextField type={el.type} name={el.name} label={el.label}/>
 										</Grid>

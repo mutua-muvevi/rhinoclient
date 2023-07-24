@@ -1,32 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import { Button, Card, CardHeader} from "@mui/material";
+import { Button, Card, CardHeader } from "@mui/material";
 import { styled } from "@mui/system";
 
-import { DataGrid} from '@mui/x-data-grid';
+import { DataGrid } from "@mui/x-data-grid";
 
-import PageviewIcon from '@mui/icons-material/Pageview';
-import EditIcon from '@mui/icons-material/Edit';
+import PageviewIcon from "@mui/icons-material/Pageview";
+import EditIcon from "@mui/icons-material/Edit";
 
 import StorageViewModal from "./storageviewmodal";
 
-import { connect } from "react-redux"
+import { connect } from "react-redux";
 import EditStorageModal from "../editstorageformmodal/editstoragemodal";
-import { setStorage } from '../../../../redux/storage/storageaction';
+import { setStorage } from "../../../../redux/storage/storageaction";
 
-const StyledDataGridContainer = styled(Card)(({theme}) => ({
+const StyledDataGridContainer = styled(Card)(({ theme }) => ({
 	backgroundColor: "inherit",
 	borderRadius: theme.shape.default,
 	marginTop: "30px",
-	marginBottom: "30px"
-}))
+	marginBottom: "30px",
+}));
 
-const StyledDataGridHeader = styled(CardHeader)(({theme}) => ({
+const StyledDataGridHeader = styled(CardHeader)(({ theme }) => ({
 	backgroundColor: "#131313",
-	color: theme.palette.secondary.main
-}))
+	color: theme.palette.secondary.main,
+}));
 
-const StyledDataGrid = styled(DataGrid)(({theme}) =>({
+const StyledDataGrid = styled(DataGrid)(({ theme }) => ({
 	border: "none",
 	backgroundColor: theme.palette.background.default,
 	width: "100%",
@@ -40,110 +40,99 @@ const StyledDataGrid = styled(DataGrid)(({theme}) =>({
 	},
 	"& .MuiDataGrid-virtualScrollerRenderZone": {
 		"& .MuiDataGrid-row": {
-			"&:nth-of-type(2n)": { backgroundColor: theme.palette.background.paper }
-		}
+			"&:nth-of-type(2n)": {
+				backgroundColor: theme.palette.background.paper,
+			},
+		},
 	},
-}))
+}));
 
-const StorageTable = ({storage, setStorage}) => {
-
-	
+const StorageTable = ({ storage, setStorage }) => {
 	const [modal, setModal] = useState(false);
 	const [editModal, setEditModal] = useState(false);
 	const [singleStorage, setSingleStorage] = useState({});
 
 	const handleClick = (e, values) => {
-		setSingleStorage(values.row)
-		setStorage(values.row)
-		setModal(true)
-	}
+		setSingleStorage(values.row);
+		setStorage(values.row);
+		setModal(true);
+	};
 
 	const handleEditClick = (e, values) => {
-		setSingleStorage(values.row)
-		setStorage(values.row)
-		setEditModal(true)
-	}
-
+		setSingleStorage(values.row);
+		setStorage(values.row);
+		setEditModal(true);
+	};
 
 	const columns = [
 		{
 			field: "id",
-			hide: true
-		},
-		{
-			field: "trackno",
+			hide: true,
+		  },
+		  {
+			field: "depositorFullName",
 			align: "left",
 			headerAlign: "left",
-			headerName: "Track number",
-			width: 200
-		},
-		{
-			field: "fullname",
+			headerName: "Depositor Fullname",
+			width: 200,
+			valueGetter: (params) => params.row.depositor.fullname,
+		  },
+		  {
+			field: "depositorEmail",
 			align: "left",
 			headerAlign: "left",
-			headerName: "Fullname",
-			width: 200
-		},
-		{
-			field: "email",
+			headerName: "Depositor Email",
+			width: 200,
+			valueGetter: (params) => params.row.depositor.email,
+		  },
+		  {
+			field: "cosigneeFullName",
 			align: "left",
 			headerAlign: "left",
-			headerName: "Email",
-			width: 200
-		},
-		{
-			field: "company",
+			headerName: "Cosignee Fullname",
+			width: 200,
+			valueGetter: (params) => params.row.cosignee.fullname,
+		  },
+		  {
+			field: "cosigneeEmail",
 			align: "left",
 			headerAlign: "left",
-			headerName: "Company",
-			width: 200
-		},
-		
-		
-		{
-			field: "storageaddress",
+			headerName: "Cosignee Email",
+			width: 200,
+			valueGetter: (params) => params.row.cosignee.email,
+		  },
+		  {
+			field: "ownerFullName",
 			align: "left",
 			headerAlign: "left",
-			headerName: "Storage Address",
-			width: 200
-		},
-
-		{
-			field: "datein",
+			headerName: "Owner Fullname",
+			width: 200,
+			valueGetter: (params) => params.row.owner.fullname,
+		  },
+		  {
+			field: "ownerEmail",
 			align: "left",
 			headerAlign: "left",
-			headerName: "Date In",
-			width: 150
-		},
-		{
-			field: "timein",
+			headerName: "Owner Email",
+			width: 200,
+			valueGetter: (params) => params.row.owner.email,
+		  },
+		  {
+			field: "receiverFullName",
 			align: "left",
 			headerAlign: "left",
-			headerName: "Time In",
-			width: 150
-		},
-		{
-			field: "dateout",
+			headerName: "Receiver Fullname",
+			width: 200,
+			valueGetter: (params) => params.row.receiver.fullname,
+		  },
+		  {
+			field: "receiverEmail",
 			align: "left",
 			headerAlign: "left",
-			headerName: "Date Out",
-			width: 150
-		},
-		{
-			field: "timeout",
-			align: "left",
-			headerAlign: "left",
-			headerName: "Out Time",
-			width: 150
-		},
-
-		{
-			field: "notes",
-			align: "left",
-			headerAlign: "left",
-			headerName: "Observation",
-			minWidth: 200
-		},
+			headerName: "Receiver Email",
+			width: 200,
+			valueGetter: (params) => params.row.receiver.email,
+		  },
 		{
 			field: "View",
 			align: "left",
@@ -155,18 +144,17 @@ const StorageTable = ({storage, setStorage}) => {
 					<Button
 						variant="contained"
 						color="secondary"
-						sx={{minWidth: "120px", color: "black"}}
-						onClick= {
-							e => {
-								handleClick(e, cellValues)
-							}
-						}
-						endIcon={<PageviewIcon/>}
-						>
-							View
+						sx={{ minWidth: "120px", color: "black" }}
+						onClick={(e) => {
+							console.log("cell values.....", cellValues)
+							handleClick(e, cellValues);
+						}}
+						endIcon={<PageviewIcon />}
+					>
+						View
 					</Button>
-				)
-			}
+				);
+			},
 		},
 		{
 			field: "Edit",
@@ -179,52 +167,57 @@ const StorageTable = ({storage, setStorage}) => {
 					<Button
 						variant="contained"
 						color="secondary"
-						sx={{minWidth: "120px", color: "black"}}
-						onClick= {
-							e => {
-								handleEditClick(e, cellValues)
-							}
-						}
-						endIcon={<EditIcon/>}
-						>
-							Edit
+						sx={{ minWidth: "120px", color: "black" }}
+						onClick={(e) => {
+							handleEditClick(e, cellValues);
+						}}
+						endIcon={<EditIcon />}
+					>
+						Edit
 					</Button>
-				)
-			}
+				);
+			},
 		},
-	]
+	];
 
 	return (
 		<>
 			<StyledDataGridContainer>
 				<StyledDataGridHeader title="Storage Records" />
-				{
-					storage ?  (
-						<StyledDataGrid
-							rows={storage}
-							columns={columns}
-							autoPageSize
-							autoHeight
-							getRowId={storage => storage._id}
-							pageSize={100}
-						/>
-					) : ""
-				}
+				{storage ? (
+					<StyledDataGrid
+						rows={storage}
+						columns={columns}
+						autoPageSize
+						autoHeight
+						getRowId={(storage) => storage._id}
+						pageSize={100}
+					/>
+				) : (
+					""
+				)}
 			</StyledDataGridContainer>
-			<StorageViewModal  values={singleStorage} open={modal} setOpen={setModal}/>
-			<EditStorageModal item={singleStorage} open={editModal} setOpen={setEditModal}/>
+			<StorageViewModal
+				values={singleStorage}
+				open={modal}
+				setOpen={setModal}
+			/>
+			<EditStorageModal
+				item={singleStorage}
+				open={editModal}
+				setOpen={setEditModal}
+			/>
 		</>
-	)
-}
-
+	);
+};
 
 const mapStateToProps = ({ storage }) => ({
 	storage: storage.allStorage,
-	errMessage: storage.errMessage
+	errMessage: storage.errMessage,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-	setStorage: (storage) => dispatch(setStorage(storage))
-})
+	setStorage: (storage) => dispatch(setStorage(storage)),
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(StorageTable)
+export default connect(mapStateToProps, mapDispatchToProps)(StorageTable);

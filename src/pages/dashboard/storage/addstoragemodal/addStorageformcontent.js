@@ -218,7 +218,7 @@ export const productDetailsInformation = [
 		sm: 6,
 	},
 	{
-		type: "number",
+		type: "text",
 		label: "Number of packages / Bags",
 		name: "packagesNo",
 		xs: 12,
@@ -436,8 +436,8 @@ export const FORM_VALIDATION = Yup.object().shape({
 			HSCode: Yup.string()
 				.min(3, "Minimum required characters for HSCode is 3")
 				.required(3, "HSCode is required"),
-			packagesNo: Yup.number()
-				.min(1, "Minimum required characters for HSCode is 1"),
+			packagesNo: Yup.string()
+				.min(3, "Minimum required characters for packaging is 3"),
 			netQuantity: Yup.string()
 				.min(3, "Minimum required characters for net quantity is 3"),
 			marketRate: Yup.string()
