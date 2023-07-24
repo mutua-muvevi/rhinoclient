@@ -344,6 +344,28 @@ const StorageViewModal = ({ values, open, setOpen, storage }) => {
 									style={headerFont}
 									gutterBottom
 								>
+									Track / Reference Number
+								</Typography>
+								<Divider />
+							</Grid>
+									<Grid
+										item
+										xs={12}
+									>
+										<Box>
+											<Typography variant="body1" style={titleFont}>
+												{storage.trackno}
+											</Typography>
+										</Box>
+									</Grid>
+
+
+							<Grid sx={{ marginTop: "20px" }} item xs={12}>
+								<Typography
+									variant="h5"
+									style={headerFont}
+									gutterBottom
+								>
 									Depositor's Information
 								</Typography>
 								<Divider />
@@ -534,7 +556,7 @@ const StorageViewModal = ({ values, open, setOpen, storage }) => {
 									style={headerFont}
 									gutterBottom
 								>
-									Product Information
+									Product / Storage Goods Information
 								</Typography>
 								<Divider />
 								<StorageGoodsTable />

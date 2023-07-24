@@ -150,7 +150,7 @@ const TrackStorage = ({ item, getStorageByTrackNo, errMessage }) => {
 				{
 					item ? (
 						<TrackStorageItem
-							item = {item}
+							storage = {item}
 							modal={trackItemModal}
 							onClose={closeModal}
 						/>

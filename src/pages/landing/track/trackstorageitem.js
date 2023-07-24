@@ -4,6 +4,7 @@ import { Box, Container, Divider, Grid, Modal, Grow, Typography } from "@mui/mat
 import { styled } from "@mui/system";
 
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
+import StorageGoodsTable from "../../dashboard/storage/storageTable/goodsTable"
 
 
 const StyledTrackItem = styled(Modal)(({ theme }) => ({
@@ -69,67 +70,297 @@ const StyledTrackHeaderDetails = styled(Box)(({ theme }) => ({
 	marginTop: "20px"
 }))
 
-const StyledHeaderItemTextContainer = styled(Box)(({ theme }) => ({
-	margin: "20px auto"
-}))
-
-const typographyColorHeader = {
+const headerFont = {
 	color: "#dea95f",
-	fontFamily: "'Rubik', sans-serif",
-	fontSize: "18px",
 	fontWeight: 500,
-}
+	fontFamily: "'Rubik', sans-serif",
+};
 
-const typographyColor = {
-	color: "rgba(220, 220, 220, 0.8)",
-	
-}
-const TrackStorageItem = ({ item, modal, onClose }) => {
-	
-	const headerTitleList = [
+const titleFont = {
+	fontWeight: 500,
+	fontFamily: "'Rubik', sans-serif",
+	color: "#dea95f",
+};
+
+const TrackStorageItem = ({ storage, modal, onClose }) => {
+
+	const depositorInformation = [
 		{
-			name: "Track no",
-			value: item.trackno
+			name: "Depositor's Fullname",
+			value:  storage.depositor.fullname ? storage.depositor.fullname : "",
+			xl: 4,
+			lg: 4,
+			md: 4,
+			sm: 12,
+			xs: 12,
 		},
 		{
-			name: "Description",
-			value: item.notes
+			name: "Depositor's Email",
+			value: storage.depositor.email ? storage.depositor.email : "",
+			xl: 4,
+			lg: 4,
+			md: 4,
+			sm: 12,
+			xs: 12,
+		},
+		{
+			name: "Depositor's Telephone",
+			value: storage.depositor.telephone ? storage.depositor.telephone : "",
+			xl: 4,
+			lg: 4,
+			md: 4,
+			sm: 12,
+			xs: 12,
+		},
+		{
+			name: "Depositor's Company",
+			value: storage.depositor.company ? storage.depositor.company : "",
+			xl: 4,
+			lg: 4,
+			md: 4,
+			sm: 12,
+			xs: 12,
+		},
+		{
+			name: "Depositor's Address",
+			value: storage.depositor.address ? storage.depositor.address : "",
+			xl: 4,
+			lg: 4,
+			md: 4,
+			sm: 12,
+			xs: 12,
 		},
 	]
 
-	const storageHeaderItems = [
-		[
-			{
-				name: "Customer Details",
-				value : [
-					item.fullname,
-					item.email,
-					item.telephone,
-				], 
-				meta: ""
-			}
-		],
-		[
-			{
-				name: "Product Details",
-				value : [
-					item.product,
-					item.storageaddress,
-				], 
-				meta: ""
-			}
-		],
-		[
-			{
-				name: "Transaction Details",
-				value : [
-					item.notes,
-					item.datein,
-					item.timein,
-				], 
-				meta: ""
-			}
-		],
+	const cosigneeInformation = [
+		{
+			name: "Cosignee Fullname",
+			value: storage.cosignee.fullname,
+			xl: 4,
+			lg: 4,
+			md: 4,
+			sm: 12,
+			xs: 12,
+		},
+		{
+			name: "Cosignee Email",
+			value: storage.cosignee.email,
+			xl: 4,
+			lg: 4,
+			md: 4,
+			sm: 12,
+			xs: 12,
+		},
+		{
+			name: "Cosignee Telephone",
+			value: storage.cosignee.telephone,
+			xl: 4,
+			lg: 4,
+			md: 4,
+			sm: 12,
+			xs: 12,
+		},
+		{
+			name: "Cosignee Company",
+			value: storage.cosignee.company,
+			xl: 4,
+			lg: 4,
+			md: 4,
+			sm: 12,
+			xs: 12,
+		},
+		{
+			name: "Cosignee Address",
+			value: storage.cosignee.address,
+			xl: 4,
+			lg: 4,
+			md: 4,
+			sm: 12,
+			xs: 12,
+		},
+	]
+
+	const ownerInformation = [
+		{
+			name: "Owner's Fullname",
+			value: storage.owner.fullname,
+			xl: 4,
+			lg: 4,
+			md: 4,
+			sm: 12,
+			xs: 12,
+		},
+		{
+			name: "Owner's Email",
+			value: storage.owner.email,
+			xl: 4,
+			lg: 4,
+			md: 4,
+			sm: 12,
+			xs: 12,
+		},
+		{
+			name: "Owner's Telephone",
+			value: storage.owner.telephone,
+			xl: 4,
+			lg: 4,
+			md: 4,
+			sm: 12,
+			xs: 12,
+		},
+		{
+			name: "Owner's Company",
+			value: storage.owner.company,
+			xl: 4,
+			lg: 4,
+			md: 4,
+			sm: 12,
+			xs: 12,
+		},
+		{
+			name: "Owner's address",
+			value: storage.owner.address,
+			xl: 4,
+			lg: 4,
+			md: 4,
+			sm: 12,
+			xs: 12,
+		},
+		{
+			name: "Owner's Account Number",
+			value: storage.owner.accountNo,
+			xl: 4,
+			lg: 4,
+			md: 4,
+			sm: 12,
+			xs: 12,
+		},
+	]
+
+	const receiverInformation = [
+		{
+			name: "Recipient's Fullname",
+			value: storage.receiver.fullname,
+			xl: 4,
+			lg: 4,
+			md: 4,
+			sm: 12,
+			xs: 12,
+		},
+		{
+			name: "Recipient's Email",
+			value: storage.receiver.email,
+			xl: 4,
+			lg: 4,
+			md: 4,
+			sm: 12,
+			xs: 12,
+		},
+		{
+			name: "Recipient's Telephone",
+			value: storage.receiver.telephone,
+			xl: 4,
+			lg: 4,
+			md: 4,
+			sm: 12,
+			xs: 12,
+		},
+		{
+			name: "Received on",
+			value: storage.receiver.date,
+			xl: 4,
+			lg: 4,
+			md: 4,
+			sm: 12,
+			xs: 12,
+		},
+		{
+			name: "Received at",
+			value: storage.receiver.time,
+			xl: 4,
+			lg: 4,
+			md: 4,
+			sm: 12,
+			xs: 12,
+		},
+		{
+			name: "Receipt Number",
+			value: storage.receiver.receiptNo,
+			xl: 4,
+			lg: 4,
+			md: 4,
+			sm: 12,
+			xs: 12,
+		},
+	]
+
+	const otherDetails = [
+		{
+			name: "Private marks, if any",
+			value: storage.privateMarks,
+			xl: 4,
+			lg: 4,
+			md: 4,
+			sm: 12,
+			xs: 12,
+		},
+		{
+			name: "Assured for",
+			value: storage.assuredFor,
+			xl: 4,
+			lg: 4,
+			md: 4,
+			sm: 12,
+			xs: 12,
+		},
+		{
+			name: "Storage Rate / Handling Charges",
+			value: storage.handlingCharges,
+			xl: 4,
+			lg: 4,
+			md: 4,
+			sm: 12,
+			xs: 12,
+		},
+		{
+			name: "Product Origin",
+			value: storage.productOrigin,
+			xl: 4,
+			lg: 4,
+			md: 4,
+			sm: 12,
+			xs: 12,
+		},
+		{
+			name: "Receipt Number",
+			value: storage.receiptNumber,
+			xl: 4,
+			lg: 4,
+			md: 4,
+			sm: 12,
+			xs: 12,
+		},
+		{
+			name: "Receipt Valid Up To",
+			value: storage.receiptValidUpTo,
+			xl: 4,
+			lg: 4,
+			md: 4,
+			sm: 12,
+			xs: 12,
+		},
+	]
+	
+
+	const headerTitleList = [
+		{
+			name: "Track no",
+			value: storage.trackno
+		},
+		{
+			name: "Description",
+			value:  storage.productDetails.slice(-1)[0]?.description || ""
+		},
 	]
 
 	return (
@@ -142,7 +373,7 @@ const TrackStorageItem = ({ item, modal, onClose }) => {
 				id="track-item"
 		>
 			{
-				item ? (
+				storage ? (
 					<>
 						<Grow style={{ transformOrigin: '10 20 50' }} in timeout={2000}>
 							<Box>
@@ -176,35 +407,207 @@ const TrackStorageItem = ({ item, modal, onClose }) => {
 
 								<StyledTrackHeaderDetails id="treack-title">
 										<Grid container spacing={2}>
-											{
-												storageHeaderItems &&
-												storageHeaderItems.map((box, i) => (
-													<Grid key={box.value} item lg={4} md={4} sm={12} xs={12}>
-														{
-															box &&
-															box.map((el, i) => (
-																<StyledHeaderItemTextContainer key={i}>
-																	<Typography style={typographyColorHeader} variant="body1">
-																		{el.name}
-																	</Typography>
-																		{
-																			el.value &&
-																			el.value.map((val, i) => (
-																				<Box key={i} sx={{display: "flex", alignItems: "center", justifyContent: "left"}}>
-																					<KeyboardDoubleArrowRightIcon style={typographyColor}/>
-																					<Typography variant="body1" style={typographyColor} sx={{marginLeft: "10px"}}>
-																						{val}
-																					</Typography>
-																				</Box>
-																			))
-																		}
-																		
-																</StyledHeaderItemTextContainer>
-															))
-														}
-													</Grid>
-												))
-											}
+										<Grid sx={{ marginTop: "20px" }} item xs={12}>
+								<Typography
+									variant="h5"
+									sx={headerFont}
+									gutterBottom
+								>
+									Depositor's Information
+								</Typography>
+								<Divider />
+							</Grid>
+
+							{depositorInformation &&
+								depositorInformation.map((el) => (
+									<Grid
+										item
+										key={el.name}
+										xl={el.xl}
+										lg={el.lg}
+										md={el.md}
+										sm={el.sm}
+										xs={el.xs}
+									>
+										<Typography
+											style={headerFont}
+											variant="body1"
+										>
+											{el.name}
+										</Typography>
+										<Box>
+											<Typography variant="body1">
+												{el.value}
+											</Typography>
+										</Box>
+									</Grid>
+								))}
+
+
+							
+							<Grid sx={{ marginTop: "20px" }} item xs={12}>
+								<Typography
+									variant="h5"
+									style={headerFont}
+									gutterBottom
+								>
+									Consignee's Information
+								</Typography>
+								<Divider />
+							</Grid>
+
+							{cosigneeInformation &&
+								cosigneeInformation.map((el) => (
+									<Grid
+										item
+										key={el.name}
+										xl={el.xl}
+										lg={el.lg}
+										md={el.md}
+										sm={el.sm}
+										xs={el.xs}
+									>
+										<Typography
+											style={titleFont}
+											variant="body1"
+										>
+											{el.name}
+										</Typography>
+										<Box>
+											<Typography variant="body1">
+												{el.value}
+											</Typography>
+										</Box>
+									</Grid>
+								))}
+
+
+							
+							<Grid sx={{ marginTop: "20px" }} item xs={12}>
+								<Typography
+									variant="h5"
+									style={headerFont}
+									gutterBottom
+								>
+									Owner's Information
+								</Typography>
+								<Divider />
+							</Grid>
+
+							{ownerInformation &&
+								ownerInformation.map((el) => (
+									<Grid
+										item
+										key={el.name}
+										xl={el.xl}
+										lg={el.lg}
+										md={el.md}
+										sm={el.sm}
+										xs={el.xs}
+									>
+										<Typography
+											style={titleFont}
+											variant="body1"
+										>
+											{el.name}
+										</Typography>
+										<Box>
+											<Typography variant="body1">
+												{el.value}
+											</Typography>
+										</Box>
+									</Grid>
+								))}
+
+
+							
+							<Grid sx={{ marginTop: "20px" }} item xs={12}>
+								<Typography
+									variant="h5"
+									style={headerFont}
+									gutterBottom
+								>
+									Receiver's Information
+								</Typography>
+								<Divider />
+							</Grid>
+
+							{receiverInformation &&
+								receiverInformation.map((el) => (
+									<Grid
+										item
+										key={el.name}
+										xl={el.xl}
+										lg={el.lg}
+										md={el.md}
+										sm={el.sm}
+										xs={el.xs}
+									>
+										<Typography
+											style={titleFont}
+											variant="body1"
+										>
+											{el.name}
+										</Typography>
+										<Box>
+											<Typography variant="body1">
+												{el.value}
+											</Typography>
+										</Box>
+									</Grid>
+								))}
+
+
+							
+							<Grid sx={{ marginTop: "20px" }} item xs={12}>
+								<Typography
+									variant="h5"
+									style={headerFont}
+									gutterBottom
+								>
+									Other Details
+								</Typography>
+								<Divider />
+							</Grid>
+
+							{otherDetails &&
+								otherDetails.map((el) => (
+									<Grid
+										item
+										key={el.name}
+										xl={el.xl}
+										lg={el.lg}
+										md={el.md}
+										sm={el.sm}
+										xs={el.xs}
+									>
+										<Typography
+											style={titleFont}
+											variant="body1"
+										>
+											{el.name}
+										</Typography>
+										<Box>
+											<Typography variant="body1">
+												{el.value}
+											</Typography>
+										</Box>
+									</Grid>
+								))}
+
+
+
+							<Grid item xs={12}>
+								<Typography
+									variant="h5"
+									style={headerFont}
+									gutterBottom
+								>
+									Product Information
+								</Typography>
+								<Divider />
+								<StorageGoodsTable/>
+							</Grid>
 										</Grid>
 									</StyledTrackHeaderDetails>
 								</StyledItemContainer>
