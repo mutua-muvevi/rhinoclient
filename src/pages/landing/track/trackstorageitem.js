@@ -9,7 +9,7 @@ import StorageGoodsTable from "../../dashboard/storage/storageTable/goodsTable"
 
 const StyledTrackItem = styled(Modal)(({ theme }) => ({
 	width: "85vw",
-	margin: "20vh auto",
+	margin: "15vh auto",
 	border: 'none',
 	backgroundColor: "#333333",
 	borderRadius: 4,
@@ -58,7 +58,7 @@ const StyledHeaderDetail = styled(Box)(({ theme }) => ({
 const StyledItemContainer = styled(Container)(({ theme }) => ({
 	overflowY: "scroll",
 	overFlow: "hidden",
-	height: "45vh",
+	height: "58vh",
 	position: "relative"
 }))
 
