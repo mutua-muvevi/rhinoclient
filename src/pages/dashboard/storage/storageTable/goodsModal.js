@@ -48,6 +48,7 @@ const headerFont = {
 const titleFont = {
 	fontWeight: 500,
 	fontFamily: "'Rubik', sans-serif",
+	color: "#ffffff"
 };
 
 const StorageGoodsViewModal = ({ open, setOpen, storage, productDetails }) => {
@@ -132,7 +133,7 @@ const StorageGoodsViewModal = ({ open, setOpen, storage, productDetails }) => {
 											{el.name}
 										</Typography>
 										<Box>
-											<Typography variant="body1">
+											<Typography variant="body1" style={{color: "#FFFBF5"}}>
 												{el.value}
 											</Typography>
 										</Box>

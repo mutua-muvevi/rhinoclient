@@ -468,7 +468,7 @@ const TrackStorageItem = ({ storage, modal, onClose }) => {
 										xs={el.xs}
 									>
 										<Typography
-											style={titleFont}
+											sx={{color: "#ffffff"}}
 											variant="body1"
 										>
 											{el.name}
@@ -506,7 +506,7 @@ const TrackStorageItem = ({ storage, modal, onClose }) => {
 										xs={el.xs}
 									>
 										<Typography
-											style={titleFont}
+											sx={{color: "#ffffff"}}
 											variant="body1"
 										>
 											{el.name}
@@ -544,7 +544,7 @@ const TrackStorageItem = ({ storage, modal, onClose }) => {
 										xs={el.xs}
 									>
 										<Typography
-											style={titleFont}
+											sx={{color: "#ffffff"}}
 											variant="body1"
 										>
 											{el.name}
@@ -582,7 +582,7 @@ const TrackStorageItem = ({ storage, modal, onClose }) => {
 										xs={el.xs}
 									>
 										<Typography
-											style={titleFont}
+											sx={{color: "#ffffff"}}
 											variant="body1"
 										>
 											{el.name}
