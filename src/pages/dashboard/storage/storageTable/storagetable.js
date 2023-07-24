@@ -47,7 +47,7 @@ const StyledDataGrid = styled(DataGrid)(({ theme }) => ({
 	},
 }));
 
-const StorageTable = ({ storage, setStorage }) => {
+const StorageTable = ({ allStorage, setStorage }) => {
 	const [modal, setModal] = useState(false);
 	const [editModal, setEditModal] = useState(false);
 	const [singleStorage, setSingleStorage] = useState({});
@@ -75,7 +75,7 @@ const StorageTable = ({ storage, setStorage }) => {
 			headerAlign: "left",
 			headerName: "Depositor Fullname",
 			width: 200,
-			valueGetter: (params) => params.row.depositor.fullname,
+			valueGetter: (params) => { console.log("Params is", params.row); return params.row.depositor.fullname},
 		  },
 		  {
 			field: "depositorEmail",
@@ -184,18 +184,14 @@ const StorageTable = ({ storage, setStorage }) => {
 		<>
 			<StyledDataGridContainer>
 				<StyledDataGridHeader title="Storage Records" />
-				{storage ? (
 					<StyledDataGrid
-						rows={storage}
+						rows={allStorage}
 						columns={columns}
 						autoPageSize
 						autoHeight
 						getRowId={(storage) => storage._id}
 						pageSize={100}
 					/>
-				) : (
-					""
-				)}
 			</StyledDataGridContainer>
 			<StorageViewModal
 				values={singleStorage}
@@ -212,7 +208,7 @@ const StorageTable = ({ storage, setStorage }) => {
 };
 
 const mapStateToProps = ({ storage }) => ({
-	storage: storage.allStorage,
+	allStorage: storage.allStorage,
 	errMessage: storage.errMessage,
 });
 

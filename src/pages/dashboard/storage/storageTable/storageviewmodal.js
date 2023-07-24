@@ -62,7 +62,7 @@ const StorageViewModal = ({ values, open, setOpen, storage }) => {
 	const depositorInformation = [
 		{
 			name: "Depositor's Fullname",
-			value:  storage.depositor.fullname ? storage.depositor.fullname : "",
+			value:   storage && storage.depositor && storage.depositor.fullname ? storage.depositor.fullname : "",
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -71,7 +71,7 @@ const StorageViewModal = ({ values, open, setOpen, storage }) => {
 		},
 		{
 			name: "Depositor's Email",
-			value: storage.depositor.email ? storage.depositor.email : "",
+			value: storage && storage.depositor && storage.depositor.email ? storage.depositor.email : "",
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -80,7 +80,7 @@ const StorageViewModal = ({ values, open, setOpen, storage }) => {
 		},
 		{
 			name: "Depositor's Telephone",
-			value: storage.depositor.telephone ? storage.depositor.telephone : "",
+			value: storage && storage.depositor && storage.depositor.telephone ? storage.depositor.telephone : "",
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -89,7 +89,7 @@ const StorageViewModal = ({ values, open, setOpen, storage }) => {
 		},
 		{
 			name: "Depositor's Company",
-			value: storage.depositor.company ? storage.depositor.company : "",
+			value: storage && storage.depositor && storage.depositor.company ? storage.depositor.company : "",
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -98,7 +98,7 @@ const StorageViewModal = ({ values, open, setOpen, storage }) => {
 		},
 		{
 			name: "Depositor's Address",
-			value: storage.depositor.address ? storage.depositor.address : "",
+			value: storage && storage.depositor && storage.depositor.address ? storage.depositor.address : "",
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -110,7 +110,7 @@ const StorageViewModal = ({ values, open, setOpen, storage }) => {
 	const cosigneeInformation = [
 		{
 			name: "Cosignee Fullname",
-			value: storage.cosignee.fullname,
+			value: storage && storage.cosignee &&  storage.cosignee.fullname,
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -119,7 +119,7 @@ const StorageViewModal = ({ values, open, setOpen, storage }) => {
 		},
 		{
 			name: "Cosignee Email",
-			value: storage.cosignee.email,
+			value: storage && storage.cosignee &&  storage.cosignee.email,
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -128,7 +128,7 @@ const StorageViewModal = ({ values, open, setOpen, storage }) => {
 		},
 		{
 			name: "Cosignee Telephone",
-			value: storage.cosignee.telephone,
+			value: storage && storage.cosignee &&  storage.cosignee.telephone,
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -137,7 +137,7 @@ const StorageViewModal = ({ values, open, setOpen, storage }) => {
 		},
 		{
 			name: "Cosignee Company",
-			value: storage.cosignee.company,
+			value: storage && storage.cosignee &&  storage.cosignee.company,
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -146,7 +146,7 @@ const StorageViewModal = ({ values, open, setOpen, storage }) => {
 		},
 		{
 			name: "Cosignee Address",
-			value: storage.cosignee.address,
+			value: storage && storage.cosignee &&  storage.cosignee.address,
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -158,7 +158,7 @@ const StorageViewModal = ({ values, open, setOpen, storage }) => {
 	const ownerInformation = [
 		{
 			name: "Owner's Fullname",
-			value: storage.owner.fullname,
+			value: storage && storage.owner &&  storage.owner.fullname,
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -167,7 +167,7 @@ const StorageViewModal = ({ values, open, setOpen, storage }) => {
 		},
 		{
 			name: "Owner's Email",
-			value: storage.owner.email,
+			value: storage && storage.owner &&  storage.owner.email,
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -176,7 +176,7 @@ const StorageViewModal = ({ values, open, setOpen, storage }) => {
 		},
 		{
 			name: "Owner's Telephone",
-			value: storage.owner.telephone,
+			value: storage && storage.owner &&  storage.owner.telephone,
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -185,7 +185,7 @@ const StorageViewModal = ({ values, open, setOpen, storage }) => {
 		},
 		{
 			name: "Owner's Company",
-			value: storage.owner.company,
+			value: storage && storage.owner &&  storage.owner.company,
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -194,7 +194,7 @@ const StorageViewModal = ({ values, open, setOpen, storage }) => {
 		},
 		{
 			name: "Owner's address",
-			value: storage.owner.address,
+			value: storage && storage.owner &&  storage.owner.address,
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -203,7 +203,7 @@ const StorageViewModal = ({ values, open, setOpen, storage }) => {
 		},
 		{
 			name: "Owner's Account Number",
-			value: storage.owner.accountNo,
+			value: storage && storage.owner &&  storage.owner.accountNo,
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -215,7 +215,7 @@ const StorageViewModal = ({ values, open, setOpen, storage }) => {
 	const receiverInformation = [
 		{
 			name: "Recipient's Fullname",
-			value: storage.receiver.fullname,
+			value: storage && storage.receiver &&  storage.receiver.fullname,
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -224,7 +224,7 @@ const StorageViewModal = ({ values, open, setOpen, storage }) => {
 		},
 		{
 			name: "Recipient's Email",
-			value: storage.receiver.email,
+			value: storage && storage.receiver &&  storage.receiver.email,
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -233,7 +233,7 @@ const StorageViewModal = ({ values, open, setOpen, storage }) => {
 		},
 		{
 			name: "Recipient's Telephone",
-			value: storage.receiver.telephone,
+			value: storage && storage.receiver &&  storage.receiver.telephone,
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -242,7 +242,7 @@ const StorageViewModal = ({ values, open, setOpen, storage }) => {
 		},
 		{
 			name: "Received on",
-			value: storage.receiver.date,
+			value: storage && storage.receiver &&  storage.receiver.date,
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -251,7 +251,7 @@ const StorageViewModal = ({ values, open, setOpen, storage }) => {
 		},
 		{
 			name: "Received at",
-			value: storage.receiver.time,
+			value: storage && storage.receiver &&  storage.receiver.time,
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -260,7 +260,7 @@ const StorageViewModal = ({ values, open, setOpen, storage }) => {
 		},
 		{
 			name: "Receipt Number",
-			value: storage.receiver.receiptNo,
+			value: storage && storage.receiver &&  storage.receiver.receiptNo,
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -272,7 +272,7 @@ const StorageViewModal = ({ values, open, setOpen, storage }) => {
 	const otherDetails = [
 		{
 			name: "Private marks, if any",
-			value: storage.privateMarks,
+			value: storage && storage.privateMarks && storage.privateMarks,
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -281,7 +281,7 @@ const StorageViewModal = ({ values, open, setOpen, storage }) => {
 		},
 		{
 			name: "Assured for",
-			value: storage.assuredFor,
+			value: storage && storage.assuredFor && storage.assuredFor,
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -290,7 +290,7 @@ const StorageViewModal = ({ values, open, setOpen, storage }) => {
 		},
 		{
 			name: "Storage Rate / Handling Charges",
-			value: storage.handlingCharges,
+			value: storage && storage.handlingCharges && storage.handlingCharges,
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -299,7 +299,7 @@ const StorageViewModal = ({ values, open, setOpen, storage }) => {
 		},
 		{
 			name: "Product Origin",
-			value: storage.productOrigin,
+			value: storage && storage.productOrigin && storage.productOrigin,
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -308,7 +308,7 @@ const StorageViewModal = ({ values, open, setOpen, storage }) => {
 		},
 		{
 			name: "Receipt Number",
-			value: storage.receiptNumber,
+			value: storage && storage.receiptNumber && storage.receiptNumber,
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -317,7 +317,7 @@ const StorageViewModal = ({ values, open, setOpen, storage }) => {
 		},
 		{
 			name: "Receipt Valid Up To",
-			value: storage.receiptValidUpTo,
+			value: storage && storage.receiptValidUpTo && storage.receiptValidUpTo,
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -331,13 +331,33 @@ const StorageViewModal = ({ values, open, setOpen, storage }) => {
 			<StyledModal
 				open={open}
 				onClose={() => setOpen(false)}
-				aria-labelledby="modal-modal-title"
-				aria-describedby="modal-modal-description"
 			>
 				<StyledModalContainerBox sx={styledModalBox}>
 					<Container maxWidth="xl">
 						<Grid container spacing={2}>
 							
+							<Grid sx={{ marginTop: "20px" }} item xs={12}>
+								<Typography
+									variant="h5"
+									style={headerFont}
+									gutterBottom
+								>
+									Track / Reference Number
+								</Typography>
+								<Divider />
+							</Grid>
+									<Grid
+										item
+										xs={12}
+									>
+										<Box>
+											<Typography variant="body1" style={titleFont}>
+												{storage && storage.trackno}
+											</Typography>
+										</Box>
+									</Grid>
+
+
 							<Grid sx={{ marginTop: "20px" }} item xs={12}>
 								<Typography
 									variant="h5"
@@ -534,7 +554,7 @@ const StorageViewModal = ({ values, open, setOpen, storage }) => {
 									style={headerFont}
 									gutterBottom
 								>
-									Product Information
+									Product / Storage Goods Information
 								</Typography>
 								<Divider />
 								<StorageGoodsTable />
