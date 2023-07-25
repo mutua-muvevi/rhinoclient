@@ -248,6 +248,27 @@ export const otherDetails = [
 	},
 ];
 
+export const depositPeriod = [
+	{
+		type: "text",
+		label: "Date of deposit",
+		required: true,
+		name: "depositDate",
+		xs: 12,
+		sm: 6,
+		formType: "datefield"
+	},
+	{
+		type: "text",
+		label: "Time of deposit",
+		required: true,
+		name: "depositTime",
+		xs: 12,
+		sm: 6,
+		formType: "timefield"
+	},
+]
+
 
 export const INITIAL_FORM_STATE = {
 	depositorFullname: "",
@@ -288,6 +309,8 @@ export const INITIAL_FORM_STATE = {
 	productOrigin: "",
 	wareHouseLocation: "",
 	receivedBy: "",
+	depositDate: "",
+	depositTime: "",
 
 	trackno: "",
 };
@@ -369,6 +392,10 @@ export const FORM_VALIDATION = Yup.object().shape({
 		.min(3, "Minimum characters required for Warehouse Location is 3"),
 	receivedBy: Yup.string()
 		.min(3, "Minimum characters required for Received by is 3"),
+	depositDate: Yup.string()
+		.min(3, "Minimum characters required for date of deposit is 3"),
+	depositTime: Yup.string()
+		.min(3, "Minimum characters required for time of deposit is 3"),
 
 
 	trackno: Yup.string()

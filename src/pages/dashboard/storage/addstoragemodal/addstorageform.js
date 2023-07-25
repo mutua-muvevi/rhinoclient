@@ -7,7 +7,7 @@ import { Formik, Form, FieldArray } from "formik";
 import * as Yup from "yup";
 
 import TextField from "../../../../components/formsUI/textfield/textfield"
-import { depositorInformation, acceptanceInformation, goodsOwnerInformation, productDetailsInformation, trackNumber, otherDetails, INITIAL_FORM_STATE, FORM_VALIDATION } from "./addStorageformcontent";
+import { depositorInformation, acceptanceInformation, goodsOwnerInformation, productDetailsInformation, trackNumber, otherDetails, INITIAL_FORM_STATE, FORM_VALIDATION, depositPeriod } from "./addStorageformcontent";
 import DateField from "../../../../components/formsUI/datepicker/datepicker";
 
 import SendIcon from '@mui/icons-material/Send';
@@ -157,11 +157,28 @@ const AddStorageForm = ({ token, postAStorage, errMessage, setOpen}) => {
 
 								<Grid item xs={12}>
 									<Typography variant="h5" color="secondary" gutterBottom>
+										Deposit Period
+									</Typography>
+								</Grid>
+
+								{
+									depositPeriod.map((el, i) => (
+										<Grid key={i} item sm={el.sm} xs={el.xs}>
+											{
+												el.formType === "datefield" ? <DateField type={el.type} name={el.name} label={el.label}/> : <TimePicker type={el.type} name={el.name} label={el.label}/>
+											}
+										</Grid>
+									))
+								}
+
+
+								<Grid item xs={12}>
+									<Typography variant="h5" color="secondary" gutterBottom>
 										Product Information
 									</Typography>
 								</Grid>
 
-								<Grid itex xs={12}>
+								<Grid item xs={12}>
 									<FieldArray name="productDetailArray">
 										{(arrayHelpers) => {
 											const productDetails = values.productDetailArray
