@@ -121,6 +121,29 @@ const StorageViewModal = ({ values, open, setOpen, storage }) => {
 		},
 	];
 
+	const depositPeriodInfo = [
+		{
+			name: "Date of deposit",
+			value:
+				storage && storage.depositDate ? storage.depositDate : "",
+			xl: 4,
+			lg: 4,
+			md: 4,
+			sm: 12,
+			xs: 12,
+		},
+		{
+			name: "Time of deposit",
+			value:
+				storage && storage.depositTime ? storage.depositTime : "",
+			xl: 4,
+			lg: 4,
+			md: 4,
+			sm: 12,
+			xs: 12,
+		},
+	];
+
 	const ownerInformation = [
 		{
 			name: "Owner's Fullname",
@@ -297,6 +320,42 @@ const StorageViewModal = ({ values, open, setOpen, storage }) => {
 
 							{depositorInformation &&
 								depositorInformation.map((el) => (
+									<Grid
+										item
+										key={el.name}
+										xl={el.xl}
+										lg={el.lg}
+										md={el.md}
+										sm={el.sm}
+										xs={el.xs}
+									>
+										<Typography
+											style={titleFont}
+											variant="body1"
+										>
+											{el.name}
+										</Typography>
+										<Box>
+											<Typography variant="body1">
+												{el.value}
+											</Typography>
+										</Box>
+									</Grid>
+								))}
+
+							<Grid sx={{ marginTop: "20px" }} item xs={12}>
+								<Typography
+									variant="h5"
+									style={headerFont}
+									gutterBottom
+								>
+									Deposit Period
+								</Typography>
+								<Divider />
+							</Grid>
+
+							{depositPeriodInfo &&
+								depositPeriodInfo.map((el) => (
 									<Grid
 										item
 										key={el.name}

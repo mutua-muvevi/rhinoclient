@@ -133,6 +133,27 @@ const TrackStorageItem = ({ storage, modal, onClose }) => {
 		},
 	]
 
+	const depositPeriodInfo = [
+		{
+			name: "Date of deposit",
+			value:  storage.depositDate ? storage.depositDate : "",
+			xl: 4,
+			lg: 4,
+			md: 4,
+			sm: 12,
+			xs: 12,
+		},
+		{
+			name: "Time of deposit",
+			value: storage.depositTime ? storage.depositTime : "",
+			xl: 4,
+			lg: 4,
+			md: 4,
+			sm: 12,
+			xs: 12,
+		},
+	]
+
 	const ownerInformation = [
 		{
 			name: "Owner's Fullname",
@@ -310,44 +331,82 @@ const TrackStorageItem = ({ storage, modal, onClose }) => {
 
 								<StyledTrackHeaderDetails id="treack-title">
 										<Grid container spacing={2}>
-										<Grid sx={{ marginTop: "20px" }} item xs={12}>
-								<Typography
-									variant="h5"
-									sx={headerFont}
-									gutterBottom
-								>
-									Depositor's Information
-								</Typography>
-								<Divider />
-							</Grid>
-
-							{depositorInformation &&
-								depositorInformation.map((el) => (
-									<Grid
-										item
-										key={el.name}
-										xl={el.xl}
-										lg={el.lg}
-										md={el.md}
-										sm={el.sm}
-										xs={el.xs}
+											<Grid sx={{ marginTop: "20px" }} item xs={12}>
+									<Typography
+										variant="h5"
+										sx={headerFont}
+										gutterBottom
 									>
-										<Typography
-											style={headerFont}
-											variant="body1"
+										Depositor's Information
+									</Typography>
+									<Divider />
+								</Grid>
+
+								{depositorInformation &&
+									depositorInformation.map((el) => (
+										<Grid
+											item
+											key={el.name}
+											xl={el.xl}
+											lg={el.lg}
+											md={el.md}
+											sm={el.sm}
+											xs={el.xs}
 										>
-											{el.name}
-										</Typography>
-										<Box>
-											<Typography variant="body1">
-												{el.value}
+											<Typography
+												style={headerFont}
+												variant="body1"
+											>
+												{el.name}
 											</Typography>
-										</Box>
-									</Grid>
-								))}
+											<Box>
+												<Typography variant="body1">
+													{el.value}
+												</Typography>
+											</Box>
+										</Grid>
+									))}
 
 
-							
+								
+											<Grid sx={{ marginTop: "20px" }} item xs={12}>
+									<Typography
+										variant="h5"
+										sx={headerFont}
+										gutterBottom
+									>
+										Deposit Period
+									</Typography>
+									<Divider />
+								</Grid>
+
+								{depositPeriodInfo &&
+									depositPeriodInfo.map((el) => (
+										<Grid
+											item
+											key={el.name}
+											xl={el.xl}
+											lg={el.lg}
+											md={el.md}
+											sm={el.sm}
+											xs={el.xs}
+										>
+											<Typography
+												style={headerFont}
+												variant="body1"
+											>
+												{el.name}
+											</Typography>
+											<Box>
+												<Typography variant="body1">
+													{el.value}
+												</Typography>
+											</Box>
+										</Grid>
+									))}
+
+
+								
 							<Grid sx={{ marginTop: "20px" }} item xs={12}>
 								<Typography
 									variant="h5"
