@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 
-import { Box, Breadcrumbs, Link, Stack} from "@mui/material"
+import { Box, Breadcrumbs, Link, Stack, Typography} from "@mui/material"
 import { styled } from "@mui/system";
 
 import HomeIcon from '@mui/icons-material/Home';
@@ -40,12 +40,15 @@ const Dashhome = ({ isAuthenticated }) => {
 						color="inherit"
 						href="/dashboard"
 					>
-						<HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
-						Dashboard
+						<Stack direction="row" alignItems="center" spacing={2}>
+							<HomeIcon fontSize="inherit" />
+
+							<Typography variant="body2">
+								Quotations
+							</Typography>
+						</Stack>
 					</Link>
 				</StyledBreadCrumbs>
-				<Dashcards3/>
-				<Dashcards2 />
 				<QuotationDatagrid />
 		</HomeStyled>
 	)

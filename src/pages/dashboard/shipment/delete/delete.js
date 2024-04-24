@@ -36,15 +36,18 @@ const buttonStyle = {
 
 const DeleteShipment = ({ open, setOpen, shipment, token, deleteShipment }) => {
 	const [inputValue, setInputValue] = useState("");
-	const navigate = useNavigate();
 	const theme = useTheme();
 
 	const handleInputChange = (event) => {
 		setInputValue(event.target.value);
 	};
 
-	const handleDeleteClick = () => {
-		deleteShipment(token, shipment._id)
+	const handleDeleteClick = async () => {
+		const response = await deleteShipment(token, shipment._id)
+		
+		if(response.type === "DELETE_SHIPMENT_SUCCESS"){
+			window.location.reload()
+		}
 		// navigate("/admin/freelancer/services/home")
 	};
 

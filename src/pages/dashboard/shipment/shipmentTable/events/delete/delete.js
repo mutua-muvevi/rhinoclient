@@ -57,8 +57,14 @@ const DeleteEventModal = ({ token, event, open, setOpen, deleteAction, shipment 
 		setInputValue(event.target.value);
 	};
 
-	const handleDeleteClick = () => {
-		deleteAction(token, shipment.trackno, event._id)
+	const handleDeleteClick = async () => {
+		const response = await deleteAction(token, shipment.trackno, event._id)
+
+		if(response){
+			setTimeout(() => {
+				window.location.reload()
+			}, 1500);
+		}
 		// navigate("/admin/freelancer/services/home")
 	};
 

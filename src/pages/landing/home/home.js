@@ -151,23 +151,6 @@ const Home = (props) => {
 											Explore more
 										</StyledButton>
 									</Link>
-
-									<StyledSocial>
-										<Typography variant="h5" sx={styledSocialHeader} gutterBottom>
-											Our social media pages
-										</Typography>
-										<StyledSocialIcons>
-											{
-												socialIcons.map((el, i) => (
-													<a href={el.link} target="_blank" key={i} rel="noreferrer" style={socialLink}>
-														<Box >
-															{ el.icon }
-														</Box>
-													</a>
-												))
-											}
-										</StyledSocialIcons>
-									</StyledSocial>
 								</StyledContentContainer>
 							</Grow>
 						</StyledOverlay>

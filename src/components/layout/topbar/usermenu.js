@@ -1,5 +1,5 @@
 import {  useRef, useState } from "react";
-import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 // @mui
 import { alpha } from "@mui/material/styles";
 import {
@@ -10,19 +10,16 @@ import {
 	MenuItem,
 	Avatar,
 	Link,
-	Button,
 } from "@mui/material";
 import { styled } from "@mui/system";
-// components
-// mocks_
-// import account from "../../_mock/account";
 
 import { connect } from "react-redux";
 import MenuPopover from "../popover";
 
 const StyledAvatar = styled(Avatar)(({ theme }) => ({
 	backgroundColor: theme.palette.secondary.main,
-	color: "black"
+	color: "black",
+	cursor: "pointer"
 }));
 
 const StyledDivider = styled(Divider)(({ theme }) => ({
@@ -47,7 +44,6 @@ const MENU_OPTIONS = [
 
 const UserMenu = ({ me }) => {
 	const anchorRef = useRef(null);
-	const navigate = useNavigate();
 
 	const [open, setOpen] = useState(null);
 
@@ -58,10 +54,6 @@ const UserMenu = ({ me }) => {
 	const handleClose = () => {
 		setOpen(null);
 	};
-
-	const handleActionEdit = () => {
-		console.log("It is working, ")
-	}
 
 	const logout = () => {
 		window.localStorage.clear()
@@ -84,9 +76,6 @@ const UserMenu = ({ me }) => {
 							"&:before": {
 								zIndex: 1,
 								content: "''",
-								width: "100%",
-								height: "100%",
-								borderRadius: "50%",
 								position: "absolute",
 								bgcolor: (theme) =>
 									alpha(theme.palette.grey[900], 0.8),
@@ -95,9 +84,9 @@ const UserMenu = ({ me }) => {
 					}}>
 						{
 							me && me.firstname ?
-							<Button variant="contained" color="secondary" sx={{width: "25px", height: "25px", color: "black"}}>
-								{me.firstname}
-							</Button> :""
+							<StyledAvatar variant="contained" color="secondary" >
+								{me?.firstname[0]}
+							</StyledAvatar> :""
 						}
 				</Box>
 

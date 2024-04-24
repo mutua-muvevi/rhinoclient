@@ -70,10 +70,9 @@ const EditEventForm = ({ token, editEvent, errMessage, event, setOpen, trackno})
 	})
 	
 
-	const submitHandler = ( values, {resetForm} ) => {
+	const submitHandler = async ( values, {resetForm} ) => {
 		const id = event._id
 		editEvent(id, values, token)
-		console.log("TOKEN FROM SUBMIT", token)
 
 		if (!errMessage || errMessage === undefined){
 			setShowSuccess(true)
@@ -82,6 +81,7 @@ const EditEventForm = ({ token, editEvent, errMessage, event, setOpen, trackno})
 
 		setTimeout(() => {
 			setOpen(false)
+			window.location.reload();
 		}, 2000);
 	}
 

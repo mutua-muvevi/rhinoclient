@@ -220,6 +220,7 @@ export const postAShipment = (values, token) => {
 
 			postShipment();
 			dispatch(postShipmentSuccess(res.data.data));
+			return res
 		} catch (error) {
 			dispatch(postShipmentFail(error.response.data.error));
 		}
@@ -243,8 +244,10 @@ export const editAShipment = (values, token) => {
 
 			editShipment();
 			dispatch(editShipmentSuccess(res.data.data));
+			return res
 		} catch (error) {
 			dispatch(editShipmentFail(error.response.data.error));
+			throw error?.response?.data?.error
 		}
 	};
 };
@@ -264,9 +267,12 @@ export const deleteShipment = (token, id) => {
 				}
 			);
 
-			dispatch(deleteShipmentSuccess(res.data.data));
+			const results = dispatch(deleteShipmentSuccess(res.data.data));
+			console.log(results)
+			return results
 		} catch (error) {
 			dispatch(deleteShipmentFail(error.response.data.error));
+			throw error?.response?.data?.error
 		}
 	};
 };
@@ -297,6 +303,7 @@ export const postEvent = (values, token) => {
 			);
 			addEvent();
 			dispatch(addEventSuccess(res.data.data));
+			return res;
 		} catch (error) {
 			dispatch(addEventFail(error.response.data.error));
 		}
@@ -320,6 +327,7 @@ export const editTheEvent = (id, values, token) => {
 			);
 			editEvent();
 			dispatch(editEventSuccess(res.data.data));
+			return res;
 		} catch (error) {
 			dispatch(editEventFail(error.response.data.error));
 		}
@@ -342,6 +350,7 @@ export const deleteEvent = (token, trackno, id) => {
 			)
 			deleteEventStart()
 			dispatch(deleteEventSuccess(res.data.data))
+			return res
 		} catch (error) {
 			dispatch(deleteEventFail(error.response.data.error));
 		}

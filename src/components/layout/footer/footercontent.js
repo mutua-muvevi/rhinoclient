@@ -32,7 +32,7 @@ export const footerMiddle = {
 			icon : <LocationOnIcon/>
 		},
 		{
-			text: "+254 711 432 156",
+			text: "+254 785 879 635",
 			icon : <LocalPhoneIcon/>
 		},
 		{

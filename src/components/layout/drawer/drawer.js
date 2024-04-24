@@ -232,23 +232,6 @@ const DrawerComponent = ({open, handleDrawerOpen, handleDrawerClose, theme}) => 
 						</NavLink>
 					))
 				}
-				<Link  
-					href="/auth/login" 
-					onClick={logOut}
-					style={{textDecoration: "none", color: "white"}}
-				>
-					<ListItemButton
-						sx={{
-							minHeight: 48,
-							justifyContent: open ? 'initial' : 'center',
-							px: 2.5,
-						}}
-					>
-						<SettingsPowerIcon sx={sx}/>
-						<ListItemText primary="Sign out" sx={{ opacity: open ? 1 : 0 , marginLeft: "15px"}} />
-
-					</ListItemButton>
-				</Link>
 
 
 

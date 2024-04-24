@@ -38,7 +38,7 @@ const Dashshipment = () => {
 					color="text.secondary"
 				>
 					<LocalShippingIcon sx={{ mr: 0.5 }} fontSize="inherit" />
-					Shipment
+					Shipment REcords
 				</Typography>
 			</StyledBreadCrumbs>
 			
