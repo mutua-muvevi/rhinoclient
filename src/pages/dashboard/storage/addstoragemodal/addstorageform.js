@@ -27,8 +27,8 @@ const AddStorageForm = ({ token, postAStorage, errMessage, setOpen}) => {
 	const [ trackNo, setTrackNo ] = useState("");
 	const [ showSuccess, setShowSuccess ] = useState(false);
 
-	const submitHandler = ( values, {resetForm} ) => {
-		postAStorage(values, token)
+	const submitHandler = async ( values, {resetForm} ) => {
+		const response = await postAStorage(values, token)
 		resetForm()
 
 		if (!errMessage || errMessage === undefined){
@@ -37,9 +37,12 @@ const AddStorageForm = ({ token, postAStorage, errMessage, setOpen}) => {
 			resetForm()
 		}
 
-		setTimeout(() => {
-			setOpen(false)
-		}, 2000);
+		if(response){
+			setTimeout(() => {
+				setOpen(false)
+				window.location.reload()
+			}, 1500);
+		}
 
 	}
 	

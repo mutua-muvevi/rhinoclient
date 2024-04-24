@@ -43,9 +43,15 @@ const DeleteStorage = ({ open, setOpen, storage, deleteStorage, token }) => {
 		setInputValue(event.target.value);
 	};
 
-	const handleDeleteClick = () => {
-		deleteStorage(token, storage._id);
-		// navigate("/admin/freelancer/services/home")
+	const handleDeleteClick = async () => {
+		const response = await deleteStorage(token, storage._id);
+
+		if(response){
+			setTimeout(() => {
+				setOpen(false)
+				window.location.reload()
+			}, 2000);
+		}
 	};
 
 	return (

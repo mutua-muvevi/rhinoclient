@@ -187,8 +187,10 @@ export const getShipmentByTrackNo = (trackno) => {
 			);
 			getShipmentByTrack();
 			dispatch(getShipmentByTrackSuccess(res.data.data));
+			return res
 		} catch (error) {
 			dispatch(getShipmentByTrackFail(error.response.data.error));
+			throw error
 		}
 	};
 };

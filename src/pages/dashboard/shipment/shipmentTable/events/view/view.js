@@ -53,7 +53,7 @@ const EventViewModal = ({ event, open, setOpen }) => {
 	const eventInfo = [
 		{
 			name: "Number",
-			value: event.number ? event.number : "",
+			value: event?.number ? event?.number : "",
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -62,7 +62,7 @@ const EventViewModal = ({ event, open, setOpen }) => {
 		},
 		{
 			name: "Status",
-			value: event.shippingstatus ? event.shippingstatus : "",
+			value: event?.shippingstatus ? event?.shippingstatus : "",
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -71,7 +71,7 @@ const EventViewModal = ({ event, open, setOpen }) => {
 		},
 		{
 			name: "Time",
-			value: event.timeevents ? event.timeevents : "",
+			value: event?.timeevents ? event?.timeevents : "",
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -80,7 +80,7 @@ const EventViewModal = ({ event, open, setOpen }) => {
 		},
 		{
 			name: "Date",
-			value: event.dateevents ? event.dateevents : "",
+			value: event?.dateevents ? event?.dateevents : "",
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -89,7 +89,7 @@ const EventViewModal = ({ event, open, setOpen }) => {
 		},
 		{
 			name: "Current location",
-			value: event.currentlocation ? event.currentlocation : "",
+			value: event?.currentlocation ? event?.currentlocation : "",
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -98,7 +98,7 @@ const EventViewModal = ({ event, open, setOpen }) => {
 		},
 		{
 			name: "Notes",
-			value: event.notes ? event.notes : "",
+			value: event?.notes ? event?.notes : "",
 			xl: 12,
 			lg: 12,
 			md: 12,

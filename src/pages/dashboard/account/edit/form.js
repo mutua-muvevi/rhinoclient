@@ -49,19 +49,22 @@ const EditEventForm = ({ token, editUser, errMessage, user, setOpen}) => {
 	})
 	
 
-	const submitHandler = ( values, {resetForm} ) => {
+	const submitHandler = async ( values, {resetForm} ) => {
 		const id = user._id
-		editUser({id, token, values})
-		console.log("Values are",values)
+		const response = await editUser({id, token, values});
 
 		if (!errMessage || errMessage === undefined){
 			setShowSuccess(true)
 			resetForm()
 		}
 
-		setTimeout(() => {
-			setOpen(false)
-		}, 2000);
+		if(response){
+			setTimeout(() => {
+				setOpen(false)
+				window.location.reload();
+			}, 2000);
+		}
+
 	}
 
 	return (
