@@ -105,6 +105,10 @@ const AddShipmentForm = ({ token, postAShipment, errMessage, data, setOpen}) => 
 			setShowSuccess(true)
 			setTrackNo(data.trackno)
 			resetForm()
+			
+			setTimeout(() => {
+				window.location.reload()
+			}, 1000);
 		}
 
 	}

@@ -214,7 +214,7 @@ const ShipmentTable = ({ data, setShipment, shipment }) => {
 	return (
 		<>
 			<StyledDataGridContainer>
-				<StyledDataGridHeader title="Shipping Records" />
+				<StyledDataGridHeader title="Shipment Records" />
 				<StyledDataGrid
 					rows={data}
 					columns={columns}

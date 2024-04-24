@@ -201,7 +201,7 @@ const TrackItem = ({ item, modal, onClose}) => {
 		},
 		{
 			name: "Current Status",
-			value: lastItem.notes ? lastItem.notes : "EMPTY"
+			value: lastItem?.notes ? lastItem?.notes : "EMPTY"
 		},
 
 	]

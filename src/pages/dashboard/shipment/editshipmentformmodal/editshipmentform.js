@@ -31,38 +31,38 @@ const EditShipmentForm = ({ token, editAShipment, errMessage, data, shipment, op
 	const [ showSuccess, setShowSuccess ] = useState(false);
 
 	const INITIAL_FORM_STATE = {
-		shippersfullname:  shipment.shippersfullname,
-		shippersemail: shipment.shippersemail,
-		shipperscompany: shipment.shipperscompany,
-		shipperstelephone: shipment.shipperstelephone,
-		shippersaddress: shipment.shippersaddress,
+		shippersfullname:  shipment?.shippersfullname,
+		shippersemail: shipment?.shippersemail,
+		shipperscompany: shipment?.shipperscompany,
+		shipperstelephone: shipment?.shipperstelephone,
+		shippersaddress: shipment?.shippersaddress,
 	
-		consignfullname: shipment.consignfullname,
-		consignemail: shipment.consignemail,
-		consigncompany: shipment.consigncompany,
-		consigntelephone: shipment.consigntelephone,
-		consignaddress: shipment.consignaddress,
+		consignfullname: shipment?.consignfullname,
+		consignemail: shipment?.consignemail,
+		consigncompany: shipment?.consigncompany,
+		consigntelephone: shipment?.consigntelephone,
+		consignaddress: shipment?.consignaddress,
 	
-		collectorfullname: shipment.collectorfullname,
-		collectoremail: shipment.collectoremail,
-		collectortel: shipment.collectortel,
-		collectoraddress: shipment.collectoraddress,
+		collectorfullname: shipment?.collectorfullname,
+		collectoremail: shipment?.collectoremail,
+		collectortel: shipment?.collectortel,
+		collectoraddress: shipment?.collectoraddress,
 	
-		trackno: shipment.trackno,
-		itemsname: shipment.itemsname,
-		itemsweight: shipment.itemsweight,
-		itemsweightunit: shipment.itemsweightunit,
-		itemspieces: shipment.itemspieces,
+		trackno: shipment?.trackno,
+		itemsname: shipment?.itemsname,
+		itemsweight: shipment?.itemsweight,
+		itemsweightunit: shipment?.itemsweightunit,
+		itemspieces: shipment?.itemspieces,
 		
-		departureaddress: shipment.departureaddress,
-		departureairportcode: shipment.departureairportcode,
-		departuredate: shipment.departuredate,
-		departuretime: shipment.departuretime,
+		departureaddress: shipment?.departureaddress,
+		departureairportcode: shipment?.departureairportcode,
+		departuredate: shipment?.departuredate,
+		departuretime: shipment?.departuretime,
 		
-		arrivaladdress:  shipment.arrivaladdress,
-		arrivalairportcode: shipment.arrivalairportcode,
-		arrivaldate: shipment.arrivaldate,
-		arrivaltime: shipment.arrivaltime,
+		arrivaladdress:  shipment?.arrivaladdress,
+		arrivalairportcode: shipment?.arrivalairportcode,
+		arrivaldate: shipment?.arrivaldate,
+		arrivaltime: shipment?.arrivaltime,
 	}
 	
 	const FORM_VALIDATION = Yup.object().shape({
@@ -103,13 +103,19 @@ const EditShipmentForm = ({ token, editAShipment, errMessage, data, shipment, op
 	})
 	
 
-	const submitHandler = ( values, {resetForm} ) => {
-		editAShipment(values, token)
+	const submitHandler = async ( values, {resetForm} ) => {
+		const response = await editAShipment(values, token)
+
+		if(response?.data?.success){
+			setTimeout(() => {
+				window.location.reload()
+			}, 1500);
+		}
 
 		if (!errMessage || errMessage === undefined){
 			setShowSuccess(true)
 			setTrackNo(data.trackno)
-			resetForm()
+			resetForm();
 		}
 	}
 

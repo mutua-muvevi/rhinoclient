@@ -1,22 +1,29 @@
-import React from 'react';
+import React from "react";
 
-import { Box, Container, Divider, Grid, Modal, Grow, Typography } from "@mui/material";
+import {
+	Box,
+	Container,
+	Divider,
+	Grid,
+	Modal,
+	Grow,
+	Typography,
+} from "@mui/material";
 import { styled } from "@mui/system";
 
-import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
-import StorageGoodsTable from "../../dashboard/storage/storageTable/goodsTable"
-
+import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
+import StorageGoodsTable from "../../dashboard/storage/storageTable/goodsTable";
 
 const StyledTrackItem = styled(Modal)(({ theme }) => ({
 	width: "85vw",
 	margin: "15vh auto",
-	border: 'none',
+	border: "none",
 	backgroundColor: "#333333",
 	borderRadius: 4,
-	color: "rgba(220, 220, 220, 0.8)"
+	color: "rgba(220, 220, 220, 0.8)",
 }));
 
-const StyledHeaderTitle = styled(Container)(({theme}) => ({
+const StyledHeaderTitle = styled(Container)(({ theme }) => ({
 	paddingTop: "20px",
 	paddingBottom: "10px",
 	backgroundColor: theme.palette.background.default,
@@ -27,24 +34,24 @@ const StyledHeaderTitle = styled(Container)(({theme}) => ({
 	justifyContent: "center",
 	alignItems: "flex-start",
 	fontFamily: "'Rubik', sans-serif",
-}))
+}));
 
-const StyledHeaderTitleList = styled(Grid)(({theme}) => ({
+const StyledHeaderTitleList = styled(Grid)(({ theme }) => ({
 	display: "flex",
-	width: "100%"
-}))
+	width: "100%",
+}));
 
 const styledHeaderTitles = {
 	fontFamily: "'Rubik', sans-serif",
 	fontWeight: 500,
 	color: "rgba(220, 220, 220, 0.8)",
-}
+};
 
 const styledHeaderText = {
 	fontFamily: "'Rubik', sans-serif",
 	fontWeight: 500,
-	color: "#dea95f"
-}
+	color: "#dea95f",
+};
 
 const StyledHeaderDetail = styled(Box)(({ theme }) => ({
 	backgroundColor: "rgba(18, 18, 18, 0.78)",
@@ -52,23 +59,23 @@ const StyledHeaderDetail = styled(Box)(({ theme }) => ({
 	paddingLeft: "20px",
 	marginLeft: "10px",
 	paddingRight: "10px",
-	minWidth: "40vw"
-}))
+	minWidth: "40vw",
+}));
 
 const StyledItemContainer = styled(Container)(({ theme }) => ({
 	overflowY: "scroll",
 	overFlow: "hidden",
 	height: "58vh",
-	position: "relative"
-}))
+	position: "relative",
+}));
 
 const StyledTrackHeaderDetails = styled(Box)(({ theme }) => ({
 	padding: "10px",
 	backgroundColor: "rgba(18, 18, 18, 0.78)",
 	color: theme.palette.common.white,
 	borderRadius: 4,
-	marginTop: "20px"
-}))
+	marginTop: "20px",
+}));
 
 const headerFont = {
 	color: "#dea95f",
@@ -77,18 +84,17 @@ const headerFont = {
 };
 
 const TrackStorageItem = ({ storage, modal, onClose }) => {
-
 	const headerTitleList = [
 		{
 			name: "Track / Reference Number",
-			value: storage.trackno
+			value: storage.trackno,
 		},
-	]
+	];
 
 	const depositorInformation = [
 		{
 			name: "Depositor's Fullname",
-			value:  storage.depositor.fullname ? storage.depositor.fullname : "",
+			value: storage.depositor.fullname ? storage.depositor.fullname : "",
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -106,7 +112,9 @@ const TrackStorageItem = ({ storage, modal, onClose }) => {
 		},
 		{
 			name: "Depositor's Telephone",
-			value: storage.depositor.telephone ? storage.depositor.telephone : "",
+			value: storage.depositor.telephone
+				? storage.depositor.telephone
+				: "",
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -131,12 +139,12 @@ const TrackStorageItem = ({ storage, modal, onClose }) => {
 			sm: 12,
 			xs: 12,
 		},
-	]
+	];
 
 	const depositPeriodInfo = [
 		{
 			name: "Date of deposit",
-			value:  storage.depositDate ? storage.depositDate : "",
+			value: storage.depositDate ? storage.depositDate : "",
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -152,7 +160,7 @@ const TrackStorageItem = ({ storage, modal, onClose }) => {
 			sm: 12,
 			xs: 12,
 		},
-	]
+	];
 
 	const ownerInformation = [
 		{
@@ -209,7 +217,7 @@ const TrackStorageItem = ({ storage, modal, onClose }) => {
 			sm: 12,
 			xs: 12,
 		},
-	]
+	];
 
 	const otherDetails = [
 		{
@@ -284,219 +292,233 @@ const TrackStorageItem = ({ storage, modal, onClose }) => {
 			sm: 12,
 			xs: 12,
 		},
-	]
-	
+	];
 
 	return (
-				
-		<StyledTrackItem 
-				open={modal}
-				onClose={onClose}
-				aria-labelledby="modal-modal-title"
-				aria-describedby="modal-modal-description"
-				id="track-item"
+		<StyledTrackItem
+			open={modal}
+			onClose={onClose}
+			aria-labelledby="modal-modal-title"
+			aria-describedby="modal-modal-description"
+			id="track-item"
 		>
-			{
-				storage ? (
-					<>
-						<Grow style={{ transformOrigin: '10 20 50' }} in timeout={2000}>
-							<Box>
-								<StyledHeaderTitle maxWidth="xl">
+			{storage ? (
+				<>
+					<Grow
+						style={{ transformOrigin: "10 20 50" }}
+						in
+						timeout={2000}
+					>
+						<Box>
+							<StyledHeaderTitle maxWidth="xl">
+								{headerTitleList.map((e) => (
+									<StyledHeaderTitleList
+										container
+										maxWidth="xl"
+										spacing={2}
+										rowSpacing={0}
+									>
+										<Grid item xl={4} lg={4} md={4} sm={12}>
+											<Typography
+												variant="h4"
+												style={styledHeaderTitles}
+												gutterBottom
+											>
+												{e.name}
+											</Typography>
+										</Grid>
+										<Grid item xl={8} lg={8} md={8} sm={12}>
+											<StyledHeaderDetail>
+												<Typography
+													variant="h4"
+													style={styledHeaderText}
+													gutterBottom
+												>
+													{e.value}
+												</Typography>
+											</StyledHeaderDetail>
+										</Grid>
+									</StyledHeaderTitleList>
+								))}
+							</StyledHeaderTitle>
 
-									{
-										headerTitleList.map(e => (
-											<StyledHeaderTitleList container maxWidth="xl" spacing={2} rowSpacing={0}>
-												<Grid item xl={4} lg={4} md={4} sm={12}>
-													<Typography variant="h4" style={styledHeaderTitles} gutterBottom>
-														{ e.name }
-													</Typography>
-													
-												</Grid>
-												<Grid item xl={8} lg={8} md={8} sm={12}>
-													<StyledHeaderDetail>
-														<Typography variant="h4" style={styledHeaderText} gutterBottom>
-															{ e.value }
-														</Typography>
-													</StyledHeaderDetail>
-												</Grid>
-											</StyledHeaderTitleList>
+							<Divider />
 
-										))
-									}
-								</StyledHeaderTitle>
-
-								<Divider/>
-
-								<StyledItemContainer maxWidth="xl">
-
+							<StyledItemContainer maxWidth="xl">
 								<StyledTrackHeaderDetails id="treack-title">
-										<Grid container spacing={2}>
-											<Grid sx={{ marginTop: "20px" }} item xs={12}>
-									<Typography
-										variant="h5"
-										sx={headerFont}
-										gutterBottom
-									>
-										Depositor's Information
-									</Typography>
-									<Divider />
-								</Grid>
-
-								{depositorInformation &&
-									depositorInformation.map((el) => (
+									<Grid container spacing={2}>
 										<Grid
+											sx={{ marginTop: "20px" }}
 											item
-											key={el.name}
-											xl={el.xl}
-											lg={el.lg}
-											md={el.md}
-											sm={el.sm}
-											xs={el.xs}
+											xs={12}
 										>
 											<Typography
-												style={headerFont}
-												variant="body1"
+												variant="h5"
+												sx={headerFont}
+												gutterBottom
 											>
-												{el.name}
+												Depositor's Information
 											</Typography>
-											<Box>
-												<Typography variant="body1">
-													{el.value}
-												</Typography>
-											</Box>
+											<Divider />
 										</Grid>
-									))}
 
+										{depositorInformation &&
+											depositorInformation.map((el) => (
+												<Grid
+													item
+													key={el.name}
+													xl={el.xl}
+													lg={el.lg}
+													md={el.md}
+													sm={el.sm}
+													xs={el.xs}
+												>
+													<Typography
+														style={headerFont}
+														variant="body1"
+													>
+														{el.name}
+													</Typography>
+													<Box>
+														<Typography variant="body1">
+															{el.value}
+														</Typography>
+													</Box>
+												</Grid>
+											))}
 
-								
-											<Grid sx={{ marginTop: "20px" }} item xs={12}>
-									<Typography
-										variant="h5"
-										sx={headerFont}
-										gutterBottom
-									>
-										Deposit Period
-									</Typography>
-									<Divider />
-								</Grid>
-
-								{depositPeriodInfo &&
-									depositPeriodInfo.map((el) => (
 										<Grid
+											sx={{ marginTop: "20px" }}
 											item
-											key={el.name}
-											xl={el.xl}
-											lg={el.lg}
-											md={el.md}
-											sm={el.sm}
-											xs={el.xs}
+											xs={12}
 										>
 											<Typography
-												style={headerFont}
-												variant="body1"
+												variant="h5"
+												sx={headerFont}
+												gutterBottom
 											>
-												{el.name}
+												Deposit Period
 											</Typography>
-											<Box>
-												<Typography variant="body1">
-													{el.value}
-												</Typography>
-											</Box>
+											<Divider />
 										</Grid>
-									))}
 
+										{depositPeriodInfo &&
+											depositPeriodInfo.map((el) => (
+												<Grid
+													item
+													key={el.name}
+													xl={el.xl}
+													lg={el.lg}
+													md={el.md}
+													sm={el.sm}
+													xs={el.xs}
+												>
+													<Typography
+														style={headerFont}
+														variant="body1"
+													>
+														{el.name}
+													</Typography>
+													<Box>
+														<Typography variant="body1">
+															{el.value}
+														</Typography>
+													</Box>
+												</Grid>
+											))}
 
-								
-							<Grid sx={{ marginTop: "20px" }} item xs={12}>
-								<Typography
-									variant="h5"
-									style={headerFont}
-									gutterBottom
-								>
-									Owner's Information
-								</Typography>
-								<Divider />
-							</Grid>
-
-							{ownerInformation &&
-								ownerInformation.map((el) => (
-									<Grid
-										item
-										key={el.name}
-										xl={el.xl}
-										lg={el.lg}
-										md={el.md}
-										sm={el.sm}
-										xs={el.xs}
-									>
-										<Typography
-											color="secondary"
-											variant="body1"
+										<Grid
+											sx={{ marginTop: "20px" }}
+											item
+											xs={12}
 										>
-											{el.name}
-										</Typography>
-										<Box>
-											<Typography variant="body1">
-												{el.value}
+											<Typography
+												variant="h5"
+												style={headerFont}
+												gutterBottom
+											>
+												Owner's Information
 											</Typography>
-										</Box>
-									</Grid>
-								))}
-
-
-
-							
-							<Grid sx={{ marginTop: "20px" }} item xs={12}>
-								<Typography
-									variant="h5"
-									style={headerFont}
-									gutterBottom
-								>
-									Other Details
-								</Typography>
-								<Divider />
-							</Grid>
-
-							{otherDetails &&
-								otherDetails.map((el) => (
-									<Grid
-										item
-										key={el.name}
-										xl={el.xl}
-										lg={el.lg}
-										md={el.md}
-										sm={el.sm}
-										xs={el.xs}
-									>
-										<Typography
-											color="secondary"
-											variant="body1"
-										>
-											{el.name}
-										</Typography>
-										<Box>
-											<Typography variant="body1">
-												{el.value}
-											</Typography>
-										</Box>
-									</Grid>
-								))}
-
-
-
-							<Grid item xs={12}>
-								<StorageGoodsTable/>
-							</Grid>
+											<Divider />
 										</Grid>
-									</StyledTrackHeaderDetails>
-								</StyledItemContainer>
-							</Box>
-						</Grow>
-					</>
-				) : null
-			}
+
+										{ownerInformation &&
+											ownerInformation.map((el) => (
+												<Grid
+													item
+													key={el.name}
+													xl={el.xl}
+													lg={el.lg}
+													md={el.md}
+													sm={el.sm}
+													xs={el.xs}
+												>
+													<Typography
+														color="secondary"
+														variant="body1"
+													>
+														{el.name}
+													</Typography>
+													<Box>
+														<Typography variant="body1">
+															{el.value}
+														</Typography>
+													</Box>
+												</Grid>
+											))}
+
+										<Grid
+											sx={{ marginTop: "20px" }}
+											item
+											xs={12}
+										>
+											<Typography
+												variant="h5"
+												style={headerFont}
+												gutterBottom
+											>
+												Other Details
+											</Typography>
+											<Divider />
+										</Grid>
+
+										{otherDetails &&
+											otherDetails.map((el) => (
+												<Grid
+													item
+													key={el.name}
+													xl={el.xl}
+													lg={el.lg}
+													md={el.md}
+													sm={el.sm}
+													xs={el.xs}
+												>
+													<Typography
+														color="secondary"
+														variant="body1"
+													>
+														{el.name}
+													</Typography>
+													<Box>
+														<Typography variant="body1">
+															{el.value}
+														</Typography>
+													</Box>
+												</Grid>
+											))}
+
+										<Grid item xs={12}>
+											<StorageGoodsTable />
+										</Grid>
+									</Grid>
+								</StyledTrackHeaderDetails>
+							</StyledItemContainer>
+						</Box>
+					</Grow>
+				</>
+			) : null}
 		</StyledTrackItem>
-	)
-}
+	);
+};
 
-export default TrackStorageItem
+export default TrackStorageItem;

@@ -1,10 +1,7 @@
-import HomeIcon from '@mui/icons-material/Home';
+import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import WarehouseIcon from '@mui/icons-material/Warehouse';
-import ArticleIcon from '@mui/icons-material/Article';
 import GroupIcon from '@mui/icons-material/Group';
-import MapIcon from '@mui/icons-material/Map';
-import CreateNewFolderIcon from '@mui/icons-material/CreateNewFolder';
 
 // import SettingsIcon from '@mui/icons-material/Settings';
 
@@ -16,9 +13,9 @@ const sx= {
 
 export const listItemsTop = [
 	{
-		label: "Home",
+		label: "Quotations",
 		path: "/dashboard",
-		icon: <HomeIcon sx={sx}/>,
+		icon: <FormatQuoteIcon sx={sx}/>,
 		nested: [
 			{}
 		],
@@ -40,25 +37,9 @@ export const listItemsTop = [
 		],
 	},
 	{
-		label: "Resources",
-		path: "/dashboard/resources",
-		icon:  <CreateNewFolderIcon sx={sx}/>,
-		nested: [
-			{}
-		],
-	},
-	{
 		label: "Users",
 		path: "/dashboard/users",
 		icon:  <GroupIcon sx={sx}/>,
-		nested: [
-			{}
-		],
-	},
-	{
-		label: "Map",
-		path: "/dashboard/map",
-		icon:  <MapIcon sx={sx}/>,
 		nested: [
 			{}
 		],

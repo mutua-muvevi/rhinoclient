@@ -62,7 +62,7 @@ const AddBlogContentModal = ({ open, setOpen, values, blog }) => {
 					<Typography sx={styledTitleFont} variant="h5" color="secondary" gutterBottom>
 						Add Content Block
 					</Typography>
-{console.log("Balues here is", values)}
+					
 					<FieldArray name="content">
 						{arrayHelpers => {
 								const content = values.content

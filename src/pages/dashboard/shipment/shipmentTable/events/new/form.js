@@ -65,13 +65,19 @@ const EventForm = ({token, postEvent, errMessage, trackno, setOpen}) => {
 	})
 
 
-	const submitHandler = ( values, { resetForm } ) => {
-		postEvent(values, token)
+	const submitHandler = async ( values, { resetForm } ) => {
+		const response  = await postEvent(values, token)
 		setTrackNo(values.trackno)
 		
 		if (!errMessage || errMessage === undefined){
 			setSuccessAlert(true)
 			resetForm()
+		}
+
+		if(response){
+			setTimeout(() => {
+				window.location.reload();
+			}, 1500);
 		}
 
 		if (errMessage){
