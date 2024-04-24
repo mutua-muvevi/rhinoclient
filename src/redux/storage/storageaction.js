@@ -170,8 +170,10 @@ export const postAStorage = (values, token) => {
 			
 			postStorage()
 			dispatch(postStorageSuccess(res.data.data))
+			return res;
 		} catch (error) {
 			dispatch(postStorageFail(error.response.data.error))
+			throw error?.response?.data?.error
 		}
 	}
 }
@@ -193,6 +195,7 @@ export const editAStorage = (values, token) => {
 			
 				editStorage()
 				dispatch(editStorageSuccess(res.data.data))
+				return res;
 			} catch (error) {
 			dispatch(editStorageFail(error.response))
 		}
@@ -204,8 +207,8 @@ export const deleteStorage = (token, id) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.delete(
-				`http://localhost:8500/api/storage/delete/${id}`,
-				// `https://drab-jade-bison-cuff.cyclic.app/api/storage/delete/${id}/`,
+				// `http://localhost:8500/api/storage/delete/${id}`,
+				`https://drab-jade-bison-cuff.cyclic.app/api/storage/delete/${id}/`,
 				{
 					headers: {
 						"Content-Type": "application/json",
@@ -215,6 +218,7 @@ export const deleteStorage = (token, id) => {
 			);
 			dispatch(deleteStorageStart())
 			dispatch(deleteStorageSuccess(res.data.data))
+			return res;
 		} catch (error) {
 			dispatch(deleteStorageFail(error.response))
 		}

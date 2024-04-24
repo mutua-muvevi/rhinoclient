@@ -129,7 +129,7 @@ export const editUser = ({id, token, values}) => {
 		try {
 			const res = await axios.put(
 				// `http://localhost:8500/api/user/edit/${id}`,
-				`https://drab-jade-bison-cuff.cyclic.app//api/user/users`,
+				`https://drab-jade-bison-cuff.cyclic.app/api/user/edit/${id}`,
 				values,
 				{
 					headers: {
@@ -140,6 +140,7 @@ export const editUser = ({id, token, values}) => {
 
 			editAdminStart()
 			dispatch(editAdminSuccess(res.data.data))
+			return res;
 		} catch (error) {
 			dispatch(editAdminFail(error.response.data.error))
 		}

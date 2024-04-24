@@ -30,44 +30,44 @@ const EditStorage = ({token, editStorage, errMessage, storage, setOpen}) => {
 
 	
 	const INITIAL_FORM_STATE = {
-		depositorFullname: storage.depositor.fullname,
-		depositorEmail: storage.depositor.email,
-		depositorTelephone: storage.depositor.telephone,
-		depositorCompany: storage.depositor.company,
-		depositorAddress: storage.depositor.address,
+		depositorFullname: storage?.depositor?.fullname,
+		depositorEmail: storage?.depositor?.email,
+		depositorTelephone: storage?.depositor?.telephone,
+		depositorCompany: storage?.depositor?.company,
+		depositorAddress: storage?.depositor?.address,
 	
-		acceptedFromDate: storage.acceptance.from.date,
-		acceptedFromTime: storage.acceptance.from.time,
-		acceptedToDate: storage.acceptance.to.date,
-		acceptedToTime: storage.acceptance.to.time,
+		acceptedFromDate: storage?.acceptance?.from?.date,
+		acceptedFromTime: storage?.acceptance?.from?.time,
+		acceptedToDate: storage?.acceptance?.to?.date,
+		acceptedToTime: storage?.acceptance?.to?.time,
 	
-		ownerFullname: storage.owner.fullname,
-		ownerEmail: storage.owner.email,
-		ownerTelephone: storage.owner.telephone,
-		ownerCompany: storage.owner.company,
-		ownerAddress: storage.owner.address,
-		ownerAccountNumber: storage.owner.accountNo,
+		ownerFullname: storage?.owner?.fullname,
+		ownerEmail: storage?.owner?.email,
+		ownerTelephone: storage?.owner?.telephone,
+		ownerCompany: storage?.owner?.company,
+		ownerAddress: storage?.owner?.address,
+		ownerAccountNumber: storage?.owner?.accountNo,
 	
-		productDetailArray: storage.productDetails,
+		productDetailArray: storage?.productDetails,
 	
-		privateMarks: storage.privateMarks,
-		handlingCharges: storage.handlingCharges,
-		assuredFor: storage.assuredFor,
-		receiptNumber: storage.receiptNumber,
-		receiptValidUpTo: storage.receiptValidUpTo,
-		productOrigin: storage.productOrigin,
-		wareHouseLocation: storage.wareHouseLocation,
-		receivedBy: storage.receivedBy,
-		depositDate: storage.depositDate ? storage.depositDate : "",
-		depositTime: storage.depositTime ? storage.depositTime : "",
+		privateMarks: storage?.privateMarks,
+		handlingCharges: storage?.handlingCharges,
+		assuredFor: storage?.assuredFor,
+		receiptNumber: storage?.receiptNumber,
+		receiptValidUpTo: storage?.receiptValidUpTo,
+		productOrigin: storage?.productOrigin,
+		wareHouseLocation: storage?.wareHouseLocation,
+		receivedBy: storage?.receivedBy,
+		depositDate: storage?.depositDate ? storage?.depositDate : "",
+		depositTime: storage?.depositTime ? storage?.depositTime : "",
 	
-		trackno: storage.trackno,
-		_id: storage._id
+		trackno: storage?.trackno,
+		_id: storage?._id
 	};
 
-	const submitHandler = ( values, {resetForm} ) => {
-		editStorage(values, token)
-		resetForm()
+	const submitHandler = async ( values, {resetForm} ) => {
+		const response = await editStorage(values, token)
+		
 
 		if (!errMessage || errMessage === undefined){
 			setShowSuccess(true)
@@ -75,9 +75,12 @@ const EditStorage = ({token, editStorage, errMessage, storage, setOpen}) => {
 			resetForm()
 		}
 
-		setTimeout(() => {
-			setOpen(false)
-		}, 2000);
+		if(response){
+			setTimeout(() => {
+				setOpen(false)
+				window.location.reload()
+			}, 2000);
+		}
 
 	}
 
