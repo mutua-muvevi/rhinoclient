@@ -87,14 +87,14 @@ const TrackStorageItem = ({ storage, modal, onClose }) => {
 	const headerTitleList = [
 		{
 			name: "Track / Reference Number",
-			value: storage.trackno,
+			value: storage?.trackno,
 		},
 	];
 
 	const depositorInformation = [
 		{
 			name: "Depositor's Fullname",
-			value: storage.depositor.fullname ? storage.depositor.fullname : "",
+			value: storage?.depositor?.fullname ? storage?.depositor?.fullname : "",
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -103,7 +103,7 @@ const TrackStorageItem = ({ storage, modal, onClose }) => {
 		},
 		{
 			name: "Depositor's Email",
-			value: storage.depositor.email ? storage.depositor.email : "",
+			value: storage?.depositor?.email ? storage?.depositor?.email : "",
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -112,8 +112,8 @@ const TrackStorageItem = ({ storage, modal, onClose }) => {
 		},
 		{
 			name: "Depositor's Telephone",
-			value: storage.depositor.telephone
-				? storage.depositor.telephone
+			value: storage?.depositor?.telephone
+				? storage?.depositor?.telephone
 				: "",
 			xl: 4,
 			lg: 4,
@@ -123,7 +123,7 @@ const TrackStorageItem = ({ storage, modal, onClose }) => {
 		},
 		{
 			name: "Depositor's Company",
-			value: storage.depositor.company ? storage.depositor.company : "",
+			value: storage?.depositor?.company ? storage?.depositor?.company : "",
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -132,7 +132,7 @@ const TrackStorageItem = ({ storage, modal, onClose }) => {
 		},
 		{
 			name: "Depositor's Address",
-			value: storage.depositor.address ? storage.depositor.address : "",
+			value: storage?.depositor?.address ? storage?.depositor?.address : "",
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -144,7 +144,7 @@ const TrackStorageItem = ({ storage, modal, onClose }) => {
 	const depositPeriodInfo = [
 		{
 			name: "Date of deposit",
-			value: storage.depositDate ? storage.depositDate : "",
+			value: storage?.depositDate ? storage?.depositDate : "",
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -153,7 +153,7 @@ const TrackStorageItem = ({ storage, modal, onClose }) => {
 		},
 		{
 			name: "Time of deposit",
-			value: storage.depositTime ? storage.depositTime : "",
+			value: storage?.depositTime ? storage?.depositTime : "",
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -165,7 +165,7 @@ const TrackStorageItem = ({ storage, modal, onClose }) => {
 	const ownerInformation = [
 		{
 			name: "Owner's Fullname",
-			value: storage.owner.fullname,
+			value: storage?.owner?.fullname,
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -174,7 +174,7 @@ const TrackStorageItem = ({ storage, modal, onClose }) => {
 		},
 		{
 			name: "Owner's Email",
-			value: storage.owner.email,
+			value: storage?.owner?.email,
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -183,7 +183,7 @@ const TrackStorageItem = ({ storage, modal, onClose }) => {
 		},
 		{
 			name: "Owner's Telephone",
-			value: storage.owner.telephone,
+			value: storage?.owner?.telephone,
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -192,7 +192,7 @@ const TrackStorageItem = ({ storage, modal, onClose }) => {
 		},
 		{
 			name: "Owner's Company",
-			value: storage.owner.company,
+			value: storage?.owner?.company,
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -201,7 +201,7 @@ const TrackStorageItem = ({ storage, modal, onClose }) => {
 		},
 		{
 			name: "Owner's address",
-			value: storage.owner.address,
+			value: storage?.owner?.address,
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -210,7 +210,7 @@ const TrackStorageItem = ({ storage, modal, onClose }) => {
 		},
 		{
 			name: "Owner's Account Number",
-			value: storage.owner.accountNo,
+			value: storage?.owner?.accountNo,
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -222,7 +222,7 @@ const TrackStorageItem = ({ storage, modal, onClose }) => {
 	const otherDetails = [
 		{
 			name: "Private marks, if any",
-			value: storage.privateMarks,
+			value: storage?.privateMarks,
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -231,7 +231,7 @@ const TrackStorageItem = ({ storage, modal, onClose }) => {
 		},
 		{
 			name: "Assured for",
-			value: storage.assuredFor,
+			value: storage?.assuredFor,
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -240,7 +240,7 @@ const TrackStorageItem = ({ storage, modal, onClose }) => {
 		},
 		{
 			name: "Storage Rate / Handling Charges",
-			value: storage.handlingCharges,
+			value: storage?.handlingCharges,
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -249,7 +249,7 @@ const TrackStorageItem = ({ storage, modal, onClose }) => {
 		},
 		{
 			name: "Product Origin",
-			value: storage.productOrigin,
+			value: storage?.productOrigin,
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -258,7 +258,7 @@ const TrackStorageItem = ({ storage, modal, onClose }) => {
 		},
 		{
 			name: "Receipt Number",
-			value: storage.receiptNumber,
+			value: storage?.receiptNumber,
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -267,7 +267,7 @@ const TrackStorageItem = ({ storage, modal, onClose }) => {
 		},
 		{
 			name: "Receipt Valid Up To",
-			value: storage.receiptValidUpTo,
+			value: storage?.receiptValidUpTo,
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -276,7 +276,7 @@ const TrackStorageItem = ({ storage, modal, onClose }) => {
 		},
 		{
 			name: "Warehouse Location",
-			value: storage.wareHouseLocation,
+			value: storage?.wareHouseLocation,
 			xl: 4,
 			lg: 4,
 			md: 4,
@@ -285,7 +285,7 @@ const TrackStorageItem = ({ storage, modal, onClose }) => {
 		},
 		{
 			name: "Received by",
-			value: storage.receivedBy,
+			value: storage?.receivedBy,
 			xl: 4,
 			lg: 4,
 			md: 4,

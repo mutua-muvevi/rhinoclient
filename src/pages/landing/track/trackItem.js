@@ -118,20 +118,20 @@ const TrackItem = ({ item, modal, onClose}) => {
 			{
 				name: "Shipper Information",
 				value: [
-					item.shippersfullname,
-					item.shippersemail,
-					item.shipperstelephone,
-					item.shippersaddress,
+					item?.shippersfullname,
+					item?.shippersemail,
+					item?.shipperstelephone,
+					item?.shippersaddress,
 				],
 				meta:""
 			},
 			{
 				name: "Cosignee",
 				value: [
-					item.consignfullname,
-					item.consignemail,
-					item.consigntelephone,
-					item.collectoraddress
+					item?.consignfullname,
+					item?.consignemail,
+					item?.consigntelephone,
+					item?.collectoraddress
 				],
 				meta:""
 			},
@@ -140,30 +140,30 @@ const TrackItem = ({ item, modal, onClose}) => {
 			{
 				name: "",
 				value: [
-					item.date
+					item?.date
 				],
 				meta:""
 			},
 			{
 				name: "Origin Service Area",
 				value: [
-					item.departureaddress,
-					`Airport Code: ${item.departureairportcode}`,
-					`Departed on ${item.departuredate} at ${item.departuretime}`
+					item?.departureaddress,
+					`Airport Code: ${item?.departureairportcode}`,
+					`Departed on ${item?.departuredate} at ${item?.departuretime}`
 				],
 				meta:""
 			},
 			{
 				name: "Destination Service Area",
 				value: [
-					item.shippersfullname
+					item?.shippersfullname
 				],
 				meta:""
 			},
 			{
 				name: "Product Details",
 				value: [
-					item.shippersfullname
+					item?.shippersfullname
 				],
 				meta:""
 			},
@@ -172,17 +172,17 @@ const TrackItem = ({ item, modal, onClose}) => {
 			{
 				name: "Estimated Delivery",
 				value: [
-					item.date
+					item?.date
 				],
 				meta:"By End of Day"
 			},
 			{
 				name: "Notify Party",
 				value: [
-					item.collectorfullname,
-					item.collectoremail,
-					item.collectortel,
-					item.collectoraddress
+					item?.collectorfullname,
+					item?.collectoremail,
+					item?.collectortel,
+					item?.collectoraddress
 				],
 				meta:""
 			},

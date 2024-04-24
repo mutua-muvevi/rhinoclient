@@ -137,8 +137,10 @@ export const getStorageByTrackNo = (trackno) => {
 				)
 			getStorageByTrack()
 			dispatch(getStorageByTrackSuccess(res.data.data))
+			return res
 		} catch (error) {
 			dispatch(getStorageByTrackFail(error.response.data.error))
+			throw error
 		}
 	}
 }
