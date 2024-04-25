@@ -53,7 +53,7 @@ const FORM_VALIDATION = Yup.object().shape({
 	message: Yup.string().min(20).max(1000).required("Quotation message in required"),
 })
 
-const QuotationForm = ({ onClose, postQuotation, errMessage, close, open, handleModal}) => {
+const QuotationForm = ({ onClose, postQuotation, errMessage, setOpen, open, handleModal}) => {
 
 	const [ showSuccess, setShowSuccess ] = useState(false);
 
@@ -64,11 +64,13 @@ const QuotationForm = ({ onClose, postQuotation, errMessage, close, open, handle
 		if (!errMessage || errMessage === undefined){
 			setShowSuccess(true)
 			resetForm()
+
+			setTimeout(() => {
+				setOpen(false)
+				window.location.reload()
+			}, 2000);
 		}
 
-		setTimeout(() => {
-			onClose(false)
-		}, 5000);
 	}
 
 	return (

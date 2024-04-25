@@ -2,8 +2,6 @@ import React from "react";
 
 import {
 	Box,
-	Button,
-	ButtonGroup,
 	Container,
 	Divider,
 	Grid,
@@ -11,9 +9,6 @@ import {
 	Typography,
 } from "@mui/material";
 import { styled } from "@mui/system";
-
-import DeleteIcon from "@mui/icons-material/Delete";
-import { BsPrinterFill } from "react-icons/bs";
 
 import { useTheme } from "@emotion/react";
 

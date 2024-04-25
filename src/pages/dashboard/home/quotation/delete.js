@@ -3,8 +3,6 @@ import {
 	Button,
 	ButtonGroup,
 	Container,
-	Divider,
-	Grid,
 	Modal,
 	Stack,
 	Typography,
