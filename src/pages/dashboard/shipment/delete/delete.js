@@ -48,7 +48,6 @@ const DeleteShipment = ({ open, setOpen, shipment, token, deleteShipment }) => {
 		if(response.type === "DELETE_SHIPMENT_SUCCESS"){
 			window.location.reload()
 		}
-		// navigate("/admin/freelancer/services/home")
 	};
 
 	return (

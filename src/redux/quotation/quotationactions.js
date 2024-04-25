@@ -33,12 +33,28 @@ export const postQuotationFail = (errMessage) => ({
 
 
 
+export const startDeleteQuotation = () => ({
+	type: quotationTypes.DELETE_QUOTATION_START,
+})
+
+export const deleteQuotationSuccess = (values) => ({
+	type: quotationTypes.DELETE_QUOTATION_SUCCESS,
+	payload: values,
+})
+
+export const deleteQuotationFail = (errMessage) => ({
+	type: quotationTypes.DELETE_QUOTATION_FAIL,
+	payload: errMessage,
+})
+
+
+
 export const getQuotation = (token) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.get(
-				"http://localhost:8500/api/quotation/all",
-				// "https://drab-jade-bison-cuff.cyclic.app/api/quotation/all",
+				// "http://localhost:8500/api/quotation/all",
+				"https://drab-jade-bison-cuff.cyclic.app/api/quotation/all",
 				{
 					headers: {
 						"Content-Type": "application/json",
@@ -49,7 +65,8 @@ export const getQuotation = (token) => {
 			gettingQuotation()
 			dispatch(getAllQuotationSuccess(res.data.data))
 		} catch (error) {
-			dispatch(getAllQuotationFail(error.response.data.error))
+			dispatch(getAllQuotationFail(error?.response?.data?.error))
+			throw error
 		}
 	}
 }
@@ -59,17 +76,41 @@ export const postQuotation = (values) => {
 	return async (dispatch) => {
 		try {
 			const res = await axios.post(
-				`http://localhost:8500/api/quotation/post`,
-				// `https://drab-jade-bison-cuff.cyclic.app/api/quotation/post`,
+				// `http://localhost:8500/api/quotation/post`,
+				`https://drab-jade-bison-cuff.cyclic.app/api/quotation/post`,
 				values
 				)
 			
 			postingQuotation()
 			dispatch(postQuotationSuccess(res.data.data))
+			return res
 		} catch (error) {
 			dispatch(postQuotationFail(error.response.data.error))
+			throw error
 		}
 	}
 }
 
 //delete quotation
+export const deleteQuotation = (id, token) => {
+	console.log("DELETE HERE", id, token)
+	return async (dispatch) => {
+		try {
+			const res = await axios.delete(
+				`https://drab-jade-bison-cuff.cyclic.app/api/quotation/delete/${id}`,
+				{
+					headers : {
+						Authorization:`Bearer ${token}`
+					}
+				}
+			)
+
+			dispatch(deleteQuotationSuccess(res?.data?.data))
+			console.log("The response is", res)
+			return res
+		} catch (error) {
+			dispatch(deleteQuotationFail(error.response))
+			throw error
+		}
+	}
+}

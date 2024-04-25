@@ -1,51 +1,54 @@
-import React from 'react';
+import React from "react";
 
-import { Box, Button, ButtonGroup, Container, Divider, Grid, Modal, Typography } from "@mui/material";
+import {
+	Box,
+	Button,
+	ButtonGroup,
+	Container,
+	Divider,
+	Grid,
+	Modal,
+	Typography,
+} from "@mui/material";
 import { styled } from "@mui/system";
 
-import DeleteIcon from '@mui/icons-material/Delete';
+import DeleteIcon from "@mui/icons-material/Delete";
 import { BsPrinterFill } from "react-icons/bs";
 
-import { useTheme } from '@emotion/react';
+import { useTheme } from "@emotion/react";
 
 const StyledModal = styled(Modal)(({ theme }) => ({
 	width: "85vw",
-	margin: "15vh auto",
+	margin: "25vh auto",
 	overflowY: "scroll",
-	border: 'none',
-	height: "70vh",
-	borderRadius: theme.shape.default
-}))
+	border: "none",
+	height: "50vh",
+	borderRadius: theme.shape.default,
+}));
 
-const StyledModalContainerBox = styled(Box)(({theme}) => ({
+const StyledModalContainerBox = styled(Box)(({ theme }) => ({
 	backgroundColor: theme.palette.background.paper,
-	border: 'none',
+	border: "none",
 	boxShadow: 24,
 	paddingTop: 2,
 	paddingBottom: 2,
-	minHeight: "70vh",
-}))
+	minHeight: "50vh",
+}));
 
-const styledModalBox = {
-}
+const styledModalBox = {};
 
-const StyledButtonGroup = styled(ButtonGroup)(({ theme }) => ({
-	marginTop: "20px",
-	marginBottom: "20px",
-}))
 
 
 const headerFont = {
 	color: "#dea95f",
 	fontWeight: 500,
 	fontFamily: "'Rubik', sans-serif",
-}
+};
 
 const titleFont = {
 	fontWeight: 500,
 	fontFamily: "'Rubik', sans-serif",
-}
-
+};
 
 const QuotationViewModal = ({ values, open, setOpen }) => {
 	const theme = useTheme();
@@ -58,7 +61,7 @@ const QuotationViewModal = ({ values, open, setOpen }) => {
 			lg: 4,
 			md: 4,
 			sm: 12,
-			xs: 12
+			xs: 12,
 		},
 		{
 			name: "lastname",
@@ -67,7 +70,7 @@ const QuotationViewModal = ({ values, open, setOpen }) => {
 			lg: 4,
 			md: 4,
 			sm: 12,
-			xs: 12
+			xs: 12,
 		},
 		{
 			name: "Email",
@@ -76,7 +79,7 @@ const QuotationViewModal = ({ values, open, setOpen }) => {
 			lg: 4,
 			md: 4,
 			sm: 12,
-			xs: 12
+			xs: 12,
 		},
 		{
 			name: "Telephone",
@@ -85,7 +88,7 @@ const QuotationViewModal = ({ values, open, setOpen }) => {
 			lg: 4,
 			md: 4,
 			sm: 12,
-			xs: 12
+			xs: 12,
 		},
 		{
 			name: "Company",
@@ -94,7 +97,7 @@ const QuotationViewModal = ({ values, open, setOpen }) => {
 			lg: 4,
 			md: 4,
 			sm: 12,
-			xs: 12
+			xs: 12,
 		},
 		{
 			name: "Product",
@@ -103,7 +106,7 @@ const QuotationViewModal = ({ values, open, setOpen }) => {
 			lg: 4,
 			md: 4,
 			sm: 12,
-			xs: 12
+			xs: 12,
 		},
 		{
 			name: "City",
@@ -112,7 +115,7 @@ const QuotationViewModal = ({ values, open, setOpen }) => {
 			lg: 4,
 			md: 4,
 			sm: 12,
-			xs: 12
+			xs: 12,
 		},
 		{
 			name: "Country",
@@ -121,7 +124,7 @@ const QuotationViewModal = ({ values, open, setOpen }) => {
 			lg: 4,
 			md: 4,
 			sm: 12,
-			xs: 12
+			xs: 12,
 		},
 		{
 			name: "Message",
@@ -130,9 +133,9 @@ const QuotationViewModal = ({ values, open, setOpen }) => {
 			lg: 12,
 			md: 12,
 			sm: 12,
-			xs: 12
+			xs: 12,
 		},
-	]
+	];
 
 	return (
 		<>
@@ -145,54 +148,52 @@ const QuotationViewModal = ({ values, open, setOpen }) => {
 				<StyledModalContainerBox sx={styledModalBox}>
 					<Container maxWidth="xl">
 						<Grid container spacing={2}>
-
-							<Grid sx={{marginTop: "20px"}} item xs={12}>
-								<Typography variant="h5" style={headerFont} gutterBottom>
+							<Grid sx={{ marginTop: "20px" }} item xs={12}>
+								<Typography
+									variant="h5"
+									style={headerFont}
+									gutterBottom
+								>
 									Quotation
 								</Typography>
-							<Divider sx={{backgroundColor: theme.palette.primary.main}}/>
+								<Divider
+									sx={{
+										backgroundColor:
+											theme.palette.primary.main,
+									}}
+								/>
 							</Grid>
 
-							{
-								quotationItem && quotationItem.map(el => (
-									<Grid item key={el.name} xl={el.xl} lg={el.lg} md={el.md} sm={el.sm} xs={el.xs}>
-										<Typography style={titleFont} variant="body1">{el.name}</Typography>
+							{quotationItem &&
+								quotationItem.map((el) => (
+									<Grid
+										item
+										key={el.name}
+										xl={el.xl}
+										lg={el.lg}
+										md={el.md}
+										sm={el.sm}
+										xs={el.xs}
+									>
+										<Typography
+											style={titleFont}
+											variant="body1"
+										>
+											{el.name}
+										</Typography>
 										<Box>
-											<Typography variant="body1">{el.value}</Typography>
+											<Typography variant="body1">
+												{el.value}
+											</Typography>
 										</Box>
 									</Grid>
-								))
-							}
-
-							
-							
+								))}
 						</Grid>
-
-						<StyledButtonGroup>
-							<Button 
-								endIcon={<BsPrinterFill/>} 
-								type="button" variant="contained" 
-								color="secondary"
-								onClick={() =>  window.print()}
-								sx={{color: "#000000"}}
-								>
-									Print
-							</Button>
-
-							<Button 
-								endIcon={<DeleteIcon/>} 
-								type="button" 
-								variant="contained" 
-								color="error"
-								>
-									Delete
-							</Button>
-						</StyledButtonGroup>
 					</Container>
 				</StyledModalContainerBox>
 			</StyledModal>
 		</>
-	)
-}
+	);
+};
 
-export default QuotationViewModal
+export default QuotationViewModal;

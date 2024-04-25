@@ -176,14 +176,18 @@ const QuotationDatagrid = ({ quotation }) => {
 		<>
 			<StyledDataGridContainer>
 				<StyledDataGridHeader style={{fontWeight: 500}} title="All Quotation" />
-				<StyledDataGrid
-					rows={quotation}
-					columns={columns}
-					autoPageSize
-					autoHeight
-					getRowId={quotation => quotation._id}
-					pageSize={100}
-				/>
+				{
+					quotation && (
+						<StyledDataGrid
+							rows={quotation}
+							columns={columns}
+							autoPageSize
+							autoHeight
+							getRowId={quotation => quotation?._id}
+							pageSize={100}
+						/>
+					)
+				}
 			</StyledDataGridContainer>
 
 			<QuotationViewModal
